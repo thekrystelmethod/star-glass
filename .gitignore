@@ -1,0 +1,7 @@
+# Swiss Ephemeris data files — fetched by scripts/setup_ephemeris.py, not
+# redistributed here (see README.md, "Ephemeris data and licensing").
+scripts/ephe/*.se1
+
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,26 @@
+{
+  "skill_name": "astro-interpretation",
+  "evals": [
+    {
+      "id": 0,
+      "name": "conversational-venus",
+      "prompt": "I was born March 15, 1986 at 2:30 PM in Minneapolis, Minnesota. What does my Venus placement mean? I've always wondered why my relationships feel so intense.",
+      "expected_output": "A conversational answer in the Greene register: exact calculated Venus position (sign, house, aspects with orbs), woven as one narrative (not sign/house/aspect lookups concatenated), addressing the intensity question via Venus's actual aspects, ending on a developmental arc. No event prediction.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "full-portrait",
+      "prompt": "I'd like a full psychological portrait of my natal chart — the deep Liz Greene style reading, not a sun-sign summary. Born July 22, 1990 at 6:45 AM in Portland, Oregon. Please give it to me as a document I can keep.",
+      "expected_output": "A multi-thousand-word markdown portrait document following the six-movement arc, with exact calculated placements, themes led by the two-witness rule, prose without bullet points, dignity-preserving Jungian register, saved as a file.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "dual-zodiac-moon",
+      "prompt": "can you read my chart using both tropical and sidereal? i use the holistic method (lahiri ayanamsa, both weighted equally). born nov 3 1978, 11:15 pm, san antonio texas. especially curious about my moon",
+      "expected_output": "A dual-zodiac reading computing both tropical and Lahiri positions, focusing on the Moon, treating any sign shift as complementary octaves (a chord) rather than competitors or an average, not double-counting aspects/houses across zodiacs.",
+      "files": []
+    }
+  ]
+}
