@@ -82,6 +82,33 @@ Concrete daily-life vignettes ("you may notice that...") are the other
 lengthener that earns its space: one per theme, specific enough to sting
 gently.
 
+## Titling a portrait
+
+Every portrait gets its own title, drawn from that chart rather than from a
+stock of astrological phrases. The reliable form is two nouns in tension —
+*The Spear and the Sea*, *The Orchard and the Vault*, *The Serpent and the
+Shepherd* — naming the chart's governing polarity as two things rather than
+one abstraction. Draw both images from the recipient's dialect palette (see
+above), so a fire chart's title burns and an earth chart's title has weight.
+
+**Both terms must be iconic, even when one of them is humble.** This is the
+error worth naming, because it is easy to make in good faith: a chart whose
+developmental instruction is *go smaller, go nearer, go plainer* tempts you to
+put the smallness into the image itself, and a deflated noun results — an
+oracle paired with a doorstep, a summit paired with an errand. The pairing
+then reads as one strong idea and one weak one, which misstates the argument.
+The chart is not proposing that something magnificent be traded for something
+trivial; it is proposing a confrontation between two things of comparable
+weight, one of which happens to work close to the ground.
+
+So put the humility in the *meaning* and keep the *image* charged. A herald
+outranks a doorstep for exactly this reason: being merely necessary is the
+herald's dignity rather than his diminishment, and unlike a doorstep he
+arrives with a myth, an office, and a staff — material the reading can then
+spend. The test is simple: if the second term were a figure in a painting,
+would anyone look at it? If not, find the older, stranger, more specific
+version of the same idea — the gods and their tools almost always supply one.
+
 ## Exemplar passages
 
 These are original passages written *in* the register, for calibration. Match

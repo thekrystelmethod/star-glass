@@ -128,7 +128,7 @@ push back, and you can go deeper.
 report, follow the six-movement narrative arc in `references/synthesis.md`
 (overture → ground floor → inner cast → mirror → summit → integration) and
 deliver it as a markdown document (roughly 2,500–4,500 words; prose, no bullet
-points, movements titled for the person's chart rather than generically,
+points, movements and title drawn from the person's own chart (voice.md, "Titling a portrait"),
 amplified per voice.md with one properly told mythic story and one concrete
 daily-life vignette per major theme), sent as a file. Open with one light sentence establishing the symbolic-mirror
 framing; do not repeat disclaimers thereafter.
