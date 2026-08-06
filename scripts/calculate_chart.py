@@ -132,23 +132,36 @@ PLANETS = [("Sun", swe.SUN), ("Moon", swe.MOON), ("Mercury", swe.MERCURY),
            ("Saturn", swe.SATURN), ("Uranus", swe.URANUS), ("Neptune", swe.NEPTUNE),
            ("Pluto", swe.PLUTO)]
 
-# Luminaries and personal planets get wider orbs; points get tighter treatment.
+# Major (Ptolemaic) aspects, the optional quincunx, and the optional minors.
 ASPECTS = [("conjunction", 0), ("opposition", 180), ("trine", 120),
            ("square", 90), ("sextile", 60)]
 QUINCUNX = ("quincunx", 150)
+MINOR_ASPECTS = [("semisextile", 30), ("semisquare", 45), ("sesquiquadrate", 135)]
+
+# Base orbs in degrees, before the profile multiplier and the luminary bonus.
+# Orb choice is a real interpretive decision, not a constant of nature — two
+# astrologers with different tables will legitimately disagree about whether a
+# given contact exists. The profile makes that choice explicit and visible in
+# the output rather than burying it in code.
+BASE_ORBS = {"conjunction": 7.0, "opposition": 7.0, "trine": 6.0, "square": 6.0,
+             "sextile": 4.0, "quincunx": 4.0,
+             "semisextile": 2.0, "semisquare": 2.0, "sesquiquadrate": 2.0}
+ORB_PROFILES = {"tight": 0.75, "standard": 1.0, "wide": 1.4}
+LUMINARY_BONUS = 2.0   # added when the Sun or Moon is involved
+ANGLE_BONUS = 1.0      # added for contacts to the Ascendant or Midheaven
 
 LUMINARIES = {"Sun", "Moon"}
+ANGLES = {"Ascendant", "Midheaven"}
 
 
-def orb_limit(a, b, aspect_name):
-    """Greene-adjacent orbs: 8 deg when a luminary is involved, 6 deg otherwise;
-    sextile slightly tighter; quincunx tight (3 deg)."""
-    if aspect_name == "quincunx":
-        return 3.0
-    base = 8.0 if (a in LUMINARIES or b in LUMINARIES) else 6.0
-    if aspect_name == "sextile":
-        base -= 2.0
-    return base
+def orb_limit(a, b, aspect_name, profile="standard"):
+    """Orb allowed for this pair and aspect, under the chosen profile."""
+    base = BASE_ORBS[aspect_name]
+    if a in LUMINARIES or b in LUMINARIES:
+        base += LUMINARY_BONUS
+    if a in ANGLES or b in ANGLES:
+        base += ANGLE_BONUS
+    return round(base * ORB_PROFILES[profile], 2)
 
 
 def norm(deg):
@@ -228,18 +241,34 @@ def build_chart(jd, lat, lon_geo, hsys, sidereal):
             **({"note": note} if note else {})}
 
 
-def find_aspects(bodies, include_quincunx):
-    """Aspects among planets + Chiron + North Node, with exact orbs and
-    applying/separating where speeds allow."""
+def find_aspects(bodies, include_quincunx, asc=None, mc=None,
+                 profile="standard", include_minors=False):
+    """Aspects among planets + Chiron + the North Node, and to the Ascendant and
+    Midheaven, with exact orbs and applying/separating where speeds allow.
+
+    Contacts that fall just outside the profile's orb are returned separately as
+    `near_misses`, because "X is unaspected" is a claim about the orb table, not
+    about the sky — see the guard in references/synthesis.md."""
+    bodies = dict(bodies)
+    if asc is not None:
+        bodies["Ascendant"] = {"lon": asc, "speed": 0.0, "retrograde": False}
+    if mc is not None:
+        bodies["Midheaven"] = {"lon": mc, "speed": 0.0, "retrograde": False}
     names = [n for n in bodies if n != "South Node"]
-    aspect_defs = ASPECTS + ([QUINCUNX] if include_quincunx else [])
-    found = []
+    aspect_defs = ASPECTS + ([QUINCUNX] if include_quincunx else []) \
+        + (MINOR_ASPECTS if include_minors else [])
+    found, near = [], []
     for i, a in enumerate(names):
         for b in names[i + 1:]:
+            if a in ANGLES and b in ANGLES:
+                continue  # ASC/MC angle to each other is a house-system artifact
             sep = angular_sep(bodies[a]["lon"], bodies[b]["lon"])
             for asp_name, angle in aspect_defs:
                 orb = abs(sep - angle)
-                limit = orb_limit(a, b, asp_name)
+                limit = orb_limit(a, b, asp_name, profile)
+                if limit < orb <= limit + 4.0:
+                    near.append({"bodies": [a, b], "aspect": asp_name,
+                                 "orb": round(orb, 2), "orb_limit": limit})
                 if orb <= limit:
                     # applying if the faster body is moving toward exactitude
                     rel_speed = bodies[a]["speed"] - bodies[b]["speed"]
@@ -256,7 +285,8 @@ def find_aspects(bodies, include_quincunx):
                         "applying": bool(closing),
                     })
                     break
-    return sorted(found, key=lambda x: x["orb"])
+    return (sorted(found, key=lambda x: x["orb"]),
+            sorted(near, key=lambda x: x["orb"]))
 
 
 def weighting(chart, aspects):
@@ -329,6 +359,10 @@ def main():
     ap.add_argument("--zodiac", choices=["tropical", "sidereal", "dual"], default="tropical")
     ap.add_argument("--house-system", default="P", help="P=Placidus, W=whole sign, K=Koch, E=equal")
     ap.add_argument("--quincunx", action="store_true", help="include quincunx aspects")
+    ap.add_argument("--orbs", choices=["tight", "standard", "wide"], default="standard",
+                    help="orb profile; 'wide' approximates Astro.com-style generous orbs")
+    ap.add_argument("--minor-aspects", action="store_true",
+                    help="include semisextile, semisquare, sesquiquadrate")
     ap.add_argument("--vedic", action="store_true",
                     help="Jyotish mode: sidereal + whole-sign houses, nakshatras for every "
                          "placement, lagna lord by traditional rulership, Vimshottari mahadashas")
@@ -355,10 +389,23 @@ def main():
 
     def one(sidereal):
         chart = build_chart(jd, args.lat, args.lon, args.house_system, sidereal)
-        aspects = find_aspects(chart.pop("bodies_raw"), args.quincunx)
+        aspects, near = find_aspects(chart.pop("bodies_raw"), args.quincunx,
+                                     asc=chart["asc"], mc=chart["mc"],
+                                     profile=args.orbs,
+                                     include_minors=args.minor_aspects)
         w = weighting(chart, aspects)
         chart.pop("asc"), chart.pop("mc")
-        return {**chart, "aspects": aspects, "weighting": w}
+        # Contact census: how many aspects each body actually makes. Guards
+        # against calling a body "unaspected" when it is merely under-orbed.
+        census = {}
+        for a in aspects:
+            for nm in a["bodies"]:
+                census[nm] = census.get(nm, 0) + 1
+        for nm in list(chart["placements"]) + ["Ascendant", "Midheaven"]:
+            census.setdefault(nm, 0)
+        return {**chart, "aspects": aspects, "near_miss_aspects": near,
+                "contact_census": census, "orb_profile": args.orbs,
+                "weighting": w}
 
     result = {
         "input": {"date": args.date, "time": args.time,

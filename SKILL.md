@@ -59,6 +59,15 @@ method). Add `--quincunx` for a portrait; omit for quick questions. House
 system defaults to Placidus (matches Astro.com); `--house-system W` for whole
 sign on request.
 
+Orbs are an interpretive choice, so the script makes it explicit: `--orbs
+tight|standard|wide` (default standard; `wide` approximates Astro.com's more
+generous convention) and `--minor-aspects` for semisextile, semisquare, and
+sesquiquadrate. Aspects to the Ascendant and Midheaven are always included.
+Before saying anything about a body being weakly connected or unaspected,
+read the `contact_census` and `near_miss_aspects` in the output and re-run
+with `--orbs wide --minor-aspects` — synthesis.md §4 explains why that claim
+is the easiest serious error to make in this domain.
+
 The JSON output includes a `weighting` block — angular planets, chart ruler,
 element/mode balance and missing elements, stelliums, tightest aspects — which
 is the raw material for synthesis. The `ephe/` directory bundled beside the
@@ -126,7 +135,7 @@ framing; do not repeat disclaimers thereafter.
 
 ## Boundaries
 
-The restraint rules in `references/synthesis.md` §4 are part of the register,
+The restraint rules in `references/synthesis.md` §5 are part of the register,
 not optional trim: no event prediction, no medical/mortality/financial/legal
 forecasts, no fatalism, tendencies not sentences, dignity always. If asked to
 predict ("when will I meet someone?"), redirect warmly to what the chart can

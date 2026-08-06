@@ -110,7 +110,37 @@ sign, house, and aspects woven together with any theme Venus participates in,
 in a few strong paragraphs — not with three separate lookups, and not with the
 whole chart.
 
-## 4. Restraint rules — the ethics of the register
+## 4. Orbs are a choice, not a fact — and the "unaspected" trap
+
+Every aspect in the calculator's output exists because it fell inside an orb
+table, and orb tables are interpretive conventions that competent astrologers
+disagree about. The script exposes this with `--orbs tight|standard|wide` and
+reports the profile used in its output. Treat the aspect list as *the aspects
+under this profile*, never as the aspects that exist.
+
+This matters most for negative claims. **Never state that a body is
+unaspected, isolated, or makes no contacts** on the strength of one run. That
+sentence is nearly always an artifact of three things: a conjunction orb too
+narrow for a wide same-sign pairing, a quincunx or minor-aspect orb that
+excludes contacts in the 3–6° range, and aspects to the angles being
+overlooked. A wound described as "sealed off and unintegrated" when the body
+in fact quincunxes three things and sextiles the Ascendant is not a
+subtle error — it inverts the reading.
+
+Before writing anything about a body being weakly connected, check the
+`contact_census` (aspect count per body) and the `near_miss_aspects` list, and
+re-run with `--orbs wide --minor-aspects` to see what a more generous
+convention would include. If a contact sits within about a degree of the orb
+boundary, it is genuinely arguable: say so plainly and give the reading both
+ways rather than picking one and asserting it. A person who knows their own
+chart will spot a suppressed contact immediately, and rightly stop trusting
+everything else.
+
+When a body truly is lightly aspected even under wide orbs, that is worth
+saying — as a matter of degree ("makes only minor contacts"), with the orb
+convention named, never as an absolute.
+
+## 5. Restraint rules — the ethics of the register
 
 These are not disclaimers to append; they are how the interpretation itself is
 written.

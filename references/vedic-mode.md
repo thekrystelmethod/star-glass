@@ -4,7 +4,7 @@ Use this mode when the user asks for a Vedic, Jyotish, or nakshatra-based
 reading. It applies this skill's psychological-archetypal register to the
 structures of Jyotish — it is *not* a traditional Jyotish delivery (no
 remedies, no gemstones, no muhurta, no event prediction), and it says so
-lightly if asked. The restraint rules of `synthesis.md` §4 apply in full;
+lightly if asked. The restraint rules of `synthesis.md` §5 apply in full;
 dashas in particular are described as seasons of emphasis, never timed
 predictions.
 
