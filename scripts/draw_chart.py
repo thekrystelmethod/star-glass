@@ -187,7 +187,7 @@ def build(chart, size=1100, title=None, subtitle=None,
         gx, gy = pol(cx, cy, (R + r_sign_in) / 2, theta(i * 30 + 15))
         o.append(f'<text x="{gx:.2f}" y="{gy + size*0.016:.2f}" font-family={GLYPH_FONT!r} '
                  f'font-size="{size*0.042:.1f}" fill="{ELEMENT[ELEMENTS[sign]]}" '
-                 f'text-anchor="middle">{SIGN_GLYPH[i]}</text>')
+                 f'text-anchor="middle">{SIGN_GLYPH[i]}&#xFE0E;</text>')
 
     o.append(f'<circle cx="{cx}" cy="{cy}" r="{R:.2f}" fill="none" stroke="{INK}" stroke-width="2"/>')
     o.append(f'<circle cx="{cx}" cy="{cy}" r="{r_sign_in:.2f}" fill="none" stroke="{INK}" stroke-width="1.5"/>')
@@ -266,7 +266,7 @@ def build(chart, size=1100, title=None, subtitle=None,
             o.append(f'<text x="{gx:.2f}" y="{gy + size*0.014:.2f}" '
                      f'font-family={GLYPH_FONT!r} font-size="{size*0.040:.1f}" '
                      f'fill="{tcol}" fill-opacity="{e:.2f}" text-anchor="middle">'
-                     f'{PLANET_GLYPH[name]}</text>')
+                     f'{PLANET_GLYPH[name]}&#xFE0E;</text>')
         # Degree labels alternate between two radii so neighbours in a tight
         # cluster (a stellium, or a planet sitting on an angle) never collide.
         deg = int(lon % 30)

@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#141824">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Glass">
 <title>Glass — the interpretation engine</title>
 <!--
   web/index.html — the first browser client of the ephemeris API.
@@ -105,6 +109,11 @@
     background:none; border:none; cursor:pointer; font-family:var(--sans); transition:all .2s}
   .ampm button.on{color:var(--paper); font-weight:600;
     background:linear-gradient(135deg,#D8CBA8,var(--gold))}
+  .ampm.essence{width:100%}
+  .ampm.essence button{flex:1}
+  label .opt{text-transform:none; letter-spacing:.2px; color:var(--mid);
+    font-size:10.5px; margin-left:6px; opacity:.8}
+  body:not(.debug) #health, body:not(.debug) #connect{display:none}
 
   /* ------------------------------------------------ place search */
   .place-wrap{position:relative}
@@ -235,7 +244,8 @@
   #tablesGrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:26px}
   #tablesGrid .card.wide{grid-column:1/-1}
-  table{width:100%; border-collapse:collapse; font-size:13.5px}
+  table{width:100%; border-collapse:collapse; font-size:13.5px;
+    font-variant-emoji:text}   /* astrological glyphs as fine linework, never emoji */
   td,th{padding:6px 10px; border-bottom:1px solid var(--glass-line-soft);
     text-align:left; vertical-align:top}
   tr:last-child td{border-bottom:none}
@@ -298,6 +308,12 @@
              spellcheck="false" value="Minneapolis">
       <div id="placeResults"></div>
       <div id="placeMeta" class="ok">44.98°N, 93.27°W · America/Chicago</div>
+    </div>
+    <div class="field"><label>Essence <span class="opt">optional — tunes the archetypal voice</span></label>
+      <div class="ampm essence">
+        <button type="button" id="e-fem">Feminine</button>
+        <button type="button" id="e-mas">Masculine</button>
+      </div>
     </div>
     <details id="advanced">
       <summary>Fine-tune coordinates &amp; timezone</summary>
@@ -455,6 +471,11 @@ const DEFAULT_ENGINE = "https://star-glass-engine.onrender.com";
 let API = (new URLSearchParams(location.search).get("api") || DEFAULT_ENGINE)
             .replace(/\/+$/, "");
 
+/* Infrastructure is invisible by default. Append ?debug to the URL to reveal
+   the health pill and the connection card (the maker's view). */
+if(new URLSearchParams(location.search).has("debug"))
+  document.body.classList.add("debug");
+
 /* ================================================================ sky */
 (function stars(){
   const c = document.getElementById("sky"), x = c.getContext("2d");
@@ -514,8 +535,9 @@ async function checkHealth(){
   }catch(e){
     conn.online = false;
     connUI("bad");
-    conn.timer = setTimeout(checkHealth, 6000);   // quiet retry while offline
-  }
+    conn.timer = setTimeout(checkHealth, 6000);   // quiet retry while offline —
+  }                                               // this is also what wakes a
+  return conn.online;                             // napping engine on page open
 }
 
 $("f-api").value = API;
@@ -563,6 +585,14 @@ $("t-am").addEventListener("click", () => {
   $("t-am").classList.add("on"); $("t-pm").classList.remove("on"); });
 $("t-pm").addEventListener("click", () => {
   $("t-pm").classList.add("on"); $("t-am").classList.remove("on"); });
+
+/* essence: optional, so a second click deselects */
+for(const id of ["e-fem","e-mas"])
+  $(id).addEventListener("click", () => {
+    const wasOn = $(id).classList.contains("on");
+    $("e-fem").classList.remove("on"); $("e-mas").classList.remove("on");
+    if(!wasOn) $(id).classList.add("on");
+  });
 
 /* ================================================================ place
    The place field geocodes through Open-Meteo's free geocoding API, which
@@ -696,6 +726,11 @@ function birth(){
     tz:place.tz, lat:place.lat, lon:place.lon,
     zodiac:$("f-zodiac").value, house_system:$("f-houses").value,
     orbs:$("f-orbs").value,
+    /* essence rides along with the birth data; the engine ignores it today,
+       and the interpretation pipeline (Phase 2) reads it to tune the
+       archetypal voice */
+    essence:$("e-fem").classList.contains("on") ? "feminine"
+          : $("e-mas").classList.contains("on") ? "masculine" : null,
     quincunx:$("t-quincunx").classList.contains("on"),
     minor_aspects:$("t-minor").classList.contains("on"),
     vedic:$("t-vedic").classList.contains("on"),
@@ -707,7 +742,8 @@ function birth(){
    Anything else passes through as a paragraph. */
 function mdToHtml(md){
   const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-  const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+  const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+    .replace(/([♈-♓])/g, "$1︎");   // zodiac as glyphs, never emoji
   const out = [];
   let rows = null;
   const flush = () => { if(rows){ out.push("<table>"+rows.join("")+"</table>"); rows = null; } };
@@ -802,6 +838,21 @@ async function drawTables(vedic){
   });
 }
 
+/* If the engine is napping (free/cold instance), absorb the wake-up inside
+   the button itself: calm copy, quiet polling, then proceed on its own.
+   The user never meets the infrastructure. */
+async function ensureEngine(btn){
+  if(conn.online || await checkHealth()) return true;
+  const words = ["Reaching the sky…", "Warming the glass…", "Nearly there…"];
+  const t0 = Date.now();
+  for(let i = 0; Date.now() - t0 < 95000; i++){
+    btn.textContent = words[Math.min(i, words.length - 1)];
+    await new Promise(r => setTimeout(r, 4000));
+    if(await checkHealth()) return true;
+  }
+  return false;
+}
+
 async function cast(){
   const btn = $("cast"), err = $("err");
   err.style.display = "none";
@@ -809,6 +860,9 @@ async function cast(){
   document.body.classList.add("loading");
   try{
     const b = birth();          // validates as it reads; throws readable errors
+    if(!(await ensureEngine(btn)))
+      throw new Error("the sky isn't answering just now — wait a moment and cast again");
+    btn.textContent = "Casting…";
     chartData = await post("/chart", b, "json");
 
     const dual = "tropical" in chartData && "sidereal_lahiri" in chartData;
@@ -819,7 +873,7 @@ async function cast(){
     $("readingTitle").textContent = "The Reading";
   }catch(e){
     err.textContent = (e instanceof TypeError)
-      ? "the engine didn't answer — see “how to connect” at the top of the page"
+      ? "the connection slipped mid-cast — please cast again in a moment"
       : e.message;
     err.style.display = "block";
     if(e instanceof TypeError) checkHealth();
