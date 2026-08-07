@@ -450,7 +450,7 @@ const $ = id => document.getElementById(id);
    Anyone opening this page then connects automatically — no terminal, no
    setup. A ?api=… in the page URL still overrides this for local work.
    ───────────────────────────────────────────────────────────────────────── */
-const DEFAULT_ENGINE = "http://localhost:8000";
+const DEFAULT_ENGINE = "https://star-glass-engine.onrender.com";
 
 let API = (new URLSearchParams(location.search).get("api") || DEFAULT_ENGINE)
             .replace(/\/+$/, "");
