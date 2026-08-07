@@ -98,6 +98,14 @@ contract at astro.com/swisseph before shipping.
 
 ## The ephemeris API (Phase 1)
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/thekrystelmethod/star-glass)
+
+One click hosts the engine in the cloud: the button reads `render.yaml` (the
+deployment spec in this repo), builds from `api/Dockerfile`, and gives the
+engine a public address. Sign in with GitHub, click **Apply**, done — see
+`DEPLOY.md` for the friendly walkthrough. After deploying, paste the address
+into `DEFAULT_ENGINE` at the top of `web/index.html`.
+
 `api/main.py` exposes the deterministic core over HTTP — no LLM in this
 service; everything is a pure, cached function of birth data:
 

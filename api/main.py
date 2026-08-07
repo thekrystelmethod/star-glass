@@ -30,6 +30,7 @@ import sys
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, PlainTextResponse, Response
 from pydantic import BaseModel, Field
 
@@ -42,6 +43,18 @@ app = FastAPI(
     version="0.1.0",
     description="Deterministic chart mathematics, wheels, and tables. "
                 "Swiss Ephemeris under the hood; no interpretation here.",
+)
+
+# The web frontend (web/index.html) is a browser client of this API. It may be
+# served from any local origin — or opened straight from disk, where the
+# browser sends `Origin: null` — so CORS must admit them all. The API holds no
+# credentials and no state beyond a pure-function cache, which is what makes a
+# wildcard origin safe here; revisit this the day either of those changes.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
 )
 
 # ---------------------------------------------------------------- models
