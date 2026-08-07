@@ -1,5 +1,9 @@
 FROM python:3.12-slim
 WORKDIR /app
+# pyswisseph compiles C source at install time; the slim image ships no
+# compiler, so give it one (this was the cause of the first failed deploy).
+RUN apt-get update && apt-get install -y --no-install-recommends gcc libc6-dev \
+    && rm -rf /var/lib/apt/lists/*
 COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY scripts/ scripts/
