@@ -1,0 +1,10 @@
+{
+  "ink": "#E8E3D6",
+  "paper": "#141824",
+  "faint": "#2E3548",
+  "mid": "#8A93AC",
+  "element": {"fire": "#E0785A", "earth": "#9BB06B", "air": "#6BA3BF", "water": "#7B8FD4"},
+  "aspect": {"conjunction": "#C0AE84", "opposition": "#E0785A", "square": "#E0785A",
+             "trine": "#6BA3BF", "sextile": "#6BA3BF", "quincunx": "#8A93AC"},
+  "theme_palette": ["#7B8FD4", "#E0785A", "#9BB06B", "#B08BC4", "#6BA3BF", "#D4A15A"]
+}

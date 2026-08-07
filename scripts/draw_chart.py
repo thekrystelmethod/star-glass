@@ -29,16 +29,49 @@ import sys
 import tempfile
 
 # ---------------------------------------------------------------- palette
-INK = "#2A2620"
-PAPER = "#FBF7EE"
-FAINT = "#D9D0BE"
-MID = "#8A8070"
-ELEMENT = {"fire": "#B4523A", "earth": "#6B7A4B", "air": "#3F7186", "water": "#4A5C8C"}
-ASPECT_COLOR = {
-    "conjunction": "#8A7A5C", "opposition": "#B4523A", "square": "#B4523A",
-    "trine": "#3F7186", "sextile": "#3F7186", "quincunx": "#8A8070",
-    "semisextile": "#A99C86", "semisquare": "#A99C86", "sesquiquadrate": "#A99C86",
+# Every colour and font in the wheel routes through these tokens, and
+# apply_palette() overrides them from a JSON dict. This is the white-label
+# seam: a partner brand is a palette file, not a fork of the renderer.
+DEFAULT_PALETTE = {
+    "ink": "#2A2620",        # primary linework and glyphs
+    "paper": "#FBF7EE",      # background
+    "faint": "#D9D0BE",      # hairlines, ticks, plate borders
+    "mid": "#8A8070",        # secondary text, leaders, minor cusps
+    "element": {"fire": "#B4523A", "earth": "#6B7A4B",
+                "air": "#3F7186", "water": "#4A5C8C"},
+    "aspect": {"conjunction": "#8A7A5C", "opposition": "#B4523A",
+               "square": "#B4523A", "trine": "#3F7186", "sextile": "#3F7186",
+               "quincunx": "#8A8070", "semisextile": "#A99C86",
+               "semisquare": "#A99C86", "sesquiquadrate": "#A99C86"},
+    "glyph_font": ("'DejaVu Sans Mono','Noto Sans Symbols2','Noto Sans CJK TC',"
+                   "'DejaVu Sans','FreeSerif',sans-serif"),
+    "text_font": "'Georgia','Noto Serif','DejaVu Serif',serif",
+    "theme_palette": ["#4A5C8C", "#B4523A", "#6B7A4B", "#7A5C86",
+                      "#3F7186", "#9A6B33"],
 }
+
+INK = DEFAULT_PALETTE["ink"]
+PAPER = DEFAULT_PALETTE["paper"]
+FAINT = DEFAULT_PALETTE["faint"]
+MID = DEFAULT_PALETTE["mid"]
+ELEMENT = dict(DEFAULT_PALETTE["element"])
+ASPECT_COLOR = dict(DEFAULT_PALETTE["aspect"])
+
+
+def apply_palette(overrides):
+    """Merge a partial palette dict over the defaults (module-level, so call
+    before build). Unknown keys are ignored; nested dicts merge shallowly."""
+    global INK, PAPER, FAINT, MID, ELEMENT, ASPECT_COLOR
+    global GLYPH_FONT, TEXT_FONT, THEME_PALETTE
+    p = {**DEFAULT_PALETTE, **(overrides or {})}
+    if overrides:
+        for k in ("element", "aspect"):
+            if k in overrides:
+                p[k] = {**DEFAULT_PALETTE[k], **overrides[k]}
+    INK, PAPER, FAINT, MID = p["ink"], p["paper"], p["faint"], p["mid"]
+    ELEMENT, ASPECT_COLOR = dict(p["element"]), dict(p["aspect"])
+    GLYPH_FONT, TEXT_FONT = p["glyph_font"], p["text_font"]
+    THEME_PALETTE = list(p["theme_palette"])
 HARD = {"opposition", "square"}
 MINOR = {"semisextile", "semisquare", "sesquiquadrate", "quincunx"}
 
@@ -56,16 +89,15 @@ PLANET_GLYPH = {
     "North Node": "☊", "South Node": "☋",
 }
 # Chiron (U+26B7) has almost no font coverage, so it is drawn as a path.
-GLYPH_FONT = ("'DejaVu Sans Mono','Noto Sans Symbols2','Noto Sans CJK TC',"
-              "'DejaVu Sans','FreeSerif',sans-serif")
-TEXT_FONT = "'Georgia','Noto Serif','DejaVu Serif',serif"
+GLYPH_FONT = DEFAULT_PALETTE["glyph_font"]
+TEXT_FONT = DEFAULT_PALETTE["text_font"]
 
 DRAW_ORDER = ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn",
               "Uranus", "Neptune", "Pluto", "Chiron", "North Node", "South Node"]
 
 # Default colours for theme mode, in assignment order. Chosen to stay legible
 # against warm paper and to remain distinguishable in greyscale print.
-THEME_PALETTE = ["#4A5C8C", "#B4523A", "#6B7A4B", "#7A5C86", "#3F7186", "#9A6B33"]
+THEME_PALETTE = list(DEFAULT_PALETTE["theme_palette"])
 DIM = 0.13          # opacity for everything outside the highlighted set
 DIM_ASPECT = 0.07
 
@@ -355,7 +387,15 @@ def main():
                     help="JSON file: {\"themes\":[{\"name\":..,\"bodies\":[..],"
                          "\"color\":\"#rrggbb\"}]} — colours the aspect web by "
                          "detected theme instead of by aspect family")
+    ap.add_argument("--palette", default=None,
+                    help="JSON file of palette token overrides (ink, paper, faint, "
+                         "mid, element{}, aspect{}, fonts, theme_palette[]) — the "
+                         "white-label seam")
     args = ap.parse_args()
+
+    if args.palette:
+        with open(args.palette) as f:
+            apply_palette(json.load(f))
 
     raw = sys.stdin.read() if args.chart_json == "-" else open(args.chart_json).read()
     data = json.loads(raw)

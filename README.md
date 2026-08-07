@@ -96,6 +96,27 @@ open-source use needs nothing. Any commercial productization of this skill
 should budget for the professional license. Not legal advice — read the
 contract at astro.com/swisseph before shipping.
 
+## The ephemeris API (Phase 1)
+
+`api/main.py` exposes the deterministic core over HTTP — no LLM in this
+service; everything is a pure, cached function of birth data:
+
+```bash
+pip install -r api/requirements.txt
+uvicorn api.main:app --port 8000
+# or: docker build -f api/Dockerfile -t ephemeris . && docker run -p 8000:8000 ephemeris
+```
+
+`POST /chart` (birth data → chart JSON, the system's API contract),
+`POST /wheel` (SVG; accepts `highlight`, `themes`, and a `palette` object of
+white-label design tokens — a partner brand is a JSON payload, not a fork),
+`POST /tables` (markdown apparatus blocks), `GET /health`. Wheel and tables
+accept either raw birth data or a prior `/chart` response, so downstream
+services never recompute.
+
+The interpretation pipeline (Phase 2) is a client of this API, as is any
+frontend. Headless by design.
+
 ## Roadmap sketches
 
 Transits and synastry (new reference files against the same engine), a
