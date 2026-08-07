@@ -114,7 +114,7 @@ the calculator with `--vedic` (whole-sign houses, nakshatras with deities and
 symbols, traditional lagna lord, Vimshottari mahadashas) and read
 `references/vedic-mode.md` for the reading order and register.
 
-## Two modes
+## Three modes
 
 **Conversational (default).** The user asks about a placement, an aspect, a
 pattern. Answer the question asked — woven from that placement's sign, house,
@@ -132,6 +132,16 @@ points, movements and title drawn from the person's own chart (voice.md, "Titlin
 amplified per voice.md with one properly told mythic story and one concrete
 daily-life vignette per major theme), sent as a file. Open with one light sentence establishing the symbolic-mirror
 framing; do not repeat disclaimers thereafter.
+
+**Full report (on request).** When the user asks for a full report, a complete
+horoscope, something "like an Astro\*Intelligence report," or explicitly wants
+the chart wheel and tables included, read `references/report-template.md` and
+follow it. The report wraps the portrait in its apparatus: a rendered chart
+wheel from `scripts/draw_chart.py`, calculated tables from
+`scripts/chart_tables.py`, the six movements, an aspect appendix, and a
+colophon. Build it in a folder so the image travels with the markdown, and
+deliver the folder or a zip of it. The apparatus frames the prose and never
+interrupts it — once the reading begins it runs unbroken to the end.
 
 ## Boundaries
 
