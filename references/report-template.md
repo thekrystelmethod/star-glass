@@ -61,10 +61,26 @@ distribution, and the chart signature (`--section positions`, `angles`,
 dasha table (`--section vedic`). This is the last data the reader sees before
 the prose begins.
 
+**III-b. The synthesis wheel.** After the data blocks, close the front matter
+with the reading's argument drawn: the same wheel with `--themes`, a JSON file
+mapping each detected theme to its bodies and a colour. Aspect lines whose two
+endpoints share a theme take that theme's colour; everything else recedes.
+This is the two-witness rule made visible — the one picture no competitor has,
+because it renders the *interpretation*, not the geometry. Introduce it with a
+short key naming each colour's theme in the register.
+
 **IV. The reading.** The six movements, uninterrupted: overture → ground floor →
 inner cast → mirror → summit → integration, each titled for this chart, each
 carrying one properly told myth and one concrete daily vignette. This is the
 document; everything else is scaffolding around it. 2,500–4,500 words.
+
+Head each movement with its own small thematic wheel (`--size 620 --themes
+<file> --highlight <bodies> --title "<movement title>"`): only the placements
+that movement discusses stay at full ink, everything else falls back to a
+whisper, and the movement's aspect lines brighten. The reader sees, before
+reading a word, *where in their sky this chapter lives*. Images between
+movements are the one sanctioned exception to "the apparatus never interrupts
+the prose" — they are the prose's own illustrations, not data.
 
 **V. Appendix — the aspects in full.** The complete aspect table
 (`--section aspects`), after the reading, for the reader who wants to check the

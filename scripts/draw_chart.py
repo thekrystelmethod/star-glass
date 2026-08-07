@@ -63,12 +63,18 @@ TEXT_FONT = "'Georgia','Noto Serif','DejaVu Serif',serif"
 DRAW_ORDER = ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn",
               "Uranus", "Neptune", "Pluto", "Chiron", "North Node", "South Node"]
 
+# Default colours for theme mode, in assignment order. Chosen to stay legible
+# against warm paper and to remain distinguishable in greyscale print.
+THEME_PALETTE = ["#4A5C8C", "#B4523A", "#6B7A4B", "#7A5C86", "#3F7186", "#9A6B33"]
+DIM = 0.13          # opacity for everything outside the highlighted set
+DIM_ASPECT = 0.07
 
-def chiron_path(cx, cy, s):
+
+def chiron_path(cx, cy, s, color=INK):
     """Chiron: a key — small circle with a K-stem rising from it."""
     r = s * 0.26
     top = cy - s * 0.62
-    return (f'<g stroke="{INK}" stroke-width="{s*0.11:.2f}" fill="none" '
+    return (f'<g stroke="{color}" stroke-width="{s*0.11:.2f}" fill="none" '
             f'stroke-linecap="round">'
             f'<circle cx="{cx:.2f}" cy="{cy + s*0.34:.2f}" r="{r:.2f}"/>'
             f'<path d="M {cx:.2f} {cy + s*0.34 - r:.2f} L {cx:.2f} {top:.2f}"/>'
@@ -88,7 +94,30 @@ def arc_path(cx, cy, r, a0, a1):
     return f"M {x0:.2f} {y0:.2f} A {r:.2f} {r:.2f} 0 {large} 0 {x1:.2f} {y1:.2f}"
 
 
-def build(chart, size=1100, title=None, subtitle=None):
+def build(chart, size=1100, title=None, subtitle=None,
+          highlight=None, themes=None):
+    """Draw the wheel.
+
+    highlight: a set of body/angle names to keep at full ink while everything
+        else drops back — this is what makes a *thematic* wheel, one per
+        movement of a report, so the reader sees only the placements that
+        movement is actually about.
+    themes: a list of {name, bodies, color} dicts. Aspect lines whose two
+        endpoints share a theme are drawn in that theme's colour, and every
+        other contact recedes. This renders the synthesis itself rather than
+        the raw geometry: the reader can see why the reading says what it says.
+    """
+    hl = set(highlight) if highlight else None
+    theme_of = {}
+    if themes:
+        for i, t in enumerate(themes):
+            col = t.get("color") or THEME_PALETTE[i % len(THEME_PALETTE)]
+            for b in t["bodies"]:
+                theme_of.setdefault(b, []).append((t["name"], col))
+
+    def emph(name):
+        return 1.0 if (hl is None or name in hl) else DIM
+
     cx = cy = size / 2
     R = size * 0.435                    # outer edge of zodiac ring
     r_sign_in = R * 0.875               # inner edge of zodiac ring
@@ -186,19 +215,26 @@ def build(chart, size=1100, title=None, subtitle=None):
 
     glyph_pts = {}
     for idx, ((name, lon, p), th) in enumerate(zip(items, slots)):
+        e = emph(name)
+        tcol = theme_of.get(name, [(None, INK)])[0][1] if theme_of else INK
         # leader line from true degree to the (possibly nudged) glyph
         tx0, ty0 = pol(cx, cy, r_deg, theta(lon))
         tx1, ty1 = pol(cx, cy, r_planet + size * 0.030, th)
         o.append(f'<line x1="{tx0:.2f}" y1="{ty0:.2f}" x2="{tx1:.2f}" y2="{ty1:.2f}" '
-                 f'stroke="{MID}" stroke-width="0.8"/>')
+                 f'stroke="{MID}" stroke-width="0.8" stroke-opacity="{e:.2f}"/>')
         gx, gy = pol(cx, cy, r_planet, th)
         glyph_pts[name] = pol(cx, cy, r_aspect, theta(lon))
+        if hl and name in hl:      # halo behind an emphasised glyph
+            o.append(f'<circle cx="{gx:.2f}" cy="{gy:.2f}" r="{size*0.030:.2f}" '
+                     f'fill="{tcol}" fill-opacity="0.10"/>')
         if name == "Chiron":
-            o.append(chiron_path(gx, gy, size * 0.030))
+            o.append(f'<g opacity="{e:.2f}">'
+                     f'{chiron_path(gx, gy, size * 0.030, tcol)}</g>')
         else:
             o.append(f'<text x="{gx:.2f}" y="{gy + size*0.014:.2f}" '
                      f'font-family={GLYPH_FONT!r} font-size="{size*0.040:.1f}" '
-                     f'fill="{INK}" text-anchor="middle">{PLANET_GLYPH[name]}</text>')
+                     f'fill="{tcol}" fill-opacity="{e:.2f}" text-anchor="middle">'
+                     f'{PLANET_GLYPH[name]}</text>')
         # Degree labels alternate between two radii so neighbours in a tight
         # cluster (a stellium, or a planet sitting on an angle) never collide.
         deg = int(lon % 30)
@@ -207,23 +243,40 @@ def build(chart, size=1100, title=None, subtitle=None):
         lx, ly = pol(cx, cy, r_planet - stagger, th)
         rx = "℞" if p.get("retrograde") and name not in ("North Node", "South Node") else ""
         o.append(f'<text x="{lx:.2f}" y="{ly:.2f}" font-family={TEXT_FONT!r} '
-                 f'font-size="{size*0.0155:.1f}" fill="{MID}" text-anchor="middle">'
-                 f'{deg}°{mins:02d}′{rx}</text>')
+                 f'font-size="{size*0.0155:.1f}" fill="{MID}" fill-opacity="{e:.2f}" '
+                 f'text-anchor="middle">{deg}°{mins:02d}′{rx}</text>')
 
     # --- aspect web -------------------------------------------------------
+    # In theme mode the web is coloured by which theme a contact belongs to
+    # rather than by aspect family, so the picture shows the synthesis.
     for a in chart.get("aspects", []):
         n1, n2 = a["bodies"]
         if n1 not in glyph_pts or n2 not in glyph_pts:
             continue
-        col = ASPECT_COLOR.get(a["aspect"], MID)
         minor = a["aspect"] in MINOR
+        col = ASPECT_COLOR.get(a["aspect"], MID)
         w = 0.7 if minor else (2.0 if a.get("tight") else 1.2)
         dash = ' stroke-dasharray="5 5"' if minor else ""
         op = 0.45 if minor else (0.85 if a.get("tight") else 0.6)
+
+        if theme_of:
+            shared = ({t for t, _ in theme_of.get(n1, [])}
+                      & {t for t, _ in theme_of.get(n2, [])})
+            if shared:
+                col = dict((t, c) for t, c in theme_of[n1])[sorted(shared)[0]]
+                w = max(w, 2.2)
+                op = 0.9
+            else:
+                col, op, w = MID, 0.10, 0.7
+        if hl is not None:
+            inside = n1 in hl and n2 in hl
+            op = op if inside else DIM_ASPECT
+            if inside:
+                w = max(w, 2.0)
         x1, y1 = glyph_pts[n1]
         x2, y2 = glyph_pts[n2]
         o.append(f'<line x1="{x1:.2f}" y1="{y1:.2f}" x2="{x2:.2f}" y2="{y2:.2f}" '
-                 f'stroke="{col}" stroke-width="{w}" stroke-opacity="{op}"{dash}/>')
+                 f'stroke="{col}" stroke-width="{w}" stroke-opacity="{op:.2f}"{dash}/>')
 
     # --- house numbers, drawn last so their halos clear the aspect web ---
     for i, c in enumerate(cusps):
@@ -237,7 +290,11 @@ def build(chart, size=1100, title=None, subtitle=None):
 
     # --- centre caption, on a paper plate so aspect lines don't run through it
     if title or subtitle:
-        w = size * (0.40 if subtitle else 0.24)
+        # size the plate to the longest line rather than to a fixed fraction,
+        # so movement captions of any length stay inside it
+        wt = len(title or "") * size * 0.0139
+        ws = len(subtitle or "") * size * 0.0083
+        w = max(wt, ws) + size * 0.05
         h = size * (0.085 if subtitle else 0.055)
         o.append(f'<rect x="{cx - w/2:.2f}" y="{cy - h/2:.2f}" width="{w:.2f}" '
                  f'height="{h:.2f}" rx="{h/2:.2f}" fill="{PAPER}" fill-opacity="0.92" '
@@ -291,6 +348,13 @@ def main():
     ap.add_argument("--size", type=int, default=1100)
     ap.add_argument("--title", default=None)
     ap.add_argument("--subtitle", default=None)
+    ap.add_argument("--highlight", default=None,
+                    help="comma-separated bodies to keep at full ink (thematic wheel); "
+                         "everything else recedes. e.g. 'Moon,Venus,Chiron'")
+    ap.add_argument("--themes", default=None,
+                    help="JSON file: {\"themes\":[{\"name\":..,\"bodies\":[..],"
+                         "\"color\":\"#rrggbb\"}]} — colours the aspect web by "
+                         "detected theme instead of by aspect family")
     args = ap.parse_args()
 
     raw = sys.stdin.read() if args.chart_json == "-" else open(args.chart_json).read()
@@ -301,7 +365,14 @@ def main():
     if key not in data:
         sys.exit(f"No '{key}' block in this chart JSON. Present: {list(data)}")
 
-    svg = build(data[key], size=args.size, title=args.title, subtitle=args.subtitle)
+    highlight = [s.strip() for s in args.highlight.split(",")] if args.highlight else None
+    themes = None
+    if args.themes:
+        with open(args.themes) as f:
+            themes = json.load(f)["themes"]
+
+    svg = build(data[key], size=args.size, title=args.title, subtitle=args.subtitle,
+                highlight=highlight, themes=themes)
     with open(args.out, "w") as f:
         f.write(svg)
     print(f"wrote {args.out}")
