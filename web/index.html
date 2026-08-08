@@ -96,7 +96,13 @@
   @media(max-width:900px){ main{grid-template-columns:1fr} }
 
   /* ------------------------------------------------ form */
-  #panel{padding:26px 24px; position:sticky; top:24px}
+  #panel{padding:26px 24px; position:sticky; top:24px;
+    max-height:calc(100vh - 48px); overflow-y:auto; overscroll-behavior:contain}
+  /* the panel grew taller than short viewports (the Essence field's fault) —
+     an internal scroll keeps the Cast button reachable on every screen */
+  #panel::-webkit-scrollbar{width:6px}
+  #panel::-webkit-scrollbar-thumb{background:var(--glass-line-soft); border-radius:3px}
+  #panel::-webkit-scrollbar-track{background:transparent}
   @media(max-width:900px){ #panel{position:static} }
   #panel h2{font-family:var(--serif); font-weight:400; font-size:19px;
     margin:0 0 18px; letter-spacing:.3px}
