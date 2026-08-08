@@ -5,3 +5,8 @@ scripts/ephe/*.se1
 __pycache__/
 *.pyc
 .DS_Store
+.netlify/
+web/node_modules/
+web/dist/
+qa-*.jpg
+qa-*.png
