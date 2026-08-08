@@ -1,0 +1,100 @@
+{
+  "name": "StarGlass Codex",
+  "version": "1.0.0",
+  "compiled": "2026-08-08",
+  "provenance": "Authored at build time from references/lexicon.md + references/voice.md; served as static retrieval. No runtime generation.",
+  "entries_total": 312,
+  "layers_present": [
+    "points_in_signs",
+    "points_in_houses",
+    "risings",
+    "house_essays",
+    "canon"
+  ],
+  "layers_reserved": [
+    "aspects",
+    "derived_placements"
+  ],
+  "files": {
+    "chiron.json": {
+      "point": "chiron",
+      "name": "Chiron",
+      "glyph": "⚷",
+      "entries": 24
+    },
+    "houses.json": {
+      "kind": "houses",
+      "entries": 12
+    },
+    "jupiter.json": {
+      "point": "jupiter",
+      "name": "Jupiter",
+      "glyph": "♃",
+      "entries": 24
+    },
+    "mars.json": {
+      "point": "mars",
+      "name": "Mars",
+      "glyph": "♂",
+      "entries": 24
+    },
+    "mercury.json": {
+      "point": "mercury",
+      "name": "Mercury",
+      "glyph": "☿",
+      "entries": 24
+    },
+    "moon.json": {
+      "point": "moon",
+      "name": "Moon",
+      "glyph": "☽",
+      "entries": 24
+    },
+    "neptune.json": {
+      "point": "neptune",
+      "name": "Neptune",
+      "glyph": "♆",
+      "entries": 24
+    },
+    "north-node.json": {
+      "point": "north_node",
+      "name": "North Node",
+      "glyph": "☊",
+      "entries": 24
+    },
+    "pluto.json": {
+      "point": "pluto",
+      "name": "Pluto",
+      "glyph": "♇",
+      "entries": 24
+    },
+    "risings.json": {
+      "kind": "risings",
+      "entries": 12
+    },
+    "saturn.json": {
+      "point": "saturn",
+      "name": "Saturn",
+      "glyph": "♄",
+      "entries": 24
+    },
+    "sun.json": {
+      "point": "sun",
+      "name": "Sun",
+      "glyph": "☉",
+      "entries": 24
+    },
+    "uranus.json": {
+      "point": "uranus",
+      "name": "Uranus",
+      "glyph": "♅",
+      "entries": 24
+    },
+    "venus.json": {
+      "point": "venus",
+      "name": "Venus",
+      "glyph": "♀",
+      "entries": 24
+    }
+  }
+}

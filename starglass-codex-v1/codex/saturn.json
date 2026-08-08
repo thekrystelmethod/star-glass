@@ -1,0 +1,369 @@
+{
+  "point": "saturn",
+  "name": "Saturn",
+  "glyph": "♄",
+  "in_sign": {
+    "aries": {
+      "id": "saturn_in_aries",
+      "title": "The Whetstone and the Spear",
+      "body": [
+        "Where others begin without thinking, you think without beginning. The urge to act arrives in you as it arrives in anyone — hot, immediate, certain — and then meets a gatekeeper who asks whether you have the right, the training, the permission. Anger waits longest at that gate. You may notice that you rehearse a confrontation for days, drafting the perfect sentence, and when the moment comes you either swallow it whole or deliver it with twice the force you intended, because it has been fermenting.",
+        "This hesitation is not cowardice. Somewhere early, your directness met a wall — assertion cost more than it won, or was met with a force you could not answer — and the gatekeeper was hired to protect you from your own fire. The cost is a life lived half a second behind its impulses. The gift, slowly earned, is that when you do move, you move with a deliberateness the impulsive never achieve.",
+        "The work is not to become reckless but to lower the toll: to act before certainty, in small ways, daily, until courage stops being a performance you must qualify for and becomes a craft you keep. The warrior you are building is the trained kind — slow to draw, true when drawn."
+      ],
+      "invitation": "From waiting for permission to practiced courage — acting before you feel entitled to, until the entitlement is earned.",
+      "edges": {
+        "point": "saturn",
+        "sign": "aries",
+        "see_also": ["canon:mars", "house_1"]
+      }
+    },
+    "taurus": {
+      "id": "saturn_in_taurus",
+      "title": "The Vault and the Vine",
+      "body": [
+        "There is a part of you that keeps inventory. Money is its most visible ledger, but the counting goes deeper — time, energy, affection, all tallied against some future shortage only you seem able to foresee. You may notice that you check your accounts when nothing has changed, or postpone a pleasure you can easily afford, as if enjoyment were a withdrawal against safety.",
+        "This vigilance was not invented for nothing. Somewhere the ground once moved — provision proved unreliable, or comfort came with conditions — and you concluded that the only safe abundance is the stored kind. So you built the vault, and it is a good vault: you are the person others trust with what must last. The tax is that the vine you planted inside it gets no sun. Deferral becomes a habit so deep that when the good arrives, on time and paid for, you find yourself guarding it instead of tasting it.",
+        "What this placement is building is not wealth but sufficiency — the earned conviction that you can lose things and still stand. Security, it turns out, is a capacity, not a quantity. The vault taught you to keep; the second half of the work is learning to open it while you are still alive to enjoy what it holds."
+      ],
+      "invitation": "From guarding against loss to inhabiting what you have — opening the vault often enough for the vine to fruit.",
+      "edges": {
+        "point": "saturn",
+        "sign": "taurus",
+        "see_also": ["canon:venus", "house_2"]
+      }
+    },
+    "gemini": {
+      "id": "saturn_in_gemini",
+      "title": "The Weighed Word",
+      "body": [
+        "Your mind works under examination conditions. Where others chatter, you weigh; every sentence is checked for error before release, as though a tribunal were reviewing your speech. You may notice that you rehearse a phone call before dialing, or draft a two-line message four times, and that you would rather say nothing than say something merely approximate.",
+        "This carefulness has a history. Somewhere early, your intelligence was measured and found wanting — a comparison, a classroom, a quicker sibling, a correction delivered without kindness — and you decided that words were instruments you must master privately before using in public. The cost is obvious: hesitation reads as slowness, and the tribunal in your head mistakes its anxiety for accuracy. The gift is less obvious and greater. Because you have never trusted easy fluency, you built the slow kind, and it bears weight. When you finally speak, people take notes.",
+        "The developmental work is to retire the examiner without losing the discipline — to let yourself think out loud, be wrong in company, ask the naive question. The considered voice you have built is not waiting to be judged adequate. It already is the judgment: measured, precise, and worth the wait it once feared it was."
+      ],
+      "invitation": "From speech as examination to speech as instrument — trusting the voice your carefulness has already built.",
+      "edges": {
+        "point": "saturn",
+        "sign": "gemini",
+        "see_also": ["canon:mercury", "house_3"]
+      }
+    },
+    "cancer": {
+      "id": "saturn_in_cancer",
+      "title": "The Iron Cradle",
+      "body": [
+        "You learned early that warmth is real but rationed — that it must be earned, managed, or waited for — and so you became competent at an age when others were simply children. Feeling itself came to seem like a liability to be administered. You may notice that you are the one everyone calls at midnight, and that nobody knows what your own midnight sounds like, because when asked how you are, you answer with logistics.",
+        "The shell was not a mistake. Somewhere, your needing self reached out and met weather — coldness, chaos, or a parent too burdened to receive it — and you concluded that needs are safest when unexpressed. The iron went into the cradle for protection, and it worked: you are unbreakable in other people's storms. The cost is that iron does not warm, and the child inside the competence is still waiting for a tenderness you have never thought to requisition for yourself.",
+        "The arc of this placement runs toward an unfamiliar discovery: the patient, unconditional steadiness you offer everyone else can be turned inward. The good parent you waited for has been slowly constructed inside you. The shell was built to open from the inside; the work now is to practice opening it."
+      ],
+      "invitation": "From administering your needs to tending them — offering your own heart the steadiness it has always offered others.",
+      "edges": {
+        "point": "saturn",
+        "sign": "cancer",
+        "see_also": ["canon:moon", "house_4"]
+      }
+    },
+    "leo": {
+      "id": "saturn_in_leo",
+      "title": "The Understudy's Crown",
+      "body": [
+        "You carry a performer's heart and an examiner's dread of the stage. The longing to be seen — really seen, delighted in — is as strong in you as in any radiant soul, but somewhere between the impulse and the spotlight stands a critic with a clipboard, grading the performance before it begins. You may notice that you keep your most personal work in a drawer, polishing it past every deadline you set, or that you deflect praise so quickly the compliment never lands.",
+        "The clipboard was issued early. Your shine once met coldness, comparison, or an audience too preoccupied to clap, and you concluded that self-expression is a privilege reserved for the already-excellent. So you became the understudy: fully rehearsed, never on. The dignity in this is real — you refuse to counterfeit radiance, and what you finally do offer has been earned line by line. The tax is a life spent in the wings of your own existence.",
+        "What this placement builds, given time, is the rarest kind of presence: light with craft behind it. The invitation is to treat shining as a practice rather than an audition — to walk on before you feel ready, and discover the crown fits because you made it."
+      ],
+      "invitation": "From rehearsing in the wings to practicing in the light — letting your radiance be a craft rather than a verdict.",
+      "edges": {
+        "point": "saturn",
+        "sign": "leo",
+        "see_also": ["canon:sun", "house_5"]
+      }
+    },
+    "virgo": {
+      "id": "saturn_in_virgo",
+      "title": "The Millstone and the Flour",
+      "body": [
+        "Your craftsmanship is real, and it is armed. Precision, in your hands, is not fussiness but a form of devotion — and also a form of defense, because somewhere you learned that error is dangerous and only the flawless are safe from correction. You may notice that you quietly redo work you have delegated, or hold a finished thing back for one more pass, and one more, until the deadline decides for you.",
+        "Honor the origin: exactness once earned you standing, or spared you shame, and the habit of grinding everything fine kept you from harm. The millstone is a noble tool. But a millstone cannot tell wheat from miller, and turned inward it grinds the worker along with the work. The signature cost of this placement is a chronic, low-grade verdict of not-quite-good-enough that no evidence ever overturns — because it was never really about evidence.",
+        "The developmental work is mercy with standards intact: learning that done is a form of excellence, that flaw is what proves a thing was made by hands, and that your rigor was always meant to serve something. Mastery arrives the day the craft stops being a penance and becomes again what it was in the beginning — devotion, offered imperfectly, and enough."
+      ],
+      "invitation": "From grinding yourself fine to milling the actual grain — letting mercy join the standards it was always meant to serve.",
+      "edges": {
+        "point": "saturn",
+        "sign": "virgo",
+        "see_also": ["canon:mercury", "house_6"]
+      }
+    },
+    "libra": {
+      "id": "saturn_in_libra",
+      "title": "The Iron Scales",
+      "body": [
+        "Fairness, for you, is not a mood but a discipline. You weigh before you speak, hear every side before you sit down, and hold yourself to a standard of justice in relationship that most people reserve for courtrooms. You may notice that you keep an exact ledger of who reached out last and what is owed, and that you can argue everyone's case fluently except your own.",
+        "The scales were forged early, likely in a place where harmony was your job — a peace that had to be maintained, a balance that fell to you to keep. You learned that wanting things loudly tips the scale, so you learned to want quietly, or last, or not at all. The cost is a strange loneliness inside your fairness: everyone trusts your verdicts and nobody knows your appetites. The gift is a judiciousness that deepens with age into something people seek out — you become the one whose word holds.",
+        "But scales exist to come down on a side. The arc of this placement is the earned capacity to choose — a person, a path, a want of your own — even when choosing costs the peace, and to discover that a commitment freely made is not the end of balance but its truest form."
+      ],
+      "invitation": "From keeping the peace to making the choice — letting the scales come down where your own weight falls.",
+      "edges": {
+        "point": "saturn",
+        "sign": "libra",
+        "see_also": ["canon:venus", "house_7"]
+      }
+    },
+    "scorpio": {
+      "id": "saturn_in_scorpio",
+      "title": "The Sealed Well",
+      "body": [
+        "You govern your depths the way a state governs its borders: nothing crosses unexamined. Intimacy is rationed to the proven few, and even they receive the edited version. You may notice that you tell the story of a painful season only after it is over — in past tense, well-lit, conclusions drawn — and never while you are still inside it.",
+        "This control is not coldness; it is architecture built over live water. Somewhere, exposure proved dangerous — a confidence betrayed, a vulnerability used, a household where feeling was leverage — and you concluded that the deep things survive only under seal. And they did survive; that is the defense's dignity. But a sealed well is sealed against rain as well as poison, and the loneliness of being trusted with everyone's secrets while surrendering none of your own is a tax that compounds yearly.",
+        "What this placement is building is not a better seal but a worthier threshold. The strength you have used to hold the water back is the same strength that can hold you steady while another person watches you descend. Mastery here is not control of the depths but companioned passage through them — power shared, and found greater for the sharing."
+      ],
+      "invitation": "From guarding the depths alone to letting one trusted witness in — discovering that surrender, chosen, is a form of strength.",
+      "edges": {
+        "point": "saturn",
+        "sign": "scorpio",
+        "see_also": ["canon:pluto", "house_8"]
+      }
+    },
+    "sagittarius": {
+      "id": "saturn_in_sagittarius",
+      "title": "The Tethered Arrow",
+      "body": [
+        "You are built for meaning and suspicious of it. The part of you that longs for a horizon — a faith, a philosophy, a future worth aiming at — shares quarters with an inspector who tests every hope for weak joints before allowing it indoors. You may notice that you envy people who believe easily, even as you cross-examine their optimism, and that you call this rigor when some of it is grief.",
+        "The inspector was hired for cause. Somewhere a promise broke — a creed that failed, a teacher who disappointed, a future that was confidently described and never arrived — and you resolved never again to fly on borrowed wings. So the arrow was tethered: you would rather aim at nothing than at a false sky. The dignity of this is real; your skepticism is loyalty to truth. The cost is a life that can go flat without a horizon, all rigor and no reach.",
+        "What this placement builds, slowly, is the only kind of faith worth having: the load-bearing kind, tested like a bridge, earned span by span. You are not meant to believe less than others. You are meant to believe the way an engineer believes — and then, at last, to let the arrow go."
+      ],
+      "invitation": "From doubting every sky to building a tested faith — and trusting it with your full weight.",
+      "edges": {
+        "point": "saturn",
+        "sign": "sagittarius",
+        "see_also": ["canon:jupiter", "house_9"]
+      }
+    },
+    "capricorn": {
+      "id": "saturn_in_capricorn",
+      "title": "The Mountain's Mason",
+      "body": [
+        "The climb is native to you. Discipline, structure, the long game — these are not virtues you strain toward but the ground you stand on, and others sense it: responsibility finds you the way water finds low ground. You may notice that arrival never arrives — each achievement converts, on contact, into the base camp of the next, and rest feels like a rule you were never issued.",
+        "Underneath the competence sits an old equation: worth equals work. Somewhere early, being useful, dutiful, or accomplished was the reliable way to matter, and softness looked like a luxury other households could afford. The equation built you into someone genuinely masterful — the one who finishes, the one who holds — and it also quietly starved the parts of you that cannot be earned: play, tenderness, being loved at rest. The inner taskmaster, mistaken for the truth, keeps auditing a debt that was paid off years ago.",
+        "The arc of this placement is not to stop climbing but to remember what summits are for. The mastery you have built is meant to become shelter — first for others, eventually for yourself — until the mason who cut stone for the mountain discovers he was building a house, and moves in."
+      ],
+      "invitation": "From proving your worth to inhabiting it — letting the mastery you built become a home rather than an audit.",
+      "edges": {
+        "point": "saturn",
+        "sign": "capricorn",
+        "see_also": ["canon:saturn", "house_10"]
+      }
+    },
+    "aquarius": {
+      "id": "saturn_in_aquarius",
+      "title": "The Lawgiver and the Lightning",
+      "body": [
+        "You stand at the edge of every group you belong to, holding the blueprints. Where others feel their way into community, you think your way in — principles first, people second — and you take the future personally, as a responsibility rather than a mood. You may notice that you are the one who turns the group's loose talk into an agenda, a rota, a constitution — and that you still drive home feeling like a guest.",
+        "The distance has a history. Your difference once cost you belonging — the odd child, the wrong questions, the mind that saw through arrangements everyone else accepted — and you concluded that the safest seat is the observer's. From there you learned to serve the collective without being absorbed by it, and this is a real power: you can give ideals a skeleton, make visions administrable, hold a principle steady across years. The tax is the guest feeling, the suspicion that membership is for other people.",
+        "What this placement builds is the structure worth belonging to — and then asks you to belong to it. The lightning you carry was never meant to stay theoretical; the arc is to bring your difference indoors, and sit down among the species you have observed so well."
+      ],
+      "invitation": "From designing the commons at a distance to taking your seat inside it — belonging without surrendering the difference.",
+      "edges": {
+        "point": "saturn",
+        "sign": "aquarius",
+        "see_also": ["canon:uranus", "house_11"]
+      }
+    },
+    "pisces": {
+      "id": "saturn_in_pisces",
+      "title": "The Sea Wall",
+      "body": [
+        "You live close to the water — the moods of rooms, the sorrows of strangers, the tidal pull of everything unfinished and unsaid — and you have spent much of your life building against it. Structure, for you, is not preference but flood defense. You may notice that you fill every unstructured hour before it arrives, because an empty afternoon feels less like rest than like open water, or that you absorb the feelings of a household and file them, dutifully, as chores.",
+        "The wall deserves respect. Somewhere early, the boundaries were nobody's job but yours — the feelings in the house were larger than the adults managing them, or the line between your inner life and everyone else's was never drawn for you — so you drew it yourself, in stone. The cost is exhaustion of a particular kind: compassion without banks does not water anything, it just floods, and duty becomes the only container you trust.",
+        "What this placement is building is not a higher wall but a gate in it — a way to visit the ocean on purpose and return on schedule. Your sensitivity, given banks, becomes a working harbor: imagination with deadlines, compassion with limits, the sea made navigable at last."
+      ],
+      "invitation": "From holding back the ocean to building the gate — compassion with banks, so the water can finally drive the mill.",
+      "edges": {
+        "point": "saturn",
+        "sign": "pisces",
+        "see_also": ["canon:neptune", "house_12"]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "saturn_in_house_1",
+      "title": "The Guarded Threshold",
+      "body": [
+        "You arrive formally. Whatever is going on inside, the face you turn toward the world is composed, capable, slightly older than your years — and the world responds in kind. You may notice that strangers assume you are in charge: they apologize to you, ask you for directions, hand you the problem — and that being met so respectfully is both a shelter and a loneliness.",
+        "The gravity at your door was installed early. Somewhere, arriving lightly was not safe or not permitted — you were needed as the responsible one, or scrutinized on entry — and you learned to meet the world already braced, credentials visible. The dignity of this is real: people trust you on sight, and the trust is not misplaced. The cost is that the guard at the threshold checks everyone, including joy, including help, including the parts of you that would like, just once, to arrive unarmored and be welcomed anyway.",
+        "The work of this placement is done not by dismantling the door but by remembering what doors are for. Your seriousness was scaffolding while the self was under construction. The construction is further along than you think; the invitation is to open on ordinary hinges and let yourself be met."
+      ],
+      "invitation": "From arriving braced to arriving present — letting the threshold become a front door rather than a checkpoint.",
+      "edges": {
+        "point": "saturn",
+        "house": 1,
+        "see_also": ["house_1", "canon:mars"]
+      }
+    },
+    "2": {
+      "id": "saturn_in_house_2",
+      "title": "The Ledger and the Pearl",
+      "body": [
+        "Beneath your relationship to money sits a quieter question about worth, and you have tended to answer it conservatively. Whatever the balance says, some part of you budgets as if the lean year were already scheduled — and prices your own contribution the same way. You may notice that you underprice your work, deliver more than the contract asks, and wait to be offered what you could simply request.",
+        "This is not pessimism; it is memory. Somewhere, provision or approval was scarce, conditional, or tied to performance, and you drew the sensible conclusion that value must be proven repeatedly and never presumed. The discipline this built is genuine — you waste little, honor debts, and can be trusted with other people's resources precisely because you take nothing for granted. The tax is subtler: a worth that must be continually re-earned is never actually owned, and the pearl stays in the ledger's margin, uncounted.",
+        "The arc here is from proving value to possessing it. What this placement builds, over time, is substance — the slow accumulation not just of means but of self-respect with foundations. The invitation is to move your own name onto the asset side of the book, where it always belonged."
+      ],
+      "invitation": "From earning your worth on renewal to owning it outright — counting yourself among your assets.",
+      "edges": {
+        "point": "saturn",
+        "house": 2,
+        "see_also": ["house_2", "canon:venus"]
+      }
+    },
+    "3": {
+      "id": "saturn_in_house_3",
+      "title": "The Slow Alphabet",
+      "body": [
+        "The near world — words, lessons, siblings, the daily traffic of the mind — was where you first felt examined. Perhaps speech came later than expected, or school graded what should have been play, or a quicker voice in the household made yours feel provisional. You may notice that a red pen still hovers over your sentences: you reread a sent message the way others reread a contract, and would rather stay silent than be caught approximate.",
+        "The carefulness this bred deserves its due. Because language never felt free, you have never spent it carelessly; you check your facts, keep your word literally, and build sentences meant to bear weight. People learn that when you say a thing, the thing is so. That reliability is the earned interest on an anxious principal. The cost is the hesitation itself — the years of letting faster talkers take the floor you were still preparing to deserve.",
+        "This placement runs on the pattern of the late bloomer: the stammering child who becomes the measured orator precisely because nothing was easy. The invitation is to stop treating every utterance as an exam and start treating it as craft — yours now, mastered, and overdue for daily use."
+      ],
+      "invitation": "From speech as trial to speech as craft — spending, freely, the fluency you paid for slowly.",
+      "edges": {
+        "point": "saturn",
+        "house": 3,
+        "see_also": ["house_3", "canon:mercury"]
+      }
+    },
+    "4": {
+      "id": "saturn_in_house_4",
+      "title": "The House Built Twice",
+      "body": [
+        "Home, for you, was a serious place before it was a soft one. Whether through a burdened parent, early responsibility, or a household where feelings queued behind duties, the taproot of your life carries weight — and you have carried it competently, likely without being asked twice. You may notice that at family gatherings you are the one who books, hosts, mediates, and locks up: the designated adult, whatever your age at the table.",
+        "That early gravity built something real in you — an instinct for what holds a household together, a loyalty that does not evaporate under strain. But it also installed a quiet conviction that belonging is a job, that the ground under you must be maintained rather than trusted. The signature ache of this placement is working hard at a home while rarely feeling at home in it.",
+        "Here is what the weight was for: you are meant to build the house a second time — this time from the inside, to your own specifications. Not the inherited structure with its load-bearing silences, but a ground you choose, furnish, and finally rest on. The first house taught you construction. The second one teaches you shelter."
+      ],
+      "invitation": "From maintaining the inherited house to building your own ground — and learning to rest on it.",
+      "edges": {
+        "point": "saturn",
+        "house": 4,
+        "see_also": ["house_4", "canon:moon"]
+      }
+    },
+    "5": {
+      "id": "saturn_in_house_5",
+      "title": "The Serious Child",
+      "body": [
+        "Play, for you, has never been simple. The hearth-fire of life — creation, romance, the risk of being seen enjoying your own existence — sits behind a rope line, admission by merit only. You may notice that your hobbies either become disciplines, graded, scheduled, and eventually monetized, or quietly disappear — because doing a thing badly, for joy alone, feels faintly indecent.",
+        "Somewhere, your spontaneity met an audience that did not clap. Perhaps delight was treated as frivolous in a household that ran on duty, or your early creations were corrected rather than celebrated, and you concluded that expression must be excellent to be permitted. The defense has its dignity: what you do release into the world is built to last, and your love, once given, is not casual. But the cost is a hearth kept banked for decades — the unwritten book, the unasked dance, the delight deferred pending review.",
+        "This placement matures magnificently when the discipline changes masters — when rigor stops guarding the fire and starts feeding it. The invitation is to practice joy the way you practice everything else: seriously, daily, badly at first. The child you were is still holding the match."
+      ],
+      "invitation": "From joy as audition to joy as discipline — tending the fire daily, badly at first, until it warms you.",
+      "edges": {
+        "point": "saturn",
+        "house": 5,
+        "see_also": ["house_5", "canon:sun"]
+      }
+    },
+    "6": {
+      "id": "saturn_in_house_6",
+      "title": "The Workshop Bell",
+      "body": [
+        "Work is where your seriousness lives most visibly. Routine, craft, the body's daily upkeep — the whole workshop of ordinary life — you approach these as obligations with teeth, and you are superb at them in a way that can quietly consume you. You may notice that illness is the only rest you grant yourself without appeal — the body forced to file the request you refuse to make.",
+        "The overwork has an honorable origin. Somewhere, being useful was the reliable way to be valued, and service became your first language of love and safety. The result is a genuine mastery of the daily: you are the one whose systems hold, whose word arrives on time, whose care shows up as competence. But a workshop with no closing bell is not devotion; it is servitude wearing devotion's apron, and the craftsman becomes the last machine maintained.",
+        "The developmental turn here is from drudgery back to ritual — the discovery that rhythm, not volume, is what makes work sacred. Rest is maintenance; limits are craftsmanship applied to the self. The invitation is to ring the bell yourself: to build a workday with edges, and find that the work — and the worker — are better for the boundary."
+      ],
+      "invitation": "From service without edges to devotion with rhythm — ringing the closing bell before the body rings it for you.",
+      "edges": {
+        "point": "saturn",
+        "house": 6,
+        "see_also": ["house_6", "canon:mercury"]
+      }
+    },
+    "7": {
+      "id": "saturn_in_house_7",
+      "title": "The Vow and the Wall",
+      "body": [
+        "Partnership, for you, is weight-bearing architecture, never décor. You do not fall into relationships; you consider them, test the foundations, read the terms. You may notice that you audit the people who love you — measuring durability before delight — or that you have chosen partners who were projects, older, or somehow gated, because a bond with built-in distance feels more governable than one that could simply flood you.",
+        "The caution is not coldness. Somewhere, you learned that other people are where disappointment lives — a model of marriage that looked like endurance, an early lesson that love and obligation share a face — and you resolved to enter nothing you could not survive. So the wall went up beside the altar. Its dignity is real: you do not promise lightly, and what you commit to, you keep. Its cost is the years the wall added to the waiting, and the tenderness held in escrow pending proof.",
+        "This placement tends to ripen rather than fail: bonds formed or renewed in maturity, built like masonry, warm like hearths. The invitation is to let the vow outrank the wall — to discover that the durability you demanded was never in the other person's guarantee, but in your own capacity to stay."
+      ],
+      "invitation": "From auditing love to building it — letting the vow, freely made, become the strongest wall you own.",
+      "edges": {
+        "point": "saturn",
+        "house": 7,
+        "see_also": ["house_7", "canon:venus"]
+      }
+    },
+    "8": {
+      "id": "saturn_in_house_8",
+      "title": "The Key to the Undercroft",
+      "body": [
+        "The deep exchanges — intimacy, shared money, grief, everything that merges one life with another — are places you enter with the keys in your own hand. You may notice that you are the one families appoint as executor and confidant, trusted with everyone's depths and debts, while your own stay under separate lock; even in closeness, some ledger of yours is never opened jointly.",
+        "The lock was cut for good reason. Somewhere, merging proved costly — trust was leveraged, dependence punished, or you watched what surrender did to someone unprepared for it — and you concluded that the deep places are safest administered rather than shared. And your administration is impeccable: you are unflinching where others look away, solvent in crises of every currency. The cost is a solitude at the exact depth where company matters most, and a strength that has never once been carried.",
+        "What this placement builds is the capacity for chosen surrender — not the reckless kind, but the kind with witnesses and terms, entered the way one signs a covenant. The undercroft was never meant to be a private archive. The invitation is to turn the key from the inside, and let one trusted other see the accounts."
+      ],
+      "invitation": "From administering the depths to sharing them — surrender entered deliberately, like a covenant, not a fall.",
+      "edges": {
+        "point": "saturn",
+        "house": 8,
+        "see_also": ["house_8", "canon:pluto"]
+      }
+    },
+    "9": {
+      "id": "saturn_in_house_9",
+      "title": "The Doubting Pilgrim",
+      "body": [
+        "The far horizon — faith, philosophy, the education that promises to explain things — is territory you approach as a skeptic on foot rather than a believer on wings. You may notice that you test every teacher before you let them teach you, or that you have collected credentials the way other pilgrims collect relics: proof, mostly to yourself, against the fear of believing foolishly.",
+        "The doubt earned its place. Somewhere, a large answer failed you — a doctrine that did not hold, an authority who did not deserve the pulpit, a promised meaning that arrived hollow — and you resolved that no conviction would enter you unexamined again. This has made you incorruptible in a particular way: your beliefs, few as they may be, are load-tested, and people sense that your word about the world was paid for. The cost is the flatness that visits a life between horizons, when rigor has cleared the sky of every star it cannot verify.",
+        "This placement does not ask you to believe more easily; it asks you to finish the pilgrimage. Doubt was the road, not the destination. The invitation is to build, plank by examined plank, a philosophy you can actually live in — and then to live in it."
+      ],
+      "invitation": "From clearing false skies to building a tested one — a faith constructed carefully enough to keep.",
+      "edges": {
+        "point": "saturn",
+        "house": 9,
+        "see_also": ["house_9", "canon:jupiter"]
+      }
+    },
+    "10": {
+      "id": "saturn_in_house_10",
+      "title": "The Long Stair",
+      "body": [
+        "The visible life — vocation, standing, the public answer to what your life is for — is where your deepest seriousness and your deepest doubt share an office. You feel the summit calling and feel behind schedule for it, often simultaneously. You may notice that each promotion reopens the same trial: the fear of being found out arrives punctually with every new title, no matter how thoroughly the last one was earned.",
+        "Somewhere early stands a measuring figure — a parent experienced as standard, an authority whose approval was the summit's first face — and your climb has been, in part, a long answer to that gaze. Honor what this built: you do not cut corners, you carry what you sign for, and your authority, when it comes, is the earned kind that others instinctively trust. The cost is the moving summit, and the suspicion that you are an apprentice impersonating a master long after the mastery is real.",
+        "This is the signature placement of the late-arriving, deeply-founded life: authority that cannot be conferred, only constructed. The invitation is to notice the stair already climbed — and to become, for those below you, the measuring gaze turned merciful: the elder who certifies rather than examines."
+      ],
+      "invitation": "From climbing for the examiner to building for the heirs — becoming the authority you once looked for above you.",
+      "edges": {
+        "point": "saturn",
+        "house": 10,
+        "see_also": ["house_10", "canon:saturn"]
+      }
+    },
+    "11": {
+      "id": "saturn_in_house_11",
+      "title": "The Stranger at the Feast",
+      "body": [
+        "Community is a place you serve more easily than you inhabit. Among friends and causes you are the reliable one — the treasurer, the scheduler, the one who books the room — useful to every circle and certain of none. You may notice that you leave gatherings early, relieved and bereft at once, carrying the odd conviction that you were present as staff rather than as guest.",
+        "The distance has a history worth respecting. Somewhere, the group proved conditional — belonging that had to be purchased with usefulness, or an early exclusion that taught you to arrive with a function so you could not be turned away. The defense worked: no one un-invites the person holding the keys. And it built real gifts — you are loyal for decades, you take friendship as seriously as contract, and the communities you tend actually last. The cost is that usefulness became a substitute for membership, and the feast goes untasted by its most faithful servant.",
+        "What this placement is for is the slow discovery that you are wanted, not merely needed. The invitation is to sit down at the table you have set for years — to let the circle hold you, empty-handed, as one of its own."
+      ],
+      "invitation": "From earning your place to taking your seat — arriving at the feast, at last, with empty hands.",
+      "edges": {
+        "point": "saturn",
+        "house": 11,
+        "see_also": ["house_11", "canon:uranus"]
+      }
+    },
+    "12": {
+      "id": "saturn_in_house_12",
+      "title": "The Anchor in the Sea",
+      "body": [
+        "Your heaviest work happens out of sight. Behind the visible house of your life runs a sea — the ancestral, the collective, the unfinished business of people you may never have met — and some part of you stands watch over it, on a duty no one assigned. You may notice a dread that arrives without paperwork, strongest in the early hours, as if you were responsible for something you cannot name and did not do.",
+        "This placement often marks the child who absorbed a family's unspoken weight — the grief nobody mourned, the failure nobody mentioned — and mistook the inheritance for personal guilt. The guardian you posted at that inner shore deserves honor: it kept formless things from flooding your daylight, and it taught you to work devotedly without applause, often in service of the struggling and the hidden. The cost is a fear that stays foggy precisely because it is never interrogated, and a strength that discounts itself because no one witnesses it.",
+        "The work here is to walk down to the water deliberately — through reflection, solitude, or quiet service chosen rather than conscripted — and name what you have been carrying. Named, the dread becomes an anchor: the hidden discipline that steadies everything the daylight builds."
+      ],
+      "invitation": "From standing guard over a nameless sea to naming what you carry — letting the hidden weight become the anchor.",
+      "edges": {
+        "point": "saturn",
+        "house": 12,
+        "see_also": ["house_12", "canon:neptune"]
+      }
+    }
+  }
+}

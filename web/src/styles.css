@@ -407,6 +407,12 @@ select { appearance: none; padding-right: 42px; }
   .chart-identity > div:nth-child(5) { display: none; }
 }
 
+@media (min-width: 841px) and (max-width: 980px) {
+  .movement-hero { grid-template-columns: 1fr; align-items: start; }
+  .movement-prose { max-width: 65ch; }
+  .wheel-stage { min-height: 400px; }
+}
+
 @media (max-width: 840px) {
   .app-header { min-height: 76px; padding: 14px 18px; align-items: flex-start; }
   .brand-lockup { display: block; }

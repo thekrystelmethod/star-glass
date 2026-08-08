@@ -1,0 +1,369 @@
+{
+  "point": "venus",
+  "name": "Venus",
+  "glyph": "♀",
+  "in_sign": {
+    "aries": {
+      "id": "venus_in_aries",
+      "title": "The Struck Match",
+      "body": [
+        "Your capacity for love moves like a struck match: attraction arrives whole, immediate, and asks to be declared now. You love beginnings — the glance that decides, the confession that risks everything, the first unguarded yes — and there is real innocence in this. In a world where most people have learned to want by indirection, you want openly, and what you offer a beloved is aliveness: the sense that love is not an arrangement but an adventure starting today.",
+        "The shadow is that the chase can quietly become the proof. You may notice that your interest cools not when love fails but when it succeeds — that once someone is securely yours, some restless part of you starts scanning for a door — because pursuit is where you have always felt most certain of your worth, and an ordinary Tuesday together offers nothing to win. This deserves respect rather than shame: it is the strategy of a heart that learned to feel chosen by choosing boldly, and that was never shown what courage looks like after the charge.",
+        "The invitation is to discover that ardor has a second act. Desire can be renewed inside familiarity — aimed, with the same daring, at the same person on the thousandth morning. The fire is not the problem; it is the offering. What it awaits is a hearth worth defending."
+      ],
+      "invitation": "To learn that the bravest act of a warrior heart is not the pursuit but the staying.",
+      "edges": {
+        "point": "venus",
+        "sign": "aries",
+        "see_also": ["canon:mars", "house_1"]
+      }
+    },
+    "taurus": {
+      "id": "venus_in_taurus",
+      "title": "The Orchard Wall",
+      "body": [
+        "You love slowly, sensually, and for keeps. Worth, in your ledger, is measured in what endures and can be touched: the meal actually cooked, the hand actually held, loyalty proven across seasons rather than promised in a rush of feeling. You are difficult to win and magnificent to have won, because your affection, once rooted, does not transplant. There is a deep sanity in this — you know that love lives in bodies and days, not in declarations — and people rest in your presence the way they rest in a walled garden.",
+        "But a wall that keeps the garden safe can also keep it small. You may notice that you stay in relationships past their living season — not out of love, exactly, but because leaving feels like abandoning an orchard you spent years tending, and the sunk cost aches more than the staying does. Holding on was once wisdom; somewhere it learned to masquerade as devotion. Comfort and love are near neighbors in you, and they sometimes swap coats at the door.",
+        "The invitation is to learn that security is not the same as stillness. What you build is real; let it be pruned. A love that is free to change is not less yours — it is the only kind that keeps bearing fruit."
+      ],
+      "invitation": "To discover that an open hand holds more, and for longer, than a closed one.",
+      "edges": {
+        "point": "venus",
+        "sign": "taurus",
+        "see_also": ["canon:venus", "house_2"]
+      }
+    },
+    "gemini": {
+      "id": "venus_in_gemini",
+      "title": "The Letter and the Long Stay",
+      "body": [
+        "You fall in love through language. The turn of a phrase, the unexpected reference, the reply that arrives quicker and cleverer than it had any right to — these are your roses. For you, attraction is a conversation that doesn't want to end, and you court by delighting: the perfect link sent at midnight, the private joke built in a week and kept for years. What you offer a beloved is the feeling of being endlessly interesting, and few gifts are rarer.",
+        "The shadow is that variety can become a fire escape. You may notice that you fall for how someone talks before you have met who they are — and that when the conversation eventually dulls, as all conversations do, you conclude the love itself has died and begin, half-consciously, drafting the next correspondence. Charm, too, can be a deflection: keeping things light was once how you kept things safe, sparing you the slower, wordless rooms where feeling lives. That lightness protected a quick heart from being pinned.",
+        "The invitation is depth: to stay past the point where the talk runs out and find that silence with the right person is also a language — the one in which the truest things get said."
+      ],
+      "invitation": "To stay long enough in one conversation for meaning, and not just delight, to form.",
+      "edges": {
+        "point": "venus",
+        "sign": "gemini",
+        "see_also": ["canon:mercury", "house_3"]
+      }
+    },
+    "cancer": {
+      "id": "venus_in_cancer",
+      "title": "The Shell and the Tide",
+      "body": [
+        "You love protectively, tidally, by feeling first. Affection, for you, is indistinguishable from care: to love someone is to notice their hunger before they do, to remember what they said in passing three months ago, to build around them a shelter of small attentions. Your tenderness has a long memory — you love people partly through their histories, and once someone is inside your circle, they are inside it for good. Being loved by you feels like being home.",
+        "The shadow is that care can become a fortification. You may notice that you feed people before you tell them anything true about yourself — that nurture flows outward on schedule while your own needs travel sideways, hinted at, hoped for, rarely stated — because giving care keeps you valuable while receiving it would leave you exposed. And when you are hurt, you do not fight; you withdraw into the shell and call it fine. That shell was honestly earned. Somewhere, early, tenderness shown openly was tenderness endangered.",
+        "The invitation is to let the shell open from the inside: to be fed as well as feeding, known as well as knowing, and to discover that your softness survives the daylight you have so carefully spared it."
+      ],
+      "invitation": "To let yourself be held with the same unhesitating tenderness you offer everyone else.",
+      "edges": {
+        "point": "venus",
+        "sign": "cancer",
+        "see_also": ["canon:moon", "house_4"]
+      }
+    },
+    "leo": {
+      "id": "venus_in_leo",
+      "title": "The Ember and the Applause",
+      "body": [
+        "You love radiantly and wholeheartedly, and you love out loud. Romance, for you, is a creative act: the grand gesture sincerely meant, the gift chosen with theatrical precision, loyalty worn like a color. There is nothing stingy in your heart — when you love, the beloved is crowned, and they know it, and so does the room. What you offer is warmth at full wattage: the experience of being not merely cared for but celebrated.",
+        "The shadow is that performance can creep into the sincerity. You may notice that you audition even for people who have already said yes — telling your best stories, giving beyond your means, keeping the light angled just so — and then lie awake wondering whether they love you or the show. Applause became tangled with affection early, when shining was how attention arrived, and the fear underneath is quiet and specific: that the unlit self, the one offstage in ordinary clothes, might not be enough to hold anyone.",
+        "The invitation is to be loved in the wings — to let someone see the ember when the stage is dark and discover that it, not the spotlight, is what they came for. Your generosity does not need an audience to be gold."
+      ],
+      "invitation": "To shine for the joy of it, and to let yourself be loved with the house lights down.",
+      "edges": {
+        "point": "venus",
+        "sign": "leo",
+        "see_also": ["canon:sun", "house_5"]
+      }
+    },
+    "virgo": {
+      "id": "venus_in_virgo",
+      "title": "The Mended Seam",
+      "body": [
+        "You love precisely, usefully, in the grain of the actual. Grand declarations embarrass you slightly; your devotion speaks in verbs — the prescription collected, the squeaking hinge oiled, the exact tea remembered. This is not lesser love but distilled love: attention so fine it borders on craft. To be cared for by you is to live inside a thousand small mercies most people never notice, which is precisely how you prefer it.",
+        "The shadow is the editor who never goes off duty. You may notice that you see the flaw in a gift before you feel its intention — and that you turn the same instrument on yourself, quietly itemizing your defects and concluding that you must remain useful, because usefulness is the rent you pay for being loved at all. So you fix, improve, anticipate — and privately doubt that anyone would stay if you stopped producing. That vigilance once protected you: somewhere, love seemed to arrive only when things were done correctly, and perfection looked like the safest door.",
+        "The invitation is mercy — for the imperfect beloved, and above all for the imperfect self. You are not the sum of your services. Let someone love the unmended seam; it is where they can actually reach you."
+      ],
+      "invitation": "To accept love you did not earn through service, and find it holds.",
+      "edges": {
+        "point": "venus",
+        "sign": "virgo",
+        "see_also": ["canon:mercury", "house_6"]
+      }
+    },
+    "libra": {
+      "id": "venus_in_libra",
+      "title": "The Rose and the Verdict",
+      "body": [
+        "You love harmoniously, relationally, by weighing. You possess a genuine instinct for the beautiful gesture, the graceful word, the arrangement of a room or an evening so that everyone in it feels finer than they did before. Partnership is your native climate: you think better in dialogue, live better in twos, and bring to love an old-fashioned courtesy that is not performance but principle. For you, beauty and fairness are the same law seen from two sides.",
+        "The shadow is peace purchased with your own coin. You may notice that you agree to restaurants you dislike and opinions you do not hold, then feel obscurely lonely beside someone who has never once met your actual preferences — because you never filed them. Accommodation was once survival: keeping the scales level kept the household calm, and your wants learned to wait in the corridor. But a partner cannot love what is never presented, and the harmony you manufacture is a portrait of the couple with one face missing.",
+        "The invitation is the verdict: to choose, to prefer, to say the disagreeable true thing — and to discover that real harmony is not the absence of friction but the music two whole voices make."
+      ],
+      "invitation": "To risk the peace for the truth, and find a deeper peace on the far side.",
+      "edges": {
+        "point": "venus",
+        "sign": "libra",
+        "see_also": ["canon:venus", "house_7"]
+      }
+    },
+    "scorpio": {
+      "id": "venus_in_scorpio",
+      "title": "The Vow Beneath the Surface",
+      "body": [
+        "You love intensely, totally, beneath the surface. Casual affection strikes you as a contradiction in terms: either the bond goes all the way down or it is merely scenery. What you want from intimacy is nothing less than truth — to see and be seen without the diplomatic lighting — and what you offer is a loyalty of almost geological depth. People who have been loved by you do not forget it; you love the way water carves stone, permanently.",
+        "The shadow is that depth can turn forensic. You may notice that you test people before you trust them — a small provocation here, a strategic silence there, watching to see whether they stay — because handing someone your undefended heart without proof feels like handing them the knife. Control, jealousy, the withheld confession: these are not cruelty in you but armor, built by a heart that learned early that what you love can be used against you. Every fortress was once a reasonable response to a siege.",
+        "The invitation is surrender — not to the other person, but to the bond itself: power shared rather than held, the vault opened from within. Intimacy will always be an ordeal for you; the arc is letting it also be the reward."
+      ],
+      "invitation": "To be fully seen without first requiring proof that seeing you will cost nothing.",
+      "edges": {
+        "point": "venus",
+        "sign": "scorpio",
+        "see_also": ["canon:pluto", "house_8"]
+      }
+    },
+    "sagittarius": {
+      "id": "venus_in_sagittarius",
+      "title": "The Open Road Home",
+      "body": [
+        "You love expansively, honestly, toward the horizon. Attraction, for you, is inseparable from aliveness: you fall for the person who enlarges the map — the one with the accent, the philosophy, the plane ticket — and your best courtship is a shared adventure, whether across a continent or across an idea. You bring to love a rare and bracing gift: honesty without cruelty, laughter as a form of faith, and the refusal to let a relationship become a smaller life.",
+        "The shadow is the exit sign you keep in every room. You may notice that you fall hardest for people at their most distant — foreign, unavailable, mid-departure — and grow restless precisely when love asks for the ordinary: the shared calendar, the repeated Sunday, the conversation about gutters. Distance was once safety; a heart that stays in motion cannot be caged, and somewhere you learned to equate commitment with capture. But the grass elsewhere is fed by the same rain, and a horizon perpetually chased is never actually reached.",
+        "The invitation is presence: to discover that the far country you have been seeking has a province called the person beside you, and that depth is the one journey that does not require leaving."
+      ],
+      "invitation": "To find the horizon here, in the daily territory of one particular love.",
+      "edges": {
+        "point": "venus",
+        "sign": "sagittarius",
+        "see_also": ["canon:jupiter", "house_9"]
+      }
+    },
+    "capricorn": {
+      "id": "venus_in_capricorn",
+      "title": "The Winter Garden",
+      "body": [
+        "You love strategically, patiently, for the long game. You do not fall; you decide — assessing character the way a builder assesses ground, because you intend whatever you build to stand for decades. Your devotion speaks in structure: the promise kept to the letter, the crisis handled without drama, the steady provision that lets a household sleep. In an age of disposable affection, you practice love as architecture, and those inside your walls are genuinely safe.",
+        "The shadow is the ledger. You may notice that you show love almost entirely in acts of competence — the fixed tire, the paid bill, the problem solved before it was mentioned — and feel quietly baffled, even wounded, when a partner asks where you are in all of it. Tenderness feels like exposure; you learned early that being useful was reliable while being soft was not, and so you built a winter garden — everything alive, everything under glass. The reserve is not coldness. It is heat, banked, waiting for proof the frost is over.",
+        "The invitation is to remember what the summit was for: to let warmth out of the greenhouse, to be held as well as depended upon, and to discover that softness, too, can bear weight."
+      ],
+      "invitation": "To let the love you have so carefully built also be felt, not only relied upon.",
+      "edges": {
+        "point": "venus",
+        "sign": "capricorn",
+        "see_also": ["canon:saturn", "house_10"]
+      }
+    },
+    "aquarius": {
+      "id": "venus_in_aquarius",
+      "title": "The Observatory Heart",
+      "body": [
+        "You love independently, systemically, from a slight and interesting distance. Friendship is your native form of eros: you are drawn to minds before bodies, to originals before charmers, and the loves that last for you are the ones that would survive translation into friendship — because they began there. You bring to intimacy something rare: genuine tolerance, zero possessiveness, and the gift of loving people as they actually are rather than as your needs would redesign them.",
+        "The shadow is altitude. You may notice that you are the trusted confidant of many and the intimate of few — that when someone moves from the circle toward the center, you develop a sudden fascination with being elsewhere, and can describe your feelings with a fluency that neatly substitutes for having them. Observation was once shelter: from the observatory, no weather reaches you, and a heart that analyzes love cannot be ambushed by it. The detachment is not absence of feeling but feeling held at telescope range, where it stays beautiful and cannot burn.",
+        "The invitation is descent: to join the species you study so generously, and to let one particular, unreasonable, close-range love make its beautiful mess of your instruments."
+      ],
+      "invitation": "To come down from the observatory and be one of the two people in the room.",
+      "edges": {
+        "point": "venus",
+        "sign": "aquarius",
+        "see_also": ["canon:uranus", "house_11"]
+      }
+    },
+    "pisces": {
+      "id": "venus_in_pisces",
+      "title": "The Ocean in a Cup",
+      "body": [
+        "You love porously, compassionately, by dissolving the border between your heart and another's. Your empathy is not a technique but a condition: you feel the beloved's weather from across the room, forgive before the apology, and love with a tenderness that has something oceanic in it — unconditional, unpossessive, very old. At its height, this is the closest human affection comes to grace: love that asks nothing, refuses no one, and sees the divine spark in visibly unpromising material.",
+        "That last gift is also the shadow. You may notice that you fall in love with who someone could be — the artist beneath the addiction, the gentleness beneath the cruelty — and then stay for years, faithfully, with the person you imagined rather than the one who keeps arriving at dinner. Rescue feels like romance; sacrifice feels like proof. This longing is dignified: it is homesickness for a wholeness the world rarely offers, and loving the ideal was how you kept faith with it.",
+        "The invitation is form: banks for the river. Boundless love poured into a boundaried life — one actual person, seen accurately and loved anyway — is not a diminishment of the ocean. It is the cup that finally lets someone drink."
+      ],
+      "invitation": "To love the person who is actually there, and let that be the devotion.",
+      "edges": {
+        "point": "venus",
+        "sign": "pisces",
+        "see_also": ["canon:neptune", "house_12"]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "venus_in_house_1",
+      "title": "Grace at the Gate",
+      "body": [
+        "Your capacity for love stands at the threshold of your life, in the doorway where you meet the world. Grace is your style of arrival: rooms soften when you enter, strangers confide in you within minutes, and you possess — without trying — the diplomat's knack for making others feel welcome in their own skin. Beauty is not something you visit; it is how you go out the front door. People often decide they like you before you have said anything of substance, which has been true so long you may not notice it is unusual.",
+        "The shadow is that being liked can quietly become a job with no resignation clause. You may notice that your agreeableness fires before you are consulted — that you have smiled, softened, and charmed your way through a conversation and only afterward discovered you disagreed with all of it. Pleasing was your earliest passport; it worked, and what works gets worn. But a welcome that never closes is a door that cannot protect the house.",
+        "The invitation is to make the charm a choice rather than a reflex: to greet the world warmly and selectively, so that what enters your life is what you have actually chosen to let in."
+      ],
+      "invitation": "To move from being welcomed everywhere to choosing what you welcome in.",
+      "edges": {
+        "point": "venus",
+        "house": 1,
+        "see_also": ["house_1", "canon:mars"]
+      }
+    },
+    "2": {
+      "id": "venus_in_house_2",
+      "title": "The Velvet Vault",
+      "body": [
+        "Your love of the beautiful lives in the storehouse — the domain of resources, money, and the worth beneath them both. You have taste the way others have opinions: an unerring sense of the good fabric, the true color, the object worth keeping for thirty years. Pleasure, for you, is honest and embodied — the well-made meal, the afternoon that asks nothing — and you understand something many people never learn: that comfort is not the enemy of the soul but one of its languages.",
+        "The shadow is the confusion of worth with what can be appraised. You may notice that on the days you feel least lovable you buy something beautiful — that the velvet lining of your life thickens precisely where the doubt lives — because possessions hold still, and their value is printed on the tag, and yours never has been. Acquiring was once genuinely reassuring: what you own cannot leave you. But a vault measures its contents, not its keeper.",
+        "The invitation is to move the treasure inward: to know your worth the way you know quality in cloth — by feel, without needing the receipt — and to let having ripen into savoring."
+      ],
+      "invitation": "To locate your worth in what you are, and let what you own become mere pleasure again.",
+      "edges": {
+        "point": "venus",
+        "house": 2,
+        "see_also": ["house_2", "canon:venus"]
+      }
+    },
+    "3": {
+      "id": "venus_in_house_3",
+      "title": "The Honeyed Ink",
+      "body": [
+        "Your love of beauty lives in the neighborhood of words — the near world of messages, siblings, errands, and the daily mind. Language, in your hands, is an act of affection: you are the one whose texts feel like small gifts, whose toasts land, who can phrase a hard truth so that it enters without wounding. The ordinary radius of your life — the corner café, the commute, the recurring conversation — is where you find and make your beauty, and people leave even brief exchanges with you feeling curiously restored.",
+        "The shadow is that the honey can start doing the ink's job. You may notice that you draft the difficult message three times to perfect its warmth and then send a version with the difficulty removed — that you say things beautifully as a substitute for saying them truly. Charm in speech was an early peacekeeping technology, and it worked; but a lifetime of graceful phrasing can build a persona that corresponds with everyone and communicates with no one.",
+        "The invitation is to let the gift carry full cargo: the same graceful sentences, now bearing your actual meaning — beauty in service of truth, which is where beauty always wanted to work."
+      ],
+      "invitation": "To say the true thing as beautifully as you have always said the pleasant one.",
+      "edges": {
+        "point": "venus",
+        "house": 3,
+        "see_also": ["house_3", "canon:mercury"]
+      }
+    },
+    "4": {
+      "id": "venus_in_house_4",
+      "title": "The Peacemaker's Table",
+      "body": [
+        "Your love of harmony is planted at the taproot — in home, family, and the private ground beneath every public act. You are the one who makes a dwelling into a haven: the light adjusted, the table set, the atmosphere tuned so precisely that guests exhale on the doorstep without knowing why. Somewhere in your family's emotional inheritance you were assigned, or volunteered for, the role of the gracious one — the smoother of dinners, the translator between factions — and you have likely held it since childhood.",
+        "The shadow is the price of the office. You may notice that at family gatherings you monitor the emotional weather so vigilantly — steering conversations away from reefs, refilling glasses at the first sign of friction — that you have never once been simply a guest at your own table. Keeping the peace was real protection once; a calm house was a safe house. But the peacemaker eats last, if at all, and harmony maintained by one person's vigilance is not peace — it is unpaid labor wearing peace's clothes.",
+        "The invitation is to build a home that holds your comfort too: a table where you sit down, a peace you inhabit rather than perform."
+      ],
+      "invitation": "To become a guest at the table you have spent your life setting for others.",
+      "edges": {
+        "point": "venus",
+        "house": 4,
+        "see_also": ["house_4", "canon:moon"]
+      }
+    },
+    "5": {
+      "id": "venus_in_house_5",
+      "title": "The Garden Theatre",
+      "body": [
+        "Your love of beauty lives at the hearth-fire — the house of play, romance, creation, and children literal or symbolic. Delight comes naturally to you and you are generous with it: you flirt with life itself, turn dinners into occasions, and make things — meals, rooms, songs, afternoons — that exist for no better reason than that they are lovely. Romance, for you, is an art form, and you may be at your most yourself in the first act of love, when everything is invention and applause.",
+        "The shadow is a subtle dependence on the opening night. You may notice that your creations — romantic, artistic, or otherwise — lose their savor once the audience goes home; that you begin the affair, the painting, the project with brilliance and abandon it when the delight must be sustained rather than sparked. Pleasure that performs was once pleasure that was permitted: perhaps joy in your early world needed a justification, a witness, a review. But play that must be applauded is work in a costume.",
+        "The invitation is to risk being seen enjoying your own existence with no verdict pending — to create, and love, and play for the unwitnessed joy of it, which is where the real gold of this placement lies."
+      ],
+      "invitation": "To delight in your own creations before, and whether or not, anyone claps.",
+      "edges": {
+        "point": "venus",
+        "house": 5,
+        "see_also": ["house_5", "canon:sun"]
+      }
+    },
+    "6": {
+      "id": "venus_in_house_6",
+      "title": "The Polished Ordinary",
+      "body": [
+        "Your love of beauty lives in the workshop — the house of craft, service, routine, and the body's daily maintenance. You find the sacred in the detail: the well-organized shelf, the ritual of morning coffee done properly, the workplace made humane by your presence. Affection, for you, is a practice more than a proclamation — devotion expressed in packed lunches, covered shifts, and the hundred maintenances that keep other people's lives running smoothly. Where you work, people get along better; where you love, things function.",
+        "The shadow is the quiet conviction that service is the fee for belonging. You may notice that you discount any affection you did not work for — that a compliment on your character slides off while a compliment on your usefulness sticks — and that you would feel real anxiety if everyone you love were, for one month, entirely fine without you. Earning love through labor was once a sound bargain: help was needed, and helping got you kept. But a love that must be maintained hourly is a job, and you are allowed a sabbath.",
+        "The invitation is to let work become prayer rather than rent — and to receive care with the same grace you have spent a lifetime providing it."
+      ],
+      "invitation": "To be loved at rest as surely as you have been loved in service.",
+      "edges": {
+        "point": "venus",
+        "house": 6,
+        "see_also": ["house_6", "canon:mercury"]
+      }
+    },
+    "7": {
+      "id": "venus_in_house_7",
+      "title": "The Mirror and the Ring",
+      "body": [
+        "Your capacity for love stands in the house of the mirror — partnership, the significant other, the meeting of self and other across a table built for two. Relationship is not one department of your life; it is the stage on which your life makes sense. You have a genuine gift for the duet: for compromise that doesn't curdle, for making a partner feel met, for the daily diplomacy that keeps two sovereignties in one household. People sense that you take the pair seriously, and they are right.",
+        "The shadow is outsourcing. You may notice that you feel most real when partnered and strangely provisional when alone — as though solitude were an intermission and the play only resumes when someone takes the opposite chair. What is easily loved in the other — their beauty, their confidence, their worth — is often your own quality, handed across the table for safekeeping because carrying it yourself once felt immodest or unsafe. The beloved then becomes the keeper of your gold, and losing them threatens the treasury.",
+        "The invitation is to withdraw the projection without abandoning the table: to bring your own beauty and worth back home, so that partnership becomes two whole people choosing — not two halves clinging."
+      ],
+      "invitation": "To become the partner you keep seeking, and then choose company rather than completion.",
+      "edges": {
+        "point": "venus",
+        "house": 7,
+        "see_also": ["house_7", "canon:venus"]
+      }
+    },
+    "8": {
+      "id": "venus_in_house_8",
+      "title": "The Pearl in Dark Water",
+      "body": [
+        "Your capacity for love lives in the depths — the house of intimacy, shared resources, sexuality, and the psyche's basement. Pleasant affection has never been enough for you: you want the conversation at two in the morning that changes both people, the merging in which something is genuinely risked. Love, in your experience, is not decoration but transformation — you do not emerge from your significant bonds as the person who entered them, and privately you would not want to.",
+        "The shadow is that the deep end has its own defenses. You may notice that you handle closeness the way one handles a shared bank account — with an eye on who holds the power, who could withdraw everything, who would survive the loss — and that you sometimes precipitate a crisis in a calm relationship because calm feels like the surface, and the surface feels like being unseen. This vigilance was earned: somewhere you learned that merging can cost the self, and control became the diving bell that made depth survivable.",
+        "The invitation is surrender without annihilation — to let love change what you are, on purpose, and to discover that the treasure of this house was never safety. It is being remade, together, and rising with the pearl."
+      ],
+      "invitation": "To let intimacy transform you rather than guarding the self it would have deepened.",
+      "edges": {
+        "point": "venus",
+        "house": 8,
+        "see_also": ["house_8", "canon:pluto"]
+      }
+    },
+    "9": {
+      "id": "venus_in_house_9",
+      "title": "The Far Beloved",
+      "body": [
+        "Your capacity for love lives at the far horizon — the house of philosophy, faith, higher learning, and the long journey. You fall in love with what enlarges you: people who feel like countries you have not visited, ideas that rearrange the furniture of your mind, places whose light makes even breakfast feel meaningful. Love and learning are, for you, the same appetite — your deepest attractions carry the quality of pilgrimage, and a beloved who cannot also be a teacher, or a fellow traveler, will not hold you long.",
+        "The shadow is a quiet allergy to arrival. You may notice that your strongest longings attach to what is elsewhere — the person overseas, the life you would live in another city, the version of your partner visible only when you are apart — and that proximity has a way of shrinking the beloved back to human scale, which feels like disappointment but is actually focus. Distance was once a genuine teacher; it kept love luminous and you free. But a faith that only survives at range is still a hypothesis.",
+        "The invitation is to bring the horizon home: to let one near, particular, ordinary-sized love become the long journey itself — the place where your philosophy is finally tested and found true."
+      ],
+      "invitation": "To love what is near with the wonder you have reserved for what is far.",
+      "edges": {
+        "point": "venus",
+        "house": 9,
+        "see_also": ["house_9", "canon:jupiter"]
+      }
+    },
+    "10": {
+      "id": "venus_in_house_10",
+      "title": "The Laurel and the Locket",
+      "body": [
+        "Your love of beauty stands at the summit — the house of vocation, public standing, and the visible answer to what a life is for. Grace is part of your professional instrument: you are the colleague who makes the meeting civil, the leader people describe as a pleasure to work for, the one whose taste quietly shapes whatever institution holds you. Your calling, whatever its field, has beauty or diplomacy folded into it somewhere, and the world tends to reward you with genuine goodwill — you are, in the old sense, well regarded.",
+        "The shadow is the gap between being admired and being known. You may notice that warmth has become part of your public craft — polished, reliable, professionally deployed — and that many people love the laureled figure at the podium while very few have seen the locket underneath: the private, unedited affections it holds. Curating the image was sound strategy once; the visible self had to be flawless because it was being measured. But applause reaches only as deep as what was shown.",
+        "The invitation is to let the private face rise to the public one — to be known, not merely regarded, and to make of your visible life an honest portrait rather than a flattering one."
+      ],
+      "invitation": "To let yourself be known by the many who already admire you, starting with a few.",
+      "edges": {
+        "point": "venus",
+        "house": 10,
+        "see_also": ["house_10", "canon:saturn"]
+      }
+    },
+    "11": {
+      "id": "venus_in_house_11",
+      "title": "The Circle and the One",
+      "body": [
+        "Your capacity for love lives in the commons — the house of friendship, community, and the future built with others. Your loves tend to begin as friendships, and your friendships have the durability other people's romances envy: decades long, low maintenance, quietly devoted. In a group you are the connective tissue — the one who introduces the two people who needed to meet, who remembers the birthdays, who makes a loose collection of individuals feel like a circle. Affection, for you, is most trustworthy when it is shared, chosen, and free.",
+        "The shadow is that the circle can double as a moat. You may notice that you are magnificent in company and strangely scarce one-on-one — that when a single person seeks more of you than the group receives, you feel a subtle alarm and redistribute yourself back into the crowd. Diffusing love across many was once wise economics: no single loss could bankrupt you. But intimacy is not a group activity, and a heart held in common is never fully held.",
+        "The invitation is to let one person matter disproportionately — to give a single bond the concentrated devotion you have so gracefully spread among many, without abandoning the circle that taught you how."
+      ],
+      "invitation": "To risk the disproportionate love of one without losing your gift for the many.",
+      "edges": {
+        "point": "venus",
+        "house": 11,
+        "see_also": ["house_11", "canon:uranus"]
+      }
+    },
+    "12": {
+      "id": "venus_in_house_12",
+      "title": "The Hidden Spring",
+      "body": [
+        "Your capacity for love lives in the sea behind the house — the hidden twelfth, where the garden runs down to water and what is felt is not always shown. Your affections run deep and largely underground: you love more than you declare, forgive more than is noticed, and extend a private compassion to the difficult, the absent, and the lost that would astonish the people who think they know you. There is something devotional in your loving — closer to prayer than to courtship — and it asks, curiously often, to remain unseen.",
+        "The shadow is that hiddenness can become the whole habitat. You may notice that your heart opens most easily where love cannot land — the unavailable person, the one who left, the one who exists chiefly in your imagination — while visible, answerable love feels almost indecently exposed. Loving in secret was once true shelter: a feeling never declared can never be mocked, taken, or refused. But a spring that never surfaces waters nothing, and longing, however beautiful, is not yet relationship.",
+        "The invitation is emergence: to let the hidden spring break ground — to love someone available, out loud, in daylight — and to discover that your oceanic tenderness survives being received."
+      ],
+      "invitation": "To bring your love out from behind the curtain and let it be answered.",
+      "edges": {
+        "point": "venus",
+        "house": 12,
+        "see_also": ["house_12", "canon:neptune"]
+      }
+    }
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "point": "uranus",
+  "name": "Uranus",
+  "glyph": "♅",
+  "in_sign": {
+    "aries": {
+      "id": "uranus_in_aries",
+      "title": "The Torch Thrown Forward",
+      "body": [
+        "Uranus moves through a sign in roughly seven-year strides, so before this is your placement it is your generation's: you belong to a cohort for whom beginning is a form of truth-telling, born to break stalemates the previous era had learned to live with. In you, that shared current runs straight through the will. The awakener works here by ignition — the false is not analyzed but charged at, and your clearest insights arrive as impulses, already halfway into motion before the reasons catch up.",
+        "You may notice that when a project or a relationship stalls, part of you would rather strike the match and begin again than repair what exists — a fresh page feels more honest than a mended one. Honor what that reflex protected: somewhere you learned that waiting can calcify into never, and that a clean break hurts less than a slow one. But rebellion as reflex leaves a trail of promising foundations, each abandoned at the moment it asked for patience.",
+        "The invitation is not to dampen the charge but to aim it. A torch thrown forward lights the road for more than the thrower. When you learn to stay through the unglamorous middle of what you start, your gift for beginnings becomes pioneering in the true sense — the first one through, holding the door."
+      ],
+      "invitation": "To carry the fire of beginnings far enough that others can build by its light.",
+      "edges": {
+        "point": "uranus",
+        "sign": "aries",
+        "see_also": ["canon:mars", "house_1"]
+      }
+    },
+    "taurus": {
+      "id": "uranus_in_taurus",
+      "title": "The Earthquake in the Orchard",
+      "body": [
+        "This is a cohort signature before it is a private one: Uranus spends about seven years in each sign, and yours is a generation asked to rethink what security actually is — what money, land, food, and the body are for when the old guarantees stop guaranteeing. In your own life, that shared question becomes intimate. The awakener has taken up residence in the part of you that wants things to last, and it will not let comfort go unexamined.",
+        "You may notice a strange rhythm: just as life finally settles — the good job, the furnished rooms, the reliable love — an itch begins, and part of you starts pricing the exits. Or the reverse: you grip your securities harder than they warrant, because change has arrived before as loss without warning, and holding still once felt like the only power you had. Both are the same nerve. What you own can begin to own you, and something in you knows it.",
+        "The work is to root the freedom rather than uproot the life. Real security, for you, is not the untouched orchard but the knowledge that you could replant anywhere. When your worth stops living in your holdings, the ground can shake without shaking you."
+      ],
+      "invitation": "To discover a security that survives the earthquake because it was never stored in the ground.",
+      "edges": {
+        "point": "uranus",
+        "sign": "taurus",
+        "see_also": ["canon:venus", "house_2"]
+      }
+    },
+    "gemini": {
+      "id": "uranus_in_gemini",
+      "title": "The Telegraph and the Twins",
+      "body": [
+        "Uranus takes about seven years to cross a sign, so you share this signature with a generational cohort — one charged with rewiring how human beings speak to each other, learn, and trade ideas. In your own mind, that collective project feels like weather: thoughts arrive as static and flash, whole paragraphs at once, connections between things nobody had introduced.",
+        "You may notice that in conversation you leap three steps ahead and then wonder why the room has gone quiet — or that you say the unsayable thing at dinner, not to wound but because a spoken truth feels cleaner to you than a polite fog. The cost of this quicksilver is scatter: ten open questions, none held long enough to deepen; cleverness that changes the subject just as meaning was about to form. That deflection once protected you — a moving mind is hard to pin, and being pinned may once have felt dangerous.",
+        "The developmental task is translation. The flashes are real; the discipline is building bridges back to where the others are standing, so the lightning becomes language. When you slow the signal just enough to be received, you stop being merely startling and become what your generation needed: a voice for the future, audible in the present."
+      ],
+      "invitation": "To slow the lightning into language that others can actually receive.",
+      "edges": {
+        "point": "uranus",
+        "sign": "gemini",
+        "see_also": ["canon:mercury", "house_3"]
+      }
+    },
+    "cancer": {
+      "id": "uranus_in_cancer",
+      "title": "The Nest and the North Wind",
+      "body": [
+        "You hold this placement in common with everyone born in the same seven-year wave — a generation that quietly rewrote what home and family are allowed to look like. In your life the revolution is domestic. The awakener lives in the tender rooms: belonging, mother, memory, the shell — and it insists that none of these be false.",
+        "You may notice that even in a house you love, you need to know where the exit is: a room of your own, an unshared hour, one bag emotionally half-packed. Closeness that arrives without an open window can feel less like love than weather closing in. There is dignity in this: somewhere, early, belonging came bundled with capture — care that watched too closely, or a family atmosphere that could change without warning — and the part of you that keeps a cool draft moving through the nest learned its trade for good reason. The cost is that the people who love you may read your ventilation as distance.",
+        "The arc is a home with weather in it. You are built to prove that roots and freedom are not opposites — that a family, chosen or given, can hold its members without holding them still."
+      ],
+      "invitation": "To build a nest with the window open — belonging that does not require capture.",
+      "edges": {
+        "point": "uranus",
+        "sign": "cancer",
+        "see_also": ["canon:moon", "house_4"]
+      }
+    },
+    "leo": {
+      "id": "uranus_in_leo",
+      "title": "The Comet and the Crown",
+      "body": [
+        "Uranus spends roughly seven years in a sign, so this is a generational inheritance before it is yours alone: a cohort born to democratize radiance — to insist that self-expression is not a privilege conferred by the few upon the few. In you, the current runs through the heart's need to be seen. You want witness, as every heart does; you simply refuse to receive it on the standard stage, in the inherited costume.",
+        "You may notice a telling reflex: at the exact moment recognition arrives — the promotion, the applause, the audience finally warm — you change the act. Something in you distrusts a crown the moment it fits, suspecting that what is being applauded is the performance and not the person. That suspicion has served you; it has kept you from calcifying into your own image, which is a real death for a heart like yours. But it can also keep you orbiting, comet-like: brilliant, periodic, never staying long enough to be loved at close range.",
+        "The invitation is original radiance — shining as precisely yourself, without the borrowed crown and without the escape. When your light no longer needs the mirror or fears it, witness stops being a threat and becomes what it always wanted to be: communion."
+      ],
+      "invitation": "To shine steadily as yourself, needing neither the borrowed crown nor the escape route.",
+      "edges": {
+        "point": "uranus",
+        "sign": "leo",
+        "see_also": ["canon:sun", "house_5"]
+      }
+    },
+    "virgo": {
+      "id": "uranus_in_virgo",
+      "title": "The Loom Rewired",
+      "body": [
+        "This signature belongs to a seven-year generation before it belongs to you — a cohort sent to overhaul the machinery of daily life: work, health, service, the ten thousand small systems by which a civilization actually runs. In your own temperament, the assignment shows up as an eye that cannot not see the flaw. You walk into any workshop, office, or routine and the misdesigned step announces itself like a wrong note.",
+        "You may notice that you are constitutionally unable to follow a procedure exactly as given — the recipe gets amended, the workflow rebuilt, the form filled out in your own order — because obeying a system you can see through feels like a small lie. The gift is genuine reform; things run better after you. The shadow is critique as reflex: a restlessness that renovates every routine before mastery can accumulate, and that turns its precision inward, auditing you without mercy. That auditor once protected you — being flawless before anyone checked was a kind of safety.",
+        "The arc is devotion. When the rewiring serves something loved — a craft, a body, a community's daily bread — improvement stops being escape and becomes prayer with tools in its hands."
+      ],
+      "invitation": "To place the perfecting eye in service of something loved, including yourself.",
+      "edges": {
+        "point": "uranus",
+        "sign": "virgo",
+        "see_also": ["canon:mercury", "house_6"]
+      }
+    },
+    "libra": {
+      "id": "uranus_in_libra",
+      "title": "The Rewritten Vows",
+      "body": [
+        "You share this placement with a seven-year generation asked to renegotiate the contract of partnership itself — a cohort for whom the inherited forms of marriage and fairness stopped fitting and had to be redrawn. In you, the collective question becomes personal at close range: love and freedom sit at your table together, and you refuse to feed one by starving the other.",
+        "You may notice that desire cools in you exactly when a partner begins saying “we” too often — that a weekend apart restores what a month of togetherness dulled, and that the surest way to lose you is to assume you. This is not fickleness. Somewhere you learned that harmony can be a beautiful cage, that keeping the peace and disappearing can look identical from the inside — and the cool current you run through your closest bonds is how you keep from vanishing into them. The cost is that you may keep one hand on the door of every room you love.",
+        "What this placement is for is the honest vow: partnership chosen freshly, spoken by two people who could leave and don't. When commitment becomes a daily election rather than a life sentence, your unions become what your generation was reaching for."
+      ],
+      "invitation": "To stay by choice, and let the choosing — renewed daily — be the vow.",
+      "edges": {
+        "point": "uranus",
+        "sign": "libra",
+        "see_also": ["canon:venus", "house_7"]
+      }
+    },
+    "scorpio": {
+      "id": "uranus_in_scorpio",
+      "title": "Thunder Under Water",
+      "body": [
+        "Uranus crosses a sign in roughly seven years, so this intensity is a generational endowment before it is yours: a cohort born to drag the forbidden subjects — sex, power, death, money's secret machinery — up into open air. In your own psyche the awakener works below the waterline. Your insights strike in the deep places, and what has calcified in you or around you tends to break suddenly, privately, at the root.",
+        "You may notice that you are the one who names the thing at the table no one names — the drinking, the affair, the diagnosis — with a calm that startles people; and that in your own crises you go cold and lucid exactly where others would weep. That composure was earned: somewhere you learned that the ground can open without notice, and that being the one who sees it coming is safer than being the one it takes by surprise. The shadow is detonation as defense — ending things totally, scorched-earth, before they can end you.",
+        "The arc runs from surviving transformation to presiding over it: choosing your metamorphoses consciously instead of waiting for the lightning, and allowing one witness to accompany you through. Power shared, it turns out, is the deepest room of all."
+      ],
+      "invitation": "To let yourself be changed in front of someone, rather than only ever alone.",
+      "edges": {
+        "point": "uranus",
+        "sign": "scorpio",
+        "see_also": ["canon:pluto", "house_8"]
+      }
+    },
+    "sagittarius": {
+      "id": "uranus_in_sagittarius",
+      "title": "The Heretic's Horizon",
+      "body": [
+        "This placement marks a seven-year generation before it marks you — a cohort born to break open the churches, curricula, and creeds, insisting that truth be portable and personally verified. In you, the collective mandate becomes a temperament: faith that must be found, never inherited; an arrow that swerves the moment anyone tries to aim it for you.",
+        "You may notice that you are allergic to being preached at — including by your own former convictions. You have likely left at least one church, ideology, or mentor not because it was empty but because staying had begun to feel like reciting, and the leaving felt cleaner than the doubt. That exodus reflex is honorable: it has kept your beliefs alive, and it protected the young truth-seeker in you from swallowing anything whole. Its cost is a philosophy of departures — always between temples, wisdom collected but never inhabited long enough to shelter anyone, including you.",
+        "The arc bends toward a faith of your own authorship: a worldview both original and livable, roomy enough to be revised without being razed. The heretic's real work was never demolition. It was building the temple whose doors do not lock."
+      ],
+      "invitation": "To build the open-doored temple, instead of forever fleeing the locked ones.",
+      "edges": {
+        "point": "uranus",
+        "sign": "sagittarius",
+        "see_also": ["canon:jupiter", "house_9"]
+      }
+    },
+    "capricorn": {
+      "id": "uranus_in_capricorn",
+      "title": "The Crack in the Mountain",
+      "body": [
+        "You were born into a seven-year cohort whose task is written into the structures themselves: a generation arriving as the great institutions — corporations, governments, careers, the long ladders — begin to show their cracks, and charged with deciding what deserves rebuilding. In your own life the current runs through your relationship with authority: you mistrust it on sight, and yet responsibility keeps being handed to you, because something in you is visibly built to carry weight.",
+        "You may notice that you rise inside the very systems you doubt — quietly redrawing the rules from a desk within, respected and slightly suspect — and that your sharpest ambivalence is reserved for your own authority: you want the summit and disdain the ladder. There is dignity in the doubt. You have watched structures demand loyalty they did not earn, and your refusal to grant it protects something honest in you and in everyone downstream of your decisions.",
+        "The developmental arc is architecture. Demolition is the apprenticeship, not the vocation; the mountain cracks so that someone who has studied both stone and lightning can build what stands next. Your rebellion matures the day it accepts a load-bearing role."
+      ],
+      "invitation": "To stop merely auditing the mountain and begin building the one that comes after.",
+      "edges": {
+        "point": "uranus",
+        "sign": "capricorn",
+        "see_also": ["canon:saturn", "house_10"]
+      }
+    },
+    "aquarius": {
+      "id": "uranus_in_aquarius",
+      "title": "The Lightning's Native Country",
+      "body": [
+        "Uranus spends about seven years in each sign, and in yours it moves through home territory: a generation fluent in systems, networks, and the long thought of the future, born assuming that the world is a draft to be revised. In you, this cohort clarity concentrates into a personal stance — the observer at the edge of the species, seeing the whole board, loyal to principles most people cannot yet vote for.",
+        "You may notice that it is easier to love humanity than the person interrupting you — that you will argue a stranger's freedom with your whole heart and then go quietly missing from your own closest circles when they ask for something as unsystematic as need. The distance is not coldness; it is altitude. Somewhere you learned that belonging tends to demand conformity as its membership fee, and observation became the safest form of participation. The cost is a solitude of your own design, maintained in the middle of people who would gladly draw closer.",
+        "The arc of this placement is descent — not from the vision but with it: joining the species you understand so well, letting one circle of particular, flawed people claim you. The future you are loyal to is, after all, going to be inhabited."
+      ],
+      "invitation": "To come down from altitude and let particular people claim you, vision intact.",
+      "edges": {
+        "point": "uranus",
+        "sign": "aquarius",
+        "see_also": ["canon:uranus", "house_11"]
+      }
+    },
+    "pisces": {
+      "id": "uranus_in_pisces",
+      "title": "The Storm-Lit Sea",
+      "body": [
+        "This is a generational tide before it is a personal trait: Uranus takes about seven years to cross a sign, and your cohort was born where the awakener meets the ocean — charged with electrifying the collective imagination, rewiring compassion, mysticism, and dream for a new era. In your own psyche, the current arrives as weather from far offshore: sudden knowings, images, and certainties that come in whole, with no receipts.",
+        "You may notice that your best insights ambush you — in the shower, on the edge of sleep, mid-walk — and that when someone asks you to show your steps, you cannot, because there were none; the answer arrived like light over water, everywhere at once. The shadow of this porousness is escape wearing the robes of transcendence: when the world grows too loud, part of you can dissolve — into fantasy, into vagueness, into elsewhere — and call the vanishing freedom. That vanishing once protected a boundaryless child from a world that pressed in everywhere, and it deserves thanks before it is retired.",
+        "The work is to bring the flash back to shore. A vision that stays out at sea helps no one; given banks, given form, your strange transmissions become fresh water for the drier houses."
+      ],
+      "invitation": "To carry the sea's lightning ashore and give it a form that others can drink from.",
+      "edges": {
+        "point": "uranus",
+        "sign": "pisces",
+        "see_also": ["canon:neptune", "house_12"]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "uranus_in_house_1",
+      "title": "The Stranger at the Door",
+      "body": [
+        "Uranus stands at your threshold — the house of arrival, the face the world meets first — and so something original announces you before you say a word. People sense a current: they either recruit you into their revolutions on sight or brace slightly, as if a window had opened somewhere. You may have been called eccentric, intimidating, refreshing, or simply too much, often within the same week, and often while you were, by your own reckoning, just standing there.",
+        "You may notice that when a room begins to categorize you, you feel a reflex to scramble the file — arriving differently, contradicting your last position, changing the look — because being accurately predicted feels obscurely like being caught. That reflex has a history worth honoring: somewhere, being known meant being managed, and unpredictability became a kind of lock on the door of the self. Its cost is that performed strangeness can wall off the very intimacy that ordinary strangeness would have invited.",
+        "The arc of this placement is difference worn calmly — originality as a front door rather than a fence. When you no longer need to startle in order to stay free, your presence does quieter work: rooms reorganize around what is possible, simply because you walked in unedited."
+      ],
+      "invitation": "To let your difference be a door people can knock on, not a fence they bounce off.",
+      "edges": {
+        "point": "uranus",
+        "house": 1,
+        "see_also": ["house_1", "canon:mars"]
+      }
+    },
+    "2": {
+      "id": "uranus_in_house_2",
+      "title": "The Volatile Treasury",
+      "body": [
+        "Uranus keeps the storehouse in your chart — the house of money, resources, and the worth beneath them — and so your material life tends to move in weather systems rather than seasons: feast and lean stretch, income arriving from odd angles, side doors, and inventions rather than the salaried main road. Beneath the finances runs the real current: your sense of your own worth can surge and drop with the same voltage.",
+        "You may notice that you have quietly sabotaged steady money more than once — leaving the secure position just as it ripened, letting the reliable arrangement lapse — because somewhere in you, a fixed income feels like a fixed identity, and being provided for shades into being owned. Honor the logic: refusing to be bought has kept your gifts unmortgaged, and there was likely a time when someone's money came with strings that taught you the price of price. But when worth itself is stored in freedom, every obligation reads as a theft, and the treasury never gets to compound.",
+        "This placement is for discovering the asset no one can seize: your inventiveness itself. When security relocates from the balance to the capacity — the lived knowledge that you can make something from nothing — volatility stops being a threat and becomes your native climate."
+      ],
+      "invitation": "To bank your worth in your inventiveness, where no downturn and no benefactor can reach it.",
+      "edges": {
+        "point": "uranus",
+        "house": 2,
+        "see_also": ["house_2", "canon:venus"]
+      }
+    },
+    "3": {
+      "id": "uranus_in_house_3",
+      "title": "The Spark in the Sentence",
+      "body": [
+        "Uranus lives in your neighborhood house — the near world of language, siblings, schoolrooms, and the daily mind — so your thinking has always run on a different current than the local grid. You learn by ambush rather than by sequence: nothing, nothing, nothing, then the whole structure at once, arriving sideways while the class is still on step three. Early on, this likely earned you contradictory report cards — scattered and gifted, disruptive and bright — sometimes in the same sentence.",
+        "You may notice that you cannot make yourself explain things in order; you start at the interesting part, assume the premises, and watch faces fall behind — or that in ordinary small talk, part of you goes absent, returning only when the conversation risks something true. If a classroom or a sibling once turned your strangeness into a verdict, you may still brace when asked to show your work, half-expecting the old sentence to be read out again. But the wiring was never wrong. It was early.",
+        "This placement exists to renew language itself — to say what the neighborhood has not yet found words for. The arc is building bridges back: trusting your leaps, then constructing, patiently, the steps by which others can follow you to where you already stand."
+      ],
+      "invitation": "To trust the leap, then build the stairs so others can join you at the landing.",
+      "edges": {
+        "point": "uranus",
+        "house": 3,
+        "see_also": ["house_3", "canon:mercury"]
+      }
+    },
+    "4": {
+      "id": "uranus_in_house_4",
+      "title": "Thunder in the Foundations",
+      "body": [
+        "Uranus occupies your taproot house — home, family inheritance, the private ground beneath every public act — which means the awakener lives in the very place most people go to escape it. The early ground likely carried a current: a family that was unconventional, or a home where the atmosphere could change without warning, or simply the recurring lesson that the floor is not as fixed as advertised — moves, ruptures, reinventions at the root.",
+        "You may notice that you keep part of yourself permanently packed — that even in a settled, loving household you maintain an inner go-bag: a private plan, one room or ritual that belongs to you alone and could travel. This readiness has dignity; when the ground has moved before, staying light is wisdom, not damage. Its cost is that you may withhold the final degree of arrival from every home you make, so that no place ever gets to fail you — or to fully hold you.",
+        "The developmental arc is the chosen root. You were never built to inherit a foundation; you are built to design one — a home with weather in it, roots that hold precisely because you planted them on purpose."
+      ],
+      "invitation": "To unpack the last bag — to let a home you chose actually hold you.",
+      "edges": {
+        "point": "uranus",
+        "house": 4,
+        "see_also": ["house_4", "canon:moon"]
+      }
+    },
+    "5": {
+      "id": "uranus_in_house_5",
+      "title": "The Firework and the Hearth",
+      "body": [
+        "Uranus keeps the hearth-fire in your chart — the house of creation, play, romance, and the risk of being seen enjoying your own existence — and so your joy runs on high voltage. You fall for the stranger, the outlier, the one no one predicted; your creative work is most alive at the experiment's edge; even your play has an inventor's quality, games rebuilt mid-round because the standard rules bored you by the second turn.",
+        "You may notice a pattern in what happens after the spark: the romance cools precisely when it becomes settled and expected, and the art gets abandoned at the exact moment other people begin to want more of it. Being awaited feels like being assigned, and part of you would rather vanish than repeat itself. That part has a history: perhaps your delight was once managed, scheduled, or annexed by someone else's pride, and unpredictability became the only way to keep your fire your own.",
+        "What this placement is for is sustained originality — the firework that learns to be a hearth without becoming ash. The arc is risking not the debut, which you love, but the encore: letting yourself be seen enjoying the same beloved thing twice."
+      ],
+      "invitation": "To risk the encore — returning openly to what you love, in front of witnesses.",
+      "edges": {
+        "point": "uranus",
+        "house": 5,
+        "see_also": ["house_5", "canon:sun"]
+      }
+    },
+    "6": {
+      "id": "uranus_in_house_6",
+      "title": "The Inventor's Bench",
+      "body": [
+        "Uranus works in your workshop house — craft, service, routine, the body's daily maintenance — which makes you brilliant in exactly the settings that also chafe you most. You see at a glance how any process could run better, and you are constitutionally unable to pretend otherwise: you are the one who rebuilds the workflow in week two, automates the tedium, and quietly stops attending the meeting that should have been a sentence.",
+        "You may notice that you are superb in a crisis and restless in maintenance — that you have left more than one job on the very day it became predictable, and that your body itself keeps irregular hours, treating the standard schedule of meals and sleep as a suggestion. Beneath this runs an old equation: somewhere, being supervised felt like being disbelieved, and the time-clock became the emblem of everything false. Your mutiny against drudgery protects a real thing — the dignity of intelligent work — even when it costs you the compounding rewards of staying.",
+        "But devotion needs a container, and this placement's arc is designing your own: rituals you author, rhythms your body actually keeps, service structured by choice rather than surveillance. When the routine is yours, repetition stops being a cage and becomes a practice."
+      ],
+      "invitation": "To design a discipline you can love, instead of escaping every discipline you are given.",
+      "edges": {
+        "point": "uranus",
+        "house": 6,
+        "see_also": ["house_6", "canon:mercury"]
+      }
+    },
+    "7": {
+      "id": "uranus_in_house_7",
+      "title": "The Mirror and the Live Wire",
+      "body": [
+        "Uranus stands in your mirror house — partnership, the significant other, the open opponent — so the question of freedom stages itself through the people closest to you. You are drawn to the unusual ones: the brilliant, the unavailable, the just-passing-through, partners who arrive like weather and reorganize your life. Or the current runs the other way, and steady partners find that you are the storm — the one who cannot be assumed, scheduled, or fully signed for.",
+        "You may notice that you have chosen people who upend your world and then resented them for the upending — or kept a settled bond while a low hum of claustrophobia ran beneath it, surfacing as sudden coolness the moment your partner relaxed into certainty. Often what is being met in the other is your own exiled wildness, hired out to someone else so that you could remain the reasonable one. That arrangement once made sense: someone had to keep the household predictable, and you volunteered.",
+        "The arc is repatriation — taking your freedom back from the people you outsourced it to, and granting them theirs in the same gesture. When both partners are allowed to be free, the bond becomes what this house intended: two live wires, chosen daily, lighting one house."
+      ],
+      "invitation": "To reclaim your own wildness so your partner can stop carrying it for you.",
+      "edges": {
+        "point": "uranus",
+        "house": 7,
+        "see_also": ["house_7", "canon:venus"]
+      }
+    },
+    "8": {
+      "id": "uranus_in_house_8",
+      "title": "The Skeleton Key",
+      "body": [
+        "Uranus inhabits your house of depths — intimacy, merging, shared resources, the psyche's basement — so transformation in your life tends to arrive not as a slow tide but as a thrown switch. The changes that have remade you came suddenly: bonds that ignited or ended overnight, inheritances of every kind appearing and dissolving, truths surfacing at velocity. You learned early that the deep water has live current in it.",
+        "You may notice that at the exact moment intimacy deepens — the conversation past midnight, the merging of accounts or bodies or futures — something in you goes cool and observational, narrating the plunge instead of taking it; and that you have sometimes ended things abruptly, preferring the clean shock of leaving to the slow risk of being left. This is the mind's skeleton key: it can open any locked room, including the exits, and it was cut in a season when merging genuinely cost too much. Detachment kept the self alive in deep water, and it deserves respect for that service.",
+        "What the placement is for is voluntary depth: opening the locked rooms from the inside before life has to force them, and staying present while you are changed. Surrender, it turns out, does not cost the self — only the armor."
+      ],
+      "invitation": "To trade the armor of sudden exits for the deeper freedom of staying through the change.",
+      "edges": {
+        "point": "uranus",
+        "house": 8,
+        "see_also": ["house_8", "canon:pluto"]
+      }
+    },
+    "9": {
+      "id": "uranus_in_house_9",
+      "title": "The Renegade Atlas",
+      "body": [
+        "Uranus travels in your house of the far horizon — philosophy, faith, higher learning, the long journey — so your beliefs were never going to be issued to you; they had to be found, tested, and in several cases built from parts. You are the student who quit the course to learn the subject properly, the traveler who leaves the tour, the reader whose shelves hold a private university no accreditor would recognize.",
+        "You may notice that certainty in a teacher's voice makes you instantly suspicious — that the moment any framework explains everything, you begin cataloguing what it cannot; and that you have abandoned whole worldviews overnight, waking one morning simply unable to recite yesterday's creed. This iconoclasm has kept your mind honest, and it once protected you from swallowing some authority's map of reality whole. Its cost is permanent transit: brilliant about every path, settled on none, wisdom that shelters no one because it never stops moving.",
+        "The arc is authorship. Somewhere past the demolitions, this placement wants you to draw the atlas yourself — a worldview original enough to be truly yours and roomy enough to be lived in, then taught: the renegade become guide, handing out maps with the margins left deliberately blank."
+      ],
+      "invitation": "To stop escaping other people's maps and finally draw — and inhabit — your own.",
+      "edges": {
+        "point": "uranus",
+        "house": 9,
+        "see_also": ["house_9", "canon:jupiter"]
+      }
+    },
+    "10": {
+      "id": "uranus_in_house_10",
+      "title": "The Unfenced Summit",
+      "body": [
+        "Uranus occupies your summit house — vocation, public standing, the visible answer to “what is your life for?” — which means you were never going to inherit a career the way one inherits a coat. Your professional life moves in right angles: sudden ascents, abrupt exits, reinventions that look reckless from outside and inevitable from within. Authority tends to find you brilliant and unmanageable in the same review.",
+        "You may notice a signature move: leaving at the peak — resigning from the role just as it becomes secure, going strange just as the establishment opens its door — because from inside, arrival feels like taxidermy, and you would rather stay alive than stay mounted. That reflex has kept you from a fate you rightly fear: becoming the false thing publicly, at scale, with a title on it. But practiced as reflex, it can also keep your gifts perpetually promising — a genius the world keeps almost receiving.",
+        "The arc of this placement is authority without calcification — building a public position original enough that you never need to flee it. Your vocation, finally, is the demonstration itself: that one can stand at the summit unfenced, useful, and still free."
+      ],
+      "invitation": "To build a public life true enough that you never have to escape it.",
+      "edges": {
+        "point": "uranus",
+        "house": 10,
+        "see_also": ["house_10", "canon:saturn"]
+      }
+    },
+    "11": {
+      "id": "uranus_in_house_11",
+      "title": "The Comet in the Commons",
+      "body": [
+        "Uranus stands in your house of the commons — friendship, community, the future built with others — its own preferred terrain, which makes the social world your laboratory and your riddle at once. You collect remarkable people: the outliers, the ones ahead of their time, friendships that ignore every demographic. Groups sense your value immediately — you see what the collective could become — and just as immediately sense that you cannot quite be kept.",
+        "You may notice that you are often the one who convenes the circle and then stands at its edge — the friend of many, the member of none; the organizer of the movement who goes missing from its meetings. Belonging, in your experience, has tended to cost you in sameness, and you learned to pay in visits rather than residence. That arithmetic once protected the unrepeatable thing in you from being averaged out. Its cost is a loneliness maintained by your own hand, in the middle of people who would gladly claim you.",
+        "This placement is for the future — and futures are group projects. The arc is casting your lot: letting a chosen few actually count you among them, and discovering that the comet can keep its orbit and still belong to a sky."
+      ],
+      "invitation": "To let yourself be counted among the people who are already counting on you.",
+      "edges": {
+        "point": "uranus",
+        "house": 11,
+        "see_also": ["house_11", "canon:uranus"]
+      }
+    },
+    "12": {
+      "id": "uranus_in_house_12",
+      "title": "The Signal Behind the Curtain",
+      "body": [
+        "Uranus lives in the sea behind your house — the hidden twelfth, place of the ancestral, the institutional, the collective tide — which means your awakener works from backstage. Outwardly your life may look surprisingly conventional; the rebellion is interior, a secret radical who reads by flashlight. Meanwhile disruption seems to arrive from outside — sudden reversals, strange timing, doors blown open by winds you did not order — though the order slip, examined closely, is often in your handwriting.",
+        "You may notice that your clearest knowing comes in flashes you cannot source — dreams that solve problems, intuitions that arrive fully wired — and that your own desire for freedom is the last thing you consult, surfacing only after it has quietly arranged a jailbreak: the exhaustion before the escape, the crisis that cancels the life you could not admit you wanted to leave. Hiding the lightning once made sense; somewhere, visible difference was dangerous, and the family or the institution required a smooth surface. The exiled rebel kept you safe by working underground.",
+        "The arc is befriending the signal: bringing the hidden awakener on stage, letting your strangeness become conscious policy rather than covert operation. Freedom claimed openly no longer has to sabotage; it can simply steer."
+      ],
+      "invitation": "To bring your hidden rebel out from behind the curtain and give it the wheel.",
+      "edges": {
+        "point": "uranus",
+        "house": 12,
+        "see_also": ["house_12", "canon:neptune"]
+      }
+    }
+  }
+}

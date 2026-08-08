@@ -1,0 +1,249 @@
+{
+  "point": "sun",
+  "name": "Sun",
+  "glyph": "☉",
+  "in_sign": {
+    "aries": {
+      "id": "sun_in_aries",
+      "title": "The Spear at First Light",
+      "body": [
+        "The Sun describes not who you are but who you are learning to become, and in Aries it learns by igniting. Your sense of self is forged at the moment of beginning — the first step, the first word into a silence, the door pushed open before anyone has agreed it should be. There is an innocence in this that others often misread as arrogance: you charge not because you believe you cannot lose but because standing still feels like a kind of dying. You may notice that you are magnificent in the first hour of anything — a project, a fight, a love — and strangely absent by the middle, already scanning for the next unbroken ground.",
+        "The shadow deserves its dignity: somewhere you learned that hesitation costs more than injury, and the charge became a way of outrunning doubt before it could speak. But a self built only of beginnings stays a sketch. The developmental task is not to slow the fire but to give it something worth burning for longer than a morning — the campaign, not merely the charge. When you learn to stay past the point where novelty ends and mastery begins, the warrior becomes something rarer, a founder, and what you begin can go on without your having to abandon it."
+      ],
+      "invitation": "To carry the first fire past the first hour — from igniting a self to sustaining one.",
+      "edges": { "point": "sun", "sign": "aries", "see_also": ["canon:mars", "house_1"] }
+    },
+    "taurus": {
+      "id": "sun_in_taurus",
+      "title": "The Root and the Crown",
+      "body": [
+        "In Taurus the drive to become someone moves slowly, sensually, by rooting — you build a self the way an orchard is built, season over season, and you distrust any identity that could be assembled in a weekend. What is real, to you, is what endures and can be touched: the kept promise, the paid-off house, the friendship in its third decade. This gives you a gravity that others rest against. You may notice that people bring you their chaos precisely because you will not add to it — and that you privately measure yourself by what you have made last.",
+        "The shadow is that endurance can quietly become entrenchment. Somewhere you learned that safety lives in the unchanged thing, and so a part of you defends arrangements long after they have stopped feeding you — the job, the habit, the version of yourself that was accurate five years ago. That holding once protected you; it kept a young self from being uprooted by other people's weather. But you are not the fence around the garden; you are what is growing in it. The invitation is to discover that your worth survives transplanting — that the root was always for the sake of the crown, and that stillness was never the same thing as peace."
+      ],
+      "invitation": "To trust that what is truly yours survives change — security in the living root, not the locked gate.",
+      "edges": { "point": "sun", "sign": "taurus", "see_also": ["canon:venus", "house_2"] }
+    },
+    "gemini": {
+      "id": "sun_in_gemini",
+      "title": "The Two Lanterns",
+      "body": [
+        "In Gemini the self is learned by connecting — you become someone in the space between things, translating, comparing, carrying news from one world to another. Everything interests you and everything has a twin, including you: there is the version who charms the room and the version who watches the charming, taking notes. You may notice that you become whoever the conversation needs — fluent in each person's dialect within minutes — and that afterward, alone in the car, you sometimes wonder which of the day's selves was the signed original.",
+        "This doubling is not falseness. It began as intelligence: a quick young mind discovered that versatility opens doors sincerity alone cannot, and that being interesting was safer than being pinned down. The cost is that a self kept permanently in motion is hard to find at home. Your development does not ask you to choose one twin and bury the other — it asks you to stay somewhere long enough for meaning to form, to follow one question, one craft, one love past the point where it stops being novel. Depth is not the death of your quickness; it is what your quickness has been circling, waiting for permission to land."
+      ],
+      "invitation": "To let the many bright selves land on one branch long enough to become a life.",
+      "edges": { "point": "sun", "sign": "gemini", "see_also": ["canon:mercury", "house_3"] }
+    },
+    "cancer": {
+      "id": "sun_in_cancer",
+      "title": "The Hearth Inside the Shell",
+      "body": [
+        "In Cancer the drive to become someone moves protectively, tidally, feeling first — your identity is woven from belonging: who you shelter, who remembers you, the table you keep. Long before you could name yourself, you could read a room's weather, and so you became the one who tends. You may notice that you know everyone's griefs and birthdays, that you feed people almost reflexively — and that when someone turns and asks what you need, something in you goes quiet, as if the question had been addressed to a stranger.",
+        "The shell deserves respect: it grew because a softness like yours, exposed too early, learned that indirectness survives where openness gets hurt. So you approach your own life sideways, caring for yourself only through the care of others. But the Sun asks for more than safety; it asks you to become someone, not merely to protect someone. The developmental arc runs from the shell to the hearth inside it — from hiding the tender self to housing it, from being everyone's home to also living in one. When you let yourself be tended, need becomes a door others may enter rather than a tide you manage alone, and the belonging you have built finally includes you."
+      ],
+      "invitation": "To open the shell from the inside and take a seat at the table you have set for everyone else.",
+      "edges": { "point": "sun", "sign": "cancer", "see_also": ["canon:moon", "house_4"] }
+    },
+    "leo": {
+      "id": "sun_in_leo",
+      "title": "The Lion and the Mirror",
+      "body": [
+        "The Sun is at home in Leo, which does not make the task easy — it makes it central. You are here to become someone radiantly, wholeheartedly, by creating: your life itself is the artwork, and the heart wants witness. There is real generosity in this warmth; rooms organize around you not because you demand it but because you bring the fire people gather at. You may notice, though, that an unwitnessed joy feels strangely unfinished to you — that you check, mid-experience, whether it is being seen, the way an actor glances at the house.",
+        "The mirror deserves compassion. Somewhere a bright child learned that shining reliably drew love, and performance fused with existence: applause became evidence of being real. The cost is that the audience quietly becomes management, and the king ends up serving the court. The arc of this placement runs from seeking reflection to generating light — from shining in order to be loved to shining because that is what a sun does. When your creating no longer needs the mirror's permission, the radiance becomes what it was always meant to be: not a bid for witness but a warmth that makes others braver about their own light."
+      ],
+      "invitation": "To shine as a gift rather than a plea — light that no longer waits for the mirror.",
+      "edges": { "point": "sun", "sign": "leo", "see_also": ["canon:sun", "house_5"] }
+    },
+    "virgo": {
+      "id": "sun_in_virgo",
+      "title": "The Gold in the Grain",
+      "body": [
+        "In Virgo the drive to become someone works precisely, usefully, by refining — you forge a self through craft, and you sense the sacred hiding in the detail everyone else skips. Your devotion is practical: you love by improving, serve by noticing, worship by getting it right. You may notice that you preface your best work with an apology — a small verbal insurance against the flaw you are certain someone will find — and that you can accept praise only after listing what you would still fix.",
+        "The perfectionism was once protection: a young self concluded that being beyond criticism was the nearest available thing to being safe, perhaps to being loved. So the inner workshop runs day and night, editing the self before it is allowed out. But a life spent in revision never gets published, and the Sun cannot ripen in a drawer. The developmental invitation is mercy — not lowered standards but a wider ledger, one that counts the harvest and not only the blight. When you extend to yourself the patient craftsmanship you lavish on everything else, the refining becomes what it always wanted to be: not proof that you are finally acceptable, but the polishing of a gold that was in the grain from the start."
+      ],
+      "invitation": "To serve the work without sentencing the worker — mercy as the final refinement.",
+      "edges": { "point": "sun", "sign": "virgo", "see_also": ["canon:mercury", "house_6"] }
+    },
+    "libra": {
+      "id": "sun_in_libra",
+      "title": "The Sword Beneath the Scales",
+      "body": [
+        "In Libra the self is learned through the other — you become someone by weighing, harmonizing, meeting: your identity takes shape in the space between two people the way a note takes shape between two walls. You have a genuine gift for seeing every side, and rooms are more just and more beautiful because you are in them. You may notice that you can argue either side of almost any question with grace — except the question of what you yourself want, where the fluent advocate suddenly has no client.",
+        "The accommodation began honestly: somewhere you learned that peace in the room was the price of your place in it, and you became a maker of atmospheres, editing your preferences before they could disturb anyone. But fairness that never lands in a verdict becomes a beautiful fog, and a self assembled entirely from others' comfort has no signature. The Sun in Libra carries a sword beneath its scales: judgment, the capacity to choose. Your development is not to abandon harmony but to discover that real peace is built on the far side of honest decision — that choosing, even when it costs the quiet, is how the diplomat becomes the judge and the mirror becomes a face."
+      ],
+      "invitation": "To choose — and find that the deepest harmony begins on the far side of a decision.",
+      "edges": { "point": "sun", "sign": "libra", "see_also": ["canon:venus", "house_7"] }
+    },
+    "scorpio": {
+      "id": "sun_in_scorpio",
+      "title": "The Phoenix in the Well",
+      "body": [
+        "In Scorpio the drive to become someone moves intensely, totally, beneath the surface. You do not want a life; you want the truth of one, and you would rather sit in an honest darkness than in a lit room full of pleasant lies. Your identity is forged in the deep transactions — intimacy, crisis, the things people only say once. You may notice that you ask questions whose answers you already know, quietly testing whether the person in front of you will tell the truth — and filing away, without comment, the ones who do not.",
+        "The concealment deserves its dignity. Somewhere you learned that what people know about you can be used, and privacy became armor: you read others to their depths while remaining, yourself, a locked house with one lit window. Control was how a passionate nature survived powerlessness. But the Sun cannot become itself in a vault, and power hoarded curdles into vigilance. Your arc is the phoenix's, not the fortress's: to let the outgrown self burn on purpose rather than defending it to the last, and to discover that surrender — power shared, truth spoken first, the door unlocked from inside — is not the end of your strength but its adult form."
+      ],
+      "invitation": "To be transformed on purpose — trading the locked fortress for the fire that renews.",
+      "edges": { "point": "sun", "sign": "scorpio", "see_also": ["canon:pluto", "house_8"] }
+    },
+    "sagittarius": {
+      "id": "sun_in_sagittarius",
+      "title": "The Arrow and the Altar",
+      "body": [
+        "In Sagittarius the self is learned expansively, honestly, toward the horizon — you become someone by aiming at meaning: the journey, the philosophy, the larger story that makes the day's facts make sense. Your faith that life is going somewhere is genuine and contagious; people leave conversations with you having remembered why they wanted anything at all. You may notice that you are most eloquent about the life you are about to begin — the next country, the next study, the reinvention scheduled for spring — and vaguest about the one currently in progress.",
+        "The perpetual departure was once wisdom: a young spirit learned that as long as the horizon stayed open, no disappointment could be final and no room could become a cage. But an arrow that never lands never means anything, and the promise of elsewhere can quietly become a way of breaking faith with here. The developmental invitation is presence — to discover that the horizon is a direction, not an address, and that the sacred distance you keep riding toward can be built where you stand. When the quest learns to keep its promises, faith stops being escape velocity and becomes what it was always for: a fire that lights the actual road."
+      ],
+      "invitation": "To bring the horizon home — a faith that arrives, and keeps its promises here.",
+      "edges": { "point": "sun", "sign": "sagittarius", "see_also": ["canon:jupiter", "house_9"] }
+    },
+    "capricorn": {
+      "id": "sun_in_capricorn",
+      "title": "The Mountain and the Spring",
+      "body": [
+        "In Capricorn the drive to become someone climbs — strategically, patiently, with a respect for structure that others mistake for coldness and you know to be devotion. You measure yourself in earned things: the competence no one can revoke, the word that is kept, the long game played all the way through. You may notice that when someone asks how you are, you answer with a progress report — as if your state were a project's state, and rest were something you must first deserve.",
+        "The discipline was armor before it was character: somewhere a young self concluded that love and standing must be earned in advance, and that need was a debt best never incurred. So you climbed, and the climbing worked — but a summit reached by someone who has postponed themselves is a strangely quiet place. The Sun here is not asking you to descend. It asks what the mountain was for: the spring near the top, the tenderness that authority exists to shelter, the moment the builder finally lives in the house. Your arc runs from dread of the task to authorship of it — and beyond authorship, to warmth: mastery that no longer needs to be deserved before it is enjoyed."
+      ],
+      "invitation": "To let the climb serve the life, and not the life the climb.",
+      "edges": { "point": "sun", "sign": "capricorn", "see_also": ["canon:saturn", "house_10"] }
+    },
+    "aquarius": {
+      "id": "sun_in_aquarius",
+      "title": "The Comet and the Choir",
+      "body": [
+        "In Aquarius the self is learned from the outside looking in — you become someone by stepping back far enough to see the pattern: the system, the principle, the future the present is pretending not to need. Your loyalty runs to truth rather than to tribe, which makes you the one who says what the room has agreed not to notice. You may notice that you describe your own life in a correspondent's tone — witty, analytic, slightly aerial — as though you were covering the story rather than living it.",
+        "The distance was earned honestly: somewhere, belonging was offered at the price of agreement, and you chose your mind. Exile became a style, then a comfort — the observatory is safer than the crowd, and objectivity makes a dignified name for loneliness. But the Sun cannot complete itself as pure signal; it wants incarnation. Your developmental arc runs from shock to authentic difference lived calmly — from the comet that visits the human system to a star that joins it without dimming. The invitation is belonging without surrender: to walk into the choir carrying your dissonant, necessary note, and to discover that the future you serve is built from inside the species, not above it."
+      ],
+      "invitation": "To join the human choir without losing the note only you can hold.",
+      "edges": { "point": "sun", "sign": "aquarius", "see_also": ["canon:uranus", "house_11"] }
+    },
+    "pisces": {
+      "id": "sun_in_pisces",
+      "title": "The Lamp on the Tide",
+      "body": [
+        "In Pisces the drive to become someone moves porously, compassionately, by dissolving — the membrane between you and the world is thin, which is both the gift and the tax. Moods cross into you like weather; strangers' sorrows arrive feeling like mail delivered to your address. You may notice that you can describe the inner life of everyone you love in tender detail, and that the question of what you yourself want arrives like a letter in a language you can read but not yet write.",
+        "The porousness once protected you: a self that offers no hard edges is difficult to strike, and disappearing into others' needs was a way of being loved that asked nothing dangerous. But the Sun's task is incarnation, and compassion without banks becomes flood — a generosity that quietly drowns the giver. Your development is not to seal the membrane; it is to give the water form. A river needs banks not to imprison it but so that it can actually arrive somewhere. When you learn to go down to the sea and come back — open by choice rather than by default — you return carrying what the drier lives around you cannot produce: imagery, mercy, music, the reminder that the ocean exists."
+      ],
+      "invitation": "To give the ocean banks — a self defined enough to deliver its compassion somewhere.",
+      "edges": { "point": "sun", "sign": "pisces", "see_also": ["canon:neptune", "house_12"] }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "sun_in_house_1",
+      "title": "The Sunrise at the Door",
+      "body": [
+        "Your Sun stands in the first house, on the threshold itself — the drive to become someone is stationed at the front door of the personality, and so your becoming happens in public whether you planned it or not. You arrive before you speak: rooms register you, react to you, assign you roles in dramas you never auditioned for. You may notice that people describe you as confident, vivid, even intimidating, in ways that puzzle you — because from the inside you experience not confidence but exposure, a life lived with the curtain permanently up.",
+        "The temptation of this placement is to let the entrance replace the journey — to perfect the arrival, the persona, the first impression, until the door becomes the whole house. That polish once protected you; being seen on your own terms felt safer than being seen accidentally. But the first house is not a mask over the real self; it is the front door to it, and doors are for walking through. Your development is to let the visible self and the actual self converge — to become in fact what you appear at first sight to be. Then presence stops being a performance to maintain and becomes what it is for: courage made visible, an example of being unapologetically underway."
+      ],
+      "invitation": "To make the face and the self one thing — an arrival that keeps its promise.",
+      "edges": { "point": "sun", "house": 1, "see_also": ["house_1", "canon:mars"] }
+    },
+    "2": {
+      "id": "sun_in_house_2",
+      "title": "The Storehouse and the Seed",
+      "body": [
+        "Your Sun lives in the second house, the storehouse — identity here is built from what you have: skills, savings, land, the work of your hands, and beneath all of it the question of what you believe you are worth. Making, keeping, and providing are not chores to you; they are how you become someone. You may notice that in seasons of self-doubt you reach for the measurable — checking the account, the inventory, the list of things accomplished — as if your substance could be confirmed by audit.",
+        "The equation was learned honestly: somewhere, worth had to be demonstrated before it would be believed, and having became the proof of being. The danger is subtle — a self collateralized against its assets rises and falls with them, and no balance is ever quite enough to settle the underlying question. The Sun in this house asks you to dig beneath the storehouse floor to the older treasure: the worth that precedes production, the value you carried before you had earned anything at all. When that is found, your gift for making returns to its true purpose — not proving your substance but expressing it. You build, then, the way a seed does: out of abundance, not out of argument."
+      ],
+      "invitation": "To know your worth as the source of what you build, not the sum of it.",
+      "edges": { "point": "sun", "house": 2, "see_also": ["house_2", "canon:venus"] }
+    },
+    "3": {
+      "id": "sun_in_house_3",
+      "title": "The Herald in the Lane",
+      "body": [
+        "Your Sun lives in the third house, the neighborhood — the near world of siblings and streets, errands and conversations, the daily mind. You become someone by naming things: asking, telling, writing, translating the world into words and the words back into world. Your identity is verbal, mobile, local; the great questions come to you dressed as ordinary Tuesdays. You may notice that you do not fully know what you think until you hear yourself say it — that speech, for you, is not the report of thought but the act of it.",
+        "The risk of this placement is scatter with a fluent surface: commentary in place of commitment, a mind so busy relaying that it never signs its name to anything. That busyness once protected you — in the world you grew up in, quickness was a way to matter, and being interesting a way to be safe. But a herald is not a lesser office than a king; the whole kingdom depends on his word arriving true. Your development is to let curiosity mature into voice — to stop merely carrying messages and begin authoring one. When you claim what you know, the lane you have walked all your life reveals itself as the road it always was."
+      ],
+      "invitation": "To move from relaying the world's words to authoring your own.",
+      "edges": { "point": "sun", "house": 3, "see_also": ["house_3", "canon:mercury"] }
+    },
+    "4": {
+      "id": "sun_in_house_4",
+      "title": "The Fire in the Cellar",
+      "body": [
+        "Your Sun lives in the fourth house, the taproot — your becoming happens in the private base of life: home, family, the long inheritance of feeling that runs beneath every public act. Others build their identity in daylight; yours grows downward first, like a tree that spends its early years invisibly, all root. You may notice that you are a different person inside your own walls — fuller, funnier, more authoritative — and that public settings receive a competent envoy while the sovereign stays home.",
+        "There is dignity in this interiority, and often an old story: somewhere, the outer world proved unreliable or the inner one needed a keeper, and you became the tender of the family's fire — sometimes the quiet re-founder of a lineage that needed one. The risk is that the cellar becomes a hiding place, privacy shading into concealment, a life fully lived only where no one can see it. But this hearth was never meant to warm a single person. Your arc is the late bloomer's: the root years were not delay but foundation, and the invitation is to carry the fire up the stairs — to let what you have become in private stand, in its own time, in the open."
+      ],
+      "invitation": "To let the self that is real at home become the self the world meets.",
+      "edges": { "point": "sun", "house": 4, "see_also": ["house_4", "canon:moon"] }
+    },
+    "5": {
+      "id": "sun_in_house_5",
+      "title": "The Child with the Torch",
+      "body": [
+        "Your Sun lives in the fifth house, the hearth-fire — and here the drive to become someone is at its most native: you become yourself by creating, playing, romancing, making things that carry your unmistakable signature into the world. Something in you knows that existence is meant to be enjoyed in the open, that delight is not a break from the serious life but the center of it. You may notice that finishing something you made — a meal, a song, a garden bed — gives you a sense of being real that no amount of duty ever quite delivers.",
+        "The vulnerability of this placement is that creation invites witness, and witness can become a dependency: the work made for applause rather than from joy, the romance staged partly for its audience, the child performing brightness because brightness was what got loved. That performance once protected a real flame from indifference. But the fire does not actually need permission to burn. Your development runs from seeking reflection to generating light — to play because play is your form of worship, to make because making is how you praise existence. When the torch is carried for the joy of carrying it, others warm themselves at your permission to be alive."
+      ],
+      "invitation": "To create from joy rather than for applause — play as your form of praise.",
+      "edges": { "point": "sun", "house": 5, "see_also": ["house_5", "canon:sun"] }
+    },
+    "6": {
+      "id": "sun_in_house_6",
+      "title": "The Altar in the Workshop",
+      "body": [
+        "Your Sun lives in the sixth house, the workshop — you become someone through craft, service, and the humble liturgy of routine: the body maintained, the work done properly, the small things kept in order so that larger things can live. There is a monk in you who understands that how you do Tuesday is who you are. You may notice that you feel entitled to rest only after visible output — that a day without production leaves you obscurely guilty, as if being had to be justified by doing.",
+        "That equation was learned somewhere real: usefulness was the reliable way to be valued, perhaps the only safe one, and so service quietly became identity's substitute rather than its expression. The cost is a life that runs beautifully and belongs to everyone else's purposes — the finest instrument in the orchestra, never given a solo. But the sixth house is not the servants' quarters of the chart; it is the place where work becomes prayer when the worker is present in it. Your arc is to move from being useful to being devoted: to choose the master your craft serves, and to let your daily disciplines become the altar they were always trying to be — a life made holy by attention, offered rather than owed."
+      ],
+      "invitation": "To serve from devotion rather than for justification — craft as chosen worship.",
+      "edges": { "point": "sun", "house": 6, "see_also": ["house_6", "canon:mercury"] }
+    },
+    "7": {
+      "id": "sun_in_house_7",
+      "title": "The Crown Across the Table",
+      "body": [
+        "Your Sun lives in the seventh house, the mirror — your becoming is staged in partnership: the significant other, the collaborator, the worthy opponent. You find out who you are by meeting who you are not, and your gifts — for negotiation, for genuine interest in the other, for making a two into more than its halves — are real and rare. You may notice that you discover your own convictions mainly in dialogue, sometimes only when disagreeing — and that alone, without a face across the table, the question of what you want goes strangely faint.",
+        "The risk here is a quiet outsourcing: choosing radiant, decisive partners and living adjacent to their light, as if your own crown were safer worn by someone else. Often this began as a love that felt conditional on staying the smaller one — orbiting was the price of closeness. But what you keep meeting in others is frequently what you have disowned in yourself, and this house stages the reunion. Your development is to withdraw the projection without withdrawing from relationship: to bring a whole self to the table rather than a half seeking completion. Then partnership becomes what it is for — not the place you find your light, but the place you learn to share it."
+      ],
+      "invitation": "To wear the crown you keep admiring on others — whole beside another whole.",
+      "edges": { "point": "sun", "house": 7, "see_also": ["house_7", "canon:venus"] }
+    },
+    "8": {
+      "id": "sun_in_house_8",
+      "title": "The Dawn in the Vault",
+      "body": [
+        "Your Sun lives in the eighth house, the depths — your becoming happens underground: in intimacy, in shared resources, in the crises and passages where surfaces fail and something truer is exposed. You are drawn to what most people politely avoid — the psyche's basement, the unsaid thing in the family, the moment a person shows you who they are. You may notice that you only truly trust someone after you have seen them at their worst — that charm and ease bounce off you, while a confessed weakness opens the door.",
+        "This orientation was forged, usually early, in an atmosphere where power moved invisibly and survival meant reading the undercurrents. Control became safety: knowing more than you reveal, keeping your resources unmerged, loving with one hand near the exit. Every one of those defenses once protected something tender. But the eighth house is the house of transformation, not merely of vigilance, and a sun kept in a vault gives no warmth. Your arc is periodic and real: to let outgrown selves die on purpose, to merge — money, body, truth — without keeping a secret escape, and to discover that what rises from each surrender is not a diminished self but a dawn."
+      ],
+      "invitation": "To let yourself be remade by intimacy rather than guarded from it.",
+      "edges": { "point": "sun", "house": 8, "see_also": ["house_8", "canon:pluto"] }
+    },
+    "9": {
+      "id": "sun_in_house_9",
+      "title": "The Temple and the Road",
+      "body": [
+        "Your Sun lives in the ninth house, the far horizon — you become someone by leaving the neighborhood: through study, travel, philosophy, the long journey toward a truth large enough to live inside. The answers you inherited stopped sufficing early, and your life has been an argument with smallness ever since. You may notice that you feel most yourself in departure — the airport, the new discipline, the first chapter — and that a part of you starts planning the next pilgrimage while still unpacking from the last.",
+        "The seeking is genuine, but it can become its own hiding place: as long as truth lives elsewhere, you are never accountable to the partial, local, imperfect truth of your actual life. The perpetual student never has to profess; the perpetual pilgrim never has to build the temple. That deferral once protected you from dogma — from becoming the kind of certainty you fled. But the Sun here ripens into the teacher, and teaching requires standing somewhere. Your arc is from seeking to professing: to let the road you have traveled compress into a faith you will stake your name on — held firmly, worn lightly, a temple with its doors open."
+      ],
+      "invitation": "To stop circling the truth and inhabit one — firm enough to build on, open enough to grow.",
+      "edges": { "point": "sun", "house": 9, "see_also": ["house_9", "canon:jupiter"] }
+    },
+    "10": {
+      "id": "sun_in_house_10",
+      "title": "The Beacon on the Summit",
+      "body": [
+        "Your Sun lives in the tenth house, the summit — your becoming is public business: vocation, reputation, the visible answer to the question of what your life is for. Something in you has always known you were headed somewhere that could be seen, and others sense it too; authority gets assigned to you even when you have not asked for it. You may notice that you feel most real when introduced by what you do — and that an open Saturday, with no role to perform and nothing to advance, can leave you strangely unmoored.",
+        "Often there is an inheritance here: a parent experienced as model or as measure, whose standard you have been answering all your life, whether by fulfilling it or refuting it. The risk is that the office swallows the officeholder — a summit reached in borrowed weather, a life that is all résumé and no author. That striving once protected you; achievement was the reliable currency of love. But a beacon is not lit to glorify its tower. Your arc is to make the ambition your own — to climb toward a summit you chose rather than one you were assigned — until your public standing becomes a true expression of the private self, and the light you keep guides more ships than yours."
+      ],
+      "invitation": "To author the ambition instead of inheriting it — a summit that expresses you rather than proves you.",
+      "edges": { "point": "sun", "house": 10, "see_also": ["house_10", "canon:saturn"] }
+    },
+    "11": {
+      "id": "sun_in_house_11",
+      "title": "The Star and the Constellation",
+      "body": [
+        "Your Sun lives in the eleventh house, the commons — you become someone among others: in friendship, in movements, in the future-facing projects where individual gifts join a larger current. You think in terms of we almost natively; causes find you, groups elect you, and your imagination runs ahead of the present toward the world as it could be. You may notice that you shine most freely on behalf of something else — brilliant when advocating for the team, the cause, the friend — and oddly shy about wanting anything that visible for yourself alone.",
+        "That deflection has a history: somewhere, personal shining felt dangerous or selfish, and the group became a legitimate place to put a fire that was not allowed a name of its own. The cost is a self dissolved into its memberships — the tribe's purpose worn in place of a personal one, belonging purchased with self-abandonment. But a constellation is made of actual stars; the pattern has no light of its own. Your development is to bring a distinct, owned self to the collective rather than disappearing into it — to discover that your clearest gift to the shared future is precisely the individuality you have been quietly donating away."
+      ],
+      "invitation": "To bring a whole star to the constellation — a belonging that requires you, not less of you.",
+      "edges": { "point": "sun", "house": 11, "see_also": ["house_11", "canon:uranus"] }
+    },
+    "12": {
+      "id": "sun_in_house_12",
+      "title": "The Lantern Behind the Veil",
+      "body": [
+        "Your Sun lives in the twelfth house, the sea behind the house — your becoming is staged in the hidden places: solitude, sanctuaries, the ancestral and collective tides that most people never feel moving beneath their days. The membrane between your identity and everything else is thin. You may notice that when someone asks what you want, the answer arrives slowly, secondhand, as if retrieved from a room several doors away — not for lack of wanting, but because others' longings, moods, and unlived lives drift into you unlabeled, and sorting the shipment takes half your strength.",
+        "A self this permeable often learns early to keep its light behind a veil — visible in service, in art, in care for the suffering, but never quite claimed in the first person. Sometimes an inherited script runs here: an ancestor's unlived life, a family's unspoken debt, quietly assigned to you for settlement. The undeveloped form of this placement is a life spent as everyone's confessor and no one's protagonist. The developed form is rarer and worth everything: an identity that goes down to the sea deliberately and comes back, carrying compassion, imagery, and a depth of presence the daylight houses cannot manufacture. Your arc is to be hidden by choice rather than by habit — a lantern, not a secret."
+      ],
+      "invitation": "To carry your light out from behind the veil — hidden at times by vocation, but never lost to yourself.",
+      "edges": { "point": "sun", "house": 12, "see_also": ["house_12", "canon:neptune"] }
+    }
+  }
+}

@@ -1,0 +1,441 @@
+{
+  "point": "chiron",
+  "name": "Chiron",
+  "glyph": "⚷",
+  "in_sign": {
+    "aries": {
+      "id": "chiron_in_aries",
+      "title": "The Notched Spear",
+      "body": [
+        "Somewhere early, the simple act of wanting something first — of charging, claiming, saying me — drew blood. Perhaps assertion was punished, or your first brave attempts were met with laughter, and the lesson that settled into the body was that your fire injures, or fails, or both. So the will learned to hesitate at the exact moment it should ignite: a warrior who checks the spear for cracks before every charge.",
+        "You may notice that you defend other people's right to take up space with a ferocity you never extend to yourself — first in line to fight a friend's battle, last to name what you want for dinner. The hesitation is not cowardice; it is an old bandage, wrapped by someone who once learned that boldness costs. But watch what happens when a frightened person stands near you: your presence lends them nerve. Having studied the anatomy of hesitation from the inside, you know exactly where courage sticks, and exactly what word frees it.",
+        "This is the medicine. The wound around beginning makes you a mentor of beginnings — and the last student you are asked to teach is yourself, spear in hand, wanting something first and saying so."
+      ],
+      "invitation": "To lend yourself the courage you have always lent everyone else, and to let wanting be an honorable act.",
+      "edges": {
+        "point": "chiron",
+        "sign": "aries",
+        "see_also": [
+          "canon:mars",
+          "house_1"
+        ]
+      }
+    },
+    "taurus": {
+      "id": "chiron_in_taurus",
+      "title": "The Gold in the Crack",
+      "body": [
+        "The injury here settles into the sense of worth: a conviction older than argument that what you have can be taken, and that what you are may not be enough to keep it. Perhaps security once vanished overnight, or your body was found wanting, or love arrived with a price attached. Whatever the origin, having came to feel provisional — and so you hold your own value the way one holds a cracked bowl, carefully, braced for the day it fails.",
+        "You may notice that you undercharge for what you do best, that you give away what you love before anyone can take it, and that receiving — a gift, a compliment, help — makes you faintly ashamed, as though your side of the ledger could never balance. This caution is not smallness; it once kept a frightened person solvent. But others sense something else in you entirely: in your presence, their own worth feels less negotiable.",
+        "The Japanese menders of pottery fill the break with gold, so the repair becomes the most valuable line in the vessel. That is this placement's work. Your broken place, tended rather than hidden, becomes the very seam by which you teach others — and finally yourself — that worth survives breakage."
+      ],
+      "invitation": "To hold your own worth as something given rather than earned, and to let the mended place shine.",
+      "edges": {
+        "point": "chiron",
+        "sign": "taurus",
+        "see_also": [
+          "canon:venus",
+          "house_2"
+        ]
+      }
+    },
+    "gemini": {
+      "id": "chiron_in_gemini",
+      "title": "The Lyre with the Missing String",
+      "body": [
+        "The wound here touches the voice and the mind that feeds it. Somewhere early, your words came out wrong, or slow, or were talked over — and a conclusion lodged deep: that your intelligence is the counterfeit kind, plausible until examined. So you became careful. You learned to rehearse.",
+        "You may notice that you compose sentences in your head before risking them aloud, that you go quiet in fast rooms full of quick talkers, and that you write with an ease you can never quite speak. The care is not weakness; it was a child's ingenious answer to being unheard. And it has made you something rare: a person who knows precisely how it feels not to be understood, and who therefore explains things so that no one is left behind. People say of you, you make it make sense. That is not an accident. That is the wound, working.",
+        "The instrument is not broken; it is tuned differently, and its missing string has taught you every workaround the music allows. What remains is to play unrehearsed — to trust that your voice, hesitations and all, was always worth the room's attention."
+      ],
+      "invitation": "To speak in your own unrehearsed voice and discover it was never the counterfeit you feared.",
+      "edges": {
+        "point": "chiron",
+        "sign": "gemini",
+        "see_also": [
+          "canon:mercury",
+          "house_3"
+        ]
+      }
+    },
+    "cancer": {
+      "id": "chiron_in_cancer",
+      "title": "The Orphan at the Hearth",
+      "body": [
+        "This wound lives where belonging should be. Perhaps the care you needed arrived distracted, or conditional, or grieving its own losses — and you concluded, wordlessly, that home is something other people have. A homesickness took root that no address cures: you can stand in your own kitchen and miss a place that never quite existed.",
+        "You may notice that you have become everyone else's hearth — the one who remembers birthdays, stocks the guest bed, notices who has gone quiet at the table — while privately feeling like a guest everywhere, including in your own family's photographs. This is not martyrdom; it is the orphan's brilliant logic: build the shelter you were not given, and stand just outside its warmth. But the shelter is real. People heal inside the belonging you make. Your tenderness is not compensation; it is expertise.",
+        "The arc asks one more thing: walk through your own front door. Let yourself be mothered — by friends, by chosen family, by the practiced caretaker inside you who has never once been assigned to your own case. The orphan and the hearth-keeper are the same person, and the fire is yours to sit beside."
+      ],
+      "invitation": "To take a seat at the hearth you have spent a lifetime tending for others.",
+      "edges": {
+        "point": "chiron",
+        "sign": "cancer",
+        "see_also": [
+          "canon:moon",
+          "house_4"
+        ]
+      }
+    },
+    "leo": {
+      "id": "chiron_in_leo",
+      "title": "The Dimmed Radiance",
+      "body": [
+        "The injury here concerns being seen. Somewhere early, your shine drew the wrong response — ridicule, envy, indifference — at the exact moment you offered your heart's work to the room. The lesson cut deep: radiance is dangerous. So you learned to dim strategically, to make yourself useful to the light rather than stand in it.",
+        "You may notice that you deflect praise with a joke before it can land, that you would rather direct the play than audition for it, and that you are lavishly generous toward other people's talent — the loudest applause in the hall, for everyone but yourself. This generosity is real, and it is also armor: the understudy cannot be humiliated on stage. Yet watch what your encouragement does. Under your witness, timid people bloom. You know exactly what a heart needs to hear before it dares to shine, because no one said it to you.",
+        "That knowledge is the medicine, and it has one remaining patient. The crown you keep polishing for others fits. The arc of this placement is the walk from the wings to center stage — trembling permitted — to let yourself be seen enjoying your own existence."
+      ],
+      "invitation": "To step into the light you have so faithfully held for everyone else.",
+      "edges": {
+        "point": "chiron",
+        "sign": "leo",
+        "see_also": [
+          "canon:sun",
+          "house_5"
+        ]
+      }
+    },
+    "virgo": {
+      "id": "chiron_in_virgo",
+      "title": "The Imperfect Offering",
+      "body": [
+        "The wound here is the flaw that only you can see — and you can always see it. Somewhere early, good enough was a moving target: the praised report card with the noted exception, the body examined rather than embraced. You concluded that love is an audit, and you have been preparing for inspection ever since.",
+        "You may notice that you apologize for your work in the act of handing it over, that a tenth revision still goes out labeled a draft, and that you extend to others a mercy you would never dream of claiming — their errors are human, yours are evidence. This scrupulousness is not vanity in reverse; it was a child's way of staying safe in a house where flaws were counted. And it has trained an extraordinary eye. You find the crack in anything — not to condemn it, but because some part of you has always wanted to mend.",
+        "That is the calling hidden in the injury: precision joined to compassion, the healer's gaze that locates the flaw in order to tend it. The last piece of the craft is mercy for the craftsman. The offering was never meant to be perfect; it was meant to be given."
+      ],
+      "invitation": "To offer your imperfect work, and your imperfect self, without apology.",
+      "edges": {
+        "point": "chiron",
+        "sign": "virgo",
+        "see_also": [
+          "canon:mercury",
+          "house_6"
+        ]
+      }
+    },
+    "libra": {
+      "id": "chiron_in_libra",
+      "title": "The Wound in the Mirror",
+      "body": [
+        "This wound was made in relationship, and it aches in relationship still. Somewhere early, harmony broke around you — a rejection, a household of quiet warfare, a love withdrawn without explanation — and you drew the conclusion that closeness is a thing you must maintain for others but cannot quite be granted. Since then, every bond has carried a faint tremor: the certainty that the balance will tip, and that when it does, you will be the one asked to leave.",
+        "You may notice that you have become the mediator of everyone's conflicts while no one, ever, has heard your side of anything — that you keep the peace by paying for it privately, editing your needs out of every negotiation before it begins. This diplomacy is not falseness; it was once the only way to stay in the room. And it has made you a connoisseur of rupture and repair. Friends bring you their marriages the way one brings a watch to the only person in town who understands the mechanism.",
+        "The medicine you offer is real. The arc is to receive it: to put your full weight into the scale, state your terms, and discover that a bond can hold a whole person."
+      ],
+      "invitation": "To enter the scale with your whole weight and let yourself be truly met.",
+      "edges": {
+        "point": "chiron",
+        "sign": "libra",
+        "see_also": [
+          "canon:venus",
+          "house_7"
+        ]
+      }
+    },
+    "scorpio": {
+      "id": "chiron_in_scorpio",
+      "title": "The Venom and the Cure",
+      "body": [
+        "The wound here happened in the deep end — a betrayal, a violation of trust, a loss that arrived without permission — and it taught you that intimacy and injury share a door. Since then you have kept the keys. You read rooms for danger, people for motive, and you let others close in carefully measured doses, one secret at a time, watching what they do with it.",
+        "You may notice that you test people without telling them they are being tested — offering a small confidence and auditing its fate — and that however deep a love goes, one room in you stays locked, its existence undisclosed. This vigilance is not coldness; it is the survivor's craft, and it once kept the unsurvivable at bay. It has also given you an unusual gift: nothing human shocks you. People tell you what they have told no one else, because they sense you have been to the bottom and returned.",
+        "The old apothecaries knew that poison and remedy are one substance, distinguished by the dose. Your history is such a substance. Administered as vigilance, it isolates; offered as understanding, it heals. The remaining work is to unlock the last room for one trusted witness — and let the cure include you."
+      ],
+      "invitation": "To let one trusted other into the locked room, and find that the venom has become medicine.",
+      "edges": {
+        "point": "chiron",
+        "sign": "scorpio",
+        "see_also": [
+          "canon:pluto",
+          "house_8"
+        ]
+      }
+    },
+    "sagittarius": {
+      "id": "chiron_in_sagittarius",
+      "title": "The Limping Pilgrim",
+      "body": [
+        "The wound here is a broken faith. Somewhere along the road, the meaning you were promised failed — a doctrine that did not hold, a teacher who fell, a God who did not answer — and the pilgrim in you kept walking with a limp no one else can see. You still believe in believing; you have simply never again trusted a map all the way.",
+        "You may notice that your shelves hold a dozen philosophies, each mastered and none inhabited — that you can argue any faith brilliantly and rest in none, keeping the horizon at a safe distance precisely because you once ran toward it with your whole heart. This wariness is not cynicism; it is a burned pilgrim's respect for fire. And it is exactly what makes seekers trust you. You never sell certainty. You tell the truth about the road, including where it broke you, and your honesty gives others permission to believe without lying to themselves.",
+        "The centaur who taught the heroes carried a wound he could not cure, and taught the better for it. So with you: your limp is not the end of the pilgrimage but its credential. The arc is a faith wide enough to include your doubt — and the next horizon anyway."
+      ],
+      "invitation": "To walk toward meaning again, limp and all, with a faith that has room for doubt.",
+      "edges": {
+        "point": "chiron",
+        "sign": "sagittarius",
+        "see_also": [
+          "canon:jupiter",
+          "house_9"
+        ]
+      }
+    },
+    "capricorn": {
+      "id": "chiron_in_capricorn",
+      "title": "The Cracked Cornerstone",
+      "body": [
+        "The wound here concerns legitimacy — the sense, installed early, that recognition belongs to others and must be extracted, ounce by ounce, from a world inclined to withhold it. Perhaps an authority you needed dismissed you, or measured you and looked away. You answered the only way a determined child can: by climbing.",
+        "You may notice that you outwork everyone in the room and discount each achievement in the moment it arrives — the promotion reframed as luck, the finished work as overdue — so that the summit keeps relocating just above your head. You may also notice that titles impress you less than they impress others, because you know from inside how little they warm. None of this is ingratitude; it is the logic of a builder who was told the ground itself was faulty. Yet look at what stands: people trust your competence with their careers, their crises, their hopes. The structure holds. It was never the stone that was cracked — only the surveyor's report.",
+        "The arc is authorship: to sign your work, let it count, and become the generous authority you once needed — the elder who tells a younger climber, credibly, you are already enough for this."
+      ],
+      "invitation": "To let your achievements finally count, and to author the legitimacy you were never granted.",
+      "edges": {
+        "point": "chiron",
+        "sign": "capricorn",
+        "see_also": [
+          "canon:saturn",
+          "house_10"
+        ]
+      }
+    },
+    "aquarius": {
+      "id": "chiron_in_aquarius",
+      "title": "The Exile's Telescope",
+      "body": [
+        "The wound here is the ache of the outsider — the early, cellular knowledge that you were somehow not of the group: the wrong interests, the wrong angle of mind, the one who saw the emperor's nakedness and said so. Exile became a habitat. You learned to watch belonging through glass, and to tell yourself the glass was a choice.",
+        "You may notice that you are the confidant of groups you never feel inside — the one everyone tells the truth to precisely because you stand at the edge — and that at any gathering you drift, without deciding to, toward the door. The distance is not disdain; it once protected a strange and precious mind from a room that punished strangeness. And the view from the edge is genuinely clear: you see what the circle cannot see about itself — who it excludes, what it is becoming.",
+        "That sight is the medicine. Other exiles find you the way ships find a lighthouse, and in the rooms you make, difference is not merely tolerated but useful. The arc completes when you extend the welcome inward — joining, at last, the species you observe so well, without surrendering a single degree of your strangeness."
+      ],
+      "invitation": "To come in from the edge and belong without ceasing to be different.",
+      "edges": {
+        "point": "chiron",
+        "sign": "aquarius",
+        "see_also": [
+          "canon:uranus",
+          "house_11"
+        ]
+      }
+    },
+    "pisces": {
+      "id": "chiron_in_pisces",
+      "title": "The Drowned Bell",
+      "body": [
+        "The wound here is hard to point to, which is part of the wound: a grief with no clear author, a longing for a home that has no address — as though something was promised before words and never delivered. The boundary between your pain and the world's was never properly installed, and so the world's pain files itself under your name.",
+        "You may notice that you carry strangers' sorrows home — the news story that stays for days, the passing face on the train you cannot forget — and that you have been told all your life you are too sensitive, until you half-believed the sensitivity was the illness rather than the instrument. It is the instrument. What overwhelms you is real; you are simply reading it without the filters most people were issued. And those who are drowning know it. They reach for you because your compassion has no counterfeit in it — you have been in the water.",
+        "The drowned bell still rings, and sailors steer by it. The arc of this placement is banks for the river: practices, limits, forms that let the compassion flow somewhere instead of everywhere. You were not given the thin skin to suffer the world, but to tend it — without going under."
+      ],
+      "invitation": "To give your boundless compassion banks, so it can water the world without drowning you.",
+      "edges": {
+        "point": "chiron",
+        "sign": "pisces",
+        "see_also": [
+          "canon:neptune",
+          "house_12"
+        ]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "chiron_in_house_1",
+      "title": "The Scar at the Threshold",
+      "body": [
+        "The wound here stands at the front door: it concerns the body, the face, the first impression — the felt conviction that whatever is wrong with you is visible on arrival. Perhaps there was something about how you looked, moved, or entered a room that drew comment early, and you have been managing your own appearance like a press secretary ever since.",
+        "You may notice that you rehearse entrances — the casual line prepared in the car, the exact seat chosen for its angles — and that in photographs you know, without thinking, which side to offer. The management is not vanity; it is armor fitted to a child who was looked at wrongly. Yet notice the paradox that follows you everywhere: strangers confide in you within minutes. Something about your presence — precisely because it is not seamless — tells people the truth is safe here. Polished surfaces invite performance; yours invites honesty.",
+        "This is the gift hidden at the threshold. Your visible humanity is a door others walk through to reach their own. The arc is to walk through it yourself: to arrive undefended, and to discover that what you were hiding was the most welcoming thing about you."
+      ],
+      "invitation": "To arrive as you are, and let the unguarded face be the welcome.",
+      "edges": {
+        "point": "chiron",
+        "house": 1,
+        "see_also": [
+          "house_1",
+          "canon:mars"
+        ]
+      }
+    },
+    "2": {
+      "id": "chiron_in_house_2",
+      "title": "The Locked Storehouse",
+      "body": [
+        "The wound here lives in the storehouse — in money and possessions on the surface, and beneath them, in the older question of what you are worth. Somewhere early, worth and having came uncoupled from safety: there was not enough, or there was plenty that could vanish, or provision came with strings that taught you every gift has a price.",
+        "You may notice that you undercharge for your finest work and over-deliver on the rest; that you can give with real joy but receive with a flinch, hurrying to even the ledger before the kindness settles; that no bank balance, however sufficient, quiets the low hum of not-enough. This vigilance is not greed or its opposite — it is the bookkeeping of a child who learned that love and provision could be withdrawn without notice. And it has given you a healer's eye for worth. You see what people are worth before they do, and you say so, and they remember it for years.",
+        "The storehouse was never empty; it was locked, and the lock was fitted from inside. The arc is to appraise yourself with the same generous accuracy you turn on everyone else — and to let receiving become as easy as giving."
+      ],
+      "invitation": "To receive as generously as you give, and to know your worth without an audit.",
+      "edges": {
+        "point": "chiron",
+        "house": 2,
+        "see_also": [
+          "house_2",
+          "canon:venus"
+        ]
+      }
+    },
+    "3": {
+      "id": "chiron_in_house_3",
+      "title": "The Second Alphabet",
+      "body": [
+        "The wound here was made in the neighborhood of first words — the classroom, the kitchen table, the sibling pecking order — wherever your young mind was measured and found wanting, or simply talked over until it learned to wait. Perhaps another child held the title of the smart one; perhaps reading came late, or speech came crooked, and the laughter arrived on time.",
+        "You may notice that you still preface your opinions with a small apology — this might be a stupid question — in rooms where you are demonstrably the person who has thought longest; that you write fluently what you cannot say aloud; that a certain tone of casual mockery can return you, instantly, to age eight. The hesitancy is not slowness; it is scar tissue over a quick mind that was handled carelessly. And it has produced a rare teacher. Because you know exactly where understanding breaks down, you explain without condescension, and the people no one else bothers to reach learn things from you they were told were beyond them.",
+        "That is the medicine of this house: a second alphabet, built by hand. The arc is to speak in it — unapologetically, aloud, in your own name."
+      ],
+      "invitation": "To drop the apology from your voice and let your hard-won clarity speak aloud.",
+      "edges": {
+        "point": "chiron",
+        "house": 3,
+        "see_also": [
+          "house_3",
+          "canon:mercury"
+        ]
+      }
+    },
+    "4": {
+      "id": "chiron_in_house_4",
+      "title": "The House with the Missing Room",
+      "body": [
+        "The wound here lies at the taproot: the family, the childhood house, the ground floor of belonging. Perhaps home was a building rather than a base — physically present, emotionally vacant — or the family story had a room no one entered and a silence everyone maintained. You grew up housed and unhomed, and part of you has been quietly looking for the missing room ever since.",
+        "You may notice that you are more at ease in other people's kitchens than your own; that you host beautifully and then feel, at your own table, like a well-treated guest; that you study old family photographs the way a detective studies evidence, looking for the moment something left. This restlessness is not ingratitude — it is the accurate homing instinct of someone whose original address never quite held them. And notice what you build: friends heal in your spare room, at your table, inside the shelters you cannot stop making. You construct belonging with the precision of someone who has surveyed its absence.",
+        "The arc is to move in. Become the ancestor you needed — the one who ends the silence, furnishes the missing room, and lives there."
+      ],
+      "invitation": "To furnish the missing room and finally live in the home you build so well for others.",
+      "edges": {
+        "point": "chiron",
+        "house": 4,
+        "see_also": [
+          "house_4",
+          "canon:moon"
+        ]
+      }
+    },
+    "5": {
+      "id": "chiron_in_house_5",
+      "title": "The Child Behind the Curtain",
+      "body": [
+        "The wound here touches play — the hearth-fire of self-expression, romance, the child's unselfconscious delight in making things. Somewhere early, your joy was interrupted mid-performance: the drawing corrected, the game cut short, the exuberance met with a look that taught you delight is a liability. The child went behind the curtain and kept creating there, in secret, where no one could spoil it.",
+        "You may notice the evidence: notebooks of unfinished songs, manuscripts shown to no one, the hobby you describe, preemptively, as just a silly thing; and at other people's performances you clap loudest of anyone, your generosity toward their courage exactly proportional to the risk you will not take. None of this is a lack of talent — it is talent in protective custody. And your years backstage have made you extraordinary with beginners, with children, with anyone creating on trembling legs. You can hand a frightened person permission to play the way others hand over a cup of tea.",
+        "The permission is genuine. It has one remaining recipient. The arc of this placement is the walk out from behind the curtain, unfinished thing in hand, to let yourself be seen enjoying your own existence."
+      ],
+      "invitation": "To come out from behind the curtain and play where you can be seen.",
+      "edges": {
+        "point": "chiron",
+        "house": 5,
+        "see_also": [
+          "house_5",
+          "canon:sun"
+        ]
+      }
+    },
+    "6": {
+      "id": "chiron_in_house_6",
+      "title": "The Splintered Workbench",
+      "body": [
+        "The wound here is worked into the daily grain: the body, the routine, the question of usefulness. Perhaps you learned early that you were valued for what you did rather than what you were — or the body itself became unreliable, a workshop where something was always breaking. Either way, service and worth got soldered together, and rest began to feel like theft.",
+        "You may notice that you work through illness as a point of quiet pride, that your calendar has no unassigned hours, and that you tend everyone's maintenance — the colleague's workload, the friend's health regimen — while your own body must practically file a formal complaint to be heard. This industriousness is not compulsion for its own sake; it was once the reliable way to matter. And it has taught you the whole craft of care: you know how healing actually happens, not in grand gestures but in daily, faithful, unglamorous tending. People bring you their broken routines the way villagers bring tools to the one bench in town where things get properly mended.",
+        "The arc is to add one more name to the maintenance schedule. Devotion that includes the devotee is not diminished; it is finally complete."
+      ],
+      "invitation": "To tend your own body and days with the devotion you have always spent on others.",
+      "edges": {
+        "point": "chiron",
+        "house": 6,
+        "see_also": [
+          "house_6",
+          "canon:mercury"
+        ]
+      }
+    },
+    "7": {
+      "id": "chiron_in_house_7",
+      "title": "The Stranger at the Altar",
+      "body": [
+        "The wound here waits in the mirror of partnership. Perhaps the first marriage you witnessed was a war or a silence; perhaps an early love ended in a way that felt like diagnosis — proof of some private unfitness for the thing everyone else seems to manage. Since then, closeness has carried a clause: you expect the leaving, and you prepare for it.",
+        "You may notice a pattern in whom you choose: partners who arrive wounded, whom you set about mending — until the relationship has become a clinic with one patient and one practitioner, and you cannot remember when you were last asked how you are. Being the healer feels safer than being the held; the practitioner, after all, is never the one sent away. This is not manipulation — it is an old bargain struck by someone who learned that love must be earned through usefulness. And it has made you genuinely wise. Friends bring you their marriages because you understand rupture and repair from the inside.",
+        "The arc is mutuality: to choose someone who does not need mending, to be met rather than needed, and to discover that you can be loved off-duty."
+      ],
+      "invitation": "To let yourself be met as an equal, not needed as a healer.",
+      "edges": {
+        "point": "chiron",
+        "house": 7,
+        "see_also": [
+          "house_7",
+          "canon:venus"
+        ]
+      }
+    },
+    "8": {
+      "id": "chiron_in_house_8",
+      "title": "The Lantern in the Underworld",
+      "body": [
+        "The wound here lies in the depths — in trust, merging, and the losses that arrive without permission. Perhaps death visited early, or a betrayal reordered your world, or grief moved through the family like a bequest nobody signed for. You learned that opening to another is opening to weather, and you have kept storm shutters on the innermost windows ever since.",
+        "You may notice that you are the one everyone calls at deathbeds and divorces — steady, unshockable, able to sit with what makes others flee the room — and that no one, in all these years, has watched you grieve. Intimacy proceeds to a certain threshold and then meets a locked door whose existence you do not announce. The lock is not coldness; it was forged in a season when unguarded openness cost too much. And your fluency in the dark is real medicine: you carry a lantern where most people will not go, and the dying, the grieving, and the transforming trust you on sight.",
+        "The arc is to be accompanied for once — to hand someone the lantern, open the last door, and let your own transformation be witnessed."
+      ],
+      "invitation": "To let someone hold the lantern while you, for once, are the one going through.",
+      "edges": {
+        "point": "chiron",
+        "house": 8,
+        "see_also": [
+          "house_8",
+          "canon:pluto"
+        ]
+      }
+    },
+    "9": {
+      "id": "chiron_in_house_9",
+      "title": "The Broken Compass",
+      "body": [
+        "The wound here was made on the far horizon — in the territory of faith, teachers, and higher learning. Perhaps a doctrine you were raised inside turned out to be a cage; perhaps a mentor you revered fell, taking your trust in guidance down with them; perhaps formal education branded you early as not the scholarly kind, and the brand outlasted every later accomplishment.",
+        "You may notice that no quantity of reading, credentials, or hard-won expertise dissolves the suspicion that you are an impostor among the educated — or, alternatively, that you inspect every belief system at the door for its exits, unable to enter any faith all the way, because you remember what happened the last time you believed completely. This wariness is not shallowness; it is the earned caution of someone whose map failed at sea. And it has made you the rarest kind of guide: one who teaches without humiliating and believes without demanding. Students and seekers trust you precisely because you never claim the view from the summit.",
+        "The arc is to rebuild the compass by hand — a working faith, honest about its errors — and to walk out again under an open sky."
+      ],
+      "invitation": "To trust a horizon again, guided by a compass you have rebuilt yourself.",
+      "edges": {
+        "point": "chiron",
+        "house": 9,
+        "see_also": [
+          "house_9",
+          "canon:jupiter"
+        ]
+      }
+    },
+    "10": {
+      "id": "chiron_in_house_10",
+      "title": "The Ghost-Writer's Summit",
+      "body": [
+        "The wound here is staged in public, at the summit of the chart: vocation, reputation, the visible answer to what is your life for. Perhaps an early authority — a parent as model or measure — found your ambitions laughable or claimed the spotlight for themselves; perhaps a public failure taught you that visibility is where wounds are administered. So you learned to climb in the service of other names.",
+        "You may notice that you are the deputy, the ghost-writer, the indispensable second — the one who builds the platform and then steps aside at the unveiling — and that when recognition does find you, your first instinct is to check the exits. The deference is not modesty; it is strategy, learned where being seen and being struck arrived together. Yet everyone who works beside you knows the truth: the competence is yours, the judgment is yours, and younger colleagues already treat you as the authority you decline to claim.",
+        "The arc is to step out from behind the names you have built: to sign your work, stand at your full height in public, and become the humane authority you once needed — visible on purpose, useful in your own name."
+      ],
+      "invitation": "To claim your work in your own name and stand visible at your full height.",
+      "edges": {
+        "point": "chiron",
+        "house": 10,
+        "see_also": [
+          "house_10",
+          "canon:saturn"
+        ]
+      }
+    },
+    "11": {
+      "id": "chiron_in_house_11",
+      "title": "The Empty Seat at the Table",
+      "body": [
+        "The wound here happened among the many — in friendship circles, teams, movements, the commons where individual gifts are supposed to join a larger current. Perhaps you were the scapegoat of a group, or the one dropped when alliances shifted, and you concluded that belonging is a subscription that can be cancelled without notice. You kept attending; you stopped assuming you were a member.",
+        "You may notice that you organize the gatherings you feel outside of — the reunion arranged, the cause coordinated, the party hosted — and that you can leave a room full of people who love you feeling obscurely alone, as though there were a table somewhere with your seat at it that you have never found. This ache is not neediness; it is the social memory of an exile who once paid dues and was expelled anyway. And it has made you the keeper of the door: you notice who is missing, who was not invited, who stands at the edge — because you have stood there.",
+        "The circles you build have room for strays by design. The arc is to count yourself among the gathered: to sit down, at last, at your own table."
+      ],
+      "invitation": "To take your seat in the circle you have always built for others.",
+      "edges": {
+        "point": "chiron",
+        "house": 11,
+        "see_also": [
+          "house_11",
+          "canon:uranus"
+        ]
+      }
+    },
+    "12": {
+      "id": "chiron_in_house_12",
+      "title": "The Inherited Sea",
+      "body": [
+        "The wound here lives behind the house, in the sea — hard to name because it may not, strictly, be yours. A sorrow with no biography moves through you: griefs that predate your first memory, moods that arrive like weather from another country, the sense of being on call for suffering you never witnessed. Old families pass down more than furniture, and some children are born already carrying.",
+        "You may notice that hospitals, prisons, sanctuaries, and shorelines affect you strangely — half dread, half homecoming — and that in crowds you absorb the ambient pain the way fabric takes on smoke, arriving home heavy with feelings you cannot trace to any event of your own day. This porousness is not pathology; it is an inheritance, and it once made you the unpaid night-watch of your family's unspoken grief. It also equips you for a quiet ministry: your presence steadies people at thresholds — the sick, the dying, the lost — who sense that you are not afraid of the dark water.",
+        "The arc is to befriend the tide: name what was handed to you, set down what was never yours, and let the sea become the place you draw compassion from rather than the place you drown."
+      ],
+      "invitation": "To set down the griefs you were handed and keep only the compassion they taught you.",
+      "edges": {
+        "point": "chiron",
+        "house": 12,
+        "see_also": [
+          "house_12",
+          "canon:neptune"
+        ]
+      }
+    }
+  }
+}

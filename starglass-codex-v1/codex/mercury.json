@@ -1,0 +1,369 @@
+{
+  "point": "mercury",
+  "name": "Mercury",
+  "glyph": "☿",
+  "in_sign": {
+    "aries": {
+      "id": "mercury_in_aries",
+      "title": "The Spark Before the Sentence",
+      "body": [
+        "Your mind moves like struck flint: the thought arrives already burning, and the distance between perceiving and pronouncing is shorter in you than in almost anyone you know. You think by declaring — an idea becomes real the moment it leaves your mouth — and waiting your turn can feel like holding your breath underwater. This makes you a superb starter of conversations, arguments, and movements; the first word in the room is often yours, and it is often the bravest.",
+        "You may notice that you begin composing your reply while the other person is still mid-sentence — not from contempt, but because your mind treats every exchange as a race it might lose. The haste once protected something real: somewhere you learned that the unspoken thought gets taken, talked over, or quietly dies. The cost is that you sometimes win the exchange and lose the information.",
+        "The invitation is not to slow the fire but to aim it — to discover that the second thought, the one that arrives after the charge, is often the one worth the torch, and that a mind this quick can afford to listen."
+      ],
+      "invitation": "To keep the courage of the first word while learning the patience that makes it the right one.",
+      "edges": {
+        "point": "mercury",
+        "sign": "aries",
+        "see_also": ["canon:mars", "house_1"]
+      }
+    },
+    "taurus": {
+      "id": "mercury_in_taurus",
+      "title": "The Millstone and the Honey",
+      "body": [
+        "Your mind works like a millstone: slowly, with great weight, and nothing that goes in comes out unground. You distrust the quick answer on principle — an idea has to be turned over, slept on, tested against the body's quiet yes or no before you will sign your name to it. When you finally speak, the words have the density of things that can be touched; people learn that your conclusions, though late, hold weight and rarely need revising.",
+        "You may notice that in fast conversations you fall silent, and that quicker talkers mistake your deliberation for absence — when in truth you are doing the grinding they skipped. The stubbornness you are sometimes accused of began as protection: refusing to be rushed into someone else's conclusion was how you kept your ground when the room tried to take it.",
+        "The shadow is that the mill can become a fortress — a mind that stops revising because revision feels like erosion. The invitation is to trust that your ground will not vanish if an opinion does; the honey of this mind is that what it finally says, it means."
+      ],
+      "invitation": "To let a mind built for permanence discover that changing itself is not losing ground.",
+      "edges": {
+        "point": "mercury",
+        "sign": "taurus",
+        "see_also": ["canon:venus", "house_2"]
+      }
+    },
+    "gemini": {
+      "id": "mercury_in_gemini",
+      "title": "The Aviary of Mirrors",
+      "body": [
+        "The messenger is entirely in his element here, and the result is a mind like an aviary at dawn — plural, bright, never still, every thought arriving with its twin. You learn by talking, think by connecting, and treat the world as an inexhaustible correspondence: everything is interesting, everything reminds you of something else, and the sentence you are speaking often forks midway into a better one. People keep you near for the sparkle; you make thinking look like play because, for you, it is.",
+        "You may notice that you keep several books half-read and several selves half-worn, and that you finish other people's sentences not from rudeness but because waiting for the predictable end of a thought is physically difficult. Boredom registers in you as a low-grade emergency. The perpetual motion began as protection: a mind that keeps moving cannot be pinned in the dull or painful room, and cleverness kept exchanges light where depth might have drowned.",
+        "The invitation is depth — the one direction the aviary lacks: to stay with a single question past the point of novelty, and to discover that meaning is what happens when the bird finally lands."
+      ],
+      "invitation": "To stay with one thing long enough for information to become meaning.",
+      "edges": {
+        "point": "mercury",
+        "sign": "gemini",
+        "see_also": ["canon:mercury", "house_3"]
+      }
+    },
+    "cancer": {
+      "id": "mercury_in_cancer",
+      "title": "The Tide-Kept Ledger",
+      "body": [
+        "You think with the tide in the room. Facts reach you wrapped in feeling — you remember conversations less by what was said than by how it felt to stand inside them, and your memory for emotional weather is close to absolute. This gives your speech an unusual power to comfort: you instinctively find the words a particular person can bear to hear, because you registered, long ago, which words they cannot.",
+        "You may notice that you cannot take in an argument delivered coldly, however correct — the tone arrives first and shuts the gate before the logic reaches you. And when you feel unsafe, your mind moves sideways, approaching subjects indirectly, testing the water with small remarks before risking the real one. This obliqueness once protected tender material from rooms that handled it carelessly.",
+        "The cost is that your knowing can be dismissed as mood, even by you. The invitation is to stop apologizing for a mind that feels its way — to learn its calibration so thoroughly that feeling becomes instrument rather than weather, a way of knowing that others, in their driest hours, will come to you to borrow."
+      ],
+      "invitation": "To trust the feeling mind as an instrument, not a bias to be overcome.",
+      "edges": {
+        "point": "mercury",
+        "sign": "cancer",
+        "see_also": ["canon:moon", "house_4"]
+      }
+    },
+    "leo": {
+      "id": "mercury_in_leo",
+      "title": "The Storyteller's Crown",
+      "body": [
+        "You tell the world in stories, and you tell them warmly, from the center of the room. Your mind organizes experience into narrative almost before it happens — the anecdote assembling itself while the event is still underway — and your speech carries a natural authority that makes people settle in to listen. This is a generous gift: you make meaning festive, and the things you explain, people remember.",
+        "You may notice that your best stories improve with each telling, edited steadily toward legend, and that being corrected on a small detail can sting out of all proportion — as if the fact-checker had booed the whole performance. The performing began as protection: somewhere a child learned that being entertaining was the reliable way to be heard at all. The cost is that the narrator can crowd out the witness; life becomes material, and the raw, unpolished moment goes unlived.",
+        "The invitation is to spend this radiant instrument on more than applause — to use a voice this warm to make other people visible, and to discover that the story you have not yet shaped, told honestly, holds a room better than the polished one."
+      ],
+      "invitation": "To move from performing what you know to illuminating others with it.",
+      "edges": {
+        "point": "mercury",
+        "sign": "leo",
+        "see_also": ["canon:sun", "house_5"]
+      }
+    },
+    "virgo": {
+      "id": "mercury_in_virgo",
+      "title": "The Loupe and the Harvest",
+      "body": [
+        "Your mind is a jeweler's loupe: it magnifies, and what it magnifies first is the flaw — not from unkindness but from devotion, because you cannot love a thing without wanting to perfect it. You see the loose thread, the soft assumption, the step a plan skipped, within a minute of entering the room. Precision is your dialect of care; a corrected draft is, from you, a love letter.",
+        "You may notice that you reread a message several times before sending, pruning anything that could be misread — and that you privately edit other people's sentences as they speak. Others sometimes hear criticism where you intended service, and this misunderstanding wounds you more than you say. The exacting eye began as protection: in a world that felt chaotic or judgmental, getting it exactly right was safety.",
+        "The shadow falls hardest inward — the loupe turned on your own work finds it always unfinished, never enough. The invitation is mercy: to let analysis serve the harvest rather than postpone it, and to discover that good enough, offered now, feeds people whom perfect, someday, leaves hungry."
+      ],
+      "invitation": "To place the exacting mind in the service of mercy, beginning with yourself.",
+      "edges": {
+        "point": "mercury",
+        "sign": "virgo",
+        "see_also": ["canon:mercury", "house_6"]
+      }
+    },
+    "libra": {
+      "id": "mercury_in_libra",
+      "title": "The Scales and the Signature",
+      "body": [
+        "Your mind weighs. Every claim arrives with its counterclaim already audible, and you can argue either side of most questions so gracefully that people forget you have not yet told them your own. Speech, for you, is a diplomatic art: you instinctively round the sharp corner off a sentence, find the phrasing both parties can live with, restore a room's balance with one well-placed word. It makes you a natural mediator, editor, counsel.",
+        "You may notice that you draft difficult messages three or four times, sanding away any edge that might give offense — until, sometimes, the point itself has been sanded away. The tact began as protection: somewhere you learned that open conflict costs more than truth is worth, and that a smooth surface keeps the peace. The cost is a mind that can weigh forever, and a voice whose decisions other people end up making.",
+        "The invitation is the signature: a mind this fair has earned the right to a verdict. Judgment delivered by someone who has truly heard both sides is not the end of harmony — it is what harmony is for."
+      ],
+      "invitation": "To let a mind that weighs everything finally sign its own name to a verdict.",
+      "edges": {
+        "point": "mercury",
+        "sign": "libra",
+        "see_also": ["canon:venus", "house_7"]
+      }
+    },
+    "scorpio": {
+      "id": "mercury_in_scorpio",
+      "title": "The Lantern in the Mine",
+      "body": [
+        "Your mind goes down. Surfaces do not detain you: you listen the way sonar listens, for what the words are covering, and you register the pause, the glance, the too-quick agreement that others miss. Conversation, for you, is never small; even pleasantries are data. People find themselves telling you things they had not planned to tell anyone, drawn by the quiet, unshockable attention you bring — one well-placed question from you can open a person like a door.",
+        "You may notice that the exchange is rarely symmetrical: you leave knowing their depths while they leave knowing your opinions on the weather. The secrecy began as protection — somewhere you learned that words handed over carelessly come back as weapons, and that the one who knows more survives. The cost is a vault that keeps you safe and keeps you solitary; knowledge hoarded becomes surveillance rather than intimacy.",
+        "The invitation is to let the lantern light two faces — to discover that speaking your own buried material to a trusted witness is not disarmament but the deepest use of a mind built for depth."
+      ],
+      "invitation": "To turn a mind trained for detection toward being, at last, known.",
+      "edges": {
+        "point": "mercury",
+        "sign": "scorpio",
+        "see_also": ["canon:pluto", "house_8"]
+      }
+    },
+    "sagittarius": {
+      "id": "mercury_in_sagittarius",
+      "title": "The Arrow and the Atlas",
+      "body": [
+        "Your mind travels. Details are, to you, scenery glimpsed from a moving train; what you are after is the destination — the meaning, the pattern, the point. You leap from a handful of facts to a horizon-wide conclusion with a speed that startles more methodical minds, and you are right often enough to keep doing it. You answer the question people meant to ask rather than the one they asked, and your honesty arrives unwrapped: blunt, warm, and occasionally at exactly the wrong moment.",
+        "You may notice that you can teach anything you have just learned, with contagious conviction — and that the fine print, the follow-through, the second reading quietly do not happen. The leap to the large began as protection: staying close to small facts felt like suffocation, and meaning was the air you needed to breathe. The cost is arrows that fly grandly past truths standing right beside you.",
+        "The invitation is presence: to discover that the horizon is also here — in the particular fact, the actual sentence, the person in front of you — and that the great generalization earns its wings from the detail it bothered to check."
+      ],
+      "invitation": "To bring the far-seeing mind home to the fact in front of it.",
+      "edges": {
+        "point": "mercury",
+        "sign": "sagittarius",
+        "see_also": ["canon:jupiter", "house_9"]
+      }
+    },
+    "capricorn": {
+      "id": "mercury_in_capricorn",
+      "title": "The Mason's Alphabet",
+      "body": [
+        "You build with words the way a mason builds with stone: sparingly, deliberately, nothing ornamental, everything load-bearing. You rehearse important sentences before speaking them and prune your speech to the useful minimum, which gives your words an authority that chattier minds spend years failing to buy. Your humor, when it comes, is dry as good mortar — a single line, perfectly timed, then back to work.",
+        "You may notice that you will not raise your hand until you are certain, and that you would rather say nothing than say something imprecise — silence feels safer than error. The economy began as protection: somewhere you learned that your words were weighed before you were taken seriously, that a young voice had to sound like an old one to be let into the room. The cost is everything left unsaid that was not useful, merely true — affection, wonder, doubt.",
+        "The invitation is tenderness: to let a voice built for structure occasionally carry what the structure is for, and to discover that saying the unpolished, human thing does not collapse the tower — it warms it."
+      ],
+      "invitation": "To let the disciplined voice speak, now and then, of what the building is for.",
+      "edges": {
+        "point": "mercury",
+        "sign": "capricorn",
+        "see_also": ["canon:saturn", "house_10"]
+      }
+    },
+    "aquarius": {
+      "id": "mercury_in_aquarius",
+      "title": "The Kite and the Key",
+      "body": [
+        "Your mind observes the room from a point slightly above it. You think in systems where others think in stories: you see the pattern binding the people before you have finished learning their names, and the future often feels more legible to you than the present. Your positions form at an angle to consensus almost by reflex — not to provoke, but because agreement that has not been stress-tested seems, to you, indistinguishable from sleep.",
+        "You may notice that in emotional conversations you go analytical — offering a lucid diagnosis of the dynamic while the other person waits for you to be in it. The altitude began as protection: from up there, chaos resolves into weather patterns, and nothing can engulf you. The cost is that the observatory is a lonely building, and the species you understand so well keeps happening without you.",
+        "The invitation is descent without loss of sight — to fly the kite in the actual storm, to bring the lightning down into a hand-warm conversation, and to discover that belonging does not blur the pattern; it completes it."
+      ],
+      "invitation": "To bring the view from above down into the conversation, and belong to what you see.",
+      "edges": {
+        "point": "mercury",
+        "sign": "aquarius",
+        "see_also": ["canon:uranus", "house_11"]
+      }
+    },
+    "pisces": {
+      "id": "mercury_in_pisces",
+      "title": "The Net of Silver Fishes",
+      "body": [
+        "Your mind does not march from premise to conclusion; it drifts, receives, and suddenly knows. Thought comes to you as image, atmosphere, music — the meaning arrives whole, like a fish surfacing, and only afterward do you go looking for the argument that was presumably its route. You often know what someone is about to say, or what a room is not saying, with an accuracy you cannot show your work for.",
+        "You may notice that in debate you dissolve rather than engage — agreeing vaguely, drifting off, conceding points you do not actually concede — because the pinning-down of positions feels like a net closing on something that lives only in open water. The vagueness began as protection: what cannot be pinned cannot be punctured. The cost is that your knowing, unbanked, soaks into the ground, and people conclude you are dreamy when you are in fact perceiving more than they are.",
+        "The invitation is form: to build banks for the river — the practice, the page, the finished sentence — so that what you catch in those waters can be carried ashore and fed to minds that cannot fish."
+      ],
+      "invitation": "To give the wordless knowing banks enough to reach the shore as language.",
+      "edges": {
+        "point": "mercury",
+        "sign": "pisces",
+        "see_also": ["canon:neptune", "house_12"]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "mercury_in_house_1",
+      "title": "The Voice at the Door",
+      "body": [
+        "You arrive talking. The mind stands at your front door, and the first thing people meet in you — before your history, before your heart — is the play of your intelligence: the quick greeting, the question, the observation that starts the room moving. Others name you the articulate one, the curious one, the breaker of silences, and your very presence tends to make a space more verbal than it was before you entered.",
+        "You may notice that you narrate yourself into rooms — filling the first silence, explaining yourself before anyone has asked — because arriving without words feels like arriving without clothes. The chatter at the threshold began as protection: if you define yourself first, quickly and wittily, no one else gets to. The cost is that the voice can stand in for the person; people come to know your commentary and not your company.",
+        "The invitation is to let the messenger be the door and not the whole house — to arrive, sometimes, in silence, trusting that you are still there when you are not speaking, and that curiosity itself, worn openly, is an identity."
+      ],
+      "invitation": "To trust that you still exist in a room where you have not yet spoken.",
+      "edges": {
+        "point": "mercury",
+        "house": 1,
+        "see_also": ["house_1", "canon:mars"]
+      }
+    },
+    "2": {
+      "id": "mercury_in_house_2",
+      "title": "The Word-Hoard",
+      "body": [
+        "Your storehouse is verbal. What you own, most fundamentally, is a mind — vocabulary, the skills of naming and negotiation, the trader's instinct for what information is worth — and your material life tends to be built on it: you are made to earn by writing, speaking, teaching, analyzing, brokering. Ideas are, for you, assets, and you know their market better than most.",
+        "Beneath the ledger sits worth, and here the pattern grows tender. You may notice that your sense of security rises and falls with feeling intelligent — that a day when you said something foolish registers, bodily, like a day of financial loss. Cleverness became currency early: somewhere you learned that a quick mind was the reliably valued thing about you, and so you kept it polished the way others keep savings. The cost is a worth that must be re-earned every time you speak.",
+        "The invitation is to move from performing the inventory to owning the storehouse — to discover that the word-hoard is yours in the deep grammar of possession, not rented against your next clever remark, and that a mind valued from within can afford, at last, to be wrong in public."
+      ],
+      "invitation": "To know the mind as owned wealth rather than rent paid for belonging.",
+      "edges": {
+        "point": "mercury",
+        "house": 2,
+        "see_also": ["house_2", "canon:venus"]
+      }
+    },
+    "3": {
+      "id": "mercury_in_house_3",
+      "title": "The Courier's Own District",
+      "body": [
+        "The messenger is stationed in his own district here, and the near world is your true subject. You are built for the daily mind: errands that become conversations, conversations that become detours, the sibling, the neighbor, the shopkeeper, the long-running thread — a web of small exchanges that you tend the way others tend gardens. You likely know your local world in unusual detail; nothing within walking distance is uninteresting to you.",
+        "You may notice that you leave the house for one errand and come home with four stories, and that you cannot pass an unfamiliar word, street, or fact without pocketing it. A day without novelty itches. The restlessness has honorable roots: the early world got named by you — perhaps had to be, amid siblings or classrooms where being quick was how you found your place. The cost is a mind that collects endlessly and files rarely: a thousand brilliant fragments, no book.",
+        "The invitation is to make meaning of the mosaic — to let the courier occasionally stop delivering and read the letters, discovering the pattern that all this gathered life has been spelling."
+      ],
+      "invitation": "To turn a lifetime of collected fragments into a meaning that holds them.",
+      "edges": {
+        "point": "mercury",
+        "house": 3,
+        "see_also": ["house_3", "canon:mercury"]
+      }
+    },
+    "4": {
+      "id": "mercury_in_house_4",
+      "title": "The Library Under the House",
+      "body": [
+        "Your mind lives in the taproot. The thinking that matters most to you happens at home, often late, in the private hours — and its recurring subject is origin: the family, the past, the sentences said and unsaid around the childhood table. You may come from a family of talkers or a family of silences; either way, language and home are permanently entangled in you, and you process the present by finding words for where you came from.",
+        "You may notice that you replay old conversations at night, editing them, saying at last what you did not say then — and that you have become, perhaps involuntarily, the family's archivist: the one who remembers the stories, keeps the letters, knows what actually happened. Analysis of the family can, however, stand in for feeling it; understanding your mother is tidier than missing her. That intellectual distance once protected a child who needed the flood explained before it could be survived.",
+        "The invitation is to bring the library upstairs — to let the words you have found for the past become rooms the living can enter, and to give your restless mind the thing it was always cataloguing: a home."
+      ],
+      "invitation": "To let understanding the past ripen into feeling at home in it.",
+      "edges": {
+        "point": "mercury",
+        "house": 4,
+        "see_also": ["house_4", "canon:moon"]
+      }
+    },
+    "5": {
+      "id": "mercury_in_house_5",
+      "title": "The Juggler and the Bonfire",
+      "body": [
+        "Your play is verbal and your creativity thinks. Wit is how you flirt, games are how you love, and whatever you make — on the page, on the stage, at the dinner table — carries the juggler's signature: speed, pattern, delight. You are at your most radiant mid-banter, and your romances tend to begin as conversations that neither party wanted to end.",
+        "You may notice that your creations start brilliantly and stall at the second draft — the spark is ecstatic, the labor is dull, and a new spark is always available. Notice, too, the deflecting joke that arrives precisely when something you made is about to be taken seriously. The cleverness protects the child underneath: if it was only a game, only a joke, only a sketch, then its rejection cannot reach your heart. The cost is a bonfire of openings — real gifts, lit and left.",
+        "The invitation is to let the juggler risk earnestness: to finish one thing and sign it, to say the sincere sentence without the wink, and to discover that being seen playing wholeheartedly is the joy the wit was guarding all along."
+      ],
+      "invitation": "To risk finishing, signing, and being seen meaning it.",
+      "edges": {
+        "point": "mercury",
+        "house": 5,
+        "see_also": ["house_5", "canon:sun"]
+      }
+    },
+    "6": {
+      "id": "mercury_in_house_6",
+      "title": "The Clockmaker's Bench",
+      "body": [
+        "Your mind does its best work at the bench. Systems, routines, the fine machinery of the daily — where others see chores, you see solvable design problems, and you cannot use a broken process twice without redrawing it. Lists steady you; craft absorbs you; you are the person who actually reads the manual, and colleagues eventually discover that your quiet improvements are why the whole apparatus runs.",
+        "You may notice that your mind will not rest until the inbox is empty and the counters are clear — and that it is never rested, because they never are. When life feels uncontrollable, you reorganize something small; the tidied drawer is a prayer against chaos, and it once truly worked, giving a young mind one governable square of world. The cost is maintenance mistaken for meaning: days spent sharpening tools for work that never gets to begin, a body keeping minutes of the meetings the mind rushed through.",
+        "The invitation is to remember what the workshop serves — to let precision ripen into devotion, so that the daily round becomes not a defense against life but your particular way of loving it."
+      ],
+      "invitation": "To let routine become ritual — craft practiced as a form of devotion.",
+      "edges": {
+        "point": "mercury",
+        "house": 6,
+        "see_also": ["house_6", "canon:mercury"]
+      }
+    },
+    "7": {
+      "id": "mercury_in_house_7",
+      "title": "The Mirror That Talks Back",
+      "body": [
+        "You think in dialogue. Your mind does not fully know its own contents until they have been spoken to another person — the idea forms in the space between faces, and your best thoughts are, in a real sense, co-authored. You are drawn to articulate partners, to verbal sparring, to the friend or spouse whose conversation is the room where your intelligence actually lives.",
+        "You may notice that you rehearse decisions by imagining what one particular person would say — and that, over time, you have sometimes let partners do your thinking wholesale: their opinions arriving pre-installed, their vocabulary in your mouth. The outsourcing began honorably: the minds you met in others seemed brighter, surer, more finished than the one at home, and echoing felt like harmony. The cost is a voice you can only find in company, and a quiet resentment of the very fluency you borrowed.",
+        "The invitation is the dialogue of equals: to bring a mind fully your own to the table you love so much — because conversation, which is your element, only truly begins when there are two whole thinkers in the room."
+      ],
+      "invitation": "To arrive at the beloved conversation carrying a mind fully your own.",
+      "edges": {
+        "point": "mercury",
+        "house": 7,
+        "see_also": ["house_7", "canon:venus"]
+      }
+    },
+    "8": {
+      "id": "mercury_in_house_8",
+      "title": "The Key to the Locked Wing",
+      "body": [
+        "Your mind is drawn to the locked wing of the house. Small talk starves you; you want motives, undercurrents, the finances no one discusses, the death no one names, the thing the family agreed without agreeing never to mention. You ask the question that stops the dinner table — sometimes to your own surprise — and strangers hand you confessions they have withheld from their intimates, sensing a mind that will not flinch.",
+        "You may notice that you research the things that frighten you, gathering knowledge the way others gather weapons — as if the fully understood catastrophe could not happen to you. Knowing became control early: somewhere, something went unexplained in a way that hurt, and you resolved never again to be the one in the dark. The cost is that the investigator can hide inside the investigation, intimate with everyone's depths except her own.",
+        "The invitation is to let the key work both ways — to speak your own buried material aloud, and to discover that a mind built for the underworld is meant not merely to map it but to guide others through, transformed by its own descents."
+      ],
+      "invitation": "To become the guide who speaks from the depths, not merely the mapmaker above them.",
+      "edges": {
+        "point": "mercury",
+        "house": 8,
+        "see_also": ["house_8", "canon:pluto"]
+      }
+    },
+    "9": {
+      "id": "mercury_in_house_9",
+      "title": "The Caravan of Questions",
+      "body": [
+        "Your mind packs light and travels far. The neighborhood's answers stopped sufficing early, and you have been in caravan ever since — through philosophies, faiths, disciplines, languages, countries, each new framework unpacked, inhabited, and eventually outgrown. You are a natural student and a more natural teacher: what you learn insists on being taught, and your enthusiasm for an idea is genuinely contagious.",
+        "You may notice that your convictions have a shelf life — the worldview embraced totally in one decade dismantled cheerfully in the next — and that the next great framework always begins to glitter just as the current one asks something difficult of you. The perpetual departure began as protection: as long as the answer lies elsewhere, the unanswerable questions here — the small, close, personal ones — can wait. The cost is a library of maps and a life still waiting to be settled in.",
+        "The invitation is wisdom, which is meaning made rather than gathered: to stop somewhere long enough to let one great question ripen fully, and to teach, at last, from what the road has made of you."
+      ],
+      "invitation": "To let the gathered horizons ripen into one lived and teachable wisdom.",
+      "edges": {
+        "point": "mercury",
+        "house": 9,
+        "see_also": ["house_9", "canon:jupiter"]
+      }
+    },
+    "10": {
+      "id": "mercury_in_house_10",
+      "title": "The Herald on the Summit",
+      "body": [
+        "Your voice is your vocation, or becomes one. Whatever your trade calls itself, its engine is communication — you come to be known publicly for how you think and speak: the explainer, the analyst, the negotiator, the writer of the document everyone quotes. Authority, for you, arrives through articulation; you rise not by force but by being the one who can say clearly what the room only half-understands.",
+        "The summit has weather. You may notice that you edit your public words with a care bordering on dread — rereading the sent message, replaying the remark from the meeting — because a slip of the tongue up there feels like a fall. Somewhere you absorbed the lesson that the measuring world listens critically, perhaps from a parent or model for whom words were performance and errors were counted. The vigilance once protected a reputation still under construction; its cost is a voice so managed it risks never saying the thing only it could say.",
+        "The invitation is authorship: to graduate from spokesperson of the acceptable to author of the true — the herald who climbed the summit carrying, finally, a message of his own."
+      ],
+      "invitation": "To spend the earned public voice on the message only you can deliver.",
+      "edges": {
+        "point": "mercury",
+        "house": 10,
+        "see_also": ["house_10", "canon:saturn"]
+      }
+    },
+    "11": {
+      "id": "mercury_in_house_11",
+      "title": "The Scribe of the Round Table",
+      "body": [
+        "Your mind belongs to the commons. You think best in circles of others — the working group, the movement, the long-running thread of friends — and you serve them instinctively as scribe and switchboard: the one who makes the introductions, forwards the article, names what the group is actually deciding. Your friendships are conversations that span decades, and your ideas grow best in shared ground; the future is, for you, a group project.",
+        "You may notice that you connect everyone and confide in almost no one — hub of the wheel, member of nothing — busy at the switchboard while the friendships route through you and past you. The role began as protection: being useful to the group was a securer citizenship than being known by it, and the scribe is never asked to bleed on the table. The cost is company without belonging, a commons you administer but do not quite inhabit.",
+        "The invitation is to take a seat at the table you keep — to let the circle read the scribe's own page, and to discover that your ideas were always meant to be not just circulated but shared from within."
+      ],
+      "invitation": "To stop merely serving the circle and finally sit down inside it.",
+      "edges": {
+        "point": "mercury",
+        "house": 11,
+        "see_also": ["house_11", "canon:uranus"]
+      }
+    },
+    "12": {
+      "id": "mercury_in_house_12",
+      "title": "The Whisper Behind the Curtain",
+      "body": [
+        "Your clearest thinking happens behind the curtain. The insight does not come when summoned — in the meeting, on the spot — but arrives sideways: in the shower, on the edge of sleep, on the long walk after you had given up. Your mind is tuned to frequencies beneath the room's conversation; you register the collective mood, the unspoken grief, the dream-logic of a situation, and often cannot say how you know what you know.",
+        "You may notice that in groups your articulate mind goes strangely quiet — the perfect sentence arriving an hour after the meeting ends — and that you compose endlessly for an audience of no one: unsent letters, private notebooks, inner monologues of great beauty. The retreat began as protection: somewhere, a young voice learned it was safer unheard, and the mind moved its workshop to the one room no one else could enter. The cost is wisdom that serves everyone except the daylight.",
+        "The invitation is the courier's crossing: to carry what the sea-room produces back over the threshold — spoken, published, said aloud even once — and to discover that the whisper, given voice, is exactly what the room was missing."
+      ],
+      "invitation": "To carry the hidden mind's treasure across the threshold into spoken daylight.",
+      "edges": {
+        "point": "mercury",
+        "house": 12,
+        "see_also": ["house_12", "canon:neptune"]
+      }
+    }
+  }
+}

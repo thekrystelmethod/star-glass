@@ -1,0 +1,273 @@
+{
+  "point": "pluto",
+  "name": "Pluto",
+  "glyph": "♇",
+  "in_sign": {
+    "aries": {
+      "id": "pluto_in_aries",
+      "title": "The Sword and the Seedbed",
+      "body": [
+        "Every generation inherits an underworld, and yours moves the way fire moves — first, fast, and without apology. You carry a shared instinct that survival belongs to the one who charges, that whatever is buried is best met head-on, sword drawn. In your own life this arrives as a strange intimacy with crisis: you may notice that emergencies clarify you, that you feel most yourself when everything is at stake and hesitation is finally irrelevant, while peace can feel like a room with no exits marked.",
+        "The shadow of this endowment is combat as reflex. When powerlessness threatens, you attack — the obstacle, the situation, occasionally the people trying to help — because attacking once kept something in you alive. That defense deserves its credit. But a will that knows only ignition burns through beginnings without ever inhabiting them, and rage left unturned composts into bitterness rather than strength.",
+        "What this placement is for is the courage that comes after the war: the pioneer who has died as a conqueror and returned as a founder. Your fire is not meant merely to raze what is false but to light what comes next — to let the will itself be transformed rather than endlessly tested, and to discover that the bravest act is not the charge but the rebuilding."
+      ],
+      "invitation": "To turn the warrior's fire from razing what is false toward founding what is true.",
+      "edges": { "point": "pluto", "sign": "aries", "see_also": ["canon:mars", "house_1"] }
+    },
+    "taurus": {
+      "id": "pluto_in_taurus",
+      "title": "The Root and the Earthquake",
+      "body": [
+        "You belong to a cohort whose underworld runs through matter itself — through land, money, bodies, and everything a hand can hold. The shared inheritance is a deep conviction that survival depends on what endures, and a deep suspicion that nothing does. In your own life this can surface as a ferocious grip: you may notice that you would rather endure a known scarcity than risk an unknown abundance, keeping the job, the grudge, the half-dead arrangement because at least its weight is familiar.",
+        "The holding once made sense. Somewhere the psyche learned that what you release does not come back, and so it built a vault and called the vault a self. But the underworld does not honor vaults; it works beneath them, and what this placement teaches — slowly, often through loss you did not choose — is that security and stillness are not the same thing. The garden proves it every year: nothing roots in soil that is never turned.",
+        "What survives your losses is the point. Each time something permanent proves otherwise, you are introduced to the worth that was never stored in the object at all. The invitation is to become rich in the only durable way — possessed of yourself, and holding everything else with a strong, open hand."
+      ],
+      "invitation": "To let go until you find the worth that cannot be taken, and root yourself there.",
+      "edges": { "point": "pluto", "sign": "taurus", "see_also": ["canon:venus", "house_2"] }
+    },
+    "gemini": {
+      "id": "pluto_in_gemini",
+      "title": "The Serpent in the Library",
+      "body": [
+        "Yours is a generation whose underworld speaks — whose buried material surfaces as language, question, rumor, and the unsayable finally said. The shared endowment is a mind drawn helplessly toward locked doors: you may notice that you collect facts about the things that frighten you, reading obsessively about the illness, the betrayal, the disaster, as though naming a thing precisely could keep it in its cage.",
+        "This is the detective's defense, and it deserves respect: a child who learns that words hide as much as they reveal becomes an adult who reads between every line. The cost is that cleverness can become a way of circling the depths without ever entering them — twenty brilliant descriptions of the water, none of them wet. The twin who talks and the twin who knows fall out of contact, and the talk grows faster and thinner to cover the silence between them.",
+        "But a mind like yours is built for a rarer office: courier between the underworld and the daylight, the one who finds language for what a family, a room, a culture has agreed not to mention. Spoken from the depths rather than about them, your words stop being armor and become the instrument this placement intends — the sentence that changes the person who says it."
+      ],
+      "invitation": "To stop describing the depths from shore and let your words rise from inside them.",
+      "edges": { "point": "pluto", "sign": "gemini", "see_also": ["canon:mercury", "house_3"] }
+    },
+    "cancer": {
+      "id": "pluto_in_cancer",
+      "title": "The Flood Beneath the Hearth",
+      "body": [
+        "You share this placement with a generation whose underworld runs beneath the hearth — through family, homeland, and the fierce politics of belonging. The inheritance is a tidal knowledge that home can be lost, and a corresponding vow that yours will not be. In your own life the vow shows its teeth quietly: you may notice that your care can tighten into surveillance, that you keep loved ones safe by keeping them close, and that close has sometimes come to mean watched.",
+        "Honor the vow before you loosen it. Somewhere in your lineage, protection was not optional; the ones who gripped hardest were often the ones who had lost the most, and your intensity of care is their love arriving a generation late, still braced for the flood. But a shell that never opens becomes indistinguishable from a tomb, and the people inside your protection may begin to confuse being loved with being held under.",
+        "This placement's deeper work is regeneration at the root: becoming the place in the family where the old fear is finally composted into ground. A home is not a fortress against loss but a place where people can fall apart and be remade. The invitation is to offer that — and, harder still, to accept it."
+      ],
+      "invitation": "To transform an inherited fear of loss into a home where people can be remade, yourself included.",
+      "edges": { "point": "pluto", "sign": "cancer", "see_also": ["canon:moon", "house_4"] }
+    },
+    "leo": {
+      "id": "pluto_in_leo",
+      "title": "The Crown in the Furnace",
+      "body": [
+        "Yours is a generation for whom identity itself became the underworld — a cohort that made selfhood a matter of life and death, and radiance a form of survival. In your own life this arrives as unusual stakes around being seen: you may notice that going unnoticed feels less like disappointment and more like a small annihilation, as though the light that falls on you were the proof that you exist.",
+        "There is dignity in the origin of this. Somewhere the developing self learned that shine or vanish were the options on offer, and it chose shine with everything it had. The shadow is a throne held by force: performances that cannot be interrupted, creative work gripped so tightly it cannot breathe, charisma spent controlling the room instead of warming it. What is being defended, always, is the terror underneath the crown — that without witness, there may be no one home.",
+        "The transformation this placement asks for happens in the dark, where all real gold is smelted. A self that has survived its own eclipse no longer needs an audience to certify it, and its radiance changes quality — from demand to gift. The invitation is creative power that regenerates whoever comes near it, beginning with you."
+      ],
+      "invitation": "To let the performing self die into a radiance that no longer requires witness to be real.",
+      "edges": { "point": "pluto", "sign": "leo", "see_also": ["canon:sun", "house_5"] }
+    },
+    "virgo": {
+      "id": "pluto_in_virgo",
+      "title": "The Scalpel and the Compost",
+      "body": [
+        "You carry a generational underworld that runs through the workshop — through work, health, craft, and the body's daily evidence. The shared inheritance is a conviction that impurity is danger, that the flawed detail is the crack where catastrophe enters. Personally, it can turn inward with surgical force: you may notice that you treat your own imperfection as contamination — one missed deadline, one strange symptom, and an inquisition convenes in your chest before breakfast.",
+        "The scrutiny once served. Precision is a real form of love, and somewhere you learned that being useful, correct, and clean was the reliable way to be safe. But a scalpel turned always on oneself performs the same operation endlessly and calls it improvement. The underworld's work in this territory is not refinement but decomposition — the discovery that compost, not sterility, is what makes a garden live.",
+        "The developed form of this placement is the healer's craft: an eye for the exact detail where transformation can enter, offered without contempt for the imperfect whole. Your standards were never the problem; their target was. The invitation is to turn the discipline of purification into the art of regeneration, and to include yourself among the things worth tending rather than correcting."
+      ],
+      "invitation": "To trade the inquisition of the flawed for the craft of helping things heal.",
+      "edges": { "point": "pluto", "sign": "virgo", "see_also": ["canon:mercury", "house_6"] }
+    },
+    "libra": {
+      "id": "pluto_in_libra",
+      "title": "The Ledger and the Crucible",
+      "body": [
+        "Yours is a cohort whose underworld surfaced in the space between people — a generation that took partnership apart to see what power was hidden inside it. In your own life this arrives as an instinct you may not have chosen: you may notice that you track the balance of power in every close relationship as carefully as others track affection — who apologized last, who wants this more, who could leave first and least destroyed.",
+        "The ledger deserves its dignity. Anyone who has watched harmony used as a lid — peace kept at one person's silent expense — learns that fairness is not decoration but survival. The shadow is that the tracking never rests: charm becomes strategy, compromise becomes leverage, and the beloved across the table slowly becomes an opponent in a beautifully mannered negotiation neither of you remembers beginning.",
+        "What this placement is ultimately for is the partnership that transforms both parties — intimacy entered not as a truce between rivals but as a crucible neither controls. Real relationship, it insists, is not the absence of power but its honest sharing, and that is a rarer and more radical peace than politeness ever achieves. The invitation is to put down the ledger and find out."
+      ],
+      "invitation": "To move from managing the balance of power to sharing it, and let love remake you.",
+      "edges": { "point": "pluto", "sign": "libra", "see_also": ["canon:venus", "house_7"] }
+    },
+    "scorpio": {
+      "id": "pluto_in_scorpio",
+      "title": "The Ferryman at Home",
+      "body": [
+        "You belong to the generation in which the underworld came home — a cohort born with the door to the depths standing open, intensity issued as standard equipment. What others visit in crisis, you inhabit: you may notice that small talk feels like a locked door and confession like oxygen, and that you trust people only after you have seen what they do with something real.",
+        "The native of the depths pays a native's taxes. Fascination with what you fear can become residence in it; the gift for seeing everyone's hidden machinery can curdle into a control room, where intimacy is conducted through leverage because merging without armor once cost too much. And there is a subtler risk for one born below: forgetting that the surface is also real — that breakfast, small kindnesses, and uncomplicated laughter are not lies told by shallow people.",
+        "But depth held consciously is a public service. Every family, workplace, and circle of friends needs one person who does not flinch, and you were built to be that one — not the fortress, the ferryman. The invitation of this placement is fluency: to move freely between the depths and the daylight, carrying up what heals and leaving buried only what is finished."
+      ],
+      "invitation": "To turn native intensity into fluency — a guide of the depths rather than their prisoner.",
+      "edges": { "point": "pluto", "sign": "scorpio", "see_also": ["canon:pluto", "house_8"] }
+    },
+    "sagittarius": {
+      "id": "pluto_in_sagittarius",
+      "title": "The Arrow and the Pyre",
+      "body": [
+        "Yours is a generation whose underworld erupted through belief itself — a cohort assigned to test every map, creed, and promise of meaning by fire. In your own life the assignment feels personal: you may notice that you cannot leave a conviction merely questioned; once doubt enters, you must burn the belief to the ground to see whether anything in it survives the flame.",
+        "The arson is honest work. You have watched meaning used as anesthetic and faith used as fence, and something in you would rather stand in open country with nothing than kneel in a beautiful building erected on nothing. The cost is the scorched-earth seasons: stretches where every horizon has been discredited, cynicism impersonates wisdom, and the arrow, finding no target it respects, turns on the archer.",
+        "But the underworld does not destroy meaning in you for sport; it destroys what cannot hold weight, because you are meant to put weight on what remains. A faith that has survived your own fire is a different instrument from an inherited one — tempered, portable, honest about the dark. The invitation is to keep what the flame could not take, and finally travel by it."
+      ],
+      "invitation": "To burn every borrowed faith down to the one that survives, then live by it.",
+      "edges": { "point": "pluto", "sign": "sagittarius", "see_also": ["canon:jupiter", "house_9"] }
+    },
+    "capricorn": {
+      "id": "pluto_in_capricorn",
+      "title": "The Tower and the Magma",
+      "body": [
+        "You share this placement with a generation whose underworld runs beneath the world's structures — a cohort born watching institutions, authorities, and long-trusted ladders reveal their hollow floors. Personally, it settles in as vigilance toward power: you may notice that you cannot fully respect any authority you have not privately stress-tested — including your own, which you audit more ruthlessly than any employer ever will.",
+        "The audit has ancestry. When the visible order proves corruptible, a serious soul concludes that safety lies in building something unimpeachable — the flawless record, the position beyond question, the self as a fortress of competence. It is an honorable response to rubble. But a fortress is not a foundation, and control pursued as protection hardens into the very kind of authority you learned to distrust: unaccountable, brittle, alone at the top of its tower.",
+        "This placement's real commission is architectural. Some people are born to inherit structures; your cohort was born to compost them — to take down what is dead in the old forms and build, from the salvage, disciplines and institutions with honest foundations. The invitation is to become the authority you searched for and never found: powerful, accountable, and warm at the summit."
+      ],
+      "invitation": "To stop fortifying against corrupt power and start building the trustworthy kind.",
+      "edges": { "point": "pluto", "sign": "capricorn", "see_also": ["canon:saturn", "house_10"] }
+    },
+    "aquarius": {
+      "id": "pluto_in_aquarius",
+      "title": "The Watcher and the Wiring",
+      "body": [
+        "Yours is a generation whose underworld surfaces in the collective — through networks, systems, and the invisible circuitry that decides who is heard. The shared gift is x-ray vision for groups: you may notice that in any team or community you feel the hidden machinery within minutes — who actually decides, whose dissent is quietly routed to nowhere — while everyone else is still reading the agenda.",
+        "Seeing the machinery is lonely work, and the loneliness has a logic: the one who watches the system from outside cannot be captured by it. That perch once protected you. Its shadow is permanent exile — critique as a home address, belonging deferred until some purified future collective that never quite convenes. There is also the engineer's subtler temptation: redesigning people in aggregate because individuals, up close, are harder to love than humanity.",
+        "But this placement did not give you the diagram so you could stand outside it. Systems change when someone who sees their hidden wiring chooses to stay inside and rewire — patiently, with others, on purpose. The invitation is to bring underworld knowledge to the commons: to help power move through the group like current, distributed, and to let the species you observe so accurately finally include you."
+      ],
+      "invitation": "To come down from the observer's perch and transform the collective from within it.",
+      "edges": { "point": "pluto", "sign": "aquarius", "see_also": ["canon:uranus", "house_11"] }
+    },
+    "pisces": {
+      "id": "pluto_in_pisces",
+      "title": "The Diver and the Drowned Bell",
+      "body": [
+        "You belong to a generation whose underworld has no walls at all — a cohort in which the deep runs straight into dream, image, longing, and the wide sea of the collective imagination. In your own life the depths arrive disguised as drift: you may notice that what others call escapism feels to you like descent, that the film watched four times, the music on repeat, the trance of scrolling or of prayer are where your real excavation happens.",
+        "The porousness is not weakness; it is instrumentation. A boundary this thin registers what the collective is burying — its griefs, its unlived longings — and a part of you has carried weather that was never yours, mistaking the ocean's moods for your own. The shadow is dissolution as exit: numbing, vanishing, the slow leak of a life postponed, because leaving the world once hurt less than feeling it.",
+        "What this placement asks for is the diver's discipline: descend on purpose, with a line to the surface, and come back carrying something. Compassion is the cargo — the kind that has been to the bottom and no longer flinches at anyone's depths. The invitation is to stop drowning quietly and start diving deliberately, returning with water for the drier houses of the world."
+      ],
+      "invitation": "To turn involuntary dissolving into deliberate descent, and surface carrying compassion.",
+      "edges": { "point": "pluto", "sign": "pisces", "see_also": ["canon:neptune", "house_12"] }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "pluto_in_house_1",
+      "title": "The Volcano at the Door",
+      "body": [
+        "Pluto stands at your front door, and everyone who meets you passes through its weather before they hear a word. There is a gravity in your presence that you did not choose and cannot entirely switch off: you may notice that strangers either confide their secrets to you within minutes or keep a wary distance across the room — almost no one responds to you mildly.",
+        "Living at this address has costs. When your simple arrival carries voltage, you learn early to manage the current — to guard the face, meter the gaze, control precisely how much of you enters a room. That armor was intelligent; intensity draws projections, and a child who is read as powerful gets handed battles that were never hers. But armor worn long enough is mistaken, even by its owner, for skin, and the deepest exhaustion of this placement is performing containment: being experienced as formidable while privately suspecting that the one thing you may never appear to be is afraid.",
+        "The developed form is presence as medicine. People near you sense that pretense is optional and depth is safe — that someone here has already survived something and is not shopping for comfort. The invitation is to let the door stand open: to be met, not merely braced for."
+      ],
+      "invitation": "To wear your intensity as an open door rather than armor, and let yourself be met.",
+      "edges": { "point": "pluto", "house": 1, "see_also": ["house_1", "canon:mars"] }
+    },
+    "2": {
+      "id": "pluto_in_house_2",
+      "title": "The Storehouse and the Fire",
+      "body": [
+        "Pluto keeps the storehouse in your chart, which means questions of money, possession, and worth are never casual for you. You may notice that money is never just money — it is safety, leverage, a private bulwark against a catastrophe you cannot quite name — and that both having it and lacking it feel strangely charged, as though your survival were being continuously audited.",
+        "Somewhere the psyche fused resources with life itself, and the fusion had its reasons: perhaps loss, precarity, or someone else's control over what should have been yours taught you that ownership is power and dependence is danger. The shadow runs in two costumes — hoarding and purging. You may grip resources with white knuckles for years, then jettison everything in one cathartic sweep, because both extremes feel safer than the vulnerable middle where things are simply held and used.",
+        "What this placement is building, often through cycles of loss and regeneration you would never have volunteered for, is a worth no ledger can touch. Each time the external storehouse burns and you are still standing, the true asset compounds. The invitation is to root your value in the one holding that survives every audit — yourself — and to let money go back to being merely money."
+      ],
+      "invitation": "To survive the storehouse burning often enough to learn your worth was never inside it.",
+      "edges": { "point": "pluto", "house": 2, "see_also": ["house_2", "canon:venus"] }
+    },
+    "3": {
+      "id": "pluto_in_house_3",
+      "title": "The Trapdoor in the Sentence",
+      "body": [
+        "Pluto lives in the neighborhood of your chart — the district of language, siblings, early schooling, and the daily mind — and so for you there has never been such a thing as a casual conversation. You may notice that you listen beneath every exchange for what is not being said, checking each sentence's floor for trapdoors, and that your own words feel consequential in a way that can make speaking strangely expensive.",
+        "This vigilance was an education. Perhaps the early world contained a silence with something alive inside it — a family fact everyone stepped around, a sibling bond with an undertow, words used at home as instruments of power. A child in that school learns that language is never neutral, and grows into an adult who can read a room's subtext like large print. The cost is the exhaustion of perpetual decoding, and a reluctance to say the simple thing in case it detonates.",
+        "But a mind trained underground holds one great office aboveground: naming what others cannot. Your sentences, when you finally spend them, tend to change rooms — the buried thing said plainly, the taboo made discussable. The invitation is to use the voice as this placement intends: not for surveillance, but for resurrection."
+      ],
+      "invitation": "To turn a decoder's vigilance into the voice that says the buried thing aloud.",
+      "edges": { "point": "pluto", "house": 3, "see_also": ["house_3", "canon:mercury"] }
+    },
+    "4": {
+      "id": "pluto_in_house_4",
+      "title": "The Cellar and the Taproot",
+      "body": [
+        "Pluto occupies the taproot of your chart — home, family, the private ground beneath every public act — and so your inheritance is not only what your family gave you but what it buried. You may notice that you know things about your lineage no one ever told you: griefs with no story attached, rules with no author, rooms in the family's emotional house that everyone avoids without ever having agreed to.",
+        "Growing up over an underworld shapes a person. Some with this placement became the household's seismologist, reading tremors before the adults admitted anything was moving; some learned that home and power struggle were the same weather. Whatever the particulars, the base of your life carries an intensity where others report simple ground, and you may have spent years seeking a safety that always felt one excavation away. The vigilance was warranted once; it kept a child oriented in a house with unmapped depths.",
+        "This placement tends to nominate one member of a lineage to do the composting — to feel what the ancestors could not afford to feel, and to end the silence. It is heavy work and real inheritance. The invitation is to become the ground you were looking for: the first room in the family where the buried thing can be spoken and finally rest."
+      ],
+      "invitation": "To be the generation in which the family's buried grief is composted into ground.",
+      "edges": { "point": "pluto", "house": 4, "see_also": ["house_4", "canon:moon"] }
+    },
+    "5": {
+      "id": "pluto_in_house_5",
+      "title": "The Dragon in the Playroom",
+      "body": [
+        "Pluto sits at your hearth-fire — the house of play, romance, children, and creative risk — which means nothing you love is ever a light matter. You may notice that your romances begin as gravitational events rather than flirtations, and that a creative project, once it has you, feels less like a hobby than a possession: abandoned drafts grieve like small deaths, and finishing feels like surviving something.",
+        "The intensity has a history worth honoring. Somewhere, spontaneous self-expression — the unguarded drawing, the silly dance, the open crush — met a response that taught you exposure is dangerous, and play went underground, emerging only with total stakes attached. Now the heart offers itself the way the underworld does everything: completely or not at all. The shadow is control of what should be free — directing the romance, gripping the artwork, needing the child, literal or symbolic, to redeem something — until the fire is managed instead of enjoyed.",
+        "But creation is precisely where your renewal lives. Every honest act of play is a small death and rebirth, and you are built for exactly that voltage. The invitation is to let yourself be seen enjoying your own existence — not performing survival, but risking delight."
+      ],
+      "invitation": "To risk being seen at play, and let creation be rebirth instead of exposure.",
+      "edges": { "point": "pluto", "house": 5, "see_also": ["house_5", "canon:sun"] }
+    },
+    "6": {
+      "id": "pluto_in_house_6",
+      "title": "The Regimen and the Resurrection",
+      "body": [
+        "Pluto works in your workshop — the house of daily routine, craft, service, and the body's maintenance — so the ordinary is where your underworld does business. You may notice that you rebuild your daily life in purges and resurrections: the total new regimen kept with monastic ferocity for six weeks, then the collapse, the shame, and the next total system — as though the right routine could finally make you safe.",
+        "Beneath the cycle is a serious intuition: that the small repeated things are where lives are actually decided, and that the body keeps honest books. You are right. But when control of the dailiness becomes a defense against deeper powerlessness, work turns compulsive and service turns into indispensability — being needed as a form of leverage — while the body, ignored at the level where it whispers, resorts to speaking in emergencies. Every symptom, in this house, is a letter from underground.",
+        "The developed form of this placement is alchemical craft: the person whose ordinary disciplines genuinely transmute — whose work heals what it touches, whose routines regenerate rather than punish. The invitation is to stop using the workshop as a fortress and start using it as it was built to be used: a place where, day by modest day, you are remade."
+      ],
+      "invitation": "To let daily practice become quiet transformation instead of a fortress of control.",
+      "edges": { "point": "pluto", "house": 6, "see_also": ["house_6", "canon:mercury"] }
+    },
+    "7": {
+      "id": "pluto_in_house_7",
+      "title": "The Stranger With Your Face",
+      "body": [
+        "Pluto stands in your mirror — the house of partnership — and so the deepest transformations of your life arrive wearing other people's faces. You may notice a pattern in whom you attract: partners and close collaborators with a gravity you would never claim for yourself — intense, magnetic, sometimes controlling — while you experience yourself as the reasonable one navigating their weather.",
+        "This is the underworld's favorite arrangement: exiling one's own power across the table. Somewhere, your intensity learned it was safer admired in others than owned in yourself, and relationship became the theater where your disowned depths audition nightly. The costs accumulate honestly — struggles that feel like the other person's doing, a fear of being consumed alternating with a fear of being abandoned, endings that must be total because ordinary distance feels impossible. None of this means you choose badly. It means you choose accurately: the psyche hires partners to carry what it is not yet ready to hold.",
+        "The turning point is the withdrawal of the projection — the day you recognize the magnetism, the will, the depth as yours. Partnership then changes species: from battlefield to crucible, two undisguised people transforming each other on purpose. The invitation is to bring your own power to the table and love as an equal."
+      ],
+      "invitation": "To reclaim the power you keep meeting in partners, and love with it rather than against it.",
+      "edges": { "point": "pluto", "house": 7, "see_also": ["house_7", "canon:venus"] }
+    },
+    "8": {
+      "id": "pluto_in_house_8",
+      "title": "The Keeper of the Threshold",
+      "body": [
+        "Pluto occupies its own house in your chart — the depths themselves — and so intimacy, crisis, and the psyche's basement are not foreign territory to you; they are the family business. You may notice that people bring you their unspeakable things — the diagnosis, the affair, the debt, the grief — often within an hour of meeting you, sensing correctly that you will not flinch.",
+        "Native depth carries native taxes. Merging — emotional, sexual, financial — is where you are both most alive and most defended, because you know exactly what it costs: to share resources is to share fate, and some early experience taught you what happens when trust is total and the other party is not. So a part of you keeps an exit mapped in every intimacy, and control — of information, of money, of how deep the water is allowed to get — stands guard where surrender should live. The guard earned its post. It has simply outlived the war.",
+        "This placement's fullest expression is the threshold-keeper: the one who accompanies others through what cannot be gone around — loss, change, the endings that begin things. You have the constitution for it. The invitation is to practice on yourself the surrender you midwife so well in others: to let something merge with you all the way, and be changed."
+      ],
+      "invitation": "To let yourself be transformed by the mergings you so capably guide others through.",
+      "edges": { "point": "pluto", "house": 8, "see_also": ["house_8", "canon:pluto"] }
+    },
+    "9": {
+      "id": "pluto_in_house_9",
+      "title": "The Burning of the Maps",
+      "body": [
+        "Pluto travels in your far horizon — the house of belief, higher learning, and the long journey — which means your relationship to meaning is a series of deaths and rebirths rather than a steady inheritance. You may notice that you cannot hold a conviction casually: each philosophy, faith, or teacher is embraced totally, until the night it fails some final test — and each collapse feels less like changing your mind than like a small dying.",
+        "The pattern deserves its dignity. Somewhere you learned that beliefs are load-bearing — that people build whole lives on them, and that a rotten one takes the structure down with it when it goes. So you test yours the way engineers test bridges: to destruction. The shadow is twofold — the convert's zeal, when a new certainty briefly promises to end the search, and the scorched season after a collapse, when cynicism impersonates depth and no horizon seems worth walking toward.",
+        "But this placement is not assigned to leave you faithless; it is assigned to leave you with a faith that has been through the fire — portable, tempered, honest about the dark, incapable of cruelty in certainty's name. The invitation is to keep making the journey down and back until what you believe and what you have survived are the same story."
+      ],
+      "invitation": "To let every collapsed certainty compost into a faith that has actually been tested.",
+      "edges": { "point": "pluto", "house": 9, "see_also": ["house_9", "canon:jupiter"] }
+    },
+    "10": {
+      "id": "pluto_in_house_10",
+      "title": "The Throne in Daylight",
+      "body": [
+        "Pluto climbs in the summit of your chart — vocation, public standing, the visible answer to what a life is for — and so power and visibility are, for you, a single braided question. You may notice the ambivalence at its core: you hunger for real influence and work with an intensity that unsettles more casual colleagues, yet you distrust anyone who visibly seeks power — a suspicion you extend, uncomfortably, to yourself whenever ambition stirs.",
+        "The wariness has roots. Somewhere you watched authority abused, or felt what it is to be small under someone's unaccountable weight, and you concluded that power corrupts and prominence exposes. So one part of you rises while another sabotages the summit — declining the title, deferring the claim, working from behind thrones you could occupy. The hidden cost is that unclaimed power does not vanish; it leaks, in controlled information and quiet leverage, and the world begins responding to an influence you keep insisting you do not have.",
+        "This placement's commission is power in daylight: authority held openly, accountably, in service of a transformation larger than a career. The world does not need you smaller. The invitation is to claim the summit as a steward rather than dread it as a tyrant-in-waiting — to become the trustworthy version of the power you feared."
+      ],
+      "invitation": "To claim power openly and wield it as the steward you once needed and never found.",
+      "edges": { "point": "pluto", "house": 10, "see_also": ["house_10", "canon:saturn"] }
+    },
+    "11": {
+      "id": "pluto_in_house_11",
+      "title": "The Circle and the Undertow",
+      "body": [
+        "Pluto moves through your commons — the house of friendship, community, and the future built with others — so groups are never casual weather for you. You may notice that you join wholly or not at all: in any circle you become the confidant, the strategist, the one who knows where the real decisions happen — never the member who simply shows up for the potluck and goes home unexamined.",
+        "This depth of engagement is a gift with a shadow. Because you sense the undercurrents of any collective — the alliances, the quiet exclusions, the power beneath the mission statement — belonging never feels innocent to you, and betrayal by a group or a friend lands with disproportionate, almost cellular force. Some with this placement respond by controlling their circles from the center; others orbit at a knowing distance, intimate with everyone's secrets and no one's Tuesday evenings. Both are ways of never again being ambushed by people you trusted.",
+        "But the commons is precisely where your transforming force is meant to be spent. Communities need members who can see the buried dynamics and name them without cruelty; futures are built by people with your stomach for the group's shadow. The invitation is to stop guarding the circle and let it change you — to be a friend, not only a keeper of friends' depths."
+      ],
+      "invitation": "To risk ordinary belonging, and spend your depth on the future a circle can build.",
+      "edges": { "point": "pluto", "house": 11, "see_also": ["house_11", "canon:uranus"] }
+    },
+    "12": {
+      "id": "pluto_in_house_12",
+      "title": "The Leviathan Behind the Curtain",
+      "body": [
+        "Pluto lives in the sea behind your house — the hidden twelfth, where the personal shades into the ancestral and collective — and so your greatest power operates, for now, largely out of your own sight. You may notice the strange asymmetry it produces: in genuine extremity you are the calmest person in the building, moving steadily through disasters that undo everyone else — yet in daylight you can struggle to advocate for yourself in the smallest negotiation, as though your force were licensed only in emergencies.",
+        "Power went behind the curtain for reasons. Perhaps intensity was unwelcome where you grew up, or the family's unspoken history taught that force causes harm, and so the deep will was exiled to the basement, surfacing only when survival overrides the prohibition. From there it works anonymously — in dreams with weather in them, in moods and fatigues with no visible source, in a quiet undertow that sometimes undoes your own plans just before harvest. This is not sabotage by an enemy; it is strength asking, in the only language exile permits, to be let back into the house.",
+        "The work of this placement is befriending the leviathan: turning toward the hidden power with steady attention until it consents to daylight. What returns is formidable and unexpectedly gentle. The invitation is to bring your force out from behind the curtain while it is still yours to offer."
+      ],
+      "invitation": "To befriend the exiled power behind the curtain before crisis is the only door it knows.",
+      "edges": { "point": "pluto", "house": 12, "see_also": ["house_12", "canon:neptune"] }
+    }
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "point": "north_node",
+  "name": "North Node",
+  "glyph": "☊",
+  "in_sign": {
+    "aries": {
+      "id": "north_node_in_aries",
+      "title": "The Diplomat and the Spear",
+      "body": [
+        "You arrive with a diplomat's training already in your hands. Somewhere behind you lies a long apprenticeship in the other person — reading a room before entering it, weighing every side until each feels heard, trimming the edge off your own wanting so the peace can hold. Honor that skill; it kept tables intact and made you the one everyone could sit beside. But competence this polished can become a hiding place, and yours is the graceful vanishing of the mediator who is somehow never quite present at the table she keeps.",
+        "The unfamiliar door opens onto plain, unnegotiated desire. You may notice that when someone asks what you want — which film, which city, which life — you check their face before your own body, and answer with a question. The direction this life keeps pointing is the first-person singular: wanting without convening a committee, beginning without permission, surviving the sound of a disappointed silence you caused and did not rush to fill. Nothing of the peacemaker is discarded on this road; her gifts come with you. They are simply meant, at last, to serve a self who is actually in the room."
+      ],
+      "invitation": "To bring to the table the one gift the peacemaker has always withheld — a self, plainly declared.",
+      "edges": {
+        "point": "north_node",
+        "sign": "aries",
+        "see_also": ["canon:mars", "house_1"]
+      }
+    },
+    "taurus": {
+      "id": "north_node_in_taurus",
+      "title": "The Phoenix and the Fig Tree",
+      "body": [
+        "You know your way around extremity. Behind you lies a fluency in crisis — an instinct for what is hidden, a readiness to merge, a talent for surviving what would flatten others and rising rearranged. That fluency is real power, earned honestly: someone had to be able to walk into the burning house. But survival can become a residence. You may find that calm makes you vaguely suspicious, that you prod quiet things to see whether they will detonate, because intensity at least announces itself.",
+        "The unfamiliar door opens onto the ordinary and the slow: a body fed and rested, money that is simply yours, a garden that asks nothing but water and time. You may notice that you can handle catastrophe with steady hands yet grow restless in a happy month, as though peace were a language no one taught you. The life keeps pointing toward roots rather than ruins — toward building what does not need to burn to prove it is alive, toward pleasures that can be touched and kept, toward letting enough, finally, be enough."
+      ],
+      "invitation": "To let the phoenix land — and discover that a fig tree, slowly tended, is also a form of resurrection.",
+      "edges": {
+        "point": "north_node",
+        "sign": "taurus",
+        "see_also": ["canon:venus", "house_2"]
+      }
+    },
+    "gemini": {
+      "id": "north_node_in_gemini",
+      "title": "The Oracle and the Marketplace",
+      "body": [
+        "You carry an old ease with the large answer. Behind you lies the fluency of the teacher on the mountain — the grand synthesis, the arrow of conviction, the certainty that meaning lives at the horizon and that you have already been there. This is not arrogance; it is genuine vision, and it has given people a sky to steer by. But certainty can become a refuge. From the summit, no one can surprise you — which is precisely the problem.",
+        "The unfamiliar door opens onto the marketplace: small questions, near neighbors, facts that refuse to fit the sermon. You may notice that in conversation you are already composing your conclusion while the other person is still speaking, listening only for the on-ramp back to what you know. The direction this life points is downhill into curiosity — asking rather than announcing, gathering rather than proclaiming, letting two contradictory things stay true through the same afternoon. The vision travels with you; it is meant to be checked, humbled, and fed by ten thousand ordinary exchanges."
+      ],
+      "invitation": "To trade the one great answer, gently held, for the ten thousand questions that keep a mind alive.",
+      "edges": {
+        "point": "north_node",
+        "sign": "gemini",
+        "see_also": ["canon:mercury", "house_3"]
+      }
+    },
+    "cancer": {
+      "id": "north_node_in_cancer",
+      "title": "The Ladder and the Hearth",
+      "body": [
+        "You arrive already competent. Behind you lies a long schooling in mastery — the ladder climbed, the duty met, the feelings postponed until the work was done. You are the one who copes, who administrates the crisis, who does not need anything from anyone, thank you. Honor that architecture; it was built for good reasons, and people have sheltered in it. But an office can become a hiding place, and the manager's badge quietly excuses you from the harder task of being a creature with needs.",
+        "The unfamiliar door opens onto the hearth: dependence, tenderness, the undignified business of being fed. You may notice that when someone offers to take care of you, something in you politely declines before you have even felt the offer — as though receiving were a demotion. The life keeps pointing down the ladder and into the kitchen: toward asking, resting, weeping where you can be seen, tending and being tended without an org chart. The competence comes with you. It is meant, at last, to protect a softness you stop outsourcing."
+      ],
+      "invitation": "To climb down from being needed into the riskier warmth of needing — and letting it show.",
+      "edges": {
+        "point": "north_node",
+        "sign": "cancer",
+        "see_also": ["canon:moon", "house_4"]
+      }
+    },
+    "leo": {
+      "id": "north_node_in_leo",
+      "title": "The Watchtower and the Bonfire",
+      "body": [
+        "You know how to stand at the edge and see the whole. Behind you lies the watchtower — the observer's post above the crowd, loyalty to the group and the principle, a cool competence at belonging to everyone in general and no one in particular. It is honorable work; every tribe needs its lookout. And detachment once kept a tender heart from being singled out and scorched.",
+        "The unfamiliar door opens onto the bonfire in the middle of the square — the warm, exposed, unreasonable business of being someone in particular. You may notice that you can champion a cause with your whole chest yet go quiet about your own poems, your own longing, your own birthday; the crowd may have your labor, but no one is allowed your heart. The direction this life points is down the tower stairs and into the circle of light: to make something signed with your name, to love one face rather than humanity in the abstract, to be caught enjoying your own existence. The wide view comes with you — it will keep the fire honest."
+      ],
+      "invitation": "To step down from the tower and let yourself be warmed, seen, and singular at the fire you build.",
+      "edges": {
+        "point": "north_node",
+        "sign": "leo",
+        "see_also": ["canon:sun", "house_5"]
+      }
+    },
+    "virgo": {
+      "id": "north_node_in_virgo",
+      "title": "The Ocean and the Loom",
+      "body": [
+        "You come in trailing the sea. Behind you lies a deep fluency in dissolving — imagination without edges, compassion without conditions, the ability to slip out of the world's demands into dream, mood, or sacrifice. That porousness is a genuine grace; it has made you kind in ways rule-keepers cannot manage. But the ocean can become a hiding place, and drifting can wear the robes of transcendence while quietly declining every task with a deadline.",
+        "The unfamiliar door opens onto the loom: the small, exact, repeatable act. You may notice that you meet practical demands with a soft fog — the unopened envelope, the almost-started project, the health routine abandoned by Thursday — not from laziness but because precision feels like a cage. The life keeps pointing toward craft: one skill refined, one schedule kept, one body cared for in ordinary, unglamorous ways. Thread by thread, the vast compassion you carry gets somewhere to live. The sea is not renounced; it is given banks, and the water finally turns the wheel."
+      ],
+      "invitation": "To weave the boundless into something small, daily, and useful — and find the sacred waiting in the stitch.",
+      "edges": {
+        "point": "north_node",
+        "sign": "virgo",
+        "see_also": ["canon:mercury", "house_6"]
+      }
+    },
+    "libra": {
+      "id": "north_node_in_libra",
+      "title": "The Warrior and the Wedding",
+      "body": [
+        "You were born already armed. Behind you lies the warrior's fluency — the quick decision, the solo mission, the reflex that meets life as a series of contests to be won alone. Honor it: that fire has carried you through doors others were still discussing, and self-reliance once meant survival. But armor can become a residence. You may find you would rather do it yourself than negotiate, rather leave than compromise, rather win than be accompanied.",
+        "The unfamiliar door opens onto the other person — not as opponent, audience, or rescue, but as equal weight on the scale. You may notice that in any partnership you keep one hand on the exit and a private tally of who yielded last, because depending on someone feels like losing ground. The direction this life points is toward the wedding in its oldest sense: two wills learning to make one decision without either disappearing. Listening as an act of courage. Yielding as a chosen move, not a defeat. The warrior is not dismissed — someone must guard what the two of you build — but the war is no longer the home address."
+      ],
+      "invitation": "To discover that the bravest campaign left is staying at the table until two become a we.",
+      "edges": {
+        "point": "north_node",
+        "sign": "libra",
+        "see_also": ["canon:venus", "house_7"]
+      }
+    },
+    "scorpio": {
+      "id": "north_node_in_scorpio",
+      "title": "The Harvest and the Deep Well",
+      "body": [
+        "You come from good ground. Behind you lies the competence of the harvest — the stocked barn, the steady routine, a gift for building comfort that endures and pleasures that can be touched. Honor it; the world runs on people who can keep things alive. But a full barn can become a hiding place, and yours is the quiet refusal to be changed: holding possessions, positions, and versions of yourself long after they have stopped feeding anyone.",
+        "The unfamiliar door opens downward — the deep well of intimacy, shared power, and honest loss. You may notice that you would rather keep a comfortable arrangement than risk the conversation that might transform it, and that when someone reaches for your depths you hand them your competence instead. The life keeps pointing below the topsoil: to let another person truly affect you, to release what is finished without first securing its replacement, to discover that you can lose the harvest and remain. Security, it turns out, was never stored in the barn."
+      ],
+      "invitation": "To loosen your grip on what you have, and find at the bottom of the well what cannot be taken.",
+      "edges": {
+        "point": "north_node",
+        "sign": "scorpio",
+        "see_also": ["canon:pluto", "house_8"]
+      }
+    },
+    "sagittarius": {
+      "id": "north_node_in_sagittarius",
+      "title": "The Library and the Long Road",
+      "body": [
+        "You carry an old fluency in the many. Behind you lies the library of endless aisles: the quick mind, the double view, the gift for holding seventeen interesting positions without being pinned to any. Honor it — curiosity like yours keeps a world from going stale, and staying uncommitted once kept you safe from being wrong. But cleverness can become a hiding place, and the aisles go on forever precisely so that you never have to check out a single book and live by it.",
+        "The unfamiliar door opens onto the long road — one direction chosen, one horizon committed to. You may notice that you can argue every side of your own life so persuasively that you never leave the parking lot: another article, another opinion, another maybe. The direction this life points is toward faith with feet on it — picking a truth big enough to travel by and walking until it changes you, letting experience rather than commentary become the teacher. The wit comes along; every pilgrim needs it. But it rides in the pack now, not in the driver's seat."
+      ],
+      "invitation": "To choose one horizon and walk toward it long enough for information to ripen into wisdom.",
+      "edges": {
+        "point": "north_node",
+        "sign": "sagittarius",
+        "see_also": ["canon:jupiter", "house_9"]
+      }
+    },
+    "capricorn": {
+      "id": "north_node_in_capricorn",
+      "title": "The Harbor and the Summit",
+      "body": [
+        "You know the harbor by heart. Behind you lies a deep fluency in belonging — family, memory, the emotional weather of your people, the art of tending and of being folded into a tribe. Honor it; that warmth is real wealth, and staying close once meant staying safe. But a harbor can become a hiding place. You may find yourself explaining your unlived ambitions in the language of loyalty — who would look after everyone, who are you to want the open water — while the years quietly agree with you.",
+        "The unfamiliar door opens onto the climb: public responsibility, earned authority, your name signed at the bottom of consequential things. You may notice that you manage other people's feelings brilliantly yet go vague when asked what you intend to build with your own decades. The life keeps pointing up and out — toward standing accountable in the visible world, making promises with deadlines, becoming an elder rather than remaining a child of the house. The tenderness comes with you; it is what the summit is for. But it can no longer be the reason you never left the bay."
+      ],
+      "invitation": "To leave the harbor you love, carrying its warmth upward into work the world can lean on.",
+      "edges": {
+        "point": "north_node",
+        "sign": "capricorn",
+        "see_also": ["canon:saturn", "house_10"]
+      }
+    },
+    "aquarius": {
+      "id": "north_node_in_aquarius",
+      "title": "The Throne and the Commons",
+      "body": [
+        "You arrive already luminous. Behind you lies the throne — the fluency of the beloved center: charm, performance, the gathered light of being someone's favorite. Honor it; that radiance is real, and being special was once the only reliable way to be safe. But a throne can become a hiding place. You may find that you measure a room by its applause, that a cause holds you only while you are its protagonist, and that love keeps needing to be a mirror.",
+        "The unfamiliar door opens onto the commons — the wide, level ground where you are one among many and the work outlives the worker. You may notice that being ordinary in a group feels like a small death, that you would rather lead or leave than simply belong. The direction this life points is toward the gift given away: lending your fire to a future you will not headline, keeping friendships between equals where no one performs, letting the idea matter more than the ovation. The radiance is not surrendered — it is unhooked from the mirror, and spent on something larger than any single stage."
+      ],
+      "invitation": "To step off the throne and discover the strange freedom of shining for something rather than for applause.",
+      "edges": {
+        "point": "north_node",
+        "sign": "aquarius",
+        "see_also": ["canon:uranus", "house_11"]
+      }
+    },
+    "pisces": {
+      "id": "north_node_in_pisces",
+      "title": "The Clockmaker and the Tide",
+      "body": [
+        "You come equipped with a clockmaker's hands. Behind you lies the fluency of precision — the flaw spotted at forty paces, the system perfected, the self examined down to its springs and gears. Honor it; that exactness has kept lives running, including yours, and control was once the only answer to a chaos that arrived uninvited. But a workshop can become a hiding place, and the lens that finds every flaw eventually finds only flaws — especially in the mirror.",
+        "The unfamiliar door opens onto the tide — what cannot be fixed, itemized, or improved, only trusted. You may notice that you respond to mystery with a checklist, to grief with logistics, to rest with one more small correction, as though the universe might fall apart if you stopped inspecting it. The life keeps pointing toward the water: prayer or music or sleep or mercy, whatever loosens the grip. Toward forgiving what stays broken, beginning with yourself. The craft is not thrown away — but it kneels, at last, before something it could never have engineered."
+      ],
+      "invitation": "To set down the loupe and let the tide carry what your hands were never meant to hold.",
+      "edges": {
+        "point": "north_node",
+        "sign": "pisces",
+        "see_also": ["canon:neptune", "house_12"]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "north_node_in_house_1",
+      "title": "The Mirror and the Threshold",
+      "body": [
+        "You are a virtuoso of the other. Behind you lies a long practice in partnership — sensing what a companion needs, becoming it, steering your own life by the weather in someone else's face. Honor that; it is real relational genius, and orbiting once felt far safer than landing. But the mirror can become a hiding place. You may find that you know your partner's preferences, wounds, and Tuesday moods in exquisite detail while your own remain a rumor — that alone in a restaurant, you hardly know what to order.",
+        "The unfamiliar door is the threshold itself: arriving somewhere in your own name, before anyone else's needs have furnished the room. You may notice that you postpone decisions until you learn what the other person wants, then call the compromise your choice. The life keeps pointing toward first-person acts — walking in first, stating the preference, wearing a face that was not composed for someone. This is not exile from love. The ones worth keeping have been waiting all along to meet the person the mirror kept hidden."
+      ],
+      "invitation": "To step out from behind the mirror and let your life begin at your own front door.",
+      "edges": {
+        "point": "north_node",
+        "house": 1,
+        "see_also": ["house_1", "canon:mars"]
+      }
+    },
+    "2": {
+      "id": "north_node_in_house_2",
+      "title": "The Underworld and the Storehouse",
+      "body": [
+        "You know the underworld's economy. Behind you lies a fluency in other people's depths — their money, their power, their crises, the merged accounts and the midnight confessions. You are the one trusted with what is buried, and intensity has long been your proof of being alive. Honor it; that capacity for the deep end was earned in weather most people never sail. But borrowed fire can become a residence, and living on others' resources — financial or emotional — keeps the question of your own worth conveniently unopened.",
+        "The unfamiliar door opens onto the storehouse: what is plainly, unglamorously yours. You may notice that you can navigate someone else's bankruptcy or breakdown with calm hands, yet feel oddly blank about your own bank balance, your own talents, your own price. The life keeps pointing toward simple ownership — earning it, naming it, tending it — a ground floor no one can withdraw from under you. The depth comes along; it is what gives the storehouse its soul. But the treasury, this time, must be in your name."
+      ],
+      "invitation": "To climb out of the shared vault and build, coin by ordinary coin, a worth that is yours alone.",
+      "edges": {
+        "point": "north_node",
+        "house": 2,
+        "see_also": ["house_2", "canon:venus"]
+      }
+    },
+    "3": {
+      "id": "north_node_in_house_3",
+      "title": "The Pilgrim and the Herald",
+      "body": [
+        "You arrive with the pilgrim's dust still on you. Behind you lies a fluency in the far and the large — doctrine, distance, the grand explanatory sky. You reach instinctively for the big picture; you may even teach it. Honor that breadth: a mind that has seen the horizon gives others somewhere to aim. But altitude can become a hiding place, and from thirty thousand feet no neighbor, sibling, or inconvenient fact can talk back.",
+        "The unfamiliar door opens onto the near: the street you live on, the sibling you half know, the question asked without a thesis waiting behind it. You may notice that you are more comfortable declaring what life means than asking your neighbor how their week actually went — that small talk feels beneath you precisely because it is level with you. The life keeps pointing into the neighborhood: listening, errands, letters, the daily mind trading in particulars. The herald's office is humbler than the pilgrim's road, but the message finally reaches someone. Meaning, it turns out, was hiding in the details you flew over."
+      ],
+      "invitation": "To come down from the pilgrim road and learn the holy grammar of the street where you live.",
+      "edges": {
+        "point": "north_node",
+        "house": 3,
+        "see_also": ["house_3", "canon:mercury"]
+      }
+    },
+    "4": {
+      "id": "north_node_in_house_4",
+      "title": "The Monument and the Taproot",
+      "body": [
+        "You know how to be the public one. Behind you lies a fluency in achievement — the résumé, the reputation, the role performed so well it became a face. Honor it; being the responsible figure on the hill was real service, and visibility once earned a safety that softness could not. But a monument can become a hiding place. You may find that you are easier to admire than to know, and that home has become the place where you answer messages.",
+        "The unfamiliar door opens downward, into the taproot: the private life, the interior rooms, the unphotographed self. You may notice that you can command a meeting yet feel strangely unskilled at an unstructured Sunday — that without a role to perform, you are not sure who is home. The life keeps pointing toward the ground floor: making an actual home, sitting with your own history, tending bonds that will never appear on any record. The capability comes with you. It is meant to build, at last, a dwelling rather than another pedestal — a place where you are met, not measured."
+      ],
+      "invitation": "To climb down from the monument and grow a life that is rooted where no one is watching.",
+      "edges": {
+        "point": "north_node",
+        "house": 4,
+        "see_also": ["house_4", "canon:moon"]
+      }
+    },
+    "5": {
+      "id": "north_node_in_house_5",
+      "title": "The Balcony and the Stage",
+      "body": [
+        "You are fluent in the plural. Behind you lies the balcony — the group, the cause, the network, the comfortable we from which the world can be observed and improved. Honor it; that wide loyalty is real, and dissolving into the collective once spared a tender heart the risk of being singled out. But the balcony can become a hiding place, and there is a way of serving everyone's dream that quietly files your own under someday.",
+        "The unfamiliar door opens onto the stage below — the small lit square where one person makes one thing and signs it. You may notice that you will organize the festival, fund the collective, cheer every friend's opening night, while your own novel, your own romance, your own unreasonable joy stays in the drawer, because wanting it that nakedly would be embarrassing. The life keeps pointing down the stairs: create something no committee approved, love someone with your name attached, play — badly, visibly, gladly. The community comes with you; it becomes an audience of friends. But the fire must be yours."
+      ],
+      "invitation": "To leave the balcony and risk the stage, where joy stops being a spectator sport.",
+      "edges": {
+        "point": "north_node",
+        "house": 5,
+        "see_also": ["house_5", "canon:sun"]
+      }
+    },
+    "6": {
+      "id": "north_node_in_house_6",
+      "title": "The Cloister and the Workshop",
+      "body": [
+        "You know the cloister well. Behind you lies a fluency in the hidden life — retreat, dream, prayer, the long absences behind the curtain where the world cannot make its demands. Honor it; that inwardness is a true sanctuary, and vanishing once protected something the world handled roughly. But sanctuary can become a hiding place in the plainest sense, and the soul's vast intentions can float for decades without ever touching a Tuesday.",
+        "The unfamiliar door opens onto the workshop: the schedule, the craft, the body with its unpoetic needs. You may notice that you can hold luminous inner worlds yet forget lunch, skip the checkup, let the small maintenance of your one actual life slide — as though the daily were beneath the eternal. The life keeps pointing toward incarnation in miniature: a practice kept, a skill honed, a service rendered with your hands, sleep and food treated as sacraments rather than interruptions. The depth comes with you; it is what makes humble work luminous. The monastery, it turns out, was always meant to have a garden."
+      ],
+      "invitation": "To bring the cloister's silence into the workshop, and let the daily become your devotion.",
+      "edges": {
+        "point": "north_node",
+        "house": 6,
+        "see_also": ["house_6", "canon:mercury"]
+      }
+    },
+    "7": {
+      "id": "north_node_in_house_7",
+      "title": "The Knight and the Round Table",
+      "body": [
+        "You ride in alone, and you ride well. Behind you lies the knight's fluency — self-reliance, quick command of your own direction, an identity forged so early and so firmly that company can feel like drag. Honor it; that autonomy was won, and it once meant that no one could fail you but yourself. But armor can become a hiding place. You may find that you call it independence when it is actually a locked gate — that you are excellent at rescuing, leading, and leaving, and unpracticed at staying.",
+        "The unfamiliar door opens onto the table where the seats face each other. You may notice that in partnership you quietly keep score of your self-sufficiency — cooking for yourself even when offered dinner, deciding first and informing later — because letting someone matter feels like handing over the reins. The life keeps pointing toward the other: negotiating instead of announcing, being witnessed instead of admired, letting another person's reality bend your plans and finding yourself enlarged rather than erased. The strength comes with you. It is finally strong enough to share a table."
+      ],
+      "invitation": "To discover that the quest was never the riding alone — it was learning to stay seated across from another.",
+      "edges": {
+        "point": "north_node",
+        "house": 7,
+        "see_also": ["house_7", "canon:venus"]
+      }
+    },
+    "8": {
+      "id": "north_node_in_house_8",
+      "title": "The Granary and the Ferryman",
+      "body": [
+        "You know how to keep the granary full. Behind you lies a fluency in the solid and the self-sufficient — resources gathered, comforts secured, a worth measured in what your own two hands can hold. Honor it; that steadiness is real, and needing no one was once the surest form of safety. But a full granary can become a hiding place. You may find that you handle life's invoices beautifully and its intimacies from a polite distance — generous with things, guarded with depths.",
+        "The unfamiliar door opens at the river, where the ferryman takes a toll: intimacy that changes you, resources truly shared, losses that cannot be bought back. You may notice that when a relationship deepens toward real merging — joint accounts, joint grief, being seen undefended — something in you begins inventorying the exits. The life keeps pointing across the water: to let another person in far enough to rearrange you, to give and receive without a ledger, to release what is finished and ride the change. What you carry across is less than what you left, and worth more."
+      ],
+      "invitation": "To pay the ferryman what he asks and find that what survives the crossing cannot be lost.",
+      "edges": {
+        "point": "north_node",
+        "house": 8,
+        "see_also": ["house_8", "canon:pluto"]
+      }
+    },
+    "9": {
+      "id": "north_node_in_house_9",
+      "title": "The Crossroads and the Caravan",
+      "body": [
+        "You are brilliant at the crossroads. Behind you lies a fluency in the near and the many — quick words, local knowledge, a mind that can hold twelve threads and charm every corner of the neighborhood. Honor it; that agility is real, and staying in motion among small certainties once kept the big questions safely unasked. But the crossroads can become a residence, and a life can be spent commenting — clever, current, endlessly informed — without ever leaving the parish.",
+        "The unfamiliar door opens onto the caravan route: the long journey toward what it all means. You may notice that you deflect ultimate questions with wit or one more fact — that you know a little about everything and have not yet asked what you believe. The life keeps pointing past the town gates: study that reshapes you rather than decorates you, travel that unsettles your assumptions, a philosophy tested by walking it. The quickness comes with you; every caravan needs a scout. But somewhere out on the long road the chatter falls away, and what remains is a faith you can finally call your own."
+      ],
+      "invitation": "To leave the crossroads with the caravan and go find the meaning your quick mind has been circling.",
+      "edges": {
+        "point": "north_node",
+        "house": 9,
+        "see_also": ["house_9", "canon:jupiter"]
+      }
+    },
+    "10": {
+      "id": "north_node_in_house_10",
+      "title": "The Nest and the Lighthouse",
+      "body": [
+        "You know the nest by heart. Behind you lies a fluency in the private and the familial — the inner rooms, the old stories, the deep comfort of being someone's child in a known house. Honor it; that rootedness is genuine wealth, and staying tucked into the family's weather once felt like the whole of safety. But the nest can become a place to remain small in, and a family's ceiling can be mistaken for the sky.",
+        "The unfamiliar door leads up the cliff path to the lighthouse — public work, visible responsibility, a contribution strangers can steer by. You may notice that whenever real recognition approaches, you find urgent reasons to be needed at home, or you trim your ambitions to a size the household will not notice. The life keeps pointing outward and upward: claiming a vocation, standing accountable in daylight, becoming an authority rather than forever deferring to the ones you were raised under. The belonging comes with you — it is the fuel. But the light you tend now is meant to be seen from far offshore."
+      ],
+      "invitation": "To carry the nest's warmth up the cliff and keep a light that strangers can steer by.",
+      "edges": {
+        "point": "north_node",
+        "house": 10,
+        "see_also": ["house_10", "canon:saturn"]
+      }
+    },
+    "11": {
+      "id": "north_node_in_house_11",
+      "title": "The Spotlight and the Constellation",
+      "body": [
+        "You were made for the spotlight, and you know it works. Behind you lies a fluency in personal fire — creating, performing, romancing, being the vivid center whose presence makes the evening. Honor it; that warmth is real, and being adored was once the most dependable form of being safe. But center stage can become a refuge, and a life can be spent producing one-person shows — even in love — where the other people are audience, and the applause must never stop.",
+        "The unfamiliar door opens onto the night sky, where no single star insists — the constellation, the shared pattern, the future built with friends. You may notice that in groups you either lead or lose interest, and that friendship without romance or an audience feels faintly flat, as though warmth only counted when it centered on you. The life keeps pointing outward: joining as a peer, giving your gift to a cause that will outlast your name on it, discovering the odd intimacy of shoulder-to-shoulder work. The fire comes with you — one star among many, and the pattern is finally visible."
+      ],
+      "invitation": "To step out of the spotlight and take your place in a constellation, where your light joins a larger pattern.",
+      "edges": {
+        "point": "north_node",
+        "house": 11,
+        "see_also": ["house_11", "canon:uranus"]
+      }
+    },
+    "12": {
+      "id": "north_node_in_house_12",
+      "title": "The Workbench and the Night Sea",
+      "body": [
+        "You keep an immaculate workbench. Behind you lies a fluency in the useful — routines honed, duties met, the day diced into tasks and the tasks all done. Honor it; that service is real love in work clothes, and staying busy once kept the ungovernable at bay. But efficiency can become a refuge, and there is a way of polishing the visible life that quietly declines every invitation from the invisible one.",
+        "The unfamiliar door opens at the tide line — the night sea behind the house: solitude, dream, the vast unproductive dark. You may notice that stillness makes you twitch for a chore, that you answer sorrow with errands and mystery with a tidier schedule, as though a full calendar could file the infinite away. The life keeps pointing toward the water: retreat taken on purpose, imagination trusted, compassion practiced without a checklist, some regular hour in which nothing is accomplished and something is met. The craft comes with you — the sea, too, rewards a disciplined hand. But out there the point is not repair. It is communion."
+      ],
+      "invitation": "To leave the workbench some evenings and learn to float in what can never be finished.",
+      "edges": {
+        "point": "north_node",
+        "house": 12,
+        "see_also": ["house_12", "canon:neptune"]
+      }
+    }
+  }
+}
