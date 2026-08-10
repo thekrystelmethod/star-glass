@@ -164,92 +164,18 @@ html.theme-anim *:not(svg):not(svg *) {
 .app-shell > *:not(.app-atmosphere) { position: relative; z-index: 1; }
 .app-atmosphere {
   position: fixed;
-  inset: -8%;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.42;
-  mix-blend-mode: var(--atlas-blend);
-  will-change: opacity, transform, filter, background-position;
 }
-.app-atmosphere-quiet { display: none; }
-.app-atmosphere-constellation {
-  opacity: 0.36;
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--atlas-accent) 14%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--atlas-accent) 14%, transparent) 1px, transparent 1px),
-    radial-gradient(circle at 22% 16%, color-mix(in srgb, var(--atlas-accent) 72%, transparent) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 78% 38%, color-mix(in srgb, var(--atlas-positive) 76%, transparent) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 48% 72%, color-mix(in srgb, var(--atlas-warning) 58%, transparent) 0 1px, transparent 2px);
-  background-size: 48px 48px, 48px 48px, 160px 160px, 210px 210px, 280px 280px;
-  animation:
-    constellation-drift calc(34s / var(--atlas-tempo)) linear infinite,
-    constellation-twinkle calc(8s / var(--atlas-tempo)) ease-in-out infinite;
-}
-.app-atmosphere-breathing {
-  opacity: 0.44;
-  transform-origin: 62% 38%;
-  filter: blur(18px) saturate(148%);
-  background-image:
-    radial-gradient(circle at 68% 30%, color-mix(in srgb, var(--atlas-accent) 56%, transparent), transparent 38%),
-    radial-gradient(circle at 24% 74%, color-mix(in srgb, var(--atlas-positive) 46%, transparent), transparent 36%),
-    radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--atlas-warning) 38%, transparent), transparent 32%);
-  background-size: 124% 124%, 118% 118%, 108% 108%;
-  animation:
-    aurora-drift calc(24s / var(--atlas-tempo)) ease-in-out infinite,
-    atmosphere-breathe calc(10s / var(--atlas-tempo)) ease-in-out infinite;
-}
-.app-atmosphere-bloom {
-  opacity: 0.42;
-  transform-origin: 52% 48%;
-  filter: blur(22px) saturate(156%);
-  background-image:
-    radial-gradient(circle at 52% 18%, color-mix(in srgb, var(--atlas-warning) 58%, transparent), transparent 30%),
-    radial-gradient(circle at 82% 30%, color-mix(in srgb, var(--atlas-accent) 68%, transparent), transparent 34%),
-    radial-gradient(circle at 64% 84%, color-mix(in srgb, var(--atlas-positive) 58%, transparent), transparent 32%),
-    radial-gradient(circle at 92% 68%, color-mix(in srgb, var(--atlas-info) 52%, transparent), transparent 26%);
-  background-size: 116% 116%, 124% 124%, 120% 120%, 106% 106%;
-  animation:
-    bloom-drift calc(28s / var(--atlas-tempo)) cubic-bezier(.45, 0, .2, 1) infinite,
-    bloom-flare calc(14s / var(--atlas-tempo)) ease-in-out infinite;
-}
-@keyframes constellation-drift {
-  from { background-position: 0 0, 0 0, 0 0, 20px 10px, -20px 30px; transform: translate3d(0, 0, 0); }
-  to { background-position: 96px 48px, 48px 96px, 160px 80px, -190px 115px, 260px -110px; transform: translate3d(1.25%, -0.8%, 0); }
-}
-@keyframes constellation-twinkle {
-  0%, 100% { opacity: 0.28; filter: brightness(0.94) saturate(100%); }
-  42% { opacity: 0.46; filter: brightness(1.22) saturate(132%); }
-  58% { opacity: 0.34; filter: brightness(1.02) saturate(112%); }
-}
-@keyframes aurora-drift {
-  0%, 100% { background-position: 0% 0%, 100% 100%, 50% 20%; }
-  50% { background-position: 18% 12%, 82% 76%, 62% 88%; }
-}
-@keyframes atmosphere-breathe {
-  0%, 100% { opacity: 0.34; transform: scale(0.96) translate3d(-1.5%, 1%, 0); filter: blur(21px) saturate(132%); }
-  50% { opacity: 0.64; transform: scale(1.06) translate3d(1.5%, -1%, 0); filter: blur(15px) saturate(178%); }
-}
-@keyframes bloom-drift {
-  0%, 100% { background-position: 0% 0%, 100% 0%, 40% 100%, 100% 60%; transform: scale(0.98) rotate(-0.35deg); }
-  50% { background-position: 18% 16%, 78% 14%, 56% 80%, 82% 44%; transform: scale(1.045) rotate(0.35deg); }
-}
-@keyframes bloom-flare {
-  0%, 32%, 100% { opacity: 0.32; filter: blur(25px) saturate(136%) brightness(0.98); }
-  48% { opacity: 0.68; filter: blur(16px) saturate(196%) brightness(1.24); }
-  60% { opacity: 0.46; filter: blur(20px) saturate(166%) brightness(1.08); }
-}
-@keyframes preview-breathe { from { opacity: 0.2; transform: scale(0.96); } to { opacity: 0.52; transform: scale(1.04); } }
-@keyframes preview-constellation { to { background-position: 48px 24px, 24px 48px, 80px 40px; } }
-@keyframes preview-bloom {
-  0%, 100% { opacity: 0.56; transform: scale(0.98); filter: saturate(110%); }
-  50% { opacity: 0.94; transform: scale(1.04); filter: saturate(156%); }
-}
+
+/* Motion layer utilities (Atlas port): backgrounds fill either the viewport
+   or their nearest positioned parent; moments overlay a panel. */
+.motion-bg-fixed { pointer-events: none; position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+.motion-bg-contained { pointer-events: none; position: absolute; inset: 0; overflow: hidden; }
+.motion-overlay { pointer-events: none; position: absolute; inset: 0; z-index: 20; overflow: hidden; border-radius: inherit; }
+
 @keyframes turn { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) {
-  .app-atmosphere-constellation, .app-atmosphere-breathing, .app-atmosphere-bloom,
-  .environment-constellation, .environment-breathing, .environment-bloom { animation: none; transform: none; }
-  .app-atmosphere-constellation, .app-atmosphere-breathing, .app-atmosphere-bloom { opacity: 0.28; }
-}
 
 .skip-link { position: fixed !important; top: -80px; left: 8px; z-index: 100; padding: 8px 12px; background: var(--atlas-accent); color: var(--atlas-bg); border-radius: var(--radius-sm); }
 .skip-link:focus-visible { top: 8px; }
@@ -438,7 +364,7 @@ select { appearance: none; padding-right: 42px; }
 .zodiac-switch { display: inline-flex; margin: 2px 0 18px; border: 1px solid var(--atlas-border); border-radius: var(--radius-full); overflow: hidden; }
 .zodiac-switch button { border: 0; padding: 5px 11px; background: transparent; color: var(--atlas-text-4); font-size: 11px; }
 .zodiac-switch button.active { background: var(--atlas-accent-soft); color: var(--atlas-text-1); }
-.movement-hero { display: grid; grid-template-columns: minmax(360px, 1.2fr) minmax(270px, 0.8fr); gap: clamp(30px, 4vw, 60px); align-items: center; margin-top: 12px; }
+.movement-hero { position: relative; display: grid; grid-template-columns: minmax(360px, 1.2fr) minmax(270px, 0.8fr); gap: clamp(30px, 4vw, 60px); align-items: center; margin-top: 12px; }
 .movement-hero.reading-ready {
   grid-template-columns: minmax(380px, 0.9fr) minmax(500px, 1.1fr);
   align-items: start;
@@ -451,7 +377,7 @@ select { appearance: none; padding-right: 42px; }
    atmosphere; this soft plate keeps hairlines and glyphs legible on any
    motion layer without reintroducing a hard-edged paper rectangle. */
 .wheel-stage::before { content: ""; position: absolute; inset: 4%; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--atlas-bg) 74%, transparent) 62%, transparent 100%); pointer-events: none; }
-.wheel-stage > * { position: relative; }
+.wheel-stage > *:not(.motion-overlay) { position: relative; }
 .wheel-stage.loading::after { content: "Retuning the wheel…"; position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); padding: 5px 9px; border-radius: var(--radius-full); background: var(--atlas-panel); color: var(--atlas-text-4); font-size: 10px; }
 .wheel-svg { width: 100%; }
 .wheel-svg svg { display: block; width: 100%; height: auto; max-height: 540px; }
@@ -572,31 +498,6 @@ select { appearance: none; padding-right: 42px; }
 
 /* Theme Studio environment previews */
 .environment-preview { position: absolute; inset: 0; display: block; background: var(--atlas-surface); }
-.environment-quiet { background: var(--atlas-surface); }
-.environment-constellation {
-  background-color: var(--atlas-surface);
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--atlas-accent) 18%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--atlas-accent) 18%, transparent) 1px, transparent 1px),
-    radial-gradient(circle, var(--atlas-accent) 0 1px, transparent 2px);
-  background-size: 24px 24px, 24px 24px, 68px 68px;
-  animation: preview-constellation calc(8s / var(--atlas-tempo)) linear infinite;
-}
-.environment-breathing {
-  background:
-    radial-gradient(circle at 66% 30%, color-mix(in srgb, var(--atlas-accent) 34%, transparent), transparent 48%),
-    radial-gradient(circle at 28% 76%, color-mix(in srgb, var(--atlas-positive) 26%, transparent), transparent 42%),
-    var(--atlas-surface);
-  animation: preview-breathe calc(6.5s / var(--atlas-tempo)) ease-in-out infinite alternate;
-}
-.environment-bloom {
-  background:
-    radial-gradient(circle at 18% 24%, color-mix(in srgb, var(--atlas-warning) 44%, transparent), transparent 38%),
-    radial-gradient(circle at 78% 22%, color-mix(in srgb, var(--atlas-accent) 52%, transparent), transparent 42%),
-    radial-gradient(circle at 54% 82%, color-mix(in srgb, var(--atlas-positive) 42%, transparent), transparent 40%),
-    var(--atlas-surface);
-  animation: preview-bloom calc(7s / var(--atlas-tempo)) ease-in-out infinite;
-}
 
 @media (max-width: 1180px) {
   .reading-grid { grid-template-columns: 220px minmax(560px, 1fr); }

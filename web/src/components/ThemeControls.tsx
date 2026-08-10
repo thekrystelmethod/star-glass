@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+import { ATMOSPHERES, MOMENTS } from "../motion/catalog";
 import RegisterDock, { type DockTheme } from "../portable/RegisterDock";
-import ThemeStudio, {
-  type StudioBackground,
-  type StudioPairing,
-} from "../portable/ThemeStudio";
+import ThemeStudio, { type StudioPairing } from "../portable/ThemeStudio";
 import { useTheme } from "../theme/ThemeProvider";
 
 const PAIRINGS: StudioPairing[] = [
@@ -33,35 +31,14 @@ const REGISTER_PAIRING: Record<string, string> = {
   phosphor: "drafting",
 };
 
-function QuietPreview() {
-  return <span className="environment-preview environment-quiet" aria-hidden="true" />;
-}
-
-function ConstellationPreview() {
-  return <span className="environment-preview environment-constellation" aria-hidden="true" />;
-}
-
-function BreathingPreview() {
-  return <span className="environment-preview environment-breathing" aria-hidden="true" />;
-}
-
-function BloomPreview() {
-  return <span className="environment-preview environment-bloom" aria-hidden="true" />;
-}
-
-export const BACKGROUNDS: StudioBackground[] = [
-  { id: "quiet", label: "Quiet", note: "The register without an ambient layer.", Component: QuietPreview },
-  { id: "constellation", label: "Constellation drift", note: "A celestial field in slow parallax with calibrated twinkle.", Component: ConstellationPreview },
-  { id: "breathing", label: "Breathing aurora", note: "Register-colored light pools rise and recede beneath the page.", Component: BreathingPreview },
-  { id: "bloom", label: "Prismatic bloom", note: "A cinematic color wash with an occasional soft flare.", Component: BloomPreview },
-];
-
 interface ThemeControlsProps {
   backgroundId: string;
   onBackground: (id: string) => void;
+  momentId: string;
+  onMoment: (id: string) => void;
 }
 
-export function ThemeControls({ backgroundId, onBackground }: ThemeControlsProps) {
+export function ThemeControls({ backgroundId, onBackground, momentId, onMoment }: ThemeControlsProps) {
   const { theme, themeId, setThemeId, themes } = useTheme();
   const [studioOpen, setStudioOpen] = useState(false);
   const [pairChoice, setPairChoice] = useState(() => {
@@ -106,12 +83,12 @@ export function ThemeControls({ backgroundId, onBackground }: ThemeControlsProps
           themes={dockThemes}
           themeId={themeId}
           onTheme={setThemeId}
-          backgrounds={BACKGROUNDS.map(({ id, label, note }) => ({ id, label, note }))}
+          backgrounds={ATMOSPHERES.map(({ id, label, note }) => ({ id, label, note }))}
           backgroundId={backgroundId}
           onBackground={onBackground}
-          moments={[]}
-          momentId=""
-          onMoment={() => {}}
+          moments={MOMENTS.map(({ id, label, note }) => ({ id, label, note }))}
+          momentId={momentId}
+          onMoment={onMoment}
           label="Register"
           onStudio={() => setStudioOpen(true)}
         />
@@ -123,12 +100,12 @@ export function ThemeControls({ backgroundId, onBackground }: ThemeControlsProps
           themes={themes}
           themeId={themeId}
           onTheme={setThemeId}
-          backgrounds={BACKGROUNDS}
+          backgrounds={ATMOSPHERES}
           backgroundId={backgroundId}
           onBackground={onBackground}
-          moments={[]}
-          momentId=""
-          onMoment={() => {}}
+          moments={MOMENTS}
+          momentId={momentId}
+          onMoment={onMoment}
           pairings={PAIRINGS}
           pairChoice={pairChoice}
           onPairing={setPairChoice}
@@ -137,7 +114,7 @@ export function ThemeControls({ backgroundId, onBackground }: ThemeControlsProps
           registerLabel={theme.label}
           eyebrow="STARGLASS · THEME STUDIO"
           heading="Change how StarGlass catches the light."
-          intro="Choose a register, type pairing, and atmosphere. Your chart and wheel retune together; your reading stays exactly the same."
+          intro="Choose a register, type pairing, atmosphere, and reveal moment. Your chart and wheel retune together; your reading stays exactly the same."
           statusText={`StarGlass is wearing ${theme.label}. Theme changes only the look.`}
           completionLabel={`Keep ${theme.label}`}
         />,
@@ -147,6 +124,3 @@ export function ThemeControls({ backgroundId, onBackground }: ThemeControlsProps
   );
 }
 
-export function Atmosphere({ id }: { id: string }) {
-  return <div className={`app-atmosphere app-atmosphere-${id}`} aria-hidden="true" />;
-}

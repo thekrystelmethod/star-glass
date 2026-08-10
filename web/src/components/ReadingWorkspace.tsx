@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, FileDown, ImageDown, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, Sparkles } from "lucide-react";
 import { activeChartBlock, type ChartResponse, type Placement } from "../api";
 import { hasCodexEntry } from "../codex";
+import { CeremonyMoment } from "../motion/catalog";
 import { CodexPanel, type CodexTarget } from "./CodexPanel";
 import type { CastMeta, GeneratedReading } from "../types";
 
@@ -42,6 +43,8 @@ interface ReadingWorkspaceProps {
   onRetryReading: () => void;
   onOpenReport: () => void;
   onOpenShare: () => void;
+  momentId: string;
+  ceremonyTrigger: string | null;
 }
 
 export function ReadingWorkspace({
@@ -59,6 +62,8 @@ export function ReadingWorkspace({
   onRetryReading,
   onOpenReport,
   onOpenShare,
+  momentId,
+  ceremonyTrigger,
 }: ReadingWorkspaceProps) {
   const [movement, setMovement] = useState(0);
   const [condensed, setCondensed] = useState(false);
@@ -173,6 +178,7 @@ export function ReadingWorkspace({
 
           <div className={`movement-hero${reading ? " reading-ready" : ""}`}>
             <div className={`wheel-stage${wheelLoading ? " loading" : ""}`} aria-label="Natal chart wheel">
+              <CeremonyMoment momentId={momentId} trigger={ceremonyTrigger} />
               {wheelSvg ? <div className="wheel-svg" dangerouslySetInnerHTML={{ __html: wheelSvg }} /> : <div className="wheel-placeholder">Drawing the chart…</div>}
             </div>
             <div className="movement-prose">

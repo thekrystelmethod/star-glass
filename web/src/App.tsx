@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { castChart, checkEngine, renderWheel, type BirthPayload } from "./api";
-import { Atmosphere, ThemeControls } from "./components/ThemeControls";
+import { ThemeControls } from "./components/ThemeControls";
+import { Atmosphere, DEFAULT_MOMENT, migrateAtmosphereId } from "./motion/catalog";
 import { ChartForm } from "./components/ChartForm";
 import { ReadingWorkspace } from "./components/ReadingWorkspace";
 import { ReportView } from "./components/ReportView";
@@ -83,13 +84,23 @@ export default function App() {
   const [reportOpen, setReportOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [backgroundId, setBackgroundId] = useState(() => {
-    try { return localStorage.getItem("starglass-atmosphere") || "quiet"; }
-    catch (_) { return "quiet"; }
+    try { return migrateAtmosphereId(localStorage.getItem("starglass-atmosphere")); }
+    catch (_) { return migrateAtmosphereId(null); }
   });
+  const [momentId, setMomentId] = useState(() => {
+    try { return localStorage.getItem("starglass-moment") || DEFAULT_MOMENT; }
+    catch (_) { return DEFAULT_MOMENT; }
+  });
+  // The ceremony fires only when a portrait finishes composing in THIS visit —
+  // never on a restored session, so reloads stay calm.
+  const [ceremonyTrigger, setCeremonyTrigger] = useState<string | null>(null);
 
   useEffect(() => {
     try { localStorage.setItem("starglass-atmosphere", backgroundId); } catch (_) {}
   }, [backgroundId]);
+  useEffect(() => {
+    try { localStorage.setItem("starglass-moment", momentId); } catch (_) {}
+  }, [momentId]);
 
   useEffect(() => {
     if (!castResult) return;
@@ -150,7 +161,7 @@ export default function App() {
       setReadingLoading(true);
       window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
       composeReading({ chart, zodiac: birth.zodiac, essence: meta.essence })
-        .then(setReading)
+        .then((composed) => { setReading(composed); setCeremonyTrigger(`portrait-${Date.now()}`); })
         .catch((reason) => setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading."))
         .finally(() => setReadingLoading(false));
     } finally {
@@ -181,6 +192,7 @@ export default function App() {
         essence: castResult.meta.essence,
       });
       setReading(nextReading);
+      setCeremonyTrigger(`portrait-${Date.now()}`);
     } catch (reason) {
       setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading.");
     } finally {
@@ -213,7 +225,12 @@ export default function App() {
           <strong>StarGlass</strong>
           <span>the interpretation engine</span>
         </div>
-        <ThemeControls backgroundId={backgroundId} onBackground={setBackgroundId} />
+        <ThemeControls
+          backgroundId={backgroundId}
+          onBackground={setBackgroundId}
+          momentId={momentId}
+          onMoment={setMomentId}
+        />
       </header>
 
       {castResult ? (
@@ -232,6 +249,8 @@ export default function App() {
           onRetryReading={retryReading}
           onOpenReport={() => setReportOpen(true)}
           onOpenShare={() => setShareOpen(true)}
+          momentId={momentId}
+          ceremonyTrigger={ceremonyTrigger}
         />
       ) : (
         <ChartForm
