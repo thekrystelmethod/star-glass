@@ -130,3 +130,14 @@ frontend. Headless by design.
 Transits and synastry (new reference files against the same engine), a
 readings repository with feedback learning, API deployment as a service
 endpoint, and a research mode for statistical work over many charts.
+
+## Repo map (updated 2026-08-10)
+
+- `SKILL.md` + `references/` — the Claude astro-interpretation skill
+- `web/` — the Star Glass web app (Vite + React); functions in `web/netlify/functions/`
+- `scripts/` — Python chart-math engine + Swiss Ephemeris setup
+- `api/` — Python API service (Dockerfile; deploys via `render.yaml`)
+- `starglass-codex-v1/` — interpretation content (JSON codex + authoring docs)
+- `docs/qa/` — design-QA screenshots (gitignored by design)
+- `_archive-*/`, `_to_delete/` — local quarantine for caches/stale files; safe to Trash, never committed
+- Push with the double-click script `Push Star Glass to GitHub.command`

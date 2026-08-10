@@ -14,3 +14,4 @@ qa-*.png
 # local scratch (Claude cannot delete on-device; empty this folder manually)
 _to_delete/
 _archive-*/
+Push*.command
