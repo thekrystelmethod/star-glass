@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { castChart, checkEngine, renderWheel, type BirthPayload } from "./api";
 import { Atmosphere, ThemeControls } from "./components/ThemeControls";
 import { ChartForm } from "./components/ChartForm";
 import { ReadingWorkspace } from "./components/ReadingWorkspace";
+import { ReportView } from "./components/ReportView";
+import { ShareCard } from "./components/ShareCard";
 import { composeReading } from "./interpretation";
 import { useTheme } from "./theme/ThemeProvider";
 import type { BirthFormState, CastMeta, CastResult, GeneratedReading } from "./types";
@@ -27,22 +29,59 @@ const INITIAL_FORM: BirthFormState = {
   vedic: false,
 };
 
+// The cast chart, the composed portrait, and the person's form all persist
+// locally: nothing a visitor makes here should evaporate with the tab.
+const SESSION_KEY = "starglass-session-v1";
+
+interface StoredSession {
+  form: BirthFormState;
+  castResult: CastResult;
+  reading: GeneratedReading | null;
+}
+
+function loadSession(): StoredSession | null {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as StoredSession;
+    if (!parsed?.castResult?.chart || !parsed?.castResult?.meta) return null;
+    return parsed;
+  } catch (_) {
+    return null;
+  }
+}
+
+function chartKeyOf(meta: CastMeta | undefined): string {
+  if (!meta) return "none";
+  const source = JSON.stringify(meta.birth);
+  let hash = 5381;
+  for (let index = 0; index < source.length; index += 1) {
+    hash = ((hash * 33) ^ source.charCodeAt(index)) >>> 0;
+  }
+  return hash.toString(36);
+}
+
 function wait(milliseconds: number) {
   return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
 
 export default function App() {
   const { theme } = useTheme();
-  const [form, setForm] = useState<BirthFormState>(INITIAL_FORM);
-  const [castResult, setCastResult] = useState<CastResult | null>(null);
+  const restored = useMemo(loadSession, []);
+  const [form, setForm] = useState<BirthFormState>(restored?.form ?? INITIAL_FORM);
+  const [castResult, setCastResult] = useState<CastResult | null>(restored?.castResult ?? null);
   const [loading, setLoading] = useState(false);
   const [engineNote, setEngineNote] = useState("Cast the chart");
   const [wheelSvg, setWheelSvg] = useState("");
   const [wheelLoading, setWheelLoading] = useState(false);
-  const [reading, setReading] = useState<GeneratedReading | null>(null);
+  const [reading, setReading] = useState<GeneratedReading | null>(restored?.reading ?? null);
   const [readingLoading, setReadingLoading] = useState(false);
   const [readingError, setReadingError] = useState("");
-  const [zodiacBlock, setZodiacBlock] = useState<"tropical" | "sidereal">("tropical");
+  const [zodiacBlock, setZodiacBlock] = useState<"tropical" | "sidereal">(
+    restored?.castResult?.chart.tropical ? "tropical" : restored?.castResult ? "sidereal" : "tropical",
+  );
+  const [reportOpen, setReportOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
   const [backgroundId, setBackgroundId] = useState(() => {
     try { return localStorage.getItem("starglass-atmosphere") || "quiet"; }
     catch (_) { return "quiet"; }
@@ -54,13 +93,31 @@ export default function App() {
 
   useEffect(() => {
     if (!castResult) return;
+    try {
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ form, castResult, reading } satisfies StoredSession));
+    } catch (_) {}
+  }, [castResult, reading, form]);
+
+  useEffect(() => {
+    if (!castResult) return;
     let cancelled = false;
     setWheelLoading(true);
     const subtitle = `${castResult.meta.dateLabel} · ${castResult.meta.timeLabel} · ${castResult.meta.placeLabel}`;
-    renderWheel(castResult.chart, zodiacBlock, theme, subtitle)
-      .then((svg) => { if (!cancelled) setWheelSvg(svg); })
-      .catch(() => { if (!cancelled) setWheelSvg(""); })
-      .finally(() => { if (!cancelled) setWheelLoading(false); });
+    (async () => {
+      // On a restored session the engine may still be waking on its free
+      // tier, so the wheel retries patiently rather than failing once.
+      for (let attempt = 0; attempt < 6 && !cancelled; attempt += 1) {
+        try {
+          const svg = await renderWheel(castResult.chart, zodiacBlock, theme, subtitle);
+          if (!cancelled) setWheelSvg(svg);
+          break;
+        } catch (_) {
+          if (attempt === 5) { if (!cancelled) setWheelSvg(""); break; }
+          await wait(4000 + attempt * 2000);
+        }
+      }
+      if (!cancelled) setWheelLoading(false);
+    })();
     return () => { cancelled = true; };
   }, [castResult, theme, zodiacBlock]);
 
@@ -108,6 +165,8 @@ export default function App() {
     setReading(null);
     setReadingError("");
     setReadingLoading(false);
+    setReportOpen(false);
+    setShareOpen(false);
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
   };
 
@@ -129,6 +188,22 @@ export default function App() {
     }
   };
 
+  const chartKey = chartKeyOf(castResult?.meta);
+
+  if (castResult && reading && reportOpen) {
+    return (
+      <div className="app-shell report-shell">
+        <ReportView
+          chart={castResult.chart}
+          meta={castResult.meta}
+          reading={reading}
+          zodiacBlock={zodiacBlock}
+          onBack={() => setReportOpen(false)}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="app-shell">
       <Atmosphere id={backgroundId} />
@@ -145,6 +220,7 @@ export default function App() {
         <ReadingWorkspace
           chart={castResult.chart}
           meta={castResult.meta}
+          chartKey={chartKey}
           wheelSvg={wheelSvg}
           wheelLoading={wheelLoading}
           reading={reading}
@@ -154,6 +230,8 @@ export default function App() {
           onZodiacBlock={setZodiacBlock}
           onEdit={editChart}
           onRetryReading={retryReading}
+          onOpenReport={() => setReportOpen(true)}
+          onOpenShare={() => setShareOpen(true)}
         />
       ) : (
         <ChartForm
@@ -162,6 +240,15 @@ export default function App() {
           onCast={handleCast}
           loading={loading}
           engineNote={engineNote}
+        />
+      )}
+
+      {castResult && reading && shareOpen && (
+        <ShareCard
+          wheelSvg={wheelSvg}
+          reading={reading}
+          meta={castResult.meta}
+          onClose={() => setShareOpen(false)}
         />
       )}
     </div>

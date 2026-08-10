@@ -63,20 +63,27 @@ export async function castChart(birth: BirthPayload): Promise<ChartResponse> {
   return request("/chart", birth) as Promise<ChartResponse>;
 }
 
+export interface WheelOptions {
+  transparent?: boolean;
+  size?: number;
+  palette?: StarGlassTheme["wheel"];
+}
+
 export async function renderWheel(
   chart: ChartResponse,
   zodiacBlock: "tropical" | "sidereal",
   theme: StarGlassTheme,
   subtitle: string,
+  options: WheelOptions = {},
 ) {
   return request("/wheel", {
     chart,
     zodiac_block: zodiacBlock,
-    size: 1100,
+    size: options.size ?? 1100,
     title: "Natal chart",
     subtitle,
-    palette: theme.wheel,
-    transparent: true,
+    palette: options.palette ?? theme.wheel,
+    transparent: options.transparent ?? true,
   }, "text") as Promise<string>;
 }
 

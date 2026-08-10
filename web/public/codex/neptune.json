@@ -1,0 +1,441 @@
+{
+  "point": "neptune",
+  "name": "Neptune",
+  "glyph": "♆",
+  "in_sign": {
+    "aries": {
+      "id": "neptune_in_aries",
+      "title": "The Spear and the Fog",
+      "body": [
+        "A whole generation shares this signature: the longing for something beyond the visible world arrives, in your cohort, wearing armor. The ache is not for retreat but for a cause — a banner luminous enough to charge beneath, a war that would be holy if any war could be. In your one particular life, this collective dream lands as a body that catches fire in the presence of a worthy fight, and goes strangely grey without one.",
+        "You may notice that you are most enchanted in the first week of anything — the founding of the movement, the opening night of the rescue — and that your faith quietly thins when the crusade becomes committee work. The shadow of this placement is adrenaline dressed in the robes of meaning: a fight picked so the ache will have somewhere to go. Treat that reflex kindly; charging at the fog has always felt safer than admitting you cannot see through it.",
+        "The developed form is rarer and slower: courage placed in the service of compassion, the pioneer who scouts territory for the tender-hearted, the soldier who stays to dig the well after the trumpets fade. Your generation dreamed the charge. Your task is to remain on the field."
+      ],
+      "invitation": "From the holy war to the long defense of what is gentle — lending your fire to the dream after the first charge is over.",
+      "edges": {
+        "point": "neptune",
+        "sign": "aries",
+        "see_also": [
+          "canon:mars",
+          "house_1"
+        ]
+      }
+    },
+    "taurus": {
+      "id": "neptune_in_taurus",
+      "title": "The Pearl and the Plough",
+      "body": [
+        "Your cohort carries a shared suspicion that heaven should be touchable. In Taurus, the oceanic longing does not drift toward otherworlds; it presses into matter — the dream of a garden that is also a temple, bread that is also sacrament, money that could somehow be made innocent. You were born among people who ache for a paradise with soil under its fingernails, and in your own life the ache is intimate and daily.",
+        "You may notice that you buy or keep certain objects — a stone, a coat, a particular cup — half-believing they can hold a feeling for you, and that when the feeling fades you grieve the object's sudden ordinariness. The shadow here moves two ways: security can dissolve just when you grip it hardest, or comfort can be quietly worshipped as a substitute for the sacred it was meant to signal. Both are loyal errors — matter really is where you meet the infinite, so of course you ask too much of it.",
+        "The gift, ripened, is the ability to make the invisible tangible: to build, cook, plant, and compose things through which other people feel what they cannot name. The pearl takes years to form, and it is real."
+      ],
+      "invitation": "To stop asking objects to hold the ocean and begin making things through which the ocean can be felt.",
+      "edges": {
+        "point": "neptune",
+        "sign": "taurus",
+        "see_also": [
+          "canon:venus",
+          "house_2"
+        ]
+      }
+    },
+    "gemini": {
+      "id": "neptune_in_gemini",
+      "title": "The Messenger in the Mist",
+      "body": [
+        "You were born into a generation that dreams in language — a cohort for whom the ache for the infinite arrives as a hunch that somewhere there exists a sentence that would finally say it. Words, in this weather, are not labels but spells; every conversation carries the faint hope of revelation, and every ordinary fact has a shimmer of something larger standing behind it.",
+        "You may notice that you collect phrases the way others collect relics — lines copied into notebooks, fragments of overheard talk — waiting for the one that will close the gap between what you know and what you can say. The shadow is fog in the neighborhood of the mind: rumor and daydream blurring into report, cleverness dissolving into vagueness whenever precision would cost too much. That blur once protected you; a mind kept slightly out of focus cannot be pinned, or graded, or proven wrong.",
+        "But the placement is not asking you to firm up into a clerk. It is asking you to become a translator — one who ferries wordless things across into speech and lets language stay wet with what it carries. Your generation felt the sentence was possible. Write toward it anyway."
+      ],
+      "invitation": "From chasing the unsayable to ferrying it — letting language carry water without pretending to contain it.",
+      "edges": {
+        "point": "neptune",
+        "sign": "gemini",
+        "see_also": [
+          "canon:mercury",
+          "house_3"
+        ]
+      }
+    },
+    "cancer": {
+      "id": "neptune_in_cancer",
+      "title": "The Drowned Homeland",
+      "body": [
+        "Your generation is homesick, and not entirely for any place that existed. In Cancer, the great longing turns toward home — the family as it should have been, the motherland before the fall, the kitchen in which everyone was finally safe. This drowned homeland glimmers beneath the surface of your cohort's songs and loyalties alike, and in your own life it hums beneath ordinary evenings: the sense that the true home is elsewhere, earlier, just out of reach.",
+        "You may notice that you keep relics — recipes, photographs, a way of setting the table — with a devotion that is really a form of prayer, and that certain smells can flood you with grief for something you cannot name. The shadow is the backward tide: nostalgia so strong it quietly disqualifies the present, and a temptation to mother everyone in reach as a way of living inside the home you never had. That impulse deserves honor; it kept the hearth alight in imagination when reality could not.",
+        "The task is to turn the longing around — to stop searching for the harbor and become it, so that the safety your line kept dreaming of finally has an address in the present tense."
+      ],
+      "invitation": "To stop sailing for the drowned homeland and start building the harbor where you actually live.",
+      "edges": {
+        "point": "neptune",
+        "sign": "cancer",
+        "see_also": [
+          "canon:moon",
+          "house_4"
+        ]
+      }
+    },
+    "leo": {
+      "id": "neptune_in_leo",
+      "title": "The Crown of Sea-Glass",
+      "body": [
+        "You share your Neptune with a generation enchanted by radiance — a cohort for whom the ache for transcendence arrives through romance, performance, the lit stage, the beloved's face turned golden. The dream is not merely to shine but to be transfigured: to become, for one luminous moment, the person the light says you are.",
+        "You may notice that you fall a little in love with the audience's idea of you — that praise lands like weather from heaven and its absence like exile — and that you sometimes perform a delight you do not feel rather than let a room go dim. The shadow is glamour in the old sense of the word: an enchantment cast to cover an ache, a crown of sea-glass worn as if it were gold. Be gentle with it; the performance began as a gift, an attempt to hand people the brightness they seemed to need so badly.",
+        "The ripened expression is art — creation that draws up the deep water and offers it to others as warmth. When you make from the ache instead of covering it, the shine stops being a costume and becomes an offering."
+      ],
+      "invitation": "From being lit to giving light — letting the performance become an offering drawn from the deep.",
+      "edges": {
+        "point": "neptune",
+        "sign": "leo",
+        "see_also": [
+          "canon:sun",
+          "house_5"
+        ]
+      }
+    },
+    "virgo": {
+      "id": "neptune_in_virgo",
+      "title": "The Sieve and the Sea",
+      "body": [
+        "Yours is a generation asked to strain the ocean through a sieve. In Virgo, the vast longing takes the form of devotion to the useful: the dream of a world healed detail by detail, service so perfect it becomes sacrament. Your cohort carries a tender, anxious faith that if the small things were done rightly enough, the great wrongness would recede — and in your own life this arrives as an almost religious relationship to competence.",
+        "You may notice that you volunteer for the unglamorous task and then dissolve into it — working past your edges, apologizing for your needs, half-hoping someone will notice the sacrifice you would never name aloud. The shadow is martyrdom in the workshop: worth measured by depletion, and a fretful despair when the infinite refuses to fit the list. Honor its origin; making yourself useful was once the surest way to be allowed to stay.",
+        "The developed form is craft as prayer — small acts done with whole attention, mercy included in the technique, and the sieve finally used for what sieves are for: not holding the sea, but sifting from it what today actually needs."
+      ],
+      "invitation": "From serving until you vanish to serving as devotion — small acts, whole presence, mercy in the method.",
+      "edges": {
+        "point": "neptune",
+        "sign": "virgo",
+        "see_also": [
+          "canon:mercury",
+          "house_6"
+        ]
+      }
+    },
+    "libra": {
+      "id": "neptune_in_libra",
+      "title": "The Wedding and the Veil",
+      "body": [
+        "Your generation dreams of the perfect union — the marriage of true minds, the reconciliation of every quarrel, the beloved who completes what is missing. In Libra, the oceanic ache pours itself into the space between people, and your cohort's signature is a faith, half-secret and never quite surrendered, that love done rightly would redeem everything. In your own life this gives relationship the gravity of a religion.",
+        "You may notice that you meet new people in soft focus — editing their flaws in generous light, falling for the portrait before the person — and that disillusion arrives later like a season you have learned to dread. The shadow is the veil: keeping harmony by dissolving your own outline, agreeing your way into partnership with someone who was never accurately seen, least of all by you. The veil was woven kindly; clear sight once seemed the enemy of love.",
+        "The invitation of this placement is a rarer romance — compassion with its eyes open, devotion offered to an actual person, imperfect and present. That is the wedding the dream was about all along."
+      ],
+      "invitation": "To lift the veil and discover that accurate, clear-eyed love is the union you were longing for.",
+      "edges": {
+        "point": "neptune",
+        "sign": "libra",
+        "see_also": [
+          "canon:venus",
+          "house_7"
+        ]
+      }
+    },
+    "scorpio": {
+      "id": "neptune_in_scorpio",
+      "title": "The Siren and the Diver",
+      "body": [
+        "You were born into a generation that seeks the sacred underwater — a cohort for whom transcendence smells of intensity: the extremes of passion, the dissolving of self in another, the places most people cross the street to avoid. The longing here does not want comfort. It wants the pearl in the drowned wreck, and it suspects that anything easily reached is not the real thing.",
+        "You may notice that you trust ecstasy and crisis more than ordinary happiness — that a calm season can feel like a lie you are waiting to be caught in, and that you have sometimes courted the depths just to feel the water close overhead. The shadow is the siren's economy: enchantment with what devours, escape disguised as profundity. It deserves respect; going down deliberately was how you kept the deep from ever taking you by surprise.",
+        "The mature form of this placement is the diver who surfaces — one who visits the underworld for what it holds and returns to hand the pearl to people who cannot make the descent themselves. Depth is your instrument. The task is bringing it back into the air."
+      ],
+      "invitation": "From loving the deep for its darkness to diving on purpose — and surfacing with something to give.",
+      "edges": {
+        "point": "neptune",
+        "sign": "scorpio",
+        "see_also": [
+          "canon:pluto",
+          "house_8"
+        ]
+      }
+    },
+    "sagittarius": {
+      "id": "neptune_in_sagittarius",
+      "title": "The Pilgrim and the Mirage",
+      "body": [
+        "Your cohort's longing rides toward horizons. In Sagittarius, the ache for something more becomes the conviction that it exists — over the border, inside the next philosophy, at the feet of the teacher not yet met. You belong to a generation of pilgrims, and in your own life this appears as a beautiful restlessness: each new framework arriving with the light of revelation on it.",
+        "You may notice that the revelation has a half-life — that the teacher's feet turn out to be clay, the adopted country becomes ordinary, and the answer that blazed in October is embarrassing by spring — and that your response has usually been to saddle up again. The shadow is the mirage: faith that keeps moving precisely so it never has to be tested by arrival. Even this is loyal; perpetual departure once protected the holiest thing you own — the sense that meaning exists — from any single disappointment large enough to kill it.",
+        "The arc bends homeward: the discovery that the shrine is portable, and that the far light you have followed all your life is also lying, this evening, across your own table."
+      ],
+      "invitation": "To let the pilgrimage arrive — testing your faith against an ordinary Tuesday and finding it holds.",
+      "edges": {
+        "point": "neptune",
+        "sign": "sagittarius",
+        "see_also": [
+          "canon:jupiter",
+          "house_9"
+        ]
+      }
+    },
+    "capricorn": {
+      "id": "neptune_in_capricorn",
+      "title": "The Cathedral and the Flood",
+      "body": [
+        "You belong to a generation that watched structures dissolve — a cohort born while the institutions that once promised solidity were losing their outlines. In Capricorn, the oceanic longing wants form: not escape from the world but a world worth the name, authority that deserves the word, a cathedral capable of holding the sea. In your own life this lands as a strange double signature: deep suspicion of everything official, and an equally deep ache to serve something solid.",
+        "You may notice that your cynicism is really grief wearing a coat — that you dismiss leaders, companies, and traditions quickly because you wanted so badly to believe in them, and that being disappointed early always felt safer than being devoted and betrayed. That armor earned its keep. But it can leave you working hard inside systems you secretly consider illusions, which is its own quiet exile.",
+        "The developed expression is the builder of vessels: one who gives the dream load-bearing walls — an institution, a practice, a body of work with soul in its masonry. The flood needs banks, and your generation was born knowing both."
+      ],
+      "invitation": "From mourning the fallen structures to building one worthy of belief, stone by patient stone.",
+      "edges": {
+        "point": "neptune",
+        "sign": "capricorn",
+        "see_also": [
+          "canon:saturn",
+          "house_10"
+        ]
+      }
+    },
+    "aquarius": {
+      "id": "neptune_in_aquarius",
+      "title": "The Net and the Ocean",
+      "body": [
+        "Your generation dreamed the net — a cohort whose longing for communion poured itself into systems: the linked world, the leveled field, the utopia in which every mind could reach every other. In Aquarius, the ache for the infinite becomes an ideal of connection itself, and you carry it personally: a tenderness for humanity in the abstract that can be oddly shy in the particular.",
+        "You may notice that you can feel genuine kinship with strangers on the far side of the world while the person in your kitchen remains somehow harder to reach — that the cause is easier to love than the colleague, and that a thousand connections can coexist with an ache for one warm room. The shadow is dissolution into the signal: friendship dispersed so widely it thins to atmosphere. It began as generosity — a heart that refused to ration itself to the few it happened to be born near.",
+        "The task is to bring the ocean into the commons at human scale: ideals with faces on them, a future built alongside particular, flawed companions. The net was made for catching; let it finally hold someone."
+      ],
+      "invitation": "From loving humanity in general to loving it in particular — one face, one room, one shared task at a time.",
+      "edges": {
+        "point": "neptune",
+        "sign": "aquarius",
+        "see_also": [
+          "canon:uranus",
+          "house_11"
+        ]
+      }
+    },
+    "pisces": {
+      "id": "neptune_in_pisces",
+      "title": "The Lighthouse and the Deep",
+      "body": [
+        "In your cohort the longing runs undiluted — a generation born at full tide, for whom the membrane between self and world, dream and daylight, is thinner than most eras allow. You share with everyone born in your span an ache that has no adequate object: music comes closest, and the sea, and certain kinds of silence. In your own life this arrives as porousness — the moods of rooms entering you uninvited, the world's grief arriving indistinguishable from your own.",
+        "You may notice that you cannot watch certain news without carrying it for days, and that your escapes — sleep, screens, fantasy, the gentle blurring agents of any era — are less about pleasure than about turning down a volume no one else seems to hear. That instinct deserves compassion rather than shame; a being this permeable must find some way to close. The danger is only that the closing becomes the life.",
+        "Your generation's work is the lighthouse: transcendence with a foundation, compassion with a keeper. Learn to visit the deep on purpose and return on purpose, and what you carry back — image, music, mercy — is precisely what a parched age cannot make for itself."
+      ],
+      "invitation": "To keep the lighthouse — entering the deep by choice, returning by choice, and bringing its light ashore.",
+      "edges": {
+        "point": "neptune",
+        "sign": "pisces",
+        "see_also": [
+          "canon:neptune",
+          "house_12"
+        ]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "neptune_in_house_1",
+      "title": "The Face the Water Wears",
+      "body": [
+        "Neptune stands at your threshold, which means the world meets you through a shimmer. Your face, your manner, the first impression you make — all of it is unusually receptive, and people read into it whatever their own longing suggests: some meet a healer, some a muse, some a lost soul in need of saving. Strangers confide in you within minutes and cannot quite say why.",
+        "You may notice that you become subtly different in every room — not from dishonesty but from permeability, your outline redrawing itself to match the need in front of you — and that afterward you are sometimes unsure which version was actually you. The shadow is the vanishing act: a self so accommodating it forgets to have preferences, mistaken again and again for whoever was required. This softness began as intelligence; sensing what a room wanted was once the safest way through it.",
+        "The invitation is to make the permeability deliberate: a front door of clear glass rather than fog. When you choose what enters and what stays out, your presence becomes what it was always meant to be — a place where other people remember they have souls."
+      ],
+      "invitation": "To wear your openness on purpose — a chosen transparency instead of a fog that hides you even from yourself.",
+      "edges": {
+        "point": "neptune",
+        "house": 1,
+        "see_also": [
+          "house_1",
+          "canon:mars"
+        ]
+      }
+    },
+    "2": {
+      "id": "neptune_in_house_2",
+      "title": "The Coin in the Fountain",
+      "body": [
+        "In your storehouse, water. Money and possessions behave strangely around you — slipping, dissolving, arriving and departing on tides that resist your accounting — and beneath that runs the deeper matter of the house: your sense of your own worth has something oceanic and unfixed about it, immense on some days, nowhere to be found on others.",
+        "You may notice that you cannot say where last month's money went, or that you give things away with a relief that feels almost physical — as if ownership itself chafed — or that you have made an unspoken spiritual virtue of not wanting, while quietly fearing that the ground is not solid beneath you. The shadow is worth measured in sacrifice: the belief that renouncing your share is what makes you good. It once was protection; wanting little meant losing little, and needing little meant burdening no one.",
+        "But this placement is not a vow of poverty. It is an imagination asked to take material form — value made from vision. Your task is to build the vessel: to let what you earn and own serve the dream rather than shame it."
+      ],
+      "invitation": "To discover that the material world is not the opposite of the sacred but its vessel — and to build one that holds.",
+      "edges": {
+        "point": "neptune",
+        "house": 2,
+        "see_also": [
+          "house_2",
+          "canon:venus"
+        ]
+      }
+    },
+    "3": {
+      "id": "neptune_in_house_3",
+      "title": "Letters Written in Water",
+      "body": [
+        "Your daily mind is tidal. Where others file and label, you absorb — knowledge arriving whole, as image and atmosphere, often without the working shown. As a child you may have been called a dreamer by teachers grading a kind of intelligence you did not have, while the kind you did have went entirely unexamined: the ability to hear what a sentence means underneath what it says.",
+        "You may notice that you know things about people from the silence in a phone call, that facts blur while impressions keep perfect fidelity, and that you drift in conversations the way other people check their watches — present, then briefly somewhere oceanic, then back. The shadow is fog as refuge: vagueness kept like a moat, because a mind never pinned down can never be marked wrong. That defense was learned honestly, probably early, probably in a schoolroom.",
+        "The gift is translation. Yours can become the voice that says the unsayable thing at the kitchen table, the letter that names what the family felt for thirty years and never spoke. Write it down; water remembers."
+      ],
+      "invitation": "From guarding the blur to translating it — lending words to what the people around you feel and cannot say.",
+      "edges": {
+        "point": "neptune",
+        "house": 3,
+        "see_also": [
+          "house_3",
+          "canon:mercury"
+        ]
+      }
+    },
+    "4": {
+      "id": "neptune_in_house_4",
+      "title": "The House Below Sea Level",
+      "body": [
+        "Your taproot goes down into water. Home, in your experience, has something unbounded about it — perhaps a parent who was present and yet somehow unreachable, idealized or dissolving, longed for even while in the room; perhaps a family atmosphere of unnamed feeling that everyone breathed and no one ever mentioned. You come from weather as much as from people.",
+        "You may notice that no address has ever quite produced the feeling the word home promises — that you arrange each new dwelling with ritual care, waiting for it to close around you, and that a specific ache visits you at dusk, the hour of returning. The shadow is the backward-flowing search: a nostalgia for something never actually possessed, and a tendency to carry grief that belongs to people upstream of you — ancestors whose unwept tears found the sea in you. Carrying it was love; it was also never yours.",
+        "The invitation is to become the ground you have been looking for — to build, in yourself first, the harbor where the tide can finally rest."
+      ],
+      "invitation": "To set your lineage's grief down at last and become, for yourself and your own, the shore it was seeking.",
+      "edges": {
+        "point": "neptune",
+        "house": 4,
+        "see_also": [
+          "house_4",
+          "canon:moon"
+        ]
+      }
+    },
+    "5": {
+      "id": "neptune_in_house_5",
+      "title": "The Beloved Made of Light",
+      "body": [
+        "Your hearth-fire burns underwater — romance, creation, and play all carry, for you, the shimmer of the transcendent. When you fall in love the room is lit like cinema; when you make something, it begins as a vision so complete that the finished work can only betray it. This house asks you to risk being seen enjoying your own existence, and Neptune raises the stakes: what you love is where you dissolve.",
+        "You may notice that lovers arrive as apparitions and dim into mortals — that you grieve the loss of the transfiguration more than of the person — and that certain projects stay unfinished for years because the dream of them is perfect and the making would end that. The shadow is devotion to the light instead of to the one who carries it. It is an honest error; the light is real. It is simply not the whole of anyone.",
+        "The ripened form is incarnation: loving the mortal after the shimmer settles, finishing the imperfect work, letting the vision take a body and survive daylight. That is not the death of enchantment. It is where enchantment becomes durable."
+      ],
+      "invitation": "To let what you love take mortal form — and discover that the enchantment which survives daylight is the real one.",
+      "edges": {
+        "point": "neptune",
+        "house": 5,
+        "see_also": [
+          "house_5",
+          "canon:sun"
+        ]
+      }
+    },
+    "6": {
+      "id": "neptune_in_house_6",
+      "title": "The Servant and the Saint",
+      "body": [
+        "In your workshop, devotion. Work, for you, is never merely employment; it wants to be offering, and the daily round — the inbox, the rota, the small repeated tasks — either glows with quiet meaning or drains you in a way no schedule explains. The body lives in this house too, and yours is a sensitive instrument: it registers atmospheres, absorbs the strain of others, and speaks in whispers you are tempted to override.",
+        "You may notice that you cannot locate the line where helpfulness ends and disappearance begins — that you absorb the tasks no one else will take, minimize your own needs as a kind of reflex, and feel a confusing resentment you would never voice, since the sacrifice was voluntary. The shadow is the unnamed martyrdom of the back office. It began nobly; service was the one form of love that never felt presumptuous.",
+        "The invitation is ritual with limits: work done as prayer, within hours; care given from a vessel that is regularly refilled. The saint who learns to stop is the one whose service lasts a lifetime."
+      ],
+      "invitation": "To serve from fullness instead of self-erasure — devotion with edges, so the offering can continue.",
+      "edges": {
+        "point": "neptune",
+        "house": 6,
+        "see_also": [
+          "house_6",
+          "canon:mercury"
+        ]
+      }
+    },
+    "7": {
+      "id": "neptune_in_house_7",
+      "title": "The Mirror Under Water",
+      "body": [
+        "Neptune lives in your mirror, and so the beloved arrives in soft focus. Partnership, for you, has always promised more than companionship — a dissolving of the ache, a communion just past the edge of what two people usually manage — and the ones you choose are lit from behind by that promise, whether or not they know they carry it.",
+        "You may notice that you fall in love with potential — marrying the person someone could become, staying years for the sake of who they were in the first month — or that you attract people who need rescuing, because being needed feels safer than being seen. Disillusion then arrives like a recurring season, and it is tempting to blame the other for failing a role they never auditioned for. The shadow deserves gentleness: idealizing people is how a heart this thirsty protects them from the true scale of its longing.",
+        "The arc is the withdrawing of the halo — discovering that the divinity you kept meeting in others is reached through an actual person, not instead of one, and that clear sight is the deepest tenderness you have."
+      ],
+      "invitation": "To love what is actually there — and find that the communion you sought deepens without the halo.",
+      "edges": {
+        "point": "neptune",
+        "house": 7,
+        "see_also": [
+          "house_7",
+          "canon:venus"
+        ]
+      }
+    },
+    "8": {
+      "id": "neptune_in_house_8",
+      "title": "The Tide in the Vault",
+      "body": [
+        "In the house of merging, you merge without residue. Intimacy, for you, is oceanic — sexuality, trust, and shared life dissolving the border between self and other so thoroughly that whole seasons can pass before you ask which feelings, debts, and desires were originally yours. What others guard, you hand over, half-hoping the handing-over itself will be the communion.",
+        "You may notice that in any merged life you lose track of the ledger — money tangled beyond reconstruction, moods caught like weather, your own wanting shaped so smoothly around another's that you cannot find its outline — and that sacrifice has quietly become your currency of closeness, as if keeping anything back would be a kind of infidelity. That openness is not foolishness; total surrender was the only depth that ever felt like the real thing. Its cost is that you can surface from a union unsure what remains of you.",
+        "The invitation is descent with a return: to go down into merging deliberately and come back up whole — trust with banks, depth that does not require your disappearance."
+      ],
+      "invitation": "To learn the diver's discipline in intimacy — full descent, and a self you return to at the surface.",
+      "edges": {
+        "point": "neptune",
+        "house": 8,
+        "see_also": [
+          "house_8",
+          "canon:pluto"
+        ]
+      }
+    },
+    "9": {
+      "id": "neptune_in_house_9",
+      "title": "The Horizon Made of Water",
+      "body": [
+        "Your far horizon shimmers. This is the house of philosophy, faith, and the long journey, and with Neptune here the search is not academic — it is homesickness for God, by whatever name you can bear to use. Doctrines, countries, and teachers arrive for you bathed in significance, each one promising, briefly, to be the answer the ache has been spelling out all along.",
+        "You may notice a repeating tide: the teacher found luminous and later found human, the philosophy embraced totally and quietly outgrown, and after each disillusionment the sense that you believed foolishly — when in fact you believed generously, and the vessel was simply smaller than the thirst. The shadow is faith used as departure: the next horizon pursued so that the present one cannot disappoint you. Even that is devotion of a kind, protecting the flame by never letting one altar hold it.",
+        "The maturation of this placement is direct water — a faith drawn from your own experience of the depths, needing no intermediary, generous toward every vessel and captive to none."
+      ],
+      "invitation": "From seeking the sea in teachers and doctrines to drinking directly — a firsthand faith no disillusion can drain.",
+      "edges": {
+        "point": "neptune",
+        "house": 9,
+        "see_also": [
+          "house_9",
+          "canon:jupiter"
+        ]
+      }
+    },
+    "10": {
+      "id": "neptune_in_house_10",
+      "title": "The Summit and the Cloud",
+      "body": [
+        "Your summit stands in cloud. Vocation, public standing, the visible answer to what a life is for — with Neptune here, none of it resolves into the clear ladder other people seem to climb. You are called rather than ambitious, and the call is real but indistinct, like music from another room: something to do with imagery, healing, beauty, or compassion, insisting on itself without ever handing over a job title.",
+        "You may notice that you have drifted sideways through working life — competent in roles that never quite fit, or serving as the invisible talent behind someone else's name — because no summit yet offered has seemed worth the climb, and admitting a soul-sized ambition felt dangerously grandiose. The shadow is the dissolved career: a calling kept safe in vapor, where the world cannot judge it. That caution had its wisdom; a dream never attempted cannot be disgraced.",
+        "But this placement is not asking you to renounce the summit. It is asking you to carry water up the mountain — to give the dream a public, weatherable form and let it be seen."
+      ],
+      "invitation": "To bring the calling down out of the clouds — giving your dream a visible form the world can find and use.",
+      "edges": {
+        "point": "neptune",
+        "house": 10,
+        "see_also": [
+          "house_10",
+          "canon:saturn"
+        ]
+      }
+    },
+    "11": {
+      "id": "neptune_in_house_11",
+      "title": "The Choir of Strangers",
+      "body": [
+        "In your commons, longing. Friendship and collective life carry, for you, the charge most people reserve for romance or religion: the circle of companions as communion, the cause as church, the shared future as the shore all the separate streams are secretly seeking. You do not merely join groups. You pour into them.",
+        "You may notice a repeating arc: the movement or circle discovered with the feeling of coming home at last, the season of selfless devotion, and then the ordinary politics — the egos, the budget, the committee — arriving like a betrayal of something sacred, though no one else seems wounded by it. The shadow is twofold: dissolving into the cause until your own gifts have no name on them, and loving the congregation while somehow overlooking its members. Both errors are made of generosity; you came to give everything, and everything is hard to itemize.",
+        "The developed form keeps the vision and adds faces to it: a future built with particular, flawed companions, one warm room at a time. The choir is made of strangers only until you learn their names."
+      ],
+      "invitation": "To keep faith with the great dream by loving the small circle — actual companions, named and imperfect.",
+      "edges": {
+        "point": "neptune",
+        "house": 11,
+        "see_also": [
+          "house_11",
+          "canon:uranus"
+        ]
+      }
+    },
+    "12": {
+      "id": "neptune_in_house_12",
+      "title": "The Double Sea",
+      "body": [
+        "Neptune is at home here, which makes yours a double sea. This is the house where the garden runs down to water — the hidden, the ancestral, the collective tide — and with this placement you live nearer that shoreline than almost anyone you know: unusually permeable to atmospheres, to the unspoken, to griefs and longings that arrive without a return address.",
+        "You may notice that you need solitude the way others need food — and feel obscurely guilty about it, as if withdrawing were a theft from the people who want you — and that after a crowded day you must wring out feelings you cannot trace to any event of your own. The shadow is the sea's undertow: escape that shades into self-undoing, and a gift kept so far behind the curtain that even you forget it is there. The hiding was sensible once; what lives in you is large, and early audiences may not have been kind to it.",
+        "Befriended, this becomes the deepest placement you own: a practiced passage to the deep and back, returning with compassion and images a landlocked world cannot make for itself."
+      ],
+      "invitation": "To make the crossing conscious — retreat as practice, return as offering, the sea befriended rather than fled.",
+      "edges": {
+        "point": "neptune",
+        "house": 12,
+        "see_also": [
+          "house_12",
+          "canon:neptune"
+        ]
+      }
+    }
+  }
+}

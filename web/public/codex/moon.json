@@ -1,0 +1,441 @@
+{
+  "point": "moon",
+  "name": "Moon",
+  "glyph": "☽",
+  "in_sign": {
+    "aries": {
+      "id": "moon_in_aries",
+      "title": "The Match and the Cradle",
+      "body": [
+        "Your feelings arrive the way a match arrives at flame — instantly, completely, without convening a committee. What safety felt like, before words, was motion: somebody acting, something happening, the trouble being met rather than endured. So under stress, you move. You start, you fix, you drive somewhere, you say the thing. Stillness does not read as rest to you; it reads as the sound of nobody coming.",
+        "You may notice that you discover you were frightened only after you have already been furious — anger reaches your surface first, because it was the one feeling that reliably got results when you were small. A need voiced loudly was answered; a need voiced softly was missed. The reflex that looks like a temper began as a survival signal, and it deserves that much respect. Its cost is that the quieter feelings — grief, fear, simple tiredness — rarely get their turn at the door.",
+        "This placement is not asking you to dampen the fire. It is asking you to learn that not every ache is an emergency, and that a feeling allowed to sit in the cradle for one full minute often tells you something the charge would have trampled. What it is for: courage of the heart — being first to say the hard, true, tender thing."
+      ],
+      "invitation": "To stay beside a feeling long enough to learn its name before you leap into action on its behalf.",
+      "edges": {
+        "point": "moon",
+        "sign": "aries",
+        "see_also": [
+          "canon:mars",
+          "house_1"
+        ]
+      }
+    },
+    "taurus": {
+      "id": "moon_in_taurus",
+      "title": "The Stone Hearth",
+      "body": [
+        "Safety, for you, has weight and temperature. It is the same chair, the warm loaf, the familiar body beside you, the routine that holds like a wall holds a roof. Where others soothe themselves with words or plans, you soothe yourself with the touchable, and your steadiness is contagious — animals, children, and frightened adults settle in your presence, sensing someone who will not suddenly change.",
+        "The shadow is the oldest lunar confusion: mistaking the familiar for the necessary. You may notice that you eat the same dinner in the same seat when a week has been hard — harmless, even wise — but also that you remain in jobs, houses, and arrangements two full seasons after they stopped nourishing you, because leaving feels like demolition rather than departure. That loyalty to what endures was built honestly: a child who found the world unreliable decided to become the reliable thing herself, and did.",
+        "The arc of this placement is the discovery that security is not the same as stillness. An orchard is not betrayed by pruning; it is kept alive by it. What the stone hearth is for is not staying — it is warmth you can carry, a groundedness that travels, so that home becomes something you are rather than somewhere you defend."
+      ],
+      "invitation": "To carry the security you built from stone as trust, so that letting go stops feeling like losing the ground.",
+      "edges": {
+        "point": "moon",
+        "sign": "taurus",
+        "see_also": [
+          "canon:venus",
+          "house_2"
+        ]
+      }
+    },
+    "gemini": {
+      "id": "moon_in_gemini",
+      "title": "The Aviary and the Nest",
+      "body": [
+        "You were soothed by voices before you understood them, and the pattern holds: a feeling begins to settle in you the moment it finds words. Talking is not avoidance for you — it is digestion. Your moods move like weather with a wind behind it, two or three in an afternoon, and the quickness that others mistake for shallowness is actually a nervous system that processes by circulating.",
+        "The shadow is narration in place of experience. You may notice that in the middle of crying you are already composing the sentence with which you will tell this later — the story forming before the feeling has finished happening. Once, that was shelter: naming a frightening thing held it at arm's length, and a quick tongue could talk a tense room into laughing. The cost is that some feelings are wordless by nature, and they wait, unmet, below the commentary.",
+        "The invitation is not silence forever — it is one uncaptioned minute. Let the wordless thing sit on your shoulder before you name it, and your gift completes itself: you become the one who gives feelings their exact names, so precisely that other people, hearing you, finally feel what they could not say."
+      ],
+      "invitation": "To let a feeling finish arriving before the telling of it begins, so that language becomes a bridge rather than a fence.",
+      "edges": {
+        "point": "moon",
+        "sign": "gemini",
+        "see_also": [
+          "canon:mercury",
+          "house_3"
+        ]
+      }
+    },
+    "cancer": {
+      "id": "moon_in_cancer",
+      "title": "The Tidal House",
+      "body": [
+        "Here the Moon is in its own waters, and everything about you moves tidally — feelings that rise and withdraw on their own schedule, a memory that keeps everything, a body that registers the emotional weather of a room before you have crossed its threshold. Belonging is your compass and your currency; you navigate by who feels like home.",
+        "Your dialect of love is care outbound. You may notice that you feed people when you cannot say what you need — the soup appears, the blanket appears, the question about their day appears, all of it a shy translation of the sentence you cannot quite speak, which is: someone tend me now. When hurt, you do not announce it; you withdraw sideways into the shell and wait, hoping to be correctly guessed. The shell deserves honor — it grew around a creature tender enough to need it — but a shell cannot be knocked on from outside forever.",
+        "The arc is the opening that only you can perform, from within. Asking directly is not weakness; it is the door. What this placement is for is profound: you are built to become a home — not merely its keeper, but a belonging that includes you among the belongings."
+      ],
+      "invitation": "To let the shell open from the inside, asking plainly for the tending you have always known how to give.",
+      "edges": {
+        "point": "moon",
+        "sign": "cancer",
+        "see_also": [
+          "canon:moon",
+          "house_4"
+        ]
+      }
+    },
+    "leo": {
+      "id": "moon_in_leo",
+      "title": "The Firelit Stage",
+      "body": [
+        "Your needs are warm-blooded and want witness. Feeling loved, for you, is not a quiet abstract assurance — it is celebration: eyes lighting up when you enter, your news greeted like news, your existence treated as an occasion. In return you give generously and theatrically; your affection has color, ceremony, and a memory for what makes each person feel singular.",
+        "You may notice that a lukewarm reply to something bright you shared can quiet you for days — you do not protest, you withdraw with regal composure, and the other person may never know a door closed. Beneath the dignity is an old bargain: somewhere, warmth had to be earned by shining, and performance became the reliable road to being held. The cost of that bargain is exhausting — a heart that must be applauded to feel real is at the mercy of every audience.",
+        "The developmental work here is a hearth that burns whether or not anyone is watching: learning to greet your own feelings with the ceremony you wish others would bring. Then the radiance stops being a plea and becomes what it was always meant to be — a gift, warming rooms that did nothing to deserve it."
+      ],
+      "invitation": "To keep the hearth lit for your own sake first, so that shining becomes generosity rather than appeal.",
+      "edges": {
+        "point": "moon",
+        "sign": "leo",
+        "see_also": [
+          "canon:sun",
+          "house_5"
+        ]
+      }
+    },
+    "virgo": {
+      "id": "moon_in_virgo",
+      "title": "The Mended Sleeve",
+      "body": [
+        "You are soothed by order and you love by mending. When your feelings surge, your hands reach for a task — the drawer gets sorted, the list gets made, the small broken thing gets fixed — because anxiety, in your body, converts almost instantly into usefulness. Your care is exact: you notice the fraying sleeve, the skipped meal, the detail everyone else walked past, and you tend it without being asked.",
+        "You may notice that when someone you love is in pain, you offer a solution inside the first minute — not from coldness but because helplessness feels worse to you than any chore ever could. The risk is that care arrives dressed as correction, and the people you tend feel improved rather than embraced. And the inner critic saves its finest precision for your own needing self, which it audits like an inefficiency. That precision was learned honestly: for a small person in an unpredictable world, getting things exactly right was the one available safety.",
+        "The arc of this placement is mercy — for the imperfect, and first of all for yourself. Devotion through craft is your genius; the completion of it is allowing yourself to be loved unimproved, included at last among the things worth tending."
+      ],
+      "invitation": "To extend to your own imperfections the patient, devoted attention you have always spent on everyone else's fraying sleeves.",
+      "edges": {
+        "point": "moon",
+        "sign": "virgo",
+        "see_also": [
+          "canon:mercury",
+          "house_6"
+        ]
+      }
+    },
+    "libra": {
+      "id": "moon_in_libra",
+      "title": "The Porcelain Peace",
+      "body": [
+        "You were tuned, early, to the temperature between people. Discord does not merely displease you — it lands in your body like weather, and so you learned to adjust the room: softening a remark here, adding a grace note there, keeping the scale level because a level scale meant a livable house. Beauty steadies you the way food steadies others; a well-set table, a balanced sentence, a kind proportion in things.",
+        "You may notice that when someone asks what you want, you answer with a question — where would you like to go, what would be easier for you — because stating a preference feels faintly like starting a fight. This peacekeeping is a genuine art, and it began as protection: a child who could keep the household weather calm was safer inside it. But peace purchased with self-absence is porcelain — lovely, and unable to bear weight. Resentment seeps in at the hairline cracks, unexplained, because the grievance was never allowed to be a sentence.",
+        "The arc is the discovery on the far side of an honest no: that real harmony can survive disagreement, and only real harmony can hold you. Choosing, even when it costs the quiet, is how the peace becomes weight-bearing — a relatedness that finally includes you."
+      ],
+      "invitation": "To risk the honest no, and discover the sturdier peace that lives on the other side of it.",
+      "edges": {
+        "point": "moon",
+        "sign": "libra",
+        "see_also": [
+          "canon:venus",
+          "house_7"
+        ]
+      }
+    },
+    "scorpio": {
+      "id": "moon_in_scorpio",
+      "title": "The Sealed Spring",
+      "body": [
+        "You feel totally or not at all. Beneath a composed surface runs a spring of extraordinary depth — loyalty that would cross fire, grief that keeps its own calendar, a love that is frankly not casual about anything. You read subtext the way others read print, and half-truths in your presence have a short life expectancy. Intimacy, for you, is not pleasant company; it is ordeal and reward, the willingness to be seen to the floor.",
+        "You may notice that you are the keeper of everyone's secrets while your own remain sealed — people confess to you within an hour of meeting you, and years into a friendship they still could not say what you are afraid of. The seal was set honestly: somewhere, a visible need was used as a handle, and a child concluded that the only safe feeling is a hidden one. Testing people before trusting them, controlling the emotional field, loving intensely from behind glass — every one of these defenses once kept the spring from being poisoned.",
+        "The arc is surrender: letting one chosen person see the source, without the test, before the proof is complete. Power shared, it turns out, does not drain the spring. It is what the depth was for."
+      ],
+      "invitation": "To unseal the spring for someone before they have finished proving themselves, and let being known become safety rather than exposure.",
+      "edges": {
+        "point": "moon",
+        "sign": "scorpio",
+        "see_also": [
+          "canon:pluto",
+          "house_8"
+        ]
+      }
+    },
+    "sagittarius": {
+      "id": "moon_in_sagittarius",
+      "title": "The Tent and the Horizon",
+      "body": [
+        "Your body calms when the map opens. Open sky, a road, a big idea, a plan with distance in it — these do for you what a held hand does for others. You metabolize trouble by moving toward meaning: this too is going somewhere, the story is larger than this chapter, the horizon exists. It is a genuinely lifesaving faith, and people warm themselves at it.",
+        "You may notice that on your worst days you book something — a trip, a course, an escape route, any door marked elsewhere — because a future is easier to hold than a present. The leaving reflex deserves its due: it once kept a young heart from drowning in a house it could not fix, and the humor and buoyancy you built are real virtues, not masks. But grief does not accept a forwarding address. What is outrun is not resolved; it waits at rest stops, patient, wearing the face of restlessness.",
+        "The arc of this placement is presence — the discovery that the horizon is also here, that a tent pitched in this exact evening does not cancel the journey. A faith big enough to sit still inside is the destination all the roads were practicing for."
+      ],
+      "invitation": "To pitch the tent inside the present feeling, trusting that staying is also a form of travel.",
+      "edges": {
+        "point": "moon",
+        "sign": "sagittarius",
+        "see_also": [
+          "canon:jupiter",
+          "house_9"
+        ]
+      }
+    },
+    "capricorn": {
+      "id": "moon_in_capricorn",
+      "title": "The Winter Nursery",
+      "body": [
+        "There is a part of you that learned early that warmth was real but rationed — it had to be earned, or scheduled, or waited for — and so you became competent at an age when others were simply children. Your feelings did not vanish; they went into stewardship. You budget them, you time them, you release them when the work allows, and the people around you lean on a steadiness that was expensive to build.",
+        "You may notice that you answer the question how are you with a report on your work — as if usefulness were the only respectable form a feeling can take. The suspicion underneath is old and precise: that your needs are a burden, an invoice no one wants to receive. Honor the fortress before renovating it. Self-sufficiency was not pride; it was the accurate response of a child who understood that no one was coming, and decided to become the adult the situation lacked.",
+        "But the story has a second act. The good parent you waited for has been under construction inside you all along, built by every year of that discipline — and is now available for your own use. Tenderness is not the opposite of the climb. It is what the climb was for."
+      ],
+      "invitation": "To turn the patient, unconditional steadiness you offer everyone else toward your own needing self, and find it is enough.",
+      "edges": {
+        "point": "moon",
+        "sign": "capricorn",
+        "see_also": [
+          "canon:saturn",
+          "house_10"
+        ]
+      }
+    },
+    "aquarius": {
+      "id": "moon_in_aquarius",
+      "title": "The Glass Observatory",
+      "body": [
+        "You watch your own feelings from a small, courteous distance, the way an astronomer watches weather on another planet — with real interest, excellent instruments, and glass in between. Safety, for you, is the overview: if a storm can be understood, mapped, placed in a pattern, it cannot wholly sweep you away. You give others a rare gift because of this — a calm, unshockable attention in which their most chaotic feelings become discussable.",
+        "You may notice that you can describe your grief with perfect accuracy while feeling that it belongs to someone else in the room — the account is flawless and the ache is elsewhere, filed. The glass was installed honestly. Somewhere, feeling at close range was overwhelming or unwelcome, and a bright child discovered that understanding a storm was the one reliable way to survive it. Observation became home. The cost is exile from your own warm animal body, which goes on having its weather whether or not the observatory acknowledges it.",
+        "The arc is descent — not the loss of the overview but the willingness to come downstairs and stand in your own rain. Belonging to the species you understand so well is the experiment the whole observatory was built to attempt."
+      ],
+      "invitation": "To come down from the observatory and let the weather touch you, joining the species you have studied so faithfully.",
+      "edges": {
+        "point": "moon",
+        "sign": "aquarius",
+        "see_also": [
+          "canon:uranus",
+          "house_11"
+        ]
+      }
+    },
+    "pisces": {
+      "id": "moon_in_pisces",
+      "title": "The Open Harbor",
+      "body": [
+        "The membrane between your feelings and everyone else's is unusually thin. You do not observe a room's mood; you absorb it, the way a harbor receives whatever the tide carries in. This porousness is the source of your compassion — you comfort people accurately because you are, for a moment, feeling from inside their weather — and it is also a tax collected daily, often without your noticing the withdrawal.",
+        "You may notice that you come home from a gathering carrying a sadness you cannot trace to any event of your own day — you have been drinking, quietly, from every glass on the table. When it becomes too much, the old exits open: sleep, screens, fantasy, the fog, the vanishing act performed in plain sight. Those exits deserve gentleness. Dissolving was how a very sensitive creature endured a world that broadcast at full volume; leaving was the only door a child could reach.",
+        "The arc of this placement is not thicker skin — it is banks. A river with banks is not less water; it is water that goes somewhere. Permeable on purpose, sealed when necessary, you can visit the ocean and return carrying what the dry land cannot produce alone: images, music, and a mercy that knows the inside of other people's storms."
+      ],
+      "invitation": "To build banks for the river — permeable by choice, sealed at need — so your compassion arrives somewhere instead of everywhere.",
+      "edges": {
+        "point": "moon",
+        "sign": "pisces",
+        "see_also": [
+          "canon:neptune",
+          "house_12"
+        ]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "moon_in_house_1",
+      "title": "The Visible Weather",
+      "body": [
+        "Your moods reach the threshold before you do. Whatever tide is moving in you moves across your face, your posture, the temperature of your voice — people meet your feeling first and your ideas second, and no amount of composure fully repeals this. You arrive as weather, and the room adjusts around you before a word is spoken.",
+        "You may notice that strangers ask whether you are all right before you have noticed anything is wrong — your body publishes bulletins you have not yet read yourself. There is a cost to living this legibly: your identity can fuse with whatever mood is passing through, so that a bad afternoon feels like a bad self, and people who read you well can manage you with an accuracy that feels like exposure. But the transparency began as an appeal, and an intelligent one — a face that showed everything once summoned care that words could not have negotiated. It kept a small person tended.",
+        "The developmental turn is from being broadcast to being fluent. You are the first instrument in any room to register what is actually happening beneath the pleasantries; owned consciously, that responsiveness becomes leadership of a rare kind — the one who can name the room's weather, and thereby change it."
+      ],
+      "invitation": "To read your own bulletins first, so that visible feeling becomes fluency rather than exposure.",
+      "edges": {
+        "point": "moon",
+        "house": 1,
+        "see_also": [
+          "house_1",
+          "canon:mars"
+        ]
+      }
+    },
+    "2": {
+      "id": "moon_in_house_2",
+      "title": "The Full Pantry",
+      "body": [
+        "Safety, for you, is stored — in the pantry, the savings account, the owned and touchable things that will still be there in the morning. Where others reach for reassurance, you count what is on hand. There is deep sense in this: a full cupboard settles an anxiety in you that no argument, however sound, can reach, because the fear it answers is older than argument.",
+        "You may notice that you check your bank balance the way other people check the sky — not because anything has changed, but because the checking itself is the comfort, a small ritual against a famine that, in truth, has already happened and already been survived. The shadow here is that having becomes a proxy for worth: the pantry must stay full because somewhere underneath, you suspect that you are only as safe as what you hold. That accumulation was never greed. It was a child's shrewd insurance against a world that had proven it could withdraw its provision.",
+        "The arc runs inward: from having to worth, from stored security to the discovery that enough is an internal fact. When the pantry lives in you, generosity stops feeling like depletion — and giving becomes the proof of plenty."
+      ],
+      "invitation": "To move the pantry inside, so that enough becomes something you are rather than something you count.",
+      "edges": {
+        "point": "moon",
+        "house": 2,
+        "see_also": [
+          "house_2",
+          "canon:venus"
+        ]
+      }
+    },
+    "3": {
+      "id": "moon_in_house_3",
+      "title": "The Murmuring Lane",
+      "body": [
+        "You are soothed by the near world — the walk to the corner, the call to the sister, the familiar clerk, the small daily rounds where everything has a name you gave it long ago. Your mind and your moods travel together; when one moves, the other rides along, which makes your thinking warm and your feelings articulate, and both of them restless.",
+        "You may notice that when trouble comes you telephone someone and walk while you talk — words in motion settle what stillness cannot, and the lane itself seems to do half the listening. The shadow is chatter as lullaby: the podcast always playing, the messages always answered, the small talk kept aloft so that silence never gets a chance to say what it came to say. That habit was learned in the first neighborhood of your life, where talk was how tenderness traveled — a murmuring household meant a safe one, and quiet meant something had gone wrong.",
+        "The arc is from noise toward naming. The same fluency that fills silence can, turned deliberate, give feelings their exact words — and you become the neighborhood's translator, the one people seek out because you can say what they have only been able to feel."
+      ],
+      "invitation": "To let silence finish its sentence sometimes, and spend your fluency on naming what matters rather than filling what doesn't.",
+      "edges": {
+        "point": "moon",
+        "house": 3,
+        "see_also": [
+          "house_3",
+          "canon:mercury"
+        ]
+      }
+    },
+    "4": {
+      "id": "moon_in_house_4",
+      "title": "The House Under the House",
+      "body": [
+        "The Moon stands here in its own country: the taproot, the private base beneath every public act. Home is not one concern among many for you — it is the regulator of your whole system. When the base is steady you can meet anything; when it is disturbed, nothing out in the world quite works until it is set right.",
+        "You may notice that you are the one who keeps the recipes, the photographs, and the grievances — the family archive chose you, and you have been its keeper since before you could have consented. This is the deeper matter of the placement: you carry the emotional inheritance of your people, and some of the furniture in your inner house was moved in by hands that never asked. Feelings your parents and their parents left unfinished can surface in you wearing your own name. Carrying them was an act of love, and it deserves to be called one.",
+        "But a keeper is not a vault. The arc here is becoming the ancestor rather than only the heir — sorting the inheritance, choosing consciously what passes forward and what stops with you, and building the home that feeds its keeper too."
+      ],
+      "invitation": "To become the ancestor instead of only the heir, choosing what the house passes forward and what ends, tenderly, with you.",
+      "edges": {
+        "point": "moon",
+        "house": 4,
+        "see_also": [
+          "house_4",
+          "canon:moon"
+        ]
+      }
+    },
+    "5": {
+      "id": "moon_in_house_5",
+      "title": "The Sandbox and the Stage",
+      "body": [
+        "You are fed by making. Your moods do not want analysis so much as expression — they want to become the song, the meal, the garden, the game, the story told with your hands moving. Play is not recreation for you; it is nutrition, and children, actual or symbolic, delight you because they are native speakers of your emotional language.",
+        "You may notice that your best work happens when you are calling it play — and stalls the moment someone calls it serious. Delight is your engine, and pressure floods it. There is a subtler shadow too: creating for the warmth it wins, the child's old bargain in which being delightful secured love, so that even now a piece feels unfinished until someone has smiled at it. That bargain was struck honestly — charm was a real currency in the household economy, and a performing child was a held child — but it quietly hands your joy to the audience for safekeeping.",
+        "The arc is the reclamation: risking being seen enjoying your own existence, and then, more radically, enjoying it unseen. When play becomes food rather than performance, the applause turns optional — and the work, curiously, gets better."
+      ],
+      "invitation": "To play for the nourishment of it, letting delight be the point rather than the payment.",
+      "edges": {
+        "point": "moon",
+        "house": 5,
+        "see_also": [
+          "house_5",
+          "canon:sun"
+        ]
+      }
+    },
+    "6": {
+      "id": "moon_in_house_6",
+      "title": "The Daily Bread",
+      "body": [
+        "Your care takes the form of ritual. Feelings, in you, seek routine the way water seeks a channel: the morning sequence, the tended kitchen, the useful work done well — these are not chores to you but the actual architecture of emotional safety. You show love in maintenance, in the lunch packed and the appointment remembered, and you receive the world's chaos as a to-do list, which is both your genius and your tell.",
+        "You may notice that after a conversation goes wrong you reorganize a shelf — order in the hands standing in for order in the chest. Notice, too, that your body keeps the ledger of whatever the heart declines to read; tiredness and tension arrive as faithful messengers of feelings that were filed under later. The shadow is service as citizenship — the quiet belief that your place among people is earned by upkeep, that you are welcome for what you maintain. That belief was once a fair reading of the evidence: usefulness was the reliable road to being kept.",
+        "The arc turns the workshop into a chapel: work as prayer rather than penance. The completion of your devotion is entering your own rotation of care — becoming one of the things you faithfully tend."
+      ],
+      "invitation": "To put your own name on the rota of care you keep so faithfully for everything else.",
+      "edges": {
+        "point": "moon",
+        "house": 6,
+        "see_also": [
+          "house_6",
+          "canon:mercury"
+        ]
+      }
+    },
+    "7": {
+      "id": "moon_in_house_7",
+      "title": "The Other Half of Home",
+      "body": [
+        "Your needs come into focus in the mirror of another. Alone, they blur — you can go days without noticing hunger of any kind — but in partnership everything sharpens: what you feel, what you lack, what you have always wanted. The significant other is not an accessory to your emotional life; the relationship is where your emotional life convenes.",
+        "You may notice that you can read a partner's needs at a glance while your own surface only when someone thinks to ask — you have quietly outsourced the tending. Sometimes the Moon itself gets outsourced: you may keep finding yourself with moody, needing, tidal partners, and wondering why you always play the steady one. What you meet in them is often your own disowned needing self, exiled across the table where it is safer to care for than to be. The arrangement had its wisdom — attending to another was once the safest room in the house, and being the calm one was the price of admission.",
+        "The arc is the withdrawal of the projection: bringing your half of home to the table. Mutuality — being tended as well as tending — is what the mirror was trying to teach all along."
+      ],
+      "invitation": "To bring your own tide to the table, letting yourself be tended as skillfully as you tend.",
+      "edges": {
+        "point": "moon",
+        "house": 7,
+        "see_also": [
+          "house_7",
+          "canon:venus"
+        ]
+      }
+    },
+    "8": {
+      "id": "moon_in_house_8",
+      "title": "The Well at Midnight",
+      "body": [
+        "Your feelings run deep beneath the visible ground. Acquaintances find you composed, even opaque; only in true intimacy — or true crisis — does the river surface, and then with a force that surprises people who thought they knew you. You are drawn to the places where things are real: the deathbed honesty, the merged finances, the conversation at two in the morning where masks are finally set down.",
+        "You may notice that you are steadiest in other people's catastrophes and most uneasy on an ordinary, calm Tuesday — emergency gives intimacy a doorway that ease does not, and part of you only feels safely close to people when the stakes are high enough to burn the small talk away. There is history in this. Somewhere, the surfaces lied — pleasant rooms concealed unpleasant truths — and a watchful child concluded that only depth can be trusted, and that vulnerability must be controlled, tested, portioned out to the proven. Every one of those locks once guarded something worth guarding.",
+        "The arc is to let closeness change you without crisis as the chaperone — the river surfacing into daylight on an unremarkable afternoon. Transformation, it turns out, does not require emergency. It requires consent."
+      ],
+      "invitation": "To let intimacy find you in calm water, without waiting for a storm to justify the depth.",
+      "edges": {
+        "point": "moon",
+        "house": 8,
+        "see_also": [
+          "house_8",
+          "canon:pluto"
+        ]
+      }
+    },
+    "9": {
+      "id": "moon_in_house_9",
+      "title": "The Atlas Under the Pillow",
+      "body": [
+        "Meaning mothers you. When your heart is heavy, you reach not for comfort food but for the large view — the book that reframes everything, the philosophy that gives the pain a place in a pattern, the journey that promises the self you cannot be at this address. Distance itself is soothing; you have felt more at home in some foreign harbors than at your own kitchen table.",
+        "You may notice that when the house grows heavy you read about elsewhere — the atlas under the pillow — and that your griefs are metabolized as philosophy sometimes before they have been felt as grief. This is the shadow: transcendence as bypass, the long view deployed so quickly that the near view never gets its turn. It was learned honestly. For a young heart in an unbearable close-up, the wide shot was survival — somewhere out there was proof that the world was larger than this house, and that proof kept you alive to the possibility of leaving.",
+        "The arc is a faith that can hold feeling rather than replace it — big enough to sit inside a hard afternoon without booking passage out. The pilgrim who can also be at home has finished the longest journey there is."
+      ],
+      "invitation": "To let the large view hold the hard feeling instead of replacing it, becoming a pilgrim who can also stay.",
+      "edges": {
+        "point": "moon",
+        "house": 9,
+        "see_also": [
+          "house_9",
+          "canon:jupiter"
+        ]
+      }
+    },
+    "10": {
+      "id": "moon_in_house_10",
+      "title": "The Cradle on the Summit",
+      "body": [
+        "Your needing self climbed into public view early, and it lives there still. Your moods are visible at work whether you like it or not; your reputation carries an emotional signature; and the world tends to hand you the caretaking roles — the one who steadies the team, manages the crisis, remembers the human beings inside the org chart. Nurture, in some form, keeps trying to become your vocation.",
+        "You may notice that you feel most cared for when you are the one everyone depends on — being needed has become your way of being held, and an empty stretch with no one relying on you can feel less like rest than like exile. Backstage stands a parent experienced as measure: somewhere, achievement earned the tending that was not freely given, and a child learned to climb toward warmth instead of simply receiving it. That climb built genuine mastery, and it deserves its honors.",
+        "But the summit was never meant to replace the taproot. The arc here is a public life that admits the private creature — letting yourself be held when you have accomplished nothing at all, and discovering that the care you have professionalized was always, also, for you."
+      ],
+      "invitation": "To let yourself be held on the days you have achieved nothing, and find the summit still stands.",
+      "edges": {
+        "point": "moon",
+        "house": 10,
+        "see_also": [
+          "house_10",
+          "canon:saturn"
+        ]
+      }
+    },
+    "11": {
+      "id": "moon_in_house_11",
+      "title": "The Village Well",
+      "body": [
+        "You belong in the plural. Friendship is not the periphery of your emotional life but its center of gravity — the chosen family, the group chat that functions as a hearth, the circle in which your feelings finally have room. Causes move you the way individuals move other people; you can love a future, and the community building toward it, with real tenderness.",
+        "You may notice that you are the one who organizes the gathering, remembers the birthdays, and holds the circle together — and that you sometimes walk home from your own well-hosted evening feeling faintly unfed. Intimacy diffused across many never quite lands on one; the crowd receives what no single person is allowed to hold. There was wisdom in the arrangement. The group was safer than the pair — in numbers, no single loss could sink you, and belonging to everyone meant depending, dangerously, on no one. That insurance was purchased young, and it worked.",
+        "The arc is allowing one or two to draw close enough to matter specifically — to drink, yourself, from the well you keep for the village. The circle does not break when you finally let it feed you; it becomes, at last, what you built it to be."
+      ],
+      "invitation": "To drink from the well you keep for everyone, letting one or two come close enough to feed you specifically.",
+      "edges": {
+        "point": "moon",
+        "house": 11,
+        "see_also": [
+          "house_11",
+          "canon:uranus"
+        ]
+      }
+    },
+    "12": {
+      "id": "moon_in_house_12",
+      "title": "The Tide Behind the Curtain",
+      "body": [
+        "Your needs live behind the curtain — often hidden from others, and not infrequently from you. You are the one who tends invisibly: the kindness done anonymously, the person quietly checked on, the feelings of a whole household absorbed and carried without anyone, including you, quite noticing the weight. An ancestral tide moves in you; some of your moods seem older than your biography.",
+        "You may notice that you learn you were sad weeks after the fact, when a piece of music suddenly tells you — the feeling arrived without a return address and waited, patient, in the room behind the house. The shadow is a self-forgetting that photographs well: it looks like serenity, generosity, low maintenance. Going quiet once kept a sensitive child safe in a loud house — needs that made no sound could not be trampled — and that vanishing was a genuine skill, learned for genuine reasons. But what lives behind the curtain does not stop working; unbefriended, it steers.",
+        "The arc is befriending the sea: retreat taken on purpose rather than by disappearance, solitude that restores instead of erases. You return from those waters carrying what the drier rooms cannot produce — compassion with actual depth in it, and music from underneath."
+      ],
+      "invitation": "To visit the sea on purpose and return on purpose, letting your hidden needs speak before the music has to speak for them.",
+      "edges": {
+        "point": "moon",
+        "house": 12,
+        "see_also": [
+          "house_12",
+          "canon:neptune"
+        ]
+      }
+    }
+  }
+}

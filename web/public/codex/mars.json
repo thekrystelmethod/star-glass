@@ -1,0 +1,369 @@
+{
+  "point": "mars",
+  "name": "Mars",
+  "glyph": "♂",
+  "in_sign": {
+    "aries": {
+      "id": "mars_in_aries",
+      "title": "The First Charge",
+      "body": [
+        "Desire, in you, does not deliberate. It arrives whole — an urge, an anger, an appetite — and your body is already moving before the committee of second thoughts has found its seats. This is will in its youngest and cleanest form: the courage to begin, the innocence of a warrior who has not yet learned to doubt the charge. Your anger comes fast, burns clean, and is genuinely gone afterward, which quietly bewilders those who tend their grievances like slow fires.",
+        "You may notice that waiting frightens you more than failing does — that you would rather begin badly, now, than begin well after an unbearable pause. The shadow here is not rage but evaporation: a fire that ignites everything and finishes little, because the first hour of any venture gives you what you came for, and the second hour asks for a different virtue entirely. That restlessness once served you well; it kept you out of the swamp of hesitation where subtler spirits drown.",
+        "But the charge is not the campaign. This placement exists to convert ignition into endurance — to teach you that courage has a second, quieter form, which consists of still being on the field when the excitement has left it."
+      ],
+      "invitation": "To let the fire that starts everything learn the deeper courage of staying.",
+      "edges": {
+        "point": "mars",
+        "sign": "aries",
+        "see_also": ["canon:mars", "house_1"]
+      }
+    },
+    "taurus": {
+      "id": "mars_in_taurus",
+      "title": "The Slow Furnace",
+      "body": [
+        "Your will moves the way roots move: invisibly, patiently, with a force that only shows itself in what it eventually splits open. You are slow to anger — genuinely slow, not suppressing — and this composure is one of your gifts, because when you finally do commit your strength, it arrives with the accumulated weight of everything you declined to waste it on. What you build, you build to last; what you defend, stays defended.",
+        "You may notice that you can outwait almost anyone, and that you sometimes call this patience when it is really refusal — the immovable no, planted like a fence post, long after the reason for the fence has gone. The shadow of this placement is not violence but inertia: anger stored in the body as tension, desire postponed until it hardens into mere ownership. That heaviness once protected you; digging in was how you survived forces that wanted to hurry or uproot you.",
+        "What this steadiness is for, finally, is not holding ground but cultivating it. The furnace that heats slowly can heat for decades. The developmental task is to discover that releasing your grip is also an act of strength — that the hand which can hold on this long can also, deliberately, open."
+      ],
+      "invitation": "To learn that the strength which holds on so magnificently can also choose to open.",
+      "edges": {
+        "point": "mars",
+        "sign": "taurus",
+        "see_also": ["canon:venus", "house_2"]
+      }
+    },
+    "gemini": {
+      "id": "mars_in_gemini",
+      "title": "The Fencer's Tongue",
+      "body": [
+        "Your will fights the way a fencer fights: with speed, angle, and wit, never brute weight. Words are your native weapons, and you learned early that a well-placed sentence can do what a raised fist cannot — open a door, end an argument, keep a threat at conversational distance. Curiosity powers the engine; you attack a new idea the way others attack an enemy, and you are rarely more alive than in the first fierce exchange of a debate.",
+        "You may notice that you pick fights about ideas when the real grievance is something you cannot say plainly — that irony and cleverness stand guard exactly where a simple, exposed sentence like \"you hurt me\" would have to walk out alone. The shadow here is scatter and deflection: force divided among six projects and a dozen arguments, so that nothing ever receives the full, unguarded weight of your wanting. The quickness once protected you; being hard to pin down meant being hard to wound.",
+        "But the blade is for more than parrying. What this placement asks is that you gather your voltage to a single point and say the plain thing — to let the mind that can argue anything finally advocate for what it actually wants."
+      ],
+      "invitation": "To gather the scattered brilliance to a point and say, plainly, what you want.",
+      "edges": {
+        "point": "mars",
+        "sign": "gemini",
+        "see_also": ["canon:mercury", "house_3"]
+      }
+    },
+    "cancer": {
+      "id": "mars_in_cancer",
+      "title": "The Sideways Advance",
+      "body": [
+        "Your will moves like the tide — powerfully, but not in straight lines. Feeling comes first; action follows the emotional weather, advancing when the water is right and withdrawing into the shell when it is not. In defense of those you love you are frankly formidable, capable of a ferocity that surprises everyone, including you. It is only on your own behalf that the sword grows strangely heavy.",
+        "You may notice that you can fight like a lion for someone you love and yet cannot ask for a raise, a favor, or an apology for yourself — as if wanting things in the first person were somehow indecent. When anger cannot go forward it goes sideways: the delayed reply, the sudden mood, the kindness withdrawn without announcement. This indirectness deserves respect before correction, because it was learned honestly; somewhere, early, directness was not safe, and the crab's sidelong path kept something soft alive.",
+        "What this placement is for is the slow repatriation of desire — bringing your wanting home to your own name. The protective fire that has always burned for others is yours; the developmental work is to stand in front of what you need and say so, facing forward."
+      ],
+      "invitation": "To claim, in the first person and facing forward, the wanting you have always honored in others.",
+      "edges": {
+        "point": "mars",
+        "sign": "cancer",
+        "see_also": ["canon:moon", "house_4"]
+      }
+    },
+    "leo": {
+      "id": "mars_in_leo",
+      "title": "The Sunlit Arena",
+      "body": [
+        "Your will is wholehearted or it is nothing. You do not merely act; you perform the act, in the oldest and most dignified sense — the way a knight performs a vow — investing effort with warmth, style, and a certain royal seriousness. Courage, for you, is a creative act: you fight best for what you love openly, and your anger, when it comes, is hot, theatrical, and honest. Nobody has to guess where you stand.",
+        "You may notice that effort no one witnesses feels strangely pointless — that you can labor heroically before an audience of one, but the same task in an empty room drains of meaning, as if unseen courage did not fully count. And because your heart travels inside your work, criticism of the work lands as a wound to the person. The pride that guards you here is not vanity; it is the memory of how much it cost, once, to be seen trying and be laughed at.",
+        "The arc of this placement runs from performance toward radiance — from courage that requires the mirror to courage that generates its own light. What it is for is action so aligned with your heart that applause, when it comes, is pleasant and no longer load-bearing."
+      ],
+      "invitation": "To act from the heart so fully that the applause becomes pleasant rather than necessary.",
+      "edges": {
+        "point": "mars",
+        "sign": "leo",
+        "see_also": ["canon:sun", "house_5"]
+      }
+    },
+    "virgo": {
+      "id": "mars_in_virgo",
+      "title": "The Whetstone",
+      "body": [
+        "Your will expresses itself as craft. Where others swing broadswords, you work with instruments — the precise word, the corrected process, the flaw found and mended before anyone else has noticed it exists. There is devotion in this: your effort serves, refines, improves, and you take a quiet, almost private satisfaction in work done properly that no inspector will ever check. Your anger, too, is precise; it arrives as critique, usually aimed first and hardest at yourself.",
+        "You may notice that you revise the message a fourth time rather than send it — that perfecting has become an honorable form of postponing, a way of staying at the whetstone so the blade never has to be tested. The inner critic who runs this workshop was hired long ago for good reasons; being beyond reproach once meant being beyond reach of somebody's reproach. But a sword sharpened forever cuts nothing, and force that only ever refines becomes a fist closed around its own standards.",
+        "What this placement is for is effective devotion: the marriage of precision and mercy. The developmental work is to let good enough go out the door and act in the world — to discover that imperfect action serves better than immaculate hesitation."
+      ],
+      "invitation": "To extend to your own efforts the mercy that lets good work leave the workshop.",
+      "edges": {
+        "point": "mars",
+        "sign": "virgo",
+        "see_also": ["canon:mercury", "house_6"]
+      }
+    },
+    "libra": {
+      "id": "mars_in_libra",
+      "title": "The Velvet Gauntlet",
+      "body": [
+        "Your will wears gloves. You fight — everyone fights — but you do it through persuasion, charm, strategy, and an exquisite sense of what the other person needs to hear; open combat strikes you as a failure of civilization, and you will spend remarkable energy preventing it. Fairness is not decoration for you but fuel: injustice can rouse you to a champion's fury that pure self-interest never could.",
+        "You may notice that you say \"it's fine\" at precisely the moment it stops being fine — and then pay for the purchased peace in installments, as resentment quietly compounds. Anger deferred does not disappear; it goes underground and resurfaces as coolness, criticism of taste, or the sudden discovery, months later, that you have been furious all along. The deferral deserves honor before repair: keeping the peace was once real protection, for you or for someone you loved, and you became skilled at it the way people become skilled at necessary things.",
+        "What this placement is for is clean conflict — the discovery that a direct, respectful no is not the end of harmony but its precondition. The scales you carry are not for avoiding the fight; they are for making it just."
+      ],
+      "invitation": "To discover that honest conflict, cleanly fought, is a form of respect the false peace never was.",
+      "edges": {
+        "point": "mars",
+        "sign": "libra",
+        "see_also": ["canon:venus", "house_7"]
+      }
+    },
+    "scorpio": {
+      "id": "mars_in_scorpio",
+      "title": "The Underground River",
+      "body": [
+        "Your will runs deep and total, like a river moving under limestone: silent at the surface, immense below. When you want something you want it entirely, and you can sustain that wanting — through obstacles, years, and other people's forgetting — with an endurance that has nothing to do with noise. Your anger is the same: it rarely shouts, it descends, and it remembers.",
+        "You may notice that you almost never raise your voice, and that people are careful around you anyway — as if they sense the current under the calm. The shadow of this placement is the siege: strategy where openness would serve, the withheld truth, the test administered to loved ones who were never told they were being examined. This concealment has an honorable history. Intensity like yours tends to be punished early — too much, people said — and you learned to take the fire underground, where no one could mock it or take it away.",
+        "But the underworld is a passage, not an address. What this placement is for is transformation in the open: desire declared, power shared rather than held, the tremendous force of your depths surfacing at last as devotion that another person is actually allowed to see."
+      ],
+      "invitation": "To let the buried intensity surface as declared desire and power willingly shared.",
+      "edges": {
+        "point": "mars",
+        "sign": "scorpio",
+        "see_also": ["canon:pluto", "house_8"]
+      }
+    },
+    "sagittarius": {
+      "id": "mars_in_sagittarius",
+      "title": "The Loosed Arrow",
+      "body": [
+        "Your will needs a horizon. Effort, for you, must mean something — must serve a truth, a cause, a journey toward somewhere larger — and when it does, your energy is magnificent: buoyant, generous, tireless, carrying others along in its draft. Your anger is moral before it is personal; you can forgive an injury to yourself far more easily than a lie, and your temper flares hottest at hypocrisy.",
+        "You may notice that every fight you pick is on principle, and that the principle conveniently points away from home — that crusades in the distance can be a way of galloping past the small, unglamorous confrontation waiting in the next room. The shadow here is flight dressed as quest: the promise outrunning the delivery, the arrow always in the air and never in anything. The restlessness deserves its dignity; believing in elsewhere was once what kept your spirit alive in a somewhere too small for it.",
+        "What this placement is for is aim. The fire and the faith are already yours; the developmental work is presence — discovering that the horizon is also here, and that the bravest journey may be the short walk toward the conversation you have been riding past."
+      ],
+      "invitation": "To bring the crusader's fire home to the near, particular battle that actually matters.",
+      "edges": {
+        "point": "mars",
+        "sign": "sagittarius",
+        "see_also": ["canon:jupiter", "house_9"]
+      }
+    },
+    "capricorn": {
+      "id": "mars_in_capricorn",
+      "title": "The General's Winter",
+      "body": [
+        "Your will is disciplined the way a mountaineer's is: force budgeted, route planned, summit chosen years in advance. You do not waste anger on what cannot be changed and do not announce campaigns you cannot finish; when you commit, the commitment is cold-weather grade, built to survive seasons that scatter more impulsive spirits. Others sense this and hand you the difficult things, correctly.",
+        "You may notice that you permit yourself rest only when it can be justified as recovery for more work — that desire itself must file a business case, and wanting something merely because it delights you feels faintly illegitimate. The shadow here is instrumentality: a will so harnessed to achievement that it forgets it belongs to a person. That harness was fitted early and honestly; somewhere you concluded that being useful was the reliable road to being valued, and you built accordingly.",
+        "What this placement is for is mastery with a beating heart. The climb is real and the summit is reachable — but the developmental work is to remember, at altitude, what the climbing was for: to let ambition serve a life, with its tenderness and its useless joys, rather than replace one."
+      ],
+      "invitation": "To remember, somewhere above the treeline, the tenderness the whole climb was for.",
+      "edges": {
+        "point": "mars",
+        "sign": "capricorn",
+        "see_also": ["canon:saturn", "house_10"]
+      }
+    },
+    "aquarius": {
+      "id": "mars_in_aquarius",
+      "title": "Cold Fire",
+      "body": [
+        "Your will fights at system level. Where others battle a person, you battle a premise; your anger cools rapidly into analysis, and what emerges is a principled, articulate force aimed at whatever has calcified — the unjust rule, the unexamined custom, the crowd agreeing too easily. You can hold a position alone for years without visible strain, which is rarer than it sounds.",
+        "You may notice that being agreed with too quickly makes you suspicious — that you reposition mid-conversation, not because your view changed but because absorption into consensus feels like a kind of death. The shadow here is reflex: rebellion as posture, contrariness that defends a freedom no one was attacking, and a cool distance from your own desires, which get reviewed like proposals rather than felt like fires. The detachment earned its keep; standing outside the group once hurt less than being misfit inside it, and the observatory was safer than the town square.",
+        "What this placement is for is the joining. Your difference is real and does not need the fortress. The developmental work is to bring the cold fire down among actual people — to fight for persons and not only principles, and to let one of those persons be you."
+      ],
+      "invitation": "To descend from the observatory and fight for actual people, yourself included.",
+      "edges": {
+        "point": "mars",
+        "sign": "aquarius",
+        "see_also": ["canon:uranus", "house_11"]
+      }
+    },
+    "pisces": {
+      "id": "mars_in_pisces",
+      "title": "The Current and the Keel",
+      "body": [
+        "Your will moves with the tide rather than against it. Desire, for you, is diffuse and atmospheric — less a target than a longing — and your finest efforts arrive on inspiration, in service of something felt rather than scheduled: a person in trouble, a piece of music, a cause with tears in it. You fight beautifully for the wounded and the voiceless, and hardly at all for yourself.",
+        "You may notice that you can mobilize magnificently for someone else's emergency while your own projects drift, waiting for a wind that somehow never rises — and that your anger rarely appears as anger, arriving instead as sadness, fog, or a sudden need to be elsewhere. This dissolving deserves tenderness before critique: somewhere, wanting things sharply was too costly, and the soft focus kept you from becoming what hurt you. But a river without banks is not generous; it is a marsh.",
+        "What this placement is for is compassionate force — the keel that lets the sail use the wind. The developmental work is form: naming a desire, keeping it named through the week, and discovering that boundaries do not betray the ocean; they are how the ocean reaches land."
+      ],
+      "invitation": "To give the longing a keel, so that compassion becomes a course and not a drift.",
+      "edges": {
+        "point": "mars",
+        "sign": "pisces",
+        "see_also": ["canon:neptune", "house_12"]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "mars_in_house_1",
+      "title": "First Through the Door",
+      "body": [
+        "Your will lives at the threshold: it is the first thing about you that arrives anywhere. Before you have said a word, something in your bearing has already announced energy, intent, a readiness — and the room adjusts. You move toward life rather than waiting for it, and in emergencies this is unmistakable: while others are still asking what happened, you are already doing something about it.",
+        "You may notice that strangers sometimes assume you are angry when you are merely awake — that your neutral arrives, to gentler nervous systems, as a challenge. Being read as forceful when you feel ordinary is one of this placement's quiet taxes. The shadow is the permanent vanguard: leading with the spear so consistently that nothing tender is ever visible at the door, and the softer self waits in rooms no visitor reaches. The armor was honest work once; arriving strong meant not arriving vulnerable, and there was a time when that mattered.",
+        "What this placement is for is embodied courage that invites rather than braces. The developmental work is to let the door open on a whole person — to discover that your presence protects best when it no longer needs to be a warning."
+      ],
+      "invitation": "To let your force become a welcome — a door held open rather than a spear held ready.",
+      "edges": {
+        "point": "mars",
+        "house": 1,
+        "see_also": ["house_1", "canon:mars"]
+      }
+    },
+    "2": {
+      "id": "mars_in_house_2",
+      "title": "Ore and Anvil",
+      "body": [
+        "Your will stages itself in the storehouse: earning, building, and defending what is yours. You go and get — resources rarely drift to you unfought, and something in you prefers it that way, because a thing won carries a weight a thing given never does. You can generate income through sheer directed effort, and you guard what you have built with a ferocity that surprises those who mistook your steadiness for softness.",
+        "You may notice that money feels less like comfort to you than like ammunition — a running score of how well you have fought — so that even in plenty, some inner quartermaster keeps counting. The shadow here is the fusion of worth and winnings: when the ledger dips, so does your sense of deserving to exist, and the fighting never gets to stop. That equation was learned in real weather; somewhere, having enough and being enough got welded together, usually because someone had neither.",
+        "What this placement is for is provision — strength that feeds people, including you. The developmental work is to unweld the ledger from the soul: to fight for resources because life needs them, while knowing your worth was never the thing on the anvil."
+      ],
+      "invitation": "To fight for what sustains life while knowing your worth was never what needed winning.",
+      "edges": {
+        "point": "mars",
+        "house": 2,
+        "see_also": ["house_2", "canon:venus"]
+      }
+    },
+    "3": {
+      "id": "mars_in_house_3",
+      "title": "The Sharpened Sentence",
+      "body": [
+        "Your will stages itself in the near world of words. Speech, for you, has always been an instrument with an edge: you think fast, answer faster, and there is a live wire running between your convictions and your tongue. Your first duels were likely fought across a dinner table or a classroom, and you may still carry the reflexes — the quick parry, the counter-question, the instinct that a conversation is something one can win.",
+        "You may notice that you rehearse arguments with people who are not in the room — composing the decisive reply on the drive home, in the shower, at two in the morning — as if some early tribunal never adjourned. The shadow here is language as fortification: when every exchange is a fencing match, listening becomes merely a ceasefire, and no one's words are allowed all the way in. The sharpness earned its keep; being quick was once how you held ground among voices bigger than yours.",
+        "What this placement is for is the fierce, precise advocacy that changes minds and defends the unheard. The developmental work is to let the blade become a bridge — to speak in order to reach someone, not to remain unreachable."
+      ],
+      "invitation": "To turn the dueling tongue into an instrument that reaches rather than repels.",
+      "edges": {
+        "point": "mars",
+        "house": 3,
+        "see_also": ["house_3", "canon:mercury"]
+      }
+    },
+    "4": {
+      "id": "mars_in_house_4",
+      "title": "Fire in the Foundations",
+      "body": [
+        "Your will lives in the taproot — the private base beneath every public act. Home, for you, has never been a neutral place: it is where the real energy lives, where things get built, defended, renovated, and sometimes fought over. You may have grown up in a household where anger was the climate — loud or glacial — and you absorbed, early, an education in force that the world outside never saw.",
+        "You may notice that you are most combative with the people you feel safest with: the professional front stays impeccably civil while the hearth gets the heat, as if love were the only arena where the fire is allowed off its leash. This inversion deserves understanding before reform. Anger shown only at home is often anger that was only ever *learned* at home — and keeping it indoors was, in its way, an act of protection toward everyone outside.",
+        "What this placement is for is the forge: a home where intensity becomes warmth, where things are made rather than broken, and where the family fire you inherited is tended into something that heats the house instead of burning it. The developmental work is to become the ancestor the hearth was waiting for."
+      ],
+      "invitation": "To tend the inherited fire until the hearth becomes a forge and not a battlefield.",
+      "edges": {
+        "point": "mars",
+        "house": 4,
+        "see_also": ["house_4", "canon:moon"]
+      }
+    },
+    "5": {
+      "id": "mars_in_house_5",
+      "title": "Fire at Play",
+      "body": [
+        "Your will stages itself at the hearth-fire, where life is created and enjoyed. You play hard — games, romance, art, children's kingdoms on the living-room floor — and your creativity has muscle in it: you do not dabble, you make, and the making has the intensity of a contest even when no one else is competing. In romance you are the pursuer, honestly and openly; wanting someone, for you, is a verb.",
+        "You may notice that games stop being fun at exactly the moment they stop being winnable — that a certain light goes out of play when victory leaves the table, and out of courtship when the chase ends. The shadow here is conquest quietly replacing joy: creation driven by the need to prove rather than the pleasure of making, love most alive at maximum uncertainty. The competitiveness has an honorable root; somewhere, winning was how a child got seen, and play became the arena where visibility was fought for.",
+        "What this placement is for is the bonfire, not the tournament. The developmental work is to risk being seen enjoying your own existence — creating, loving, and playing with full force, even when nothing is being won."
+      ],
+      "invitation": "To play with your whole strength for the joy of it, with nothing left to prove.",
+      "edges": {
+        "point": "mars",
+        "house": 5,
+        "see_also": ["house_5", "canon:sun"]
+      }
+    },
+    "6": {
+      "id": "mars_in_house_6",
+      "title": "The Devoted Blade",
+      "body": [
+        "Your will stages itself in the workshop, and the workshop knows it. You bring a fighter's energy to daily work: enormous stamina, impatience with sloppiness, a hands-on competence that would rather do the thing than describe it. Service, for you, is active — you fix, you carry, you show up early — and colleagues learn that the fastest way to lose your respect is to treat the craft carelessly.",
+        "You may notice that you do the task yourself rather than watch it done badly — that delegation feels like disarmament, and \"I'll just handle it\" has quietly become the architecture of your week. The shadow here is the grind: devotion curdling into servitude, standards into siege, and anger with nowhere to go filing itself in the body — the jaw, the shoulders, the stomach that keeps the minutes of every meeting you stayed polite through. The overwork once made sense; being indispensable was a way of being safe.",
+        "What this placement is for is work as devotion rather than war. The developmental work is rhythm: labor that includes rest, standards that include mercy, and the discovery that the blade serves longest when someone also sharpens, oils, and sheathes it."
+      ],
+      "invitation": "To serve with full strength while granting the instrument — your body — the same devotion.",
+      "edges": {
+        "point": "mars",
+        "house": 6,
+        "see_also": ["house_6", "canon:mercury"]
+      }
+    },
+    "7": {
+      "id": "mars_in_house_7",
+      "title": "The Sparring Mirror",
+      "body": [
+        "Your will stages itself in the mirror of partnership — which often means, at first, that you meet it in other people. You are drawn to vivid, forceful, decisive characters, and life with them is never bland: your closest relationships carry heat, friction, and a quality of contest that outsiders sometimes mistake for trouble when it is actually the medium of contact.",
+        "You may notice that the calmer and more agreeable you are, the more combative your partners become — as if someone must carry the sword you have politely set down. What one disowns, this house arranges to marry. The pattern deserves dignity: if your own force was unwelcome early — punished, or simply too much for the household — then delegating it to others was an elegant solution, letting you stay near fire without being blamed for it.",
+        "What this placement is for is the reunion. The fight you keep meeting is an invitation to reclaim your own will inside closeness — to disagree in the first person, to want things out loud, to discover that two whole-strength people make an alliance no appeasement ever built. Done well, this placement does not produce combat; it produces passion with a spine."
+      ],
+      "invitation": "To take back the sword you lent to others and bring your whole will into love.",
+      "edges": {
+        "point": "mars",
+        "house": 7,
+        "see_also": ["house_7", "canon:venus"]
+      }
+    },
+    "8": {
+      "id": "mars_in_house_8",
+      "title": "The Miner's Torch",
+      "body": [
+        "Your will stages itself in the depths — intimacy, shared resources, the psyche's basement — and it goes down there willingly, torch in hand. You have courage for what most people spend their lives avoiding: the hard conversation, the crisis, the deathbed, the truth under the truth. Merging matters to you and unnerves you in equal measure, because you know, correctly, that real intimacy changes what one is.",
+        "You may notice that you are strangely calm in emergencies that undo other people, and restless in the safety they crave — steadiest at the bedside, itchiest at the picnic. The shadow of this placement is control at the point of surrender: tests administered to lovers, ledgers kept on what was shared, power struggles over money or loyalty that are really struggles over the terror of being changed by another person. The vigilance was earned; whoever learned early that merging can cost everything will guard the merge.",
+        "What this placement is for is transformation entered on purpose. The developmental work is to bring your courage to your own surrender — to let the fighter who can face anyone else's abyss finally be accompanied into his own, and come back remade rather than merely intact."
+      ],
+      "invitation": "To spend your remarkable courage on the one descent it was made for — your own.",
+      "edges": {
+        "point": "mars",
+        "house": 8,
+        "see_also": ["house_8", "canon:pluto"]
+      }
+    },
+    "9": {
+      "id": "mars_in_house_9",
+      "title": "The Crusader's Map",
+      "body": [
+        "Your will stages itself on the far horizon. Belief, for you, is not a private furniture arrangement; it is fuel. You fight for what you hold true — in study, in travel, in argument about how life should be lived — and your convictions have engines in them, carrying you further from the starting neighborhood than anyone predicted. Teachers, courts, foreign roads: wherever the big questions are contested, something in you wakes up armed.",
+        "You may notice that you convert opinions into causes — that a conversation about ideas becomes, within minutes, a campaign, and dissent starts to sound like enemy territory. The shadow of this placement is the crusade as flight from doubt: certainty defended with force precisely where faith is privately thinnest, the map brandished so the trembling compass stays hidden. The fervor deserves its dignity; believing hard was once what held a life together, and conviction can be genuine load-bearing architecture.",
+        "What this placement is for is the pilgrimage rather than the conquest. The developmental work is a faith robust enough to travel unarmed — to let questions ride alongside you, and to fight for truth in a way that leaves the other person larger, not smaller."
+      ],
+      "invitation": "To trade the crusade for the pilgrimage — conviction strong enough to travel unarmed.",
+      "edges": {
+        "point": "mars",
+        "house": 9,
+        "see_also": ["house_9", "canon:jupiter"]
+      }
+    },
+    "10": {
+      "id": "mars_in_house_10",
+      "title": "The Standard on the Summit",
+      "body": [
+        "Your will stages itself on the summit, in full public view. Ambition is not a private vice here but a visible vocation: you climb, and everyone can see you climbing. You take on the roles others find too exposed — leading, deciding, absorbing the blame — and your capacity for sustained professional effort borders on the military. The world tends to reward this, which is both the gift and the trap.",
+        "You may notice that every rung reached converts instantly into a view of the next one — that arrival lasts about an afternoon before the summit reveals itself to be a base camp. Often there is an early figure in this pattern, a parent experienced as measure, whose standard you are still carrying up the mountain long after the campaign stopped being yours. The relentlessness deserves respect; achieving was once how safety, or love, or simple visibility was secured, and you built a formidable engine out of that necessity.",
+        "What this placement is for is authorship. The strength is proven; the developmental work is to choose the mountain — to plant, at last, a standard with your own name on it, and to let some summits go unclimbed because you actually never wanted them."
+      ],
+      "invitation": "To stop carrying the inherited flag and plant one that bears your own name.",
+      "edges": {
+        "point": "mars",
+        "house": 10,
+        "see_also": ["house_10", "canon:saturn"]
+      }
+    },
+    "11": {
+      "id": "mars_in_house_11",
+      "title": "The Torch Relay",
+      "body": [
+        "Your will stages itself in the commons — friendship, community, the shared future. You are the galvanizer: the one who turns a grumbling group into a working party, who says the thing everyone is thinking, who brings actual fire to causes that would otherwise remain conversation. Your friends are comrades in the old sense; you would carry things for them, and have.",
+        "You may notice that you are the one who names the group's unspoken problem — and the one who pays the toll for it, absorbing the discomfort of ten silent people who privately agreed with you. The shadow of this placement runs two ways: fighting the very circles you long to belong to, so that membership never has to be risked; or pouring your force into causes as a substitute for closeness, comrades everywhere and intimates nowhere. Both maneuvers once protected something — a difference that was mocked, or a belonging that was lost — and both kept you near people while sparing you the exposure of needing them.",
+        "What this placement is for is the joining of your fire to a larger current. The developmental work is to fight with the group, not just for or against it — will lent, not lost, and warmed by actual company."
+      ],
+      "invitation": "To pass the torch hand to hand — lending your fire to the circle without leaving it.",
+      "edges": {
+        "point": "mars",
+        "house": 11,
+        "see_also": ["house_11", "canon:uranus"]
+      }
+    },
+    "12": {
+      "id": "mars_in_house_12",
+      "title": "The Hidden Armory",
+      "body": [
+        "Your will works from behind the curtain. Your force is real — people who have seen you in genuine crisis can attest to it — but it does not report for ordinary duty; it lives in the sea behind the house, surfacing for emergencies, for the defenseless, for causes larger than a self, and then slipping below again. In daily life you may seem gentle, even conflict-averse, and wonder privately where other people find their easy access to anger.",
+        "You may notice that you cannot locate your anger at the time it is warranted — it arrives days later, or disguised as exhaustion, or in dreams where something is pursuing you. Force locked in the cellar was locked there for reasons that deserve respect: somewhere, perhaps generations back, someone's anger did real damage, and a family or a child concluded that the safest fighter is a sleeping one. The vault was built as an act of love.",
+        "What this placement is for is strength in compassion's service — the fierce advocate, the guardian of the unseen, courage on behalf of those who cannot fight. The developmental work is to befriend the soldier behind the curtain, so that your force can be drawn on purpose rather than only leaking or erupting."
+      ],
+      "invitation": "To unlock the armory gently, and give the hidden fighter honest daylight work.",
+      "edges": {
+        "point": "mars",
+        "house": 12,
+        "see_also": ["house_12", "canon:neptune"]
+      }
+    }
+  }
+}

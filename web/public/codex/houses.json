@@ -1,0 +1,136 @@
+{
+  "houses": {
+    "1": {
+      "id": "house_1",
+      "title": "The Face and the Threshold",
+      "body": [
+        "This is the room where you arrive — the threshold of the whole house of your life. It holds the face you turn toward the world, the walk, the voice, the way you cross into unfamiliar rooms before you have decided anything at all. The body lives here as instrument of entrance: its posture is the first sentence you speak, and you speak it whether or not you mean to.",
+        "The common misreading calls this house a mask, as though the style of your arrival were a costume draped over the real self. It is not a mask over the door; it is the door. But doors can be armored, and much of the work here is discovering what your particular entrance was built to survive. You may notice that the version of you who handles the first five minutes of anything — the interview, the party, the difficult phone call — feels like a specialist you send ahead, while something quieter waits behind to see whether the room is safe.",
+        "The work of this room is honesty of arrival: closing the distance between how you begin and who you are, until the specialist and the one who waits are the same person. Mastery here looks unremarkable from outside — you simply enter as yourself, and the entrance costs you nothing."
+      ],
+      "invitation": "Let the door and the dweller become one, so that arriving anywhere is no longer a performance but a beginning.",
+      "edges": { "house": 1, "see_also": ["canon:mars"] }
+    },
+    "2": {
+      "id": "house_2",
+      "title": "The Coin and the Pearl",
+      "body": [
+        "This is the room where you keep things — the storehouse. Money lives here, and possessions, and the body understood as your first property; but these are the symbols, not the substance. Beneath everything you have lies the older question of what you believe you are worth, and every object in this room is quietly answering it. Talents are stored here too, often in unopened boxes, because a gift unvalued is a gift unspent.",
+        "The reduction is obvious and almost universal: this house is not merely about money, any more than a wedding ring is merely about gold. When worth and wealth are confused, the storehouse becomes a nervous place — accumulation as reassurance, or renunciation as its pious twin. You may notice that you can read your bank balance as a mood: a full account quiets a voice that no amount of loving reassurance ever reaches, and an empty one wakes it at three in the morning. That voice was installed early, and it once kept you striving and safe.",
+        "The psychological work here is the slow separation of having from being — grieving the hope that enough possessions could ever prove enough worth. Mastery looks like a person who can hold, spend, lose, and give without vertigo, because the pearl was never in the vault."
+      ],
+      "invitation": "Learn that you are the treasure the storehouse was built around, and its contents become tools instead of testimony.",
+      "edges": { "house": 2, "see_also": ["canon:venus"] }
+    },
+    "3": {
+      "id": "house_3",
+      "title": "The Alphabet and the Lane",
+      "body": [
+        "This is the room where the world first got named — the neighborhood of the psyche. Siblings live here, and early classrooms, errands, letters, the short journeys that stitch a day together, and above all language: the daily mind that narrates, compares, asks, and jokes. Before you had a philosophy you had a vocabulary, and this room is where you received it.",
+        "It is routinely dismissed as the shallow end — small talk, commutes, trivia. But nothing that names the world is trivial, because the names decide what you can see. The words handed to you early, and the sibling dramas in which you learned your speaking part, still operate as a hidden grammar. You may notice that a family verdict — the smart one, the sensitive one, the difficult one — still finishes your sentences for you, so that in certain conversations you hear yourself defending a role you never auditioned for. That role once won you a place at the table.",
+        "The work of this room is revision: examining the inherited dictionary, keeping the words that fit, coining the ones that were missing. Mastery here is fluency in your own experience — a mind quick enough to connect everything, and honest enough to say what it actually finds."
+      ],
+      "invitation": "Take the language you were given and make it capable of telling the truth about you.",
+      "edges": { "house": 3, "see_also": ["canon:mercury"] }
+    },
+    "4": {
+      "id": "house_4",
+      "title": "The Well Beneath the House",
+      "body": [
+        "This is the room at the bottom of the house — the taproot. It holds home in every register: the rooms you grew up in, the parent you experienced as ground, and the emotional inheritance that came with the furniture — the moods, loyalties, and silences passed down like heirlooms nobody appraised. Every public act you ever perform stands on this private floor.",
+        "The misreading is literal: real estate, ancestry as anecdote, the childhood address. But this is the inner home, and its true contents are atmospheric. You may notice that you only discover what home meant when you try to make one — reproducing a childhood climate down to the exact quality of its silences, or constructing its precise opposite, which is simply obedience wearing a disguise. Neither is failure; both are the psyche's way of keeping faith with its first ground until a better ground exists.",
+        "The work of this room is the sorting of the inheritance: naming what was handed down, keeping what nourishes, composting what does not, and grieving the home you needed but did not get. Mastery looks like an inner base that travels with you — a groundedness so quietly reliable that other people rest on it, and you no longer confuse where you came from with what holds you up."
+      ],
+      "invitation": "Build within yourself the home you were waiting for, and every other room in the house stands steadier.",
+      "edges": { "house": 4, "see_also": ["canon:moon"] }
+    },
+    "5": {
+      "id": "house_5",
+      "title": "The Bonfire and the Witness",
+      "body": [
+        "This is the room where you are caught enjoying your own existence — the hearth-fire. Creation lives here in all its forms: art, play, romance, children literal and symbolic, every act that begins with the sentence this came from me. Its currency is not achievement but delight, which is why it is the riskiest room in the house: to be seen playing is to be seen wanting to live.",
+        "It is patronized as the house of hobbies and flings, the decorative wing. But nothing is less trivial than the capacity for joy, and nothing is more commonly wounded. You may notice that you can perform in public far more easily than you can play — that being demonstrably good at something feels safe, while visibly enjoying something feels exposed, as though delight were a door a critic once walked through. Somewhere the applause got tangled with the fire, and the fire learned to wait for permission.",
+        "The work of this room is the recovery of play from performance: making things for the pleasure of making them, loving for warmth rather than for reflection, letting the child in you create without first checking the audience. Mastery is a fire that gives heat whether or not anyone gathers — radiance that no longer needs the mirror, and therefore finally warms the people near it."
+      ],
+      "invitation": "Reclaim delight as a birthright rather than a reward, and what you create will carry your actual warmth.",
+      "edges": { "house": 5, "see_also": ["canon:sun"] }
+    },
+    "6": {
+      "id": "house_6",
+      "title": "The Workshop and the Altar",
+      "body": [
+        "This is the room of the daily round — the workshop. It holds craft, service, routine, colleagues, and the maintenance of the body: meals, sleep, the small repetitive acts that keep a life running. Nothing glamorous happens here, which is exactly the point. This is where intention is either translated into practice or quietly abandoned, one ordinary Tuesday at a time.",
+        "It is written off as the house of chores and symptoms, drudgery's address. But the same routine that can grind you down can also carry devotion; the difference between drudgery and ritual is not the task but the presence brought to it. You may notice that your body keeps the minutes of meetings your mind refuses to attend — that a season of self-abandonment surfaces first as a clenched jaw, a bad stomach, a fatigue with excellent timing. The body's complaints are not sabotage; they are the workshop's foreman, loyal to you when your schedule is not.",
+        "The work of this room is the dignifying of the small: serving without self-erasure, refining without self-punishment, making peace with imperfection as the raw material of craft. Mastery looks like a life whose ordinary days are themselves the practice — work become prayer, maintenance become tenderness, the humble hours finally recognized as where the life actually happens."
+      ],
+      "invitation": "Bring devotion down into the daily round, and the smallest tasks become the sturdiest form of love.",
+      "edges": { "house": 6, "see_also": ["canon:mercury"] }
+    },
+    "7": {
+      "id": "house_7",
+      "title": "The Mirror and the Stranger",
+      "body": [
+        "This is the room where the other stands — the mirror. Partnership lives here: the spouse, the business partner, the close collaborator, and, just as officially, the open enemy. Whatever you meet repeatedly in others has an appointment in this room, because the significant other is never only themselves; they are also the carrier of everything in you that you have declined to own.",
+        "The reduction is romantic: who will I marry, when will they arrive. But this house is less a registry office than a customs hall, where disowned qualities re-enter the country wearing someone else's face. You may notice that what first enchants you in a partner — their boldness, their calm, their shameless ease — is precisely what you have refused in yourself, and that the trait which later infuriates you is usually the same one, seen at closer range. The projection is not a mistake; it is the psyche's way of keeping lost property in view until you are ready to claim it.",
+        "The work of this room is the withdrawal of those projections — hard, unglamorous, repeated — until the person across from you comes into focus as themselves. Mastery is relationship between two whole people rather than two halves in negotiation: the mirror finally used for meeting, not for retrieval."
+      ],
+      "invitation": "Reclaim what you have been meeting in others, and the other becomes at last someone to love rather than something to complete you.",
+      "edges": { "house": 7, "see_also": ["canon:venus"] }
+    },
+    "8": {
+      "id": "house_8",
+      "title": "The Undertow and the Gold",
+      "body": [
+        "This is the room beneath the house — the depths. It holds everything shared so completely that ownership blurs: sexuality, joint resources, inheritance, debts, grief, and the psyche's basement, where what was buried does not stay dead but composts into something else. Whatever enters this room does not come out unchanged; that is not its hazard but its function.",
+        "It is feared as the house of crisis, and reduced to its furniture — other people's money, taxes, endings. But crisis is only the doorway; the room itself is about transformation through merging, the discovery that real intimacy dismantles the self it deepens. You may notice that you keep an exit visible in every closeness — a private account, a reservation never spoken, a corner of yourself withheld — because somewhere you learned that total merging meant disappearing. That guarded corner once kept a self alive, and it deserves thanks before it is asked to open.",
+        "The work of this room is learning to descend on purpose: to let grief do its full work, to share power rather than hoard it, to be changed by another without being erased. Mastery is the capacity to go down and come back — not the fortress that survives everything, but the one who is remade and rises carrying the gold."
+      ],
+      "invitation": "Let yourself be transformed by what you cannot control, and the depths become a source instead of a threat.",
+      "edges": { "house": 8, "see_also": ["canon:pluto"] }
+    },
+    "9": {
+      "id": "house_9",
+      "title": "The Arrow and the Horizon",
+      "body": [
+        "This is the room with the long view — the far horizon. It opens where the neighborhood's answers stop sufficing: philosophy lives here, and faith, higher learning, law in its broadest sense, the long journey that is as much inward as geographic. Its question is not what happened but what it means, and it will cross an ocean or a discipline to find out.",
+        "The reduction lists its souvenirs — travel, degrees, doctrine — and misses the hunger underneath: the need for a story large enough to live inside. That hunger has its own shadow, the borrowed belief worn like a passport, the conviction preached before it has been lived. You may notice that you trust the truths you found far from home — in a foreign country, a difficult book, a year everything collapsed — more than anything you were handed at the family table, as though meaning only counts when you have paid your own fare for it. That instinct is sound; it simply must not curdle into contempt for those still holding inherited maps.",
+        "The work of this room is turning opinion into earned faith: testing every creed against lived experience and keeping only what survives. Mastery looks like a philosophy you could be caught practicing on an ordinary morning — the teacher who has stopped preaching because the life itself has become the argument."
+      ],
+      "invitation": "Keep traveling until your beliefs are your own, then come home and live as if you meant them.",
+      "edges": { "house": 9, "see_also": ["canon:jupiter"] }
+    },
+    "10": {
+      "id": "house_10",
+      "title": "The Mountain and the Name",
+      "body": [
+        "This is the room at the top of the house — the summit. It holds vocation, reputation, public standing, and the parent you experienced as model or measure: the one whose expectations became the first draft of your definition of success. Whatever you build here is visible; this is the room where the world reads your answer to the question of what your life is for.",
+        "The reduction calls it career, as though the summit were merely a salary with a view. But climbing is not the same as arriving, and many people reach positions of real accomplishment only to find the achievement strangely weightless. You may notice that every success is satisfying for about a day before it is absorbed into a ledger kept by someone who is never quite you — a parent's voice, a standard you inherited rather than chose — so that the mountain keeps growing a further peak. That ledger once organized a child's striving and won real approval; it earned its long tenure.",
+        "The work of this room is authorship: retiring the inherited measure and writing your own definition of a life well spent, then building in public accordingly. Mastery looks like work in the world that matches the inner truth — the moment the name on the summit is finally, recognizably, yours."
+      ],
+      "invitation": "Stop climbing the mountain you were assigned and build the one that carries your own name.",
+      "edges": { "house": 10, "see_also": ["canon:saturn"] }
+    },
+    "11": {
+      "id": "house_11",
+      "title": "The Commons and the Constellation",
+      "body": [
+        "This is the room with the long table — the commons. Friendship lives here, and community, allies, movements, and the future imagined as something built with others rather than endured alone. Where other rooms ask who you are, this one asks whom you stand among: which circle receives your particular gift and weaves it into a current larger than any single life.",
+        "It is flattened into networking, followers, the social calendar — connection counted rather than kept. Its subtler distortion is idealism at altitude: loving humanity in general as a way of avoiding people in particular. You may notice that you can give yourself wholeheartedly to a cause, a group, a vision of the future, yet hesitate to call one friend on an ordinary Tuesday when you are the one in need — as though belonging were something you provide rather than something you are permitted to receive. That one-way generosity once protected you from the risk of being turned away.",
+        "The work of this room is reciprocity: letting the circle hold you as firmly as you hold it, and choosing the kin your birth did not supply. Mastery looks like a gift fully joined to a current — your singular note played inside a music that outlasts you, among people who know your name."
+      ],
+      "invitation": "Let yourself belong to the circle you keep building for others, and the future becomes a shared inheritance.",
+      "edges": { "house": 11, "see_also": ["canon:uranus"] }
+    },
+    "12": {
+      "id": "house_12",
+      "title": "The Sea Behind the House",
+      "body": [
+        "This is the room that is not quite a room — the sea behind the house, where the garden runs down to the water. It holds what lives beneath and before you: the ancestral and collective tides, the unlived lives of your family, dreams, imagination, compassion, retreat, and the institutions where the world goes to be hidden. What resides here works from behind the curtain, shaping events it never signs.",
+        "It has been slandered as the house of bad luck and secret enemies, a dungeon in the chart. But its undoings are rarely random. You may notice that your most puzzling defeats have an authored quality — the lateness that loses the opportunity you claimed to want, the exhaustion that arrives exactly when the plan nears completion — as if something in you were steering from backstage toward a life your daylight self has not approved. That hidden hand is not an enemy; it is the keeper of everything unattended, using the only language it has.",
+        "The work of this room is befriending what operates invisibly: turning retreat from escape into practice, listening to the tide instead of being pulled by it. Mastery is the ability to visit the sea on purpose and return — permeable, not drowned — carrying back the images, music, and mercy the drier rooms cannot produce."
+      ],
+      "invitation": "Go down to the water willingly, and what once undid you from behind becomes the source you draw from.",
+      "edges": { "house": 12, "see_also": ["canon:neptune"] }
+    }
+  }
+}

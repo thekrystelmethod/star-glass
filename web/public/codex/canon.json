@@ -1,0 +1,230 @@
+{
+  "points": {
+    "sun": {
+      "id": "canon:sun",
+      "name": "Sun",
+      "glyph": "☉",
+      "core": "The drive to become someone: the hero's journey toward a coherent self — not who you are but who you are learning to be.",
+      "shadow": "Performing identity instead of forging it.",
+      "arc": "From seeking reflection to generating light."
+    },
+    "moon": {
+      "id": "canon:moon",
+      "name": "Moon",
+      "glyph": "☽",
+      "core": "The needing, remembering animal: what safety felt like before words, and what the body still reaches for under stress.",
+      "shadow": "Mistaking the familiar for the necessary.",
+      "arc": "From being had by needs to knowing and tending them."
+    },
+    "mercury": {
+      "id": "canon:mercury",
+      "name": "Mercury",
+      "glyph": "☿",
+      "core": "The messenger between worlds: how the mind perceives, names, connects, and trades.",
+      "shadow": "Cleverness as armor; narrating life instead of living it.",
+      "arc": "From collecting information to making meaning."
+    },
+    "venus": {
+      "id": "canon:venus",
+      "name": "Venus",
+      "glyph": "♀",
+      "core": "The valuer: what is beautiful, what is worth wanting, how one attracts and is attracted.",
+      "shadow": "Pleasing as a substitute for valuing oneself.",
+      "arc": "From being chosen to choosing."
+    },
+    "mars": {
+      "id": "canon:mars",
+      "name": "Mars",
+      "glyph": "♂",
+      "core": "The will in the body: desire, anger, courage, the capacity to say no and to go get.",
+      "shadow": "Aggression turned sideways or inward.",
+      "arc": "From reactive fire to directed force."
+    },
+    "jupiter": {
+      "id": "canon:jupiter",
+      "name": "Jupiter",
+      "glyph": "♃",
+      "core": "The meaning-maker: the urge toward the larger picture — growth, faith, generosity, the intuition that life is going somewhere.",
+      "shadow": "Inflation; promising more than any life can deliver.",
+      "arc": "From appetite for more to trust in enough."
+    },
+    "saturn": {
+      "id": "canon:saturn",
+      "name": "Saturn",
+      "glyph": "♄",
+      "core": "The reality principle and the inner elder: limitation, time, mastery — the fear that guards the exact spot where authority must be earned.",
+      "shadow": "The inner critic mistaken for the truth.",
+      "arc": "From dread of the task to authorship of it."
+    },
+    "uranus": {
+      "id": "canon:uranus",
+      "name": "Uranus",
+      "glyph": "♅",
+      "core": "The awakener: the intolerance of the false, the lightning that breaks what has calcified.",
+      "shadow": "Rebellion as reflex; freedom that never lands anywhere.",
+      "arc": "From shock and rupture to authentic difference, lived calmly."
+    },
+    "neptune": {
+      "id": "canon:neptune",
+      "name": "Neptune",
+      "glyph": "♆",
+      "core": "The longing for the ocean: dissolution of boundaries, imagination, compassion, the ache for something this world doesn't quite provide.",
+      "shadow": "Escape, fog, martyrdom, enchantment that will not survive daylight.",
+      "arc": "From longing to leave the world to bringing the water back to it."
+    },
+    "pluto": {
+      "id": "canon:pluto",
+      "name": "Pluto",
+      "glyph": "♇",
+      "core": "The underworld: power, death-and-rebirth, the compost heap of the psyche where what is buried does not stay dead but transforms.",
+      "shadow": "Control as a defense against powerlessness.",
+      "arc": "From surviving to being remade — the phoenix, not the fortress."
+    },
+    "chiron": {
+      "id": "canon:chiron",
+      "name": "Chiron",
+      "glyph": "⚷",
+      "core": "The wound that teaches: the place of injury that never fully closes and precisely thereby becomes the source of medicine for others.",
+      "shadow": "Identifying with the wound.",
+      "arc": "From ashamed patient to wounded healer."
+    },
+    "north_node": {
+      "id": "canon:north_node",
+      "name": "North Node",
+      "glyph": "☊",
+      "core": "The axis of becoming: the South Node is the well-worn room, the North Node the unfamiliar door the life keeps pointing toward.",
+      "shadow": "Staying in competence that has become a hiding place.",
+      "arc": "Direction, not character — departure lounge and destination."
+    }
+  },
+  "signs": {
+    "aries": {
+      "id": "canon:aries",
+      "name": "Aries",
+      "element_mode": "cardinal fire",
+      "core": "Firstly, urgently, by igniting. The courage to begin; the innocence of the warrior.",
+      "itch": "Patience — what happens after the charge."
+    },
+    "taurus": {
+      "id": "canon:taurus",
+      "name": "Taurus",
+      "element_mode": "fixed earth",
+      "core": "Slowly, sensually, by rooting. Worth measured in what endures and can be touched.",
+      "itch": "Letting go — security is not the same as stillness."
+    },
+    "gemini": {
+      "id": "canon:gemini",
+      "name": "Gemini",
+      "element_mode": "mutable air",
+      "core": "Curiously, doubly, by connecting. Everything is interesting and everything has a twin.",
+      "itch": "Depth — staying long enough for meaning to form."
+    },
+    "cancer": {
+      "id": "canon:cancer",
+      "name": "Cancer",
+      "element_mode": "cardinal water",
+      "core": "Protectively, tidally, by feeling first. Memory and belonging as navigation.",
+      "itch": "Exposure — letting the shell open from inside."
+    },
+    "leo": {
+      "id": "canon:leo",
+      "name": "Leo",
+      "element_mode": "fixed fire",
+      "core": "Radiantly, wholeheartedly, by creating. Life as self-expression; the heart wants witness.",
+      "itch": "Humility — shining without needing the mirror."
+    },
+    "virgo": {
+      "id": "canon:virgo",
+      "name": "Virgo",
+      "element_mode": "mutable earth",
+      "core": "Precisely, usefully, by refining. Devotion through craft; the sacred in the detail.",
+      "itch": "Mercy — for the imperfect, especially oneself."
+    },
+    "libra": {
+      "id": "canon:libra",
+      "name": "Libra",
+      "element_mode": "cardinal air",
+      "core": "Harmoniously, relationally, by weighing. The self discovered through the other; beauty as justice.",
+      "itch": "Decision — choosing even when it costs the peace."
+    },
+    "scorpio": {
+      "id": "canon:scorpio",
+      "name": "Scorpio",
+      "element_mode": "fixed water",
+      "core": "Intensely, totally, beneath the surface. Truth over comfort; intimacy as ordeal and reward.",
+      "itch": "Surrender — power shared rather than held."
+    },
+    "sagittarius": {
+      "id": "canon:sagittarius",
+      "name": "Sagittarius",
+      "element_mode": "mutable fire",
+      "core": "Expansively, honestly, toward the horizon. Meaning is out there and the arrow is already flying.",
+      "itch": "Presence — the horizon is also here."
+    },
+    "capricorn": {
+      "id": "canon:capricorn",
+      "name": "Capricorn",
+      "element_mode": "cardinal earth",
+      "core": "Strategically, patiently, by climbing. Structure as devotion; the long game.",
+      "itch": "Tenderness — what the summit was for."
+    },
+    "aquarius": {
+      "id": "canon:aquarius",
+      "name": "Aquarius",
+      "element_mode": "fixed air",
+      "core": "Independently, systemically, from the outside looking in. Loyalty to the future and to principle.",
+      "itch": "Belonging — joining the species one observes so well."
+    },
+    "pisces": {
+      "id": "canon:pisces",
+      "name": "Pisces",
+      "element_mode": "mutable water",
+      "core": "Porously, compassionately, by dissolving. The boundary between self and world is thin — a gift and a tax.",
+      "itch": "Form — banks that let the river actually flow somewhere."
+    }
+  },
+  "aspects": {
+    "conjunction": {
+      "id": "canon:conjunction",
+      "name": "Conjunction",
+      "angle": 0,
+      "core": "Fusion: two characters standing in the same spot, sharing one costume; enormous power, little perspective.",
+      "task": "Differentiation without divorce."
+    },
+    "opposition": {
+      "id": "canon:opposition",
+      "name": "Opposition",
+      "angle": 180,
+      "core": "The negotiating table: two characters facing off across the axis, one often exiled into other people.",
+      "task": "Withdraw the projection and hold both ends — the axis is one spine, not two enemies."
+    },
+    "square": {
+      "id": "canon:square",
+      "name": "Square",
+      "angle": 90,
+      "core": "Friction that builds engines: two characters at cross purposes, neither able to ignore the other.",
+      "task": "Neither suppress nor alternate — engineer; let the tension torque something into motion."
+    },
+    "trine": {
+      "id": "canon:trine",
+      "name": "Trine",
+      "angle": 120,
+      "core": "Native ease: talent that feels so natural it may never be developed.",
+      "task": "Consciousness — spend the gift on purpose."
+    },
+    "sextile": {
+      "id": "canon:sextile",
+      "name": "Sextile",
+      "angle": 60,
+      "core": "The open invitation: compatibility that responds if approached.",
+      "task": "The yes."
+    },
+    "quincunx": {
+      "id": "canon:quincunx",
+      "name": "Quincunx",
+      "angle": 150,
+      "core": "The awkward adjustment: no shared language, obliged to share a life anyway.",
+      "task": "Accommodation without amputation."
+    }
+  }
+}

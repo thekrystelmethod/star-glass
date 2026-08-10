@@ -1,0 +1,417 @@
+{
+  "point": "jupiter",
+  "name": "Jupiter",
+  "glyph": "♃",
+  "in_sign": {
+    "aries": {
+      "id": "jupiter_in_aries",
+      "title": "The Vanguard and the Long March",
+      "body": [
+        "In you the meaning-maker travels armed and eager: faith is not a conclusion you reach but a charge you lead. Belief arrives in your body as momentum — the conviction that life is going somewhere lands as the urge to go there now, first, before the maps are finished. You are most alive at beginnings, when a cause is young enough to need courage more than committees, and your enthusiasm can carry a whole room over a hill it had privately decided was unclimbable.",
+        "The shadow is what happens after the charge. You may notice that you have started more crusades than you have finished — the language course abandoned in week three, the venture that thrilled you until it required maintenance — because for you the meaning lives in the ignition, and administration feels like a small death. This restlessness once protected something real: a self that learned it must move first or be moved. But growth that only begins never compounds. The invitation of this placement is to discover that faith has a second act — that the long march, the tedium after the trumpet, is not the death of the quest but the place where it becomes true."
+      ],
+      "invitation": "To let the fire that starts things learn the deeper courage of staying, trusting that the second mile, not the first shout, is where faith becomes real.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "aries",
+        "see_also": [
+          "canon:mars",
+          "house_1"
+        ]
+      }
+    },
+    "taurus": {
+      "id": "jupiter_in_taurus",
+      "title": "Amalthea's Horn",
+      "body": [
+        "Your sense that life is going somewhere good is not abstract — it smells like bread; it can be planted, banked, built. Faith, for you, is a garden: it grows slowly, it must be tended, and its proofs are edible. There is an old story that the infant sky-god was nursed by a goat whose broken horn poured out whatever was needed, without end — and that horn is your emblem: abundance imagined not as a windfall but as a source, steady, renewable, close to the ground. People rest in your presence because your optimism has weight; it does not evaporate when the weather turns.",
+        "The shadow is that plenty can quietly become proof. You may notice that you buy the third of a thing you already own two of — tools, coats, reserves — not from greed but because having is how you soothe the question of whether there will be enough, and beneath it, whether you are enough. That stockpiling once answered a real fear. The invitation is to let the horn pour: to discover that abundance kept circulating stays alive, while abundance stored too long is only weight, and that you are the source, not the storehouse."
+      ],
+      "invitation": "To trust enough deeply enough that your plenty can flow outward — a source, not a vault.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "taurus",
+        "see_also": [
+          "canon:venus",
+          "house_2"
+        ]
+      }
+    },
+    "gemini": {
+      "id": "jupiter_in_gemini",
+      "title": "The Preacher and the Magpie",
+      "body": [
+        "You make meaning the way a market town makes wealth: through traffic. Every conversation is a caravan; every stray fact might be the missing piece of a philosophy you are perpetually mid-assembly on. Faith, for you, is not a fortress but a network — you believe in the intelligence of the whole conversation, and your generosity shows up as introductions, links, the book pressed into a friend's hands with genuine urgency. You can translate the large into the local better than almost anyone: the grand idea arrives from you wearing ordinary clothes, and so it actually gets in the door.",
+        "The magpie is the shadow of the preacher. You may notice that you have four half-read books splayed open around your bed and can summarize each brilliantly — while a quiet voice asks whether you are gathering wisdom or just its glitter. The scattering once protected you: as long as you kept moving between ideas, no single one could fail you the way certainty fails people. But meaning is not made from collection; it is made from digestion. The invitation is to stay at one table long enough for conversation to become communion — to let a few of your thousand interests grow roots and become belief."
+      ],
+      "invitation": "To stop collecting the light and start living by a few beams of it, letting depth become the destination of your breadth.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "gemini",
+        "see_also": [
+          "canon:mercury",
+          "house_3"
+        ]
+      }
+    },
+    "cancer": {
+      "id": "jupiter_in_cancer",
+      "title": "The Overflowing Table",
+      "body": [
+        "In you, generosity has a kitchen. Your instinct for the larger picture arrives through feeling: you sense what a room is hungry for — reassurance, welcome, a second helping — and you provide it before anyone asks. Faith, for you, is the conviction that there is room at the table, and your gift is the ability to enlarge belonging itself: strays become family around you, and people who cannot remember being mothered well find themselves, in your presence, briefly and believably provided for.",
+        "The shadow is the feeder who never sits down. You may notice that you are the one who always hosts, always remembers, always sends the extra portion home with the guest — and that you would feel obscurely unsafe letting anyone do the same for you, because giving keeps you needed, and being needed feels safer than being nourished. That vigilance once protected a child who learned to secure love by providing it. But abundance that flows only outward is a tide with no return. The invitation is to take your own seat at the table you set — to discover that your faith in provision includes you, and that being fed is not a debt but a belonging."
+      ],
+      "invitation": "To receive with the same open hands you give with, and let yourself be one of the fed.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "cancer",
+        "see_also": [
+          "canon:moon",
+          "house_4"
+        ]
+      }
+    },
+    "leo": {
+      "id": "jupiter_in_leo",
+      "title": "The Feast and the Spotlight",
+      "body": [
+        "You carry the conviction that life is a celebration being thrown in everyone's honor, and you act accordingly — praising loudly, giving lavishly, warming whatever room you enter. Meaning, for you, is not found; it is performed into being. When you believe in someone, they feel it as sunlight: careers have turned and courage has been found because your faith in a person arrived with such wholehearted heat that they briefly borrowed it as their own. This is real power, and it is the generous kind.",
+        "The shadow arrives when the feast needs an audience to be worth cooking. You may notice that a kindness no one witnesses can leave you strangely deflated — that the gift feels incomplete until it has been seen, thanked, storied — and that this hunger embarrasses you, so you feed it in secret. It deserves dignity instead: somewhere early, your shining was how you earned your place, and applause became the proof you existed. The invitation is to let generosity ripen past performance — to discover the private feast, the anonymous gift, the praise given with no receipt — and to find that the sun does not require the mirror in order to be warm."
+      ],
+      "invitation": "To give and shine unwitnessed for the joy of it, and discover the warmth is still real.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "leo",
+        "see_also": [
+          "canon:sun",
+          "house_5"
+        ]
+      }
+    },
+    "virgo": {
+      "id": "jupiter_in_virgo",
+      "title": "The Cathedral in the Detail",
+      "body": [
+        "In you two instincts share one workbench: the urge toward the vast and the devotion to the exact. You seek the large meaning of things, but you distrust any meaning that cannot survive contact with a Tuesday — a philosophy, for you, must be practicable, or it is only weather. So your faith expresses itself in craft: the well-kept ledger, the correctly done task, the small daily service performed as if it mattered, because you suspect — rightly — that it does. Where others build their temples out of rhetoric, you build yours out of routines, and yours stand.",
+        "The shadow is a largeness that keeps flunking its own inspection. You may notice that you defer your biggest hopes on the grounds that you are not ready — one more course, one more year of preparation — while quietly resenting the unprepared people out there doing it anyway. That deferral once protected you from a criticism you learned early and internalized well. But the harvest cannot wait for a perfect field. The invitation is to let meaning be served imperfect — to discover that the cathedral was never going to be finished, and was holy the whole time it was being built."
+      ],
+      "invitation": "To act on your largest hopes before you feel ready, trusting the craft to catch you.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "virgo",
+        "see_also": [
+          "canon:mercury",
+          "house_6"
+        ]
+      }
+    },
+    "libra": {
+      "id": "jupiter_in_libra",
+      "title": "The Peacemaker's Wager",
+      "body": [
+        "Your sense of the larger picture is fundamentally relational: you believe the world is going somewhere good insofar as people can be brought to meet each other fairly, and your generosity works like diplomacy — the introduction made, the third option found, the fierce conversation softened until it can actually happen. Meaning, for you, is a duet. You grow most through others: the partner, the mentor, the worthy opponent who enlarges your world by disagreeing with it beautifully.",
+        "The shadow is a faith so balanced it never lands. You may notice that when asked what you believe, you reflexively present both sides — even to yourself — and that your own conviction waits politely at the back of the room while you host everyone else's. This evenhandedness once protected something: a peace that felt fragile, a love that seemed to depend on your being agreeable. But justice is not the absence of position; it is the courage of one. The wager the peacemaker must finally make is on their own judgment. The invitation is to discover that choosing a side — kindly, openly, at some cost to the room's comfort — is not the end of your fairness but its maturity."
+      ],
+      "invitation": "To place your faith somewhere on the record, and find that the scales hold.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "libra",
+        "see_also": [
+          "canon:venus",
+          "house_7"
+        ]
+      }
+    },
+    "scorpio": {
+      "id": "jupiter_in_scorpio",
+      "title": "Gold from the Underworld",
+      "body": [
+        "Your faith was not issued; it was excavated. Where others believe because life has been kind, you believe because you have been down — into loss, into the psyche's basement, into truths most people arrange their furniture to avoid — and you came back up carrying something. Your optimism is therefore the rarest kind: tested, post-catastrophic, without naivety. People bring you their unspeakable things because they sense you will not flinch, and your generosity works in the dark — the loyalty that shows up at the deathbed, the secret kept whole, the mercy given where no one will ever see it.",
+        "The shadow is a suspicion of the sunlit. You may notice that when things go easily you grow quietly uneasy, waiting for the invoice — that you trust what has been through the fire and subtly discount any joy that has not yet suffered. That vigilance once kept you alive in weather that required it. But a faith that only believes in the hard-won will keep arranging hard winnings. The invitation is to let some gold be given rather than mined — to accept that grace, too, is real currency, and that you are allowed to be rich in it."
+      ],
+      "invitation": "To let ease become trustworthy — receiving, sometimes, without first descending.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "scorpio",
+        "see_also": [
+          "canon:pluto",
+          "house_8"
+        ]
+      }
+    },
+    "sagittarius": {
+      "id": "jupiter_in_sagittarius",
+      "title": "The Pilgrim and the Well",
+      "body": [
+        "In you the meaning-maker is fully at home, and it shows: you are built for the horizon. Faith comes to you the way weather comes to a coastline — constantly, in large systems — and your natural mode is motion toward the bigger thing: the journey, the philosophy, the question behind the question. You are generous with meaning itself; people leave conversations with you owning more future than they arrived with. At your best you are the friend who says the enlarging true thing at the exact moment someone's world has gone small.",
+        "The shadow is the doctrine of elsewhere. You may notice that your life runs on a quiet rumor that the real thing is one move away — the next city, the next teacher, the next relationship — and that arrival always converts, on contact, into another departure. That restlessness once protected you from a smallness that genuinely threatened to bury you; leaving was how you kept faith alive. But the pilgrim who never drinks dies on the road to the sacred river, and there is a well in your own yard. The invitation is to discover that depth is a direction too — that the horizon you seek also runs straight down from wherever you are standing."
+      ],
+      "invitation": "To seek in place, letting here become one of the far countries.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "sagittarius",
+        "see_also": [
+          "canon:jupiter",
+          "house_9"
+        ]
+      }
+    },
+    "capricorn": {
+      "id": "jupiter_in_capricorn",
+      "title": "The Ledger and the Promised Land",
+      "body": [
+        "Your optimism wears work boots. You believe in the larger picture, but you believe in it the way an engineer believes in a bridge: only after the calculations, and then completely. Where others announce their visions, you build toward yours in silence, and the results accumulate — because your faith compounds like interest, slowly, and does not evaporate at the first bad quarter. People learn to trust your promises precisely because you make so few of them. This is expansion in its most durable form: the enterprise still standing thirty years later.",
+        "The shadow is a hope kept on rations. You may notice that you audit your own dreams like an expense report — trimming each aspiration to what can be justified, deferring joy until the numbers prove you have earned it — and that “realistic” has sometimes been your word for afraid. That austerity once protected you; somewhere early you learned that unearned hope gets punished. But a promised land approached only by ledger is never entered, because the numbers are never quite safe enough. The invitation is to let faith outrun the proof occasionally — to discover that some abundance arrives only for those willing to look briefly foolish."
+      ],
+      "invitation": "To spend hope before it is fully earned, and find the bridge holds.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "capricorn",
+        "see_also": [
+          "canon:saturn",
+          "house_10"
+        ]
+      }
+    },
+    "aquarius": {
+      "id": "jupiter_in_aquarius",
+      "title": "The Prophet of the Commons",
+      "body": [
+        "Your sense of the larger picture is genuinely large: where others hope for their family or their fortune, you hope for the species. Meaning arrives in you as pattern — the long arc, the system underneath, the future that is trying to happen — and your generosity is architectural: you give ideas away, open doors on principle, and work for harvests you know you will not personally eat. You are the person in the meeting who asks who has been left out of the plan, and means it.",
+        "The shadow is a warmth that lives at altitude. You may notice that you are more reliably moved by humanity than by the particular human in your kitchen — that a cause can have your whole heart while the friend in front of you gets your analysis — and that intimacy at close range feels vaguely less noble, or more dangerous, than solidarity at scale. That distance once protected you: the wide view was somewhere to stand when belonging up close proved costly. But the future you serve is assembled entirely out of near things. The invitation is to bring the prophecy home — to let one ordinary, unideal person be your cause for a while, and find that the commons begins at your own table."
+      ],
+      "invitation": "To love the particular person as faithfully as you love the future of everyone.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "aquarius",
+        "see_also": [
+          "canon:uranus",
+          "house_11"
+        ]
+      }
+    },
+    "pisces": {
+      "id": "jupiter_in_pisces",
+      "title": "Mercy Without a Shore",
+      "body": [
+        "In you, faith and compassion are the same water. You do not so much believe that life is going somewhere as feel yourself carried — a trust in the current that most people lose with childhood, and that you have somehow kept. Your generosity has no natural border: strangers confide in you, animals find you, and grief that is not yours moves through you as easily as your own. At your best you are a kind of tide — you raise whatever is near you, without inspection, without conditions, and people become more merciful with themselves for having been near your mercy.",
+        "The shadow is that a sea without shores drowns its own harbors. You may notice that you keep giving past the point where giving is good — the loan you cannot afford, the third rescue of someone practicing their drowning — because the boundary where you end and another begins registers, when you try to hold it, as a small cruelty. That porousness once protected you: dissolving was safer than the collisions of a hard-edged world. But compassion without form spills; it saves no one and empties you. The invitation is to build banks — not to shrink the sea, but so the water arrives somewhere with force."
+      ],
+      "invitation": "To give your boundless mercy a form — banks that turn the flood into a river that actually irrigates.",
+      "edges": {
+        "point": "jupiter",
+        "sign": "pisces",
+        "see_also": [
+          "canon:neptune",
+          "house_12"
+        ]
+      }
+    }
+  },
+  "in_house": {
+    "1": {
+      "id": "jupiter_in_house_1",
+      "title": "The Giant at the Threshold",
+      "body": [
+        "You arrive large. Before your history, before your credentials, something expansive walks in wearing your body — a warmth, a readiness to be pleased, an air of more where that came from — and rooms reorganize around it. Strangers tell you their stories in queues; people assume you know the host. This is not a mask over a smaller truth: openness genuinely is your front door, and it opens outward. Opportunity finds you partly because you look like someone who would say yes to it.",
+        "The shadow of arriving as abundance is the obligation to keep being it. You may notice that you promise more at the threshold than the interior can always furnish — commitments made in the doorway glow of first meetings that some later, tireder version of you must honor — and that admitting to a bad week can feel like defacing a public monument. That bigness once protected you; being the buoyant one was how you secured welcome. But a giant who cannot kneel is only a statue. The invitation is to let your size include your weather — to discover that people trust the welcome more, not less, once it has shown them an honest face."
+      ],
+      "invitation": "To become as large in your truthfulness as you are in your welcome.",
+      "edges": {
+        "point": "jupiter",
+        "house": 1,
+        "see_also": [
+          "house_1",
+          "canon:mars"
+        ]
+      }
+    },
+    "2": {
+      "id": "jupiter_in_house_2",
+      "title": "The Granary and the Gambler",
+      "body": [
+        "You carry a native faith in provision: the conviction, deeper than argument, that there will be enough — that money, opportunity, and material help move toward an open hand. And they largely do; your history probably includes rescues that arrived on the exact day of need. This trust makes you generous where others are anxious, willing to fund, lend, and stake, because scarcity has never quite convinced you. In the storehouse of your life the doors are propped open, and the traffic in both directions is heavy.",
+        "The shadow is what the open door does to counting. You may notice that your generosity spikes exactly when your worth feels questioned — the round bought for the table in the week your confidence dipped, the loan extended because refusing felt like becoming a smaller person — as if the outflow itself were the proof of value. That equation once protected you: plenty was a language your worth could be read in when other alphabets failed. But you are the source of the wealth, not its display. The invitation is to let worth come loose from throughput — to discover that you are rich in the moments when you have given nothing, proven nothing, and are still enough."
+      ],
+      "invitation": "To know your worth in a still room, with nothing changing hands.",
+      "edges": {
+        "point": "jupiter",
+        "house": 2,
+        "see_also": [
+          "house_2",
+          "canon:venus"
+        ]
+      }
+    },
+    "3": {
+      "id": "jupiter_in_house_3",
+      "title": "The Oracle Next Door",
+      "body": [
+        "Your gift is to find the far horizon inside the near world. The daily round that others sleepwalk through — errands, siblings, the chat at the counter, the commute — arrives to you charged with significance: you are the one who comes back from the corner shop with a story, a theory, and a book recommendation. Words expand in your keeping. You explain things so that they grow rather than shrink, and the people of your immediate world — neighbors, colleagues, cousins — quietly rely on you to be their translator of the large.",
+        "The shadow is the sermon that outgrows the kitchen. You may notice that you turn conversations into broadcasts — that a simple exchange about someone's day becomes, in your hands, a framework with three implications — and that listening without improving what you hear takes real discipline. The enlarging once protected you: in the world where you first learned to speak, being interesting may have been how you got any airtime at all. But meaning traded too fast never matures. The invitation is to let the near world also teach you — to ask the small question and stay for the whole answer, trusting that the oracle's real work is half listening."
+      ],
+      "invitation": "To receive the neighborhood's news as openly as you announce your own.",
+      "edges": {
+        "point": "jupiter",
+        "house": 3,
+        "see_also": [
+          "house_3",
+          "canon:mercury"
+        ]
+      }
+    },
+    "4": {
+      "id": "jupiter_in_house_4",
+      "title": "The House with Many Rooms",
+      "body": [
+        "Somewhere at the base of you is a large room. Whatever your literal childhood provided, your inner home — the place you touch down when the public day ends — is built on an unusual scale: an instinct that shelter should be generous, that the table extends, that family is a category with an open border. You may be the one who houses the visiting cousin, the friend between apartments, the holiday that absorbs strays; privately, you are also the one whose sense of safety is entangled with abundance, most secure when the pantry is full and the guest room made up.",
+        "The shadow is a home that must keep enlarging to feel like home. You may notice a restlessness underneath your nesting — the recurring certainty that the next house, the renovated kitchen, the bigger city will finally be the settled place — as if belonging were a feature you have not yet purchased. That searching once protected you; the original ground may have felt too small to hold all of you. But the taproot grows down, not across. The invitation is to discover that the many rooms are interior — that you are slowly becoming the shelter you kept moving to find."
+      ],
+      "invitation": "To let your roots, not your square footage, be where the abundance lives.",
+      "edges": {
+        "point": "jupiter",
+        "house": 4,
+        "see_also": [
+          "house_4",
+          "canon:moon"
+        ]
+      }
+    },
+    "5": {
+      "id": "jupiter_in_house_5",
+      "title": "The Carnival of the Heart",
+      "body": [
+        "The part of life other people ration — play, romance, making things for the joy of it — is, for you, a principal industry. You create at scale and love at scale: projects that begin as hobbies and become festivals, affections that arrive like weather systems, an instinct for delight that can make an ordinary Tuesday feel like a feast day for everyone downstream of your mood. Children, literal or symbolic, thrive around you, because you take joy seriously — treating it as evidence about life rather than a break from it.",
+        "The shadow is a heart that trusts only the crescendo. You may notice that your enthusiasms have a golden first act and a missing third — the novel abandoned at the exciting part, the romance that cooled the day it became requited — because for you the aliveness lives in the swelling, and the settled feels like the music stopping. That pattern once protected you: as long as something new was beginning, nothing finished could be judged. But a carnival that never closes is a place no one lives. The invitation is to carry delight into the second act — to learn that joy can deepen instead of only rising, and that the finished thing, imperfect and done, is the bigger risk and the bigger pleasure."
+      ],
+      "invitation": "To finish something you love, and let the settled joy count.",
+      "edges": {
+        "point": "jupiter",
+        "house": 5,
+        "see_also": [
+          "house_5",
+          "canon:sun"
+        ]
+      }
+    },
+    "6": {
+      "id": "jupiter_in_house_6",
+      "title": "The Monastery of Weekdays",
+      "body": [
+        "You are built to find the large inside the repeated. Where others experience routine as the death of meaning, you have the opposite gift: work, done rightly, becomes your church — the craft refined, the colleague mentored, the small daily service performed with a wholeheartedness that makes people wonder what you know that they don't. Whatever you tend enlarges, whether that is a team, a garden, a caseload, or a skill. There is real spiritual intelligence in this: you have understood that a life is made of weekdays, and that whoever blesses the weekday blesses nearly everything.",
+        "The shadow is a schedule that swells like an empire. You may notice that you say yes to every worthy task until your calendar is a colony you no longer govern — and that beneath the overcommitment sits a quieter belief that usefulness is your entrance fee to belonging. That busyness once protected you; being indispensable felt safer than being optional. But service that cannot rest becomes servitude with good manners. The invitation is to let enough be a holy word too — to discover that the monastery keeps sabbath, and that your worth survives an empty afternoon."
+      ],
+      "invitation": "To serve from overflow rather than obligation, and keep one day unconquered.",
+      "edges": {
+        "point": "jupiter",
+        "house": 6,
+        "see_also": [
+          "house_6",
+          "canon:mercury"
+        ]
+      }
+    },
+    "7": {
+      "id": "jupiter_in_house_7",
+      "title": "The Generous Mirror",
+      "body": [
+        "For you, the other person is the road. Growth arrives through relationship the way weather arrives through an open window: partners, close collaborators, even worthy opponents enlarge you, and every significant bond in your history has probably left you geographically, intellectually, or spiritually bigger than it found you. You attract breadth in others, and you give it back: people become more generous versions of themselves in your company, braver in their plans, more forgiving of their pasts. Partnership, for you, is not a settling down; it is an expedition with two names on it.",
+        "The shadow is the wisdom you keep outsourcing. You may notice that you fall for teachers — partners who seem to hold the map, whose confidence or philosophy or worldliness you install as your own horizon — and that some disappointment always follows, because no one can carry a projection of that size forever without dropping it. That arrangement once protected you: believing in someone else's largeness was safer than testing your own. But the mirror is generous precisely so you can finally see what is yours in it. The invitation is to withdraw the loan — to recognize the faith, breadth, and appetite for life you keep admiring in others as your own equipment, returned."
+      ],
+      "invitation": "To meet a partner as a fellow traveler rather than a ferryman, carrying your own map.",
+      "edges": {
+        "point": "jupiter",
+        "house": 7,
+        "see_also": [
+          "house_7",
+          "canon:venus"
+        ]
+      }
+    },
+    "8": {
+      "id": "jupiter_in_house_8",
+      "title": "The Diver and the Pearl",
+      "body": [
+        "Your abundance lives underwater. The regions most people fence off — grief, sexuality, debts and inheritances, the psyche's basement — are for you strangely fertile territory: crises enlarge you rather than shrink you, and your faith is at its most muscular exactly where others lose theirs. You are the one who can sit with the dying, the divorcing, the ruined, and leave them somehow wealthier, because you carry into the dark a conviction that the dark is going somewhere. What merges with you multiplies: trust, money, intimacy given into your keeping tends to grow.",
+        "The shadow is a taste for the deep end that discounts the shallows. You may notice that you feel most alive inside other people's emergencies — steadier in a crisis than on an ordinary calm Sunday, which can feel almost like suffocation — and that some part of you keeps the water dramatic so the diving never has to stop. That appetite once protected you: depth was where you first found treasure, so you learned to trust only pressure. But the pearl is brought up in order to be worn in daylight. The invitation is to surface with your riches — to let what the depths taught you fund an ordinary, sunlit, undramatic life."
+      ],
+      "invitation": "To bring the treasure up, letting what transformation earned you be spent in the daylight.",
+      "edges": {
+        "point": "jupiter",
+        "house": 8,
+        "see_also": [
+          "house_8",
+          "canon:pluto"
+        ]
+      }
+    },
+    "9": {
+      "id": "jupiter_in_house_9",
+      "title": "The Cartographer of Horizons",
+      "body": [
+        "The far horizon is your native district. Questions of meaning — what it is all for, what is true, what lies past the neighborhood's answers — are not occasional visitors in your life but permanent residents: you are the one who travels, studies, reads the other tradition, takes the long way deliberately. And you return with maps. Teaching, mentoring, publishing, or simply enlarging the dinner conversation, you give people coordinates for territories they did not know were reachable. Faith in you is not fragile; it is athletic — it likes distance, and it trains.",
+        "The shadow is the map that hardens into scripture. You may notice that your hard-won philosophy has begun answering questions before they finish being asked — that you can hear yourself explaining life to people who wanted only company in it — and that being wrong in a small conversation stings more than it should, as if a single error might unravel the whole atlas. That certainty once protected you: a large explanation was shelter in a world that had confused you early. But a living faith molts. The invitation is to keep one province of the map deliberately blank — to remain, at your most authoritative, a student on the road."
+      ],
+      "invitation": "To hold your truths the way a good traveler holds maps — gratefully, and ready to redraw.",
+      "edges": {
+        "point": "jupiter",
+        "house": 9,
+        "see_also": [
+          "house_9",
+          "canon:jupiter"
+        ]
+      }
+    },
+    "10": {
+      "id": "jupiter_in_house_10",
+      "title": "The Pilgrim's Summit",
+      "body": [
+        "Your growth happens in public. Whatever you are becoming, you become it on the visible slope — careers that widen, reputations that travel ahead of you, an instinct for vocation as calling rather than employment. You are drawn to work that means something and is seen to mean it: the profession with a horizon in it, the role where your faith in the enterprise becomes contagious and doors open that you did not knock on. Authority sits naturally on you, not because you demand it but because you visibly believe in where things are going, and people follow belief.",
+        "The shadow is a summit that keeps moving. You may notice that each arrival — the title, the launch, the recognition you once defined as “there” — converts within weeks into a base camp for the next ascent, and that the person climbing rarely gets to be the person arrived. That hunger once protected you: somewhere early, being impressive may have been the reliable route to being loved, and the mountain became the measure. But a life spent entirely on the ascent never learns what the view was for. The invitation is to plant the standard and actually stand there — to let your public largeness serve something beyond its own next expansion."
+      ],
+      "invitation": "To let the climb serve a purpose that could one day let you stop climbing.",
+      "edges": {
+        "point": "jupiter",
+        "house": 10,
+        "see_also": [
+          "house_10",
+          "canon:saturn"
+        ]
+      }
+    },
+    "11": {
+      "id": "jupiter_in_house_11",
+      "title": "The Widening Circle",
+      "body": [
+        "Your luck is plural. Whatever you manage alone, you are enlarged in company: friendships arrive bearing opportunities, groups grow around your presence, and the network of your life has a curious way of producing the right person at the right hour — the introduction, the collaborator, the door held open by someone you helped years ago and forgot. You give in kind, instinctively promoting other people's futures, and your deepest hopes are genuinely social: you cannot fully imagine a good life that is good for you alone.",
+        "The shadow is a circle so wide it has no center. You may notice that you are beloved by many and deeply known by almost none — that you move among your hundred friendships like a diplomat among embassies, welcomed everywhere, resident nowhere — and that when your own life breaks, you are strangely unsure whom to call. That breadth once protected you: a distributed belonging can never be revoked all at once. But hopes need witnesses, not just allies. The invitation is to let a few of the many all the way in — to discover that the future you are building for everyone becomes real on the day particular people know you completely."
+      ],
+      "invitation": "To be as known as you are liked, letting the circle keep a warm center.",
+      "edges": {
+        "point": "jupiter",
+        "house": 11,
+        "see_also": [
+          "house_11",
+          "canon:uranus"
+        ]
+      }
+    },
+    "12": {
+      "id": "jupiter_in_house_12",
+      "title": "The Benefactor Behind the Curtain",
+      "body": [
+        "Your abundance works from behind the curtain. There is in your life a recurrent, quietly uncanny providence — the fall that should have been worse, the help arriving unsigned, the closed door that turned out to be shelter — as if some ancestral store of generosity were paying out dividends you never see deposited. You give the same way: anonymously, behind the scenes, to the lost causes and the locked wards, with a compassion that needs no audience. Solitude feeds you; your faith does its best growing in the dark, like roots.",
+        "The shadow is a light kept so private it goes unlived. You may notice that your largest hopes are the ones you have never said aloud — that you minister generously to everyone else's dreams while your own wait behind the curtain for a permission that never quite arrives — and that being rescued has sometimes quietly replaced being responsible, since providence has always caught you before. That hiddenness once protected something tender from a world that felt too loud for it. But grace is given to be spent. The invitation is to bring the benefactor onstage occasionally — to let your hidden faith take public form, and discover the curtain was never a wall."
+      ],
+      "invitation": "To spend your hidden grace in the visible world, trusting daylight with what the dark grew.",
+      "edges": {
+        "point": "jupiter",
+        "house": 12,
+        "see_also": [
+          "house_12",
+          "canon:neptune"
+        ]
+      }
+    }
+  }
+}

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, Sparkles } from "lucide-react";
+import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, FileDown, ImageDown, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, Sparkles } from "lucide-react";
 import { activeChartBlock, type ChartResponse, type Placement } from "../api";
+import { hasCodexEntry } from "../codex";
+import { CodexPanel, type CodexTarget } from "./CodexPanel";
 import type { CastMeta, GeneratedReading } from "../types";
 
 const MOVEMENT_PLACEHOLDERS = [
@@ -28,6 +30,7 @@ function degree(placement?: Placement) {
 interface ReadingWorkspaceProps {
   chart: ChartResponse;
   meta: CastMeta;
+  chartKey: string;
   wheelSvg: string;
   wheelLoading: boolean;
   reading: GeneratedReading | null;
@@ -37,11 +40,14 @@ interface ReadingWorkspaceProps {
   onZodiacBlock: (block: "tropical" | "sidereal") => void;
   onEdit: () => void;
   onRetryReading: () => void;
+  onOpenReport: () => void;
+  onOpenShare: () => void;
 }
 
 export function ReadingWorkspace({
   chart,
   meta,
+  chartKey,
   wheelSvg,
   wheelLoading,
   reading,
@@ -51,6 +57,8 @@ export function ReadingWorkspace({
   onZodiacBlock,
   onEdit,
   onRetryReading,
+  onOpenReport,
+  onOpenShare,
 }: ReadingWorkspaceProps) {
   const [movement, setMovement] = useState(0);
   const [condensed, setCondensed] = useState(false);
@@ -71,7 +79,22 @@ export function ReadingWorkspace({
   }, []);
   const [navigatorCollapsed, setNavigatorCollapsed] = useState(false);
   const [apparatusExpanded, setApparatusExpanded] = useState(true);
-  const [notes, setNotes] = useState("");
+  const [codexTarget, setCodexTarget] = useState<CodexTarget | null>(null);
+  // Notes persist per chart: what someone writes about a reading is part of
+  // the reading, and must survive the tab closing.
+  const notesKey = `starglass-notes:${chartKey}`;
+  const [notes, setNotes] = useState(() => {
+    try { return localStorage.getItem(notesKey) ?? ""; } catch (_) { return ""; }
+  });
+  useEffect(() => {
+    try { setNotes(localStorage.getItem(notesKey) ?? ""); } catch (_) { setNotes(""); }
+  }, [notesKey]);
+  useEffect(() => {
+    const handle = window.setTimeout(() => {
+      try { localStorage.setItem(notesKey, notes); } catch (_) {}
+    }, 400);
+    return () => window.clearTimeout(handle);
+  }, [notes, notesKey]);
   const block = activeChartBlock(chart, zodiacBlock);
   const movements = reading?.movements.length === 6 ? reading.movements : MOVEMENT_PLACEHOLDERS;
   const current = movements[movement];
@@ -92,7 +115,15 @@ export function ReadingWorkspace({
         <div><strong>{meta.timeLabel}</strong><span>Local time</span></div>
         <div><strong>{meta.placeLabel}</strong><span>Birthplace</span></div>
         <div><strong>{meta.zodiacLabel} · {meta.houseLabel}</strong><span>Zodiac · houses</span></div>
-        <button type="button" className="secondary-button edit-button" onClick={onEdit}><Pencil size={15} /> Edit / recast</button>
+        <div className="identity-actions">
+          {reading && (
+            <>
+              <button type="button" className="secondary-button" onClick={onOpenReport} title="A print-quality report of the full portrait"><FileDown size={15} /> Save report</button>
+              <button type="button" className="secondary-button" onClick={onOpenShare} title="A card carrying one line of the portrait"><ImageDown size={15} /> Share card</button>
+            </>
+          )}
+          <button type="button" className="secondary-button edit-button" onClick={onEdit}><Pencil size={15} /> Edit / recast</button>
+        </div>
       </section>
 
       <div className={`reading-grid${navigatorCollapsed ? " navigator-collapsed" : ""}`}>
@@ -211,19 +242,52 @@ export function ReadingWorkspace({
             {apparatusTab === "apparatus" ? (
               <div className="apparatus-body">
                 <h2>Planet positions</h2>
+                <p className="codex-hint">Click a placement to open the Codex — its deeper page, authored for exactly that symbol.</p>
                 <table>
                   <thead><tr><th>Planet</th><th>Sign</th><th>Degree</th><th>House</th></tr></thead>
                   <tbody>
                     {BODY_ORDER.map((name) => {
                       const placement = block.placements[name];
                       if (!placement) return null;
-                      return <tr key={name}><td><span aria-hidden="true">{BODY_GLYPH[name]}</span> {name}</td><td>{placement.sign}</td><td>{degree(placement)}</td><td>{placement.house}</td></tr>;
+                      const deeper = hasCodexEntry(name);
+                      return (
+                        <tr
+                          key={name}
+                          className={deeper ? "codex-row" : ""}
+                          onClick={deeper ? () => setCodexTarget({ kind: "placement", body: name, sign: placement.sign, house: placement.house }) : undefined}
+                        >
+                          <td>
+                            {deeper ? (
+                              <button type="button" className="codex-link" onClick={(event) => { event.stopPropagation(); setCodexTarget({ kind: "placement", body: name, sign: placement.sign, house: placement.house }); }}>
+                                <span aria-hidden="true">{BODY_GLYPH[name]}</span> {name}
+                              </button>
+                            ) : (
+                              <><span aria-hidden="true">{BODY_GLYPH[name]}</span> {name}</>
+                            )}
+                          </td>
+                          <td>{placement.sign}</td><td>{degree(placement)}</td><td>{placement.house}</td>
+                        </tr>
+                      );
                     })}
                   </tbody>
                 </table>
                 <details><summary>House cusps</summary><ol className="apparatus-list">{block.house_cusps.map((cusp, index) => <li key={index}><span>House {index + 1}</span><span>{cusp.display}</span></li>)}</ol></details>
                 <details><summary>Aspects</summary><ol className="apparatus-list">{block.aspects.slice(0, 12).map((aspect, index) => <li key={index}><span>{aspect.bodies.join(` ${aspect.aspect} `)}</span><span>{aspect.orb.toFixed(2)}°</span></li>)}</ol></details>
-                <details><summary>Angles</summary><ol className="apparatus-list">{Object.entries(block.angles).map(([name, placement]) => <li key={name}><span>{name}</span><span>{placement.display}</span></li>)}</ol></details>
+                <details>
+                  <summary>Angles</summary>
+                  <ol className="apparatus-list">
+                    {Object.entries(block.angles).map(([name, placement]) => (
+                      <li key={name}>
+                        {name === "Ascendant" ? (
+                          <button type="button" className="codex-link" onClick={() => setCodexTarget({ kind: "rising", sign: placement.sign })}>{name}</button>
+                        ) : (
+                          <span>{name}</span>
+                        )}
+                        <span>{placement.display}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </details>
                 <p className="calculated-stamp">Calculated · never hand-typed</p>
               </div>
             ) : (
@@ -232,6 +296,8 @@ export function ReadingWorkspace({
           </div>
         </aside>
       </div>
+
+      {codexTarget && <CodexPanel target={codexTarget} onClose={() => setCodexTarget(null)} />}
     </main>
   );
 }

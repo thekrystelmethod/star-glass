@@ -1,0 +1,172 @@
+{
+  "risings": {
+    "aries": {
+      "id": "aries_rising",
+      "title": "The Spear on the Threshold",
+      "body": [
+        "You arrive the way a match arrives at a wick. Before you have said anything considered, others have already received the essential news: something is beginning, and you are at the front of it. The face you turn toward the world is forward motion itself — the direct gaze, the quick flare and quicker forgiveness, the instinct to meet life head-on rather than wait to be found. People tend to describe their first meeting with you in verbs.",
+        "What this doorway protects is rarely guessed: a horror of helplessness. The charge exists so that you are never the one waited upon, never caught standing still when the blow lands. You may notice that you volunteer to go first — into difficult rooms, hard conversations, cold water — not because you are unafraid but because waiting is the one fear you refuse to feel. Strangers mistake the vanguard for the whole army, assuming there is no tenderness behind the spear, and are startled by the loyal, surprisingly innocent heart that comes through the door second.",
+        "Inhabited consciously, this face becomes courage in service — the one who goes first so that others dare to follow. Mars, keeper of this threshold, carries the story deeper into your chart; where he stands is where the spear learns its true target."
+      ],
+      "invitation": "The arc of this doorway runs from charging at life to leading into it — going first not to outrun fear, but to lend courage.",
+      "edges": {
+        "sign": "aries",
+        "see_also": ["canon:mars", "house_1"]
+      }
+    },
+    "taurus": {
+      "id": "taurus_rising",
+      "title": "The Oak Door",
+      "body": [
+        "Others meet the steadiness first: an unhurried voice, a body at ease in gravity, the curious way a room settles when you take your seat in it. You arrive by rooting — no flourish, no rush, a presence that suggests the furniture has been here for generations even when you walked in five minutes ago. People find themselves calmer around you and cannot always say why.",
+        "The slowness is not simplicity; it is a guardian. It protects your right to consent in your own time — to let a person, a plan, a meal, a change prove itself before you open to it. You may notice that you cannot be hurried across your own threshold: when someone pushes for a fast yes, everything in you quietly plants itself, and you say less, not more. Those who mistake the door for the house call you stubborn or placid, and miss the sensual, deeply feeling inhabitant who simply refuses to be rushed into being known.",
+        "Inhabited consciously, this face becomes sanctuary — a steadiness offered rather than defended, a gate that opens on a garden. Venus, patron of this threshold, carries its welcome deeper into your chart, where worth stops being guarded and starts being shared."
+      ],
+      "invitation": "The arc of this doorway runs from guarding the gate to hosting the garden — discovering that security was never the same thing as stillness.",
+      "edges": {
+        "sign": "taurus",
+        "see_also": ["canon:venus", "house_1"]
+      }
+    },
+    "gemini": {
+      "id": "gemini_rising",
+      "title": "The Twin Keys",
+      "body": [
+        "Others meet the quickness first: the question already asked, the joke already landing, and the faint sense that there are two of you at the door — one talking, one watching the talk. You arrive by connecting, locating within minutes the thread that ties you to any stranger, and rooms grow lighter and faster for your entrance.",
+        "What the motion protects is rarely suspected. If the conversation never stops, no single gaze can pin you to one version of yourself and call it final — and being fixed, named once and forever, is the quiet dread beneath the wit. You may notice that you interview people so deftly that they leave delighted with the encounter and knowing almost nothing about you; a sleight of hand so practiced it sometimes fools even you. Those who mistake the messenger for the message assume lightness all the way down, and miss the wordless one who watches from behind the wordplay.",
+        "Inhabited consciously, this face becomes the translator's gift — the one who can enter any room and make its strangers intelligible to one another. Mercury, patron of this threshold, carries the errand deeper into your chart; where he stands, the two at the door begin to speak with one voice."
+      ],
+      "invitation": "The arc of this doorway runs from performing quickness to offering connection — staying in one conversation long enough to be found as well as met.",
+      "edges": {
+        "sign": "gemini",
+        "see_also": ["canon:mercury", "house_1"]
+      }
+    },
+    "cancer": {
+      "id": "cancer_rising",
+      "title": "The Shell and the Lantern",
+      "body": [
+        "No one meets you head-on, because you do not arrive head-on. You enter a room the way a tide enters a bay — feeling for its temperature before committing to its shore — and what others meet depends on what your body decided about them before your mind weighed in: either a warmth that makes them feel unaccountably at home, or a courteous shell with the lights on and the door shut.",
+        "The shell protects a creature of extraordinary softness, one that remembers every room it was ever unsafe in. You may notice that you host wherever you go — the offered chair, the remembered detail, the quiet question about someone's mother — because taking care of people is how you enter a room without being examined by it. The shell is mistaken for the person constantly: some read only the reserve, others only the mothering, and both miss the fierce, funny, deeply private being the armor was grown to carry.",
+        "Inhabited consciously, this threshold becomes a hearth — belonging offered on purpose rather than protection managed by reflex. The Moon, keeper of this doorway, carries its tide deeper into your chart; where she rests is what the shell was always for."
+      ],
+      "invitation": "The arc of this doorway runs from armoring the softness to offering it — letting the door open from the inside.",
+      "edges": {
+        "sign": "cancer",
+        "see_also": ["canon:moon", "house_1"]
+      }
+    },
+    "leo": {
+      "id": "leo_rising",
+      "title": "The Lion at the Gate",
+      "body": [
+        "You arrive as an occasion. Whatever the room was doing before, it registers you — the warmth, the color, the sense of curtain-rise — and others meet generosity before they meet anything else: the big greeting, the remembered name, the instinct to make every arrival feel like a festival. This is not calculation. It is how your body answers a doorway: wholeheartedly or not at all.",
+        "The shine stands guard over something tender — a heart for which being unwitnessed feels perilously close to not existing. You may notice that you can feel a room's attention like sunlight on your skin, and its withdrawal like sudden cloud, so precisely that you adjust your brightness without knowing you have done it. Those who mistake the gate for the whole kingdom call it vanity, or assume the performer is the person, and never meet the shy, earnest child waiting backstage to learn whether love must always be applause.",
+        "Inhabited consciously, this face stops borrowing light from its audience and starts generating it — a warmth that makes others braver about being seen. The Sun, sovereign of this threshold, carries the fire deeper into your chart, where the performance ripens into a self."
+      ],
+      "invitation": "The arc of this doorway runs from shining in order to be loved to loving as a way of shining.",
+      "edges": {
+        "sign": "leo",
+        "see_also": ["canon:sun", "house_1"]
+      }
+    },
+    "virgo": {
+      "id": "virgo_rising",
+      "title": "The Mender at the Door",
+      "body": [
+        "You arrive already working. Others meet a modest, precise attentiveness — the early arrival, the composed manner, the eye that has, within moments, found the crooked picture frame, the guest with the empty glass, the flaw in the plan everyone else is toasting. What they meet first, in other words, is your helpfulness; what they rarely see is that helpfulness is also your passport.",
+        "Usefulness protects you from a harsher customs inspection: being judged as merely yourself, unoccupied and unimproved. If you are fixing something, you belong; if you are serving, no one asks what you are worth. You may notice that you arrive early to settle your nerves and leave late because you stayed to clean up — service as both genuine offering and excellent hiding place. Those who mistake the door for the dwelling find you critical or self-effacing, and miss the devotion underneath: a person for whom noticing what is broken is a form of love.",
+        "Inhabited consciously, the discernment becomes welcome itself — craft in service of care, the sacred found in the detail. Mercury, patron of this threshold, carries the work deeper into your chart, where the mending turns at last toward the mender."
+      ],
+      "invitation": "The arc of this doorway runs from earning entry through usefulness to trusting that you are welcome unimproved.",
+      "edges": {
+        "sign": "virgo",
+        "see_also": ["canon:mercury", "house_1"]
+      }
+    },
+    "libra": {
+      "id": "libra_rising",
+      "title": "The Rose and the Scales",
+      "body": [
+        "Others meet the grace first — the ease, the courtesy, the uncanny sense of being met exactly at their own temperature. You arrive by weighing: reading what a room needs and quietly supplying the missing balance, charm where there is stiffness, calm where there is heat. People relax around you before they can explain why, which is the rose doing its silent work.",
+        "The harmony is armor. It protects you from the small violences of arrival — the clash, the cold shoulder, the judgment formed before you can adjust for it — by making sure no first encounter ever becomes a battlefield. You may notice that your greeting tailors itself to each person — softer for the bruised, brighter for the shy, sharper for the clever — and that if asked which version is the unadjusted one, you could not honestly say. Those who mistake the door for the house believe you agreeable all the way down, and are surprised by the exacting judge who lives behind the diplomat.",
+        "Inhabited consciously, this face becomes true peacemaking rather than peacekeeping — beauty in service of fairness, a welcome that can survive a disagreement. Venus, patron of this threshold, carries the weighing deeper into your chart, where the scales learn what they are for."
+      ],
+      "invitation": "The arc of this doorway runs from keeping the peace to making it — a graciousness that can afford its own no.",
+      "edges": {
+        "sign": "libra",
+        "see_also": ["canon:venus", "house_1"]
+      }
+    },
+    "scorpio": {
+      "id": "scorpio_rising",
+      "title": "The Watchtower and the Well",
+      "body": [
+        "Others meet the containment first: a quiet that is not shyness, a gaze that seems to weigh more than the conversation warrants, the sense of being read thoroughly and filed accurately. You arrive by scanning. Something in you takes the measure of everyone who crosses your threshold, and people feel it — some as magnetism, some as warning, almost no one as indifference.",
+        "The watchtower guards a well. Beneath the composed surveillance lives a depth of feeling so absolute that ambush — being caught open, mocked in your softness, betrayed mid-trust — once felt like a matter of survival, and the tower was built accordingly. You may notice that you sit where you can see the door, in restaurants and in relationships alike, and that you learn people thoroughly before permitting yourself to be learned. Those who mistake the tower for the territory find you intimidating or secretive, and never discover the fierce loyalty and startling tenderness kept below.",
+        "Inhabited consciously, this face becomes the rarest kind of welcome: the presence others seek out with what they can tell no one else, because your door has clearly survived weather. Pluto, warden of this threshold, carries the descent deeper into your chart, where the guarding gives way to transformation."
+      ],
+      "invitation": "The arc of this doorway runs from controlling the gate to opening it — power finally spent on intimacy instead of defense.",
+      "edges": {
+        "sign": "scorpio",
+        "see_also": ["canon:pluto", "house_1"]
+      }
+    },
+    "sagittarius": {
+      "id": "sagittarius_rising",
+      "title": "The Archer and the Horizon",
+      "body": [
+        "Others meet the size of you first — not stature but weather: the candor, the laughter, the arrival that comes in mid-story with dust from somewhere else still on its boots. You enter rooms the way wind enters them, and they feel larger afterward. What people meet is possibility itself, wearing a grin, already pointing at something past the window.",
+        "The motion protects you from a fear you rarely name: that any fixed address is a shrunk life, that to be pinned to one small definition is to die slightly. Humor and horizon-talk keep every door propped open. You may notice that you keep an exit in each commitment — the return ticket, the caveat, the joke that lets a serious moment breathe — and that you tend to leave gatherings just before they end, while everything is still expanding. Those who mistake the doorway for the dwelling call you careless, a perpetual guest, and miss the genuine faith underneath: a conviction that life means something and can be trusted.",
+        "Inhabited consciously, this face becomes hospitality on a grand scale — the one who brings the horizon indoors and makes rooms believe in their own possibilities. Jupiter, patron of this threshold, carries the journey deeper into your chart, where the arrow finds what it was always aimed at."
+      ],
+      "invitation": "The arc of this doorway runs from escaping smallness to bringing the horizon home — learning that presence is the larger country.",
+      "edges": {
+        "sign": "sagittarius",
+        "see_also": ["canon:jupiter", "house_1"]
+      }
+    },
+    "capricorn": {
+      "id": "capricorn_rising",
+      "title": "The Stone Lintel",
+      "body": [
+        "Others meet the composure first: the measured voice, the reliable handshake, the impression of someone older than their years standing in the doorway — capable, contained, already responsible for something. Rooms tend to hand you their logistics within minutes. You arrive the way good architecture arrives: quietly load-bearing, built to a standard nobody asked you to meet but you met anyway.",
+        "The formality protects a self that learned early not to arrive needy — that gravity was safer than appetite, and that being relied upon drew warmth more dependably than asking for it ever did. You may notice that you answer “how are you” with a report on your work, because competence has always been the safest way to be met. Those who mistake the lintel for the whole house call you cold or merely ambitious, and miss the dry wit and the deep, almost bashful tenderness kept in the interior rooms.",
+        "Inhabited consciously, this face weathers into something finer than defense: earned authority, the doorway others shelter under in storms. Saturn, keeper of this threshold, carries the discipline deeper into your chart, where the young person's armor becomes the elder's craft."
+      ],
+      "invitation": "The arc of this doorway runs from being relied upon to being met — letting the ones you shelter come inside.",
+      "edges": {
+        "sign": "capricorn",
+        "see_also": ["canon:saturn", "house_1"]
+      }
+    },
+    "aquarius": {
+      "id": "aquarius_rising",
+      "title": "The Observatory Door",
+      "body": [
+        "Others meet a paradox at your threshold: warmth at one remove. You are interested in everyone, courteous to everyone, startlingly free of snobbery — and yet the encounter has the quality of an observatory, as if you were present at your own arrival and also watching it from a comfortable distance, taking notes on the species.",
+        "The distance is a keepsake from early rooms where your particular strangeness — the odd questions, the sideways angle on everything — drew penalty instead of welcome. Orbit became safer than immersion: close enough to belong, far enough to remain unclaimed. You may notice that you are warm to everyone and known by almost no one — reliably the friendliest person in the room and the hardest to actually find in it. Those who mistake the door for the dwelling read coolness or superiority, and miss the idealist inside, who cares about people in general precisely because people in particular were once so hazardous.",
+        "Inhabited consciously, this face becomes permission: your difference, worn calmly, makes it safer for everyone else's. Uranus, keeper of this threshold, carries the lightning deeper into your chart, where the observer finally joins what it observes."
+      ],
+      "invitation": "The arc of this doorway runs from watching the species to joining it — belonging entered without surrendering the view.",
+      "edges": {
+        "sign": "aquarius",
+        "see_also": ["canon:uranus", "house_1"]
+      }
+    },
+    "pisces": {
+      "id": "pisces_rising",
+      "title": "The Door Made of Water",
+      "body": [
+        "Others meet an atmosphere before they meet a person: a softness, a listening quality, a face that seems to have already forgiven them for something. You arrive the way weather arrives — pervading rather than entering — and people routinely see in you whatever they most need to find: confessor, muse, kindred spirit, blank page. The door is made of water, and water takes the shape of whoever looks into it.",
+        "The mist is a membrane. It protects a sensitivity with almost no native boundary — a self through which other people's moods pass like tides — by keeping your outline soft enough that nothing can strike it squarely. You may notice that strangers confide their whole lives to you within minutes, and that afterward you cannot always say whether the sadness you carried home was theirs or yours. Those who mistake the mirror for the person call you vague or elusive, and miss the definite soul behind the water: perceptive, quietly stubborn, and far less lost than advertised.",
+        "Inhabited consciously, this face becomes compassion with banks — a welcome that receives the world's feeling without drowning in it, and turns what it absorbs into solace or art. Neptune, keeper of this threshold, carries the tide deeper into your chart, where the longing finds its true ocean."
+      ],
+      "invitation": "The arc of this doorway runs from dissolving at the threshold to welcoming from a self with shores.",
+      "edges": {
+        "sign": "pisces",
+        "see_also": ["canon:neptune", "house_1"]
+      }
+    }
+  }
+}
