@@ -90,6 +90,10 @@ class WheelRequest(BaseModel):
     highlight: Optional[list[str]] = None
     themes: Optional[list[ThemeSpec]] = None
     palette: Optional[dict] = Field(None, description="white-label design tokens")
+    transparent: bool = Field(False, description="omit the full-bleed paper "
+                              "background so the wheel floats over an app "
+                              "background; glyph halos and the caption plate "
+                              "keep their paper fill for legibility")
 
 
 class TablesRequest(BaseModel):
@@ -174,7 +178,8 @@ def wheel(req: WheelRequest):
     try:
         svg = dc.build(block, size=req.size, title=req.title,
                        subtitle=req.subtitle, highlight=req.highlight,
-                       themes=[t.model_dump() for t in req.themes] if req.themes else None)
+                       themes=[t.model_dump() for t in req.themes] if req.themes else None,
+                       background=not req.transparent)
     finally:
         dc.apply_palette(None)             # never leak a brand into the next call
     return Response(content=svg, media_type="image/svg+xml")

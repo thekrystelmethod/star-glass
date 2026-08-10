@@ -76,6 +76,7 @@ export async function renderWheel(
     title: "Natal chart",
     subtitle,
     palette: theme.wheel,
+    transparent: true,
   }, "text") as Promise<string>;
 }
 

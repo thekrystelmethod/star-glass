@@ -137,6 +137,7 @@ html[data-theme="phosphor"] {
   --radius-lg: 16px;
   --radius-xl: 22px;
   --radius-full: 999px;
+  --sticky-identity-h: 54px; /* condensed chart-identity height; sticky offsets key off this */
 }
 
 * { box-sizing: border-box; }
@@ -386,7 +387,13 @@ select { appearance: none; padding-right: 42px; }
 
 /* Completed chart state */
 .reading-shell { min-height: calc(100vh - 88px); }
-.chart-identity { min-height: 86px; display: grid; grid-template-columns: 52px 170px 140px minmax(300px, 1fr) minmax(180px, 0.65fr) auto; align-items: center; gap: 0; padding: 0 34px; border-bottom: 1px solid var(--atlas-border); background: color-mix(in srgb, var(--atlas-panel) 78%, transparent); }
+.identity-sentinel { height: 1px; }
+.chart-identity { position: sticky; top: 0; z-index: 25; min-height: 86px; display: grid; grid-template-columns: 52px 170px 140px minmax(300px, 1fr) minmax(180px, 0.65fr) auto; align-items: center; gap: 0; padding: 0 34px; border-bottom: 1px solid var(--atlas-border); background: color-mix(in srgb, var(--atlas-panel) 78%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transition: min-height 200ms ease; }
+.chart-identity span { max-height: 20px; transition: max-height 180ms ease, opacity 140ms ease; }
+.chart-identity.condensed { min-height: var(--sticky-identity-h); background: color-mix(in srgb, var(--atlas-panel) 92%, transparent); }
+.chart-identity.condensed span { max-height: 0; opacity: 0; overflow: hidden; }
+.chart-identity.condensed .mini-wheel { width: 32px; height: 32px; font-size: 18px; }
+.chart-identity.condensed .edit-button { padding-block: 6px; }
 .chart-identity > div { min-width: 0; padding: 0 20px; border-right: 1px solid var(--atlas-border); }
 .chart-identity > div:nth-child(1) { padding: 0; border: 0; }
 .chart-identity > div:nth-child(5) { border: 0; }
@@ -398,7 +405,7 @@ select { appearance: none; padding-right: 42px; }
 .reading-grid { display: grid; grid-template-columns: 252px minmax(620px, 1fr); min-height: calc(100vh - 174px); transition: grid-template-columns 220ms ease; }
 .reading-grid.navigator-collapsed { grid-template-columns: 76px minmax(620px, 1fr); }
 .movement-nav-column { grid-column: 1; grid-row: 1; min-width: 0; border-right: 1px solid var(--atlas-border); background: var(--atlas-panel); }
-.movement-nav { position: sticky; top: 0; align-self: start; min-height: calc(100vh - 174px); padding: 30px 20px 22px; background: var(--atlas-panel); }
+.movement-nav { position: sticky; top: var(--sticky-identity-h); align-self: start; min-height: calc(100vh - var(--sticky-identity-h)); padding: 30px 20px 22px; background: var(--atlas-panel); }
 .movement-nav-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 8px 10px 16px; }
 .movement-nav-header > .eyebrow { margin: 0; color: var(--atlas-text-4); }
 .navigator-toggle { width: 31px; height: 31px; flex: none; display: grid; place-items: center; padding: 0; border: 1px solid var(--atlas-border); border-radius: var(--radius-sm); background: var(--atlas-surface); color: var(--atlas-text-4); }
@@ -436,9 +443,15 @@ select { appearance: none; padding-right: 42px; }
   grid-template-columns: minmax(380px, 0.9fr) minmax(500px, 1.1fr);
   align-items: start;
 }
-.movement-hero.reading-ready .wheel-stage { position: sticky; top: 24px; }
+.movement-hero.reading-ready .wheel-stage { position: sticky; top: calc(var(--sticky-identity-h) + 18px); }
 .movement-hero.reading-ready .movement-prose { width: 100%; max-width: 66ch; }
+.movement-hero.reading-ready .wheel-svg svg { max-height: min(540px, calc(100vh - var(--sticky-identity-h) - 90px)); }
 .wheel-stage { position: relative; min-height: 460px; display: grid; place-items: center; overflow: hidden; }
+/* The wheel arrives with a transparent background so it floats over the
+   atmosphere; this soft plate keeps hairlines and glyphs legible on any
+   motion layer without reintroducing a hard-edged paper rectangle. */
+.wheel-stage::before { content: ""; position: absolute; inset: 4%; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--atlas-bg) 74%, transparent) 62%, transparent 100%); pointer-events: none; }
+.wheel-stage > * { position: relative; }
 .wheel-stage.loading::after { content: "Retuning the wheel…"; position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); padding: 5px 9px; border-radius: var(--radius-full); background: var(--atlas-panel); color: var(--atlas-text-4); font-size: 10px; }
 .wheel-svg { width: 100%; }
 .wheel-svg svg { display: block; width: 100%; height: auto; max-height: 540px; }
@@ -509,7 +522,7 @@ select { appearance: none; padding-right: 42px; }
 .development-invitation > span { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--atlas-warning); border-radius: 50%; color: var(--atlas-warning); }
 .development-invitation p { margin-bottom: 4px; }
 .development-invitation div > p:last-child { max-width: 700px; color: var(--atlas-text-3); font-size: 13px; }
-.movement-actions { display: flex; justify-content: space-between; gap: 18px; margin-top: 28px; }
+.movement-actions { position: sticky; bottom: 0; z-index: 5; display: flex; justify-content: space-between; gap: 18px; margin-top: 28px; padding: 14px 0 16px; background: linear-gradient(to top, color-mix(in srgb, var(--atlas-bg) 90%, transparent) 62%, transparent); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
 
 .apparatus-panel {
   grid-column: 1 / -1;
@@ -614,7 +627,10 @@ select { appearance: none; padding-right: 42px; }
   .creation-form-panel { border-right: 0; border-bottom: 1px solid var(--atlas-border); padding: 34px 22px 42px; }
   .creation-promise { padding: 48px 22px 60px; }
   .birth-form { max-width: none; }
-  .chart-identity { display: flex; flex-wrap: wrap; gap: 12px; padding: 16px 18px; }
+  .chart-identity { position: static; display: flex; flex-wrap: wrap; gap: 12px; padding: 16px 18px; }
+  .chart-identity.condensed { min-height: 86px; }
+  .chart-identity.condensed span { max-height: 20px; opacity: 1; }
+  .movement-actions { position: static; padding: 0 0 0; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .chart-identity > div { min-width: 130px; padding: 0 12px 0 0; }
   .chart-identity .edit-button { margin-left: auto; }
   .reading-grid, .reading-grid.navigator-collapsed { grid-template-columns: 1fr; }

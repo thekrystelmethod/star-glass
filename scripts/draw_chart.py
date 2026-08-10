@@ -127,7 +127,7 @@ def arc_path(cx, cy, r, a0, a1):
 
 
 def build(chart, size=1100, title=None, subtitle=None,
-          highlight=None, themes=None):
+          highlight=None, themes=None, background=True):
     """Draw the wheel.
 
     highlight: a set of body/angle names to keep at full ink while everything
@@ -138,6 +138,12 @@ def build(chart, size=1100, title=None, subtitle=None,
         endpoints share a theme are drawn in that theme's colour, and every
         other contact recedes. This renders the synthesis itself rather than
         the raw geometry: the reader can see why the reading says what it says.
+    background: when False, omit the full-bleed paper rect so the wheel can
+        float over an app background or motion layer. Only the page-sized
+        backdrop is skipped — the house-number halos and the centre caption
+        plate keep their paper fill, because they exist to keep type legible
+        where aspect lines cross, on any backdrop. Print/export should keep
+        background=True: on paper, paper is correct.
     """
     hl = set(highlight) if highlight else None
     theme_of = {}
@@ -168,8 +174,9 @@ def build(chart, size=1100, title=None, subtitle=None,
         return (180 + (lon - asc)) % 360
 
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" '
-         f'viewBox="0 0 {size} {size}">',
-         f'<rect width="{size}" height="{size}" fill="{PAPER}"/>']
+         f'viewBox="0 0 {size} {size}">']
+    if background:
+        o.append(f'<rect width="{size}" height="{size}" fill="{PAPER}"/>')
 
     # --- zodiac ring: element-tinted sectors ------------------------------
     for i, sign in enumerate(SIGNS):
@@ -387,6 +394,10 @@ def main():
                     help="JSON file: {\"themes\":[{\"name\":..,\"bodies\":[..],"
                          "\"color\":\"#rrggbb\"}]} — colours the aspect web by "
                          "detected theme instead of by aspect family")
+    ap.add_argument("--transparent", action="store_true",
+                    help="omit the full-bleed paper background rect so the wheel "
+                         "floats over whatever sits behind it; halos and the "
+                         "caption plate keep their paper fill for legibility")
     ap.add_argument("--palette", default=None,
                     help="JSON file of palette token overrides (ink, paper, faint, "
                          "mid, element{}, aspect{}, fonts, theme_palette[]) — the "
@@ -412,7 +423,8 @@ def main():
             themes = json.load(f)["themes"]
 
     svg = build(data[key], size=args.size, title=args.title, subtitle=args.subtitle,
-                highlight=highlight, themes=themes)
+                highlight=highlight, themes=themes,
+                background=not args.transparent)
     with open(args.out, "w") as f:
         f.write(svg)
     print(f"wrote {args.out}")

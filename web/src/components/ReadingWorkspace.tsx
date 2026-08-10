@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, Sparkles } from "lucide-react";
 import { activeChartBlock, type ChartResponse, type Placement } from "../api";
 import type { CastMeta, GeneratedReading } from "../types";
@@ -53,7 +53,22 @@ export function ReadingWorkspace({
   onRetryReading,
 }: ReadingWorkspaceProps) {
   const [movement, setMovement] = useState(0);
+  const [condensed, setCondensed] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const [apparatusTab, setApparatusTab] = useState<"apparatus" | "notes">("apparatus");
+
+  // The chart-identity strip condenses once it sticks: a 1px sentinel above it
+  // leaves the viewport exactly when the strip reaches the top edge.
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setCondensed(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
   const [navigatorCollapsed, setNavigatorCollapsed] = useState(false);
   const [apparatusExpanded, setApparatusExpanded] = useState(true);
   const [notes, setNotes] = useState("");
@@ -70,7 +85,8 @@ export function ReadingWorkspace({
 
   return (
     <main className="reading-shell" id="main-content">
-      <section className="chart-identity" aria-label="Current chart">
+      <div className="identity-sentinel" aria-hidden="true" ref={sentinelRef} />
+      <section className={`chart-identity${condensed ? " condensed" : ""}`} aria-label="Current chart">
         <div className="mini-wheel" aria-hidden="true">◎</div>
         <div><strong>{meta.dateLabel}</strong><span>Date of birth</span></div>
         <div><strong>{meta.timeLabel}</strong><span>Local time</span></div>
