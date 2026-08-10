@@ -186,7 +186,10 @@ const RGD_STYLE = `
   border: 1px solid var(--atlas-border, #272d38);
   border-radius: var(--radius-full, 9999px);
   color: var(--atlas-text-3, #a6acba);
-  font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-action, var(--font-display, ui-serif, Georgia, serif));
+  font-style: var(--action-style, normal);
+  font-weight: var(--action-weight, 500);
+  letter-spacing: var(--action-tracking, 0.01em);
   font-size: 12px;
   cursor: pointer;
   transition: border-color 120ms ease, color 120ms ease;
@@ -270,7 +273,10 @@ const RGD_STYLE = `
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
-  font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-action, var(--font-display, ui-serif, Georgia, serif));
+  font-style: var(--action-style, normal);
+  font-weight: var(--action-weight, 500);
+  letter-spacing: var(--action-tracking, 0.01em);
   font-size: 11.5px;
   color: var(--atlas-text-2, #d2d6df);
 }
@@ -289,7 +295,10 @@ const RGD_STYLE = `
   background: var(--atlas-surface, #12151b);
   border: 1px solid var(--atlas-border, #272d38);
   border-radius: var(--radius-full, 9999px);
-  font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-action, var(--font-display, ui-serif, Georgia, serif));
+  font-style: var(--action-style, normal);
+  font-weight: var(--action-weight, 500);
+  letter-spacing: var(--action-tracking, 0.01em);
   font-size: 11px;
   color: var(--atlas-text-3, #a6acba);
   cursor: pointer;
@@ -310,9 +319,11 @@ const RGD_STYLE = `
   background: var(--atlas-accent-soft, rgba(143,161,194,0.14));
   border: 1px solid var(--atlas-accent, #8fa1c2);
   border-radius: var(--radius-md, 0.625rem);
-  font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-action, var(--font-display, ui-serif, Georgia, serif));
+  font-style: var(--action-style, normal);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--action-weight, 500);
+  letter-spacing: var(--action-tracking, 0.01em);
   color: var(--atlas-text-1, #e8eaf0);
   cursor: pointer;
   text-align: center;

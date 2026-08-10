@@ -10,3 +10,6 @@ web/node_modules/
 web/dist/
 qa-*.jpg
 qa-*.png
+
+# local scratch (Claude cannot delete on-device; empty this folder manually)
+_to_delete/

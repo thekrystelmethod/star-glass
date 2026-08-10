@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookOpen, ChevronLeft, ChevronRight, LoaderCircle, Pencil, RefreshCw, RotateCcw } from "lucide-react";
+import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, Sparkles } from "lucide-react";
 import { activeChartBlock, type ChartResponse, type Placement } from "../api";
 import type { CastMeta, GeneratedReading } from "../types";
 
@@ -54,6 +54,8 @@ export function ReadingWorkspace({
 }: ReadingWorkspaceProps) {
   const [movement, setMovement] = useState(0);
   const [apparatusTab, setApparatusTab] = useState<"apparatus" | "notes">("apparatus");
+  const [navigatorCollapsed, setNavigatorCollapsed] = useState(false);
+  const [apparatusExpanded, setApparatusExpanded] = useState(true);
   const [notes, setNotes] = useState("");
   const block = activeChartBlock(chart, zodiacBlock);
   const movements = reading?.movements.length === 6 ? reading.movements : MOVEMENT_PLACEHOLDERS;
@@ -77,21 +79,35 @@ export function ReadingWorkspace({
         <button type="button" className="secondary-button edit-button" onClick={onEdit}><Pencil size={15} /> Edit / recast</button>
       </section>
 
-      <div className="reading-grid">
-        <nav className="movement-nav" aria-label="Reading movements">
-          <p className="eyebrow">The reading</p>
-          <ol>
-            {movements.map((item, index) => (
-              <li key={item.nav}>
-                <button type="button" disabled={!reading} className={movement === index ? "active" : ""} aria-current={movement === index ? "step" : undefined} onClick={() => setMovement(index)}>
-                  <span>{index + 1}</span>
-                  <span><strong>{item.nav}</strong><small>{item.title}</small></span>
-                </button>
-              </li>
-            ))}
-          </ol>
-          <div className="reading-guide"><BookOpen size={17} /><span><strong>Reading guide</strong><small>Move in order, or follow what calls.</small></span></div>
-        </nav>
+      <div className={`reading-grid${navigatorCollapsed ? " navigator-collapsed" : ""}`}>
+        <div className="movement-nav-column">
+          <nav className={`movement-nav${navigatorCollapsed ? " collapsed" : ""}`} aria-label="Reading movements">
+            <div className="movement-nav-header">
+              <p className="eyebrow">The reading</p>
+              <button
+                type="button"
+                className="navigator-toggle"
+                aria-expanded={!navigatorCollapsed}
+                aria-label={navigatorCollapsed ? "Expand reading navigator" : "Collapse reading navigator"}
+                title={navigatorCollapsed ? "Expand reading navigator" : "Collapse reading navigator"}
+                onClick={() => setNavigatorCollapsed((collapsed) => !collapsed)}
+              >
+                {navigatorCollapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
+              </button>
+            </div>
+            <ol>
+              {movements.map((item, index) => (
+                <li key={item.nav}>
+                  <button type="button" disabled={!reading} className={movement === index ? "active" : ""} aria-current={movement === index ? "step" : undefined} aria-label={navigatorCollapsed ? `${index + 1}. ${item.nav}: ${item.title}` : undefined} title={navigatorCollapsed ? item.nav : undefined} onClick={() => setMovement(index)}>
+                    <span>{index + 1}</span>
+                    <span className="movement-nav-copy"><strong>{item.nav}</strong><small>{item.title}</small></span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+            <div className="reading-guide"><BookOpen size={17} /><span><strong>Reading guide</strong><small>Move in order, or follow what calls.</small></span></div>
+          </nav>
+        </div>
 
         <article className="movement-content">
           <header className="movement-heading">
@@ -108,16 +124,25 @@ export function ReadingWorkspace({
             </div>
           )}
 
-          <div className="movement-hero">
+          <div className={`movement-hero${reading ? " reading-ready" : ""}`}>
             <div className={`wheel-stage${wheelLoading ? " loading" : ""}`} aria-label="Natal chart wheel">
               {wheelSvg ? <div className="wheel-svg" dangerouslySetInnerHTML={{ __html: wheelSvg }} /> : <div className="wheel-placeholder">Drawing the chart…</div>}
             </div>
             <div className="movement-prose">
               {readingLoading && !reading && (
                 <div className="reading-composer" role="status">
-                  <LoaderCircle size={22} aria-hidden="true" />
+                  <div className="composer-mark">
+                    <LoaderCircle size={22} aria-hidden="true" />
+                    <span>Portrait in progress</span>
+                  </div>
                   <strong>Composing your portrait</strong>
-                  <p>StarGlass is weighing the chart, finding repeated themes, and writing each movement fresh.</p>
+                  <p>StarGlass is weighing the chart, listening for repeated themes, and writing each movement fresh.</p>
+                  <ol className="composer-stages" aria-label="Portrait composition stages">
+                    <li><ScanSearch size={15} aria-hidden="true" /><span>Reading the chart’s architecture</span></li>
+                    <li><Sparkles size={15} aria-hidden="true" /><span>Finding the patterns that repeat</span></li>
+                    <li><BookOpenText size={15} aria-hidden="true" /><span>Composing the six movements</span></li>
+                  </ol>
+                  <p className="composer-wait"><Clock3 size={15} aria-hidden="true" /><span>A full portrait usually takes 1–3 minutes. Keep this tab open—you can switch away and return shortly.</span></p>
                 </div>
               )}
               {readingError && !reading && (
@@ -149,32 +174,46 @@ export function ReadingWorkspace({
           </footer>}
         </article>
 
-        <aside className="apparatus-panel">
-          <div className="apparatus-tabs" role="tablist">
-            <button type="button" role="tab" aria-selected={apparatusTab === "apparatus"} className={apparatusTab === "apparatus" ? "active" : ""} onClick={() => setApparatusTab("apparatus")}>Apparatus</button>
-            <button type="button" role="tab" aria-selected={apparatusTab === "notes"} className={apparatusTab === "notes" ? "active" : ""} onClick={() => setApparatusTab("notes")}>Notes</button>
-          </div>
-          {apparatusTab === "apparatus" ? (
-            <div className="apparatus-body">
-              <h2>Planet positions</h2>
-              <table>
-                <thead><tr><th>Planet</th><th>Sign</th><th>Degree</th><th>House</th></tr></thead>
-                <tbody>
-                  {BODY_ORDER.map((name) => {
-                    const placement = block.placements[name];
-                    if (!placement) return null;
-                    return <tr key={name}><td><span aria-hidden="true">{BODY_GLYPH[name]}</span> {name}</td><td>{placement.sign}</td><td>{degree(placement)}</td><td>{placement.house}</td></tr>;
-                  })}
-                </tbody>
-              </table>
-              <details><summary>House cusps</summary><ol className="apparatus-list">{block.house_cusps.map((cusp, index) => <li key={index}><span>House {index + 1}</span><span>{cusp.display}</span></li>)}</ol></details>
-              <details><summary>Aspects</summary><ol className="apparatus-list">{block.aspects.slice(0, 12).map((aspect, index) => <li key={index}><span>{aspect.bodies.join(` ${aspect.aspect} `)}</span><span>{aspect.orb.toFixed(2)}°</span></li>)}</ol></details>
-              <details><summary>Angles</summary><ol className="apparatus-list">{Object.entries(block.angles).map(([name, placement]) => <li key={name}><span>{name}</span><span>{placement.display}</span></li>)}</ol></details>
-              <p className="calculated-stamp">Calculated · never hand-typed</p>
+        <aside className={`apparatus-panel${apparatusExpanded ? "" : " collapsed"}`}>
+          <div className="apparatus-bar">
+            <div className="apparatus-tabs" role="tablist">
+              <button type="button" role="tab" aria-selected={apparatusTab === "apparatus"} className={apparatusTab === "apparatus" ? "active" : ""} onClick={() => { setApparatusTab("apparatus"); setApparatusExpanded(true); }}>Apparatus</button>
+              <button type="button" role="tab" aria-selected={apparatusTab === "notes"} className={apparatusTab === "notes" ? "active" : ""} onClick={() => { setApparatusTab("notes"); setApparatusExpanded(true); }}>Notes</button>
             </div>
-          ) : (
-            <div className="notes-panel"><label htmlFor="chart-notes">Your notes</label><textarea id="chart-notes" value={notes} onChange={(event) => setNotes(event.target.value)} placeholder="What feels alive, resistant, or unexpectedly accurate?" /></div>
-          )}
+            <button
+              type="button"
+              className="apparatus-collapse-toggle"
+              aria-expanded={apparatusExpanded}
+              aria-controls="apparatus-content"
+              onClick={() => setApparatusExpanded((expanded) => !expanded)}
+            >
+              <span>{apparatusExpanded ? "Hide panel" : "Show panel"}</span>
+              {apparatusExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+            </button>
+          </div>
+          <div id="apparatus-content" className="apparatus-content" hidden={!apparatusExpanded}>
+            {apparatusTab === "apparatus" ? (
+              <div className="apparatus-body">
+                <h2>Planet positions</h2>
+                <table>
+                  <thead><tr><th>Planet</th><th>Sign</th><th>Degree</th><th>House</th></tr></thead>
+                  <tbody>
+                    {BODY_ORDER.map((name) => {
+                      const placement = block.placements[name];
+                      if (!placement) return null;
+                      return <tr key={name}><td><span aria-hidden="true">{BODY_GLYPH[name]}</span> {name}</td><td>{placement.sign}</td><td>{degree(placement)}</td><td>{placement.house}</td></tr>;
+                    })}
+                  </tbody>
+                </table>
+                <details><summary>House cusps</summary><ol className="apparatus-list">{block.house_cusps.map((cusp, index) => <li key={index}><span>House {index + 1}</span><span>{cusp.display}</span></li>)}</ol></details>
+                <details><summary>Aspects</summary><ol className="apparatus-list">{block.aspects.slice(0, 12).map((aspect, index) => <li key={index}><span>{aspect.bodies.join(` ${aspect.aspect} `)}</span><span>{aspect.orb.toFixed(2)}°</span></li>)}</ol></details>
+                <details><summary>Angles</summary><ol className="apparatus-list">{Object.entries(block.angles).map(([name, placement]) => <li key={name}><span>{name}</span><span>{placement.display}</span></li>)}</ol></details>
+                <p className="calculated-stamp">Calculated · never hand-typed</p>
+              </div>
+            ) : (
+              <div className="notes-panel"><label htmlFor="chart-notes">Your notes</label><textarea id="chart-notes" value={notes} onChange={(event) => setNotes(event.target.value)} placeholder="What feels alive, resistant, or unexpectedly accurate?" /></div>
+            )}
+          </div>
         </aside>
       </div>
     </main>

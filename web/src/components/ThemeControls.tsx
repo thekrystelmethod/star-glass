@@ -45,10 +45,15 @@ function BreathingPreview() {
   return <span className="environment-preview environment-breathing" aria-hidden="true" />;
 }
 
+function BloomPreview() {
+  return <span className="environment-preview environment-bloom" aria-hidden="true" />;
+}
+
 export const BACKGROUNDS: StudioBackground[] = [
   { id: "quiet", label: "Quiet", note: "The register without an ambient layer.", Component: QuietPreview },
-  { id: "constellation", label: "Constellation", note: "A fine celestial drafting field.", Component: ConstellationPreview },
-  { id: "breathing", label: "Breathing glow", note: "A slow pool of register light.", Component: BreathingPreview },
+  { id: "constellation", label: "Constellation drift", note: "A celestial field in slow parallax with calibrated twinkle.", Component: ConstellationPreview },
+  { id: "breathing", label: "Breathing aurora", note: "Register-colored light pools rise and recede beneath the page.", Component: BreathingPreview },
+  { id: "bloom", label: "Prismatic bloom", note: "A cinematic color wash with an occasional soft flare.", Component: BloomPreview },
 ];
 
 interface ThemeControlsProps {
@@ -114,7 +119,6 @@ export function ThemeControls({ backgroundId, onBackground }: ThemeControlsProps
       {createPortal(
         <ThemeStudio
           open={studioOpen}
-          compact
           onClose={() => setStudioOpen(false)}
           themes={themes}
           themeId={themeId}
