@@ -28,18 +28,29 @@ interface ReportViewProps {
 export function ReportView({ chart, meta, reading, zodiacBlock, onBack }: ReportViewProps) {
   const { theme } = useTheme();
   const [wheelSvg, setWheelSvg] = useState("");
+  const [movementWheels, setMovementWheels] = useState<Record<number, string>>({});
   const block = activeChartBlock(chart, zodiacBlock);
   const birthLine = `${meta.dateLabel} · ${meta.timeLabel} · ${meta.placeLabel}`;
   const castStamp = new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
 
   // The report is a paper object: it always draws the wheel on warm paper in
-  // the Paper Lab palette, whatever register the screen is wearing.
+  // the Paper Lab palette, whatever register the screen is wearing. Each
+  // movement that names its bodies also gets a thematic wheel — the geometry
+  // that movement reads, everything else receded.
   useEffect(() => {
     let cancelled = false;
     const paperlab = THEMES.find((candidate) => candidate.id === "paperlab") ?? THEMES[0];
     renderWheel(chart, zodiacBlock, theme, birthLine, { transparent: false, size: 1300, palette: paperlab.wheel })
       .then((svg) => { if (!cancelled) setWheelSvg(svg); })
       .catch(() => { if (!cancelled) setWheelSvg(""); });
+    reading.movements.forEach((movement, index) => {
+      if (!movement.bodies || movement.bodies.length === 0) return;
+      renderWheel(chart, zodiacBlock, theme, movement.nav, {
+        transparent: false, size: 820, palette: paperlab.wheel, highlight: movement.bodies,
+      })
+        .then((svg) => { if (!cancelled) setMovementWheels((prior) => ({ ...prior, [index]: svg })); })
+        .catch(() => {});
+    });
     return () => { cancelled = true; };
   }, [chart, zodiacBlock]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -73,6 +84,12 @@ export function ReportView({ chart, meta, reading, zodiacBlock, onBack }: Report
             <p className="report-eyebrow">{index + 1} · {movement.nav}</p>
             <h2>{movement.title}</h2>
             <p className="report-subtitle">{movement.subtitle}</p>
+            {movementWheels[index] && (
+              <figure className="report-movement-wheel">
+                <div dangerouslySetInnerHTML={{ __html: movementWheels[index] }} />
+                <figcaption>The geometry this movement reads: {movement.bodies?.join(", ")}.</figcaption>
+              </figure>
+            )}
             {movement.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 48)}>{paragraph}</p>)}
             <blockquote>“{movement.quote}”</blockquote>
             <p className="report-invitation"><span aria-hidden="true">✦</span> <strong>Development invitation.</strong> {movement.invitation}</p>

@@ -67,6 +67,9 @@ export interface WheelOptions {
   transparent?: boolean;
   size?: number;
   palette?: StarGlassTheme["wheel"];
+  /** Bodies to keep at full ink while the rest of the chart recedes —
+      the engine's thematic-wheel mode, one spotlight per movement. */
+  highlight?: string[];
 }
 
 export async function renderWheel(
@@ -84,6 +87,7 @@ export async function renderWheel(
     subtitle,
     palette: options.palette ?? theme.wheel,
     transparent: options.transparent ?? true,
+    highlight: options.highlight && options.highlight.length ? options.highlight : undefined,
   }, "text") as Promise<string>;
 }
 

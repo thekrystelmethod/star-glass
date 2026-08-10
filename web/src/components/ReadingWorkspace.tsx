@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, FileDown, ImageDown, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, Sparkles } from "lucide-react";
 import { activeChartBlock, type ChartResponse, type Placement } from "../api";
 import { hasCodexEntry } from "../codex";
 import { CeremonyMoment } from "../motion/catalog";
+import { useArchetypes } from "../useArchetypes";
 import { CodexPanel, type CodexTarget } from "./CodexPanel";
 import type { CastMeta, GeneratedReading } from "../types";
 
@@ -45,7 +46,10 @@ interface ReadingWorkspaceProps {
   onOpenShare: () => void;
   momentId: string;
   ceremonyTrigger: string | null;
+  onMovementFocus: (bodies: string[] | null) => void;
 }
+
+const ordinal = (n: number) => `${n}${["th", "st", "nd", "rd"][(n % 10 > 3 || Math.floor(n / 10) === 1) ? 0 : n % 10]}`;
 
 export function ReadingWorkspace({
   chart,
@@ -64,6 +68,7 @@ export function ReadingWorkspace({
   onOpenShare,
   momentId,
   ceremonyTrigger,
+  onMovementFocus,
 }: ReadingWorkspaceProps) {
   const [movement, setMovement] = useState(0);
   const [condensed, setCondensed] = useState(false);
@@ -103,6 +108,19 @@ export function ReadingWorkspace({
   const block = activeChartBlock(chart, zodiacBlock);
   const movements = reading?.movements.length === 6 ? reading.movements : MOVEMENT_PLACEHOLDERS;
   const current = movements[movement];
+  const currentBodies = (reading && reading.movements[movement]?.bodies) || [];
+
+  // Tell the app which geometry this movement reads, so the wheel spotlights it.
+  useEffect(() => {
+    onMovementFocus(reading && currentBodies.length ? currentBodies : null);
+  }, [movement, reading]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // The mythic layer: archetype titles for every placement in this chart.
+  const archetypeRequests = useMemo(
+    () => Object.entries(block.placements).map(([body, placement]) => ({ body, sign: placement.sign })),
+    [block],
+  );
+  const archetypes = useArchetypes(archetypeRequests);
   const dual = Boolean(chart.tropical && chart.sidereal_lahiri);
   const narrative = reading
     ? [...(movement === 0 && reading.framing ? [reading.framing] : []), ...reading.movements[movement].paragraphs]
@@ -177,9 +195,40 @@ export function ReadingWorkspace({
           )}
 
           <div className={`movement-hero${reading ? " reading-ready" : ""}`}>
-            <div className={`wheel-stage${wheelLoading ? " loading" : ""}`} aria-label="Natal chart wheel">
-              <CeremonyMoment momentId={momentId} trigger={ceremonyTrigger} />
-              {wheelSvg ? <div className="wheel-svg" dangerouslySetInnerHTML={{ __html: wheelSvg }} /> : <div className="wheel-placeholder">Drawing the chart…</div>}
+            <div className="wheel-column">
+              <div className={`wheel-stage${wheelLoading ? " loading" : ""}`} aria-label="Natal chart wheel">
+                <CeremonyMoment momentId={momentId} trigger={ceremonyTrigger} />
+                {wheelSvg ? <div className="wheel-svg" dangerouslySetInnerHTML={{ __html: wheelSvg }} /> : <div className="wheel-placeholder">Drawing the chart…</div>}
+              </div>
+              {reading && currentBodies.length > 0 && (
+                <div className="movement-constellation" aria-label="Placements this movement reads">
+                  <p className="eyebrow">This movement's sky</p>
+                  <div className="constellation-chips">
+                    {currentBodies.map((name) => {
+                      const placement = block.placements[name];
+                      if (!placement) return null;
+                      const deeper = hasCodexEntry(name);
+                      const technical = `${name} in ${placement.sign} · ${ordinal(placement.house)} house`;
+                      return (
+                        <button
+                          key={name}
+                          type="button"
+                          className="constellation-chip"
+                          disabled={!deeper}
+                          title={deeper ? "Open this placement in the Codex" : undefined}
+                          onClick={deeper ? () => setCodexTarget({ kind: "placement", body: name, sign: placement.sign, house: placement.house }) : undefined}
+                        >
+                          <span className="chip-glyph" aria-hidden="true">{BODY_GLYPH[name]}&#xFE0E;</span>
+                          <span className="chip-copy">
+                            <strong>{archetypes[name] ?? technical}</strong>
+                            {archetypes[name] && <small>{technical}</small>}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
             <div className="movement-prose">
               {readingLoading && !reading && (
@@ -270,6 +319,7 @@ export function ReadingWorkspace({
                             ) : (
                               <><span aria-hidden="true">{BODY_GLYPH[name]}</span> {name}</>
                             )}
+                            {archetypes[name] && <span className="row-archetype">{archetypes[name]}</span>}
                           </td>
                           <td>{placement.sign}</td><td>{degree(placement)}</td><td>{placement.house}</td>
                         </tr>

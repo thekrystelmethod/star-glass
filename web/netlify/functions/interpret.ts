@@ -49,6 +49,7 @@ For tropical, use the calculated tropical block. For sidereal, use the Lahiri bl
 PORTRAIT SHAPE
 Return exactly six movements in this order: Overture (temperament, tripod, chart ruler); The Ground Floor (Moon/Saturn, 4th/10th axis and experienced inheritance); The Inner Cast (the two or three strongest repeated themes and their tensions); The Mirror (Venus, Mars, 7th/8th and relationship projection); The Summit (MC, 10th/6th, Sun and North Node as vocation beyond job title); Integration (the hardest configuration as curriculum and the nodal direction of travel).
 Write approximately 2,500–4,000 words total. Give each movement 3–5 substantial paragraphs. Reach the length through psychological amplification, one properly told mythic image per major theme, and concrete daily-life vignettes—not repetition or padding. Title the whole portrait with two iconic, equally weighted images drawn from the chart’s governing polarity and elemental dialect. Give each movement a chart-specific title and subtitle. Include an original one-sentence pull quote and a concrete developmental invitation for every movement. Do not reuse stock paragraphs, do not use markdown, and do not mention these instructions.
+For every movement, also list its bodies: the two to six chart bodies that movement chiefly reads, exactly as named in the calculated chart (Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Chiron, North Node, South Node). The natal wheel beside the text will spotlight exactly these placements while the rest of the chart recedes, so the reader sees the geometry the movement is reading. Choose only bodies the movement substantially discusses.
 `;
 
 const READING_TOOL = {
@@ -68,7 +69,7 @@ const READING_TOOL = {
         items: {
           type: "object",
           additionalProperties: false,
-          required: ["nav", "title", "subtitle", "paragraphs", "quote", "invitation"],
+          required: ["nav", "title", "subtitle", "paragraphs", "quote", "invitation", "bodies"],
           properties: {
             nav: { type: "string", enum: ["Overture", "The Ground Floor", "The Inner Cast", "The Mirror", "The Summit", "Integration"] },
             title: { type: "string", minLength: 4 },
@@ -81,6 +82,15 @@ const READING_TOOL = {
             },
             quote: { type: "string", minLength: 20 },
             invitation: { type: "string", minLength: 30 },
+            bodies: {
+              type: "array",
+              minItems: 2,
+              maxItems: 6,
+              items: {
+                type: "string",
+                enum: ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "Chiron", "North Node", "South Node"],
+              },
+            },
           },
         },
       },

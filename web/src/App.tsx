@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { castChart, checkEngine, renderWheel, type BirthPayload } from "./api";
 import { ThemeControls } from "./components/ThemeControls";
 import { Atmosphere, DEFAULT_MOMENT, migrateAtmosphereId } from "./motion/catalog";
@@ -109,9 +109,18 @@ export default function App() {
     } catch (_) {}
   }, [castResult, reading, form]);
 
+  // Which bodies the current movement is reading — the wheel spotlights these
+  // (the engine's thematic-wheel mode). Null = the full, unfocused wheel.
+  const [focusBodies, setFocusBodies] = useState<string[] | null>(null);
+  const wheelCache = useRef(new Map<string, string>());
+  const focusKey = focusBodies && focusBodies.length ? [...focusBodies].sort().join("+") : "";
+
   useEffect(() => {
     if (!castResult) return;
     let cancelled = false;
+    const cacheKey = `${chartKeyOf(castResult.meta)}|${zodiacBlock}|${theme.id}|${focusKey}`;
+    const cached = wheelCache.current.get(cacheKey);
+    if (cached) { setWheelSvg(cached); setWheelLoading(false); return; }
     setWheelLoading(true);
     const subtitle = `${castResult.meta.dateLabel} · ${castResult.meta.timeLabel} · ${castResult.meta.placeLabel}`;
     (async () => {
@@ -119,7 +128,13 @@ export default function App() {
       // tier, so the wheel retries patiently rather than failing once.
       for (let attempt = 0; attempt < 6 && !cancelled; attempt += 1) {
         try {
-          const svg = await renderWheel(castResult.chart, zodiacBlock, theme, subtitle);
+          const svg = await renderWheel(castResult.chart, zodiacBlock, theme, subtitle, {
+            highlight: focusBodies ?? undefined,
+          });
+          wheelCache.current.set(cacheKey, svg);
+          if (wheelCache.current.size > 40) {
+            wheelCache.current.delete(wheelCache.current.keys().next().value as string);
+          }
           if (!cancelled) setWheelSvg(svg);
           break;
         } catch (_) {
@@ -130,7 +145,7 @@ export default function App() {
       if (!cancelled) setWheelLoading(false);
     })();
     return () => { cancelled = true; };
-  }, [castResult, theme, zodiacBlock]);
+  }, [castResult, theme, zodiacBlock, focusKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const ensureEngine = async () => {
     const messages = ["Reaching the sky…", "Warming StarGlass…", "Nearly there…"];
@@ -156,6 +171,7 @@ export default function App() {
       const firstBlock = chart.tropical ? "tropical" : "sidereal";
       setZodiacBlock(firstBlock);
       setCastResult({ chart, meta });
+      setFocusBodies(null);
       setReading(null);
       setReadingError("");
       setReadingLoading(true);
@@ -172,6 +188,7 @@ export default function App() {
 
   const editChart = () => {
     setCastResult(null);
+    setFocusBodies(null);
     setWheelSvg("");
     setReading(null);
     setReadingError("");
@@ -251,6 +268,7 @@ export default function App() {
           onOpenShare={() => setShareOpen(true)}
           momentId={momentId}
           ceremonyTrigger={ceremonyTrigger}
+          onMovementFocus={setFocusBodies}
         />
       ) : (
         <ChartForm

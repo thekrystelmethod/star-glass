@@ -369,7 +369,7 @@ select { appearance: none; padding-right: 42px; }
   grid-template-columns: minmax(380px, 0.9fr) minmax(500px, 1.1fr);
   align-items: start;
 }
-.movement-hero.reading-ready .wheel-stage { position: sticky; top: calc(var(--sticky-identity-h) + 18px); }
+.movement-hero.reading-ready .wheel-column { position: sticky; top: calc(var(--sticky-identity-h) + 18px); align-self: start; }
 .movement-hero.reading-ready .movement-prose { width: 100%; max-width: 66ch; }
 .movement-hero.reading-ready .wheel-svg svg { max-height: min(540px, calc(100vh - var(--sticky-identity-h) - 90px)); }
 .wheel-stage { position: relative; min-height: 460px; display: grid; place-items: center; overflow: hidden; }
@@ -514,7 +514,7 @@ select { appearance: none; padding-right: 42px; }
 
 @media (min-width: 841px) and (max-width: 980px) {
   .movement-hero, .movement-hero.reading-ready { grid-template-columns: 1fr; align-items: start; }
-  .movement-hero.reading-ready .wheel-stage { position: relative; top: auto; }
+  .movement-hero.reading-ready .wheel-column { position: static; }
   .movement-prose { max-width: 65ch; }
   .wheel-stage { min-height: 400px; }
 }
@@ -543,7 +543,7 @@ select { appearance: none; padding-right: 42px; }
   .movement-nav.collapsed .movement-nav-copy { display: block; }
   .movement-content { grid-column: 1; grid-row: 2; padding: 28px 22px 34px; }
   .movement-hero, .movement-hero.reading-ready { grid-template-columns: 1fr; }
-  .movement-hero.reading-ready .wheel-stage { position: relative; top: auto; }
+  .movement-hero.reading-ready .wheel-column { position: static; }
   .wheel-stage { min-height: 380px; }
   .movement-prose { max-width: 65ch; }
   .apparatus-panel { grid-column: 1 / -1; grid-row: 3; }
@@ -693,4 +693,36 @@ select { appearance: none; padding-right: 42px; }
   .report-apparatus { page-break-before: always; margin-top: 0.35in; }
   .report-movement blockquote, .report-invitation, .report-apparatus tr, .report-tables li { break-inside: avoid; }
   .report-view { color: #1c1a16; }
+}
+
+/* ── The illustrated reading: thematic wheels + the mythic layer ── */
+.wheel-column { min-width: 0; }
+.movement-constellation { margin-top: 4px; padding: 0 6px; }
+.movement-constellation > .eyebrow { margin: 0 0 8px; color: var(--atlas-text-4); }
+.constellation-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.constellation-chip {
+  display: inline-flex; align-items: center; gap: 9px; max-width: 100%;
+  padding: 7px 12px 7px 9px; border: 1px solid var(--atlas-border);
+  border-radius: var(--radius-md); background: color-mix(in srgb, var(--atlas-panel) 82%, transparent);
+  color: var(--atlas-text-2); text-align: left;
+}
+.constellation-chip:not(:disabled):hover, .constellation-chip:not(:disabled):focus-visible {
+  border-color: var(--atlas-accent); background: var(--atlas-accent-soft);
+}
+.constellation-chip:disabled { cursor: default; opacity: 0.85; }
+.chip-glyph { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border: 1px solid var(--atlas-border); border-radius: 50%; color: var(--atlas-accent); font-family: var(--font-mono); font-size: 14px; }
+.chip-copy { min-width: 0; display: block; }
+.chip-copy strong { display: block; font-family: var(--font-display); font-size: 12.5px; font-weight: 600; line-height: 1.25; }
+.chip-copy small { display: block; margin-top: 1px; color: var(--atlas-text-4); font-size: 10px; }
+.row-archetype { display: block; margin-top: 2px; color: var(--atlas-text-4); font-family: var(--font-display); font-size: 11px; font-style: italic; }
+
+.report-movement-wheel { margin: 4px 0 18px; text-align: center; }
+.report-movement-wheel > div { max-width: 380px; margin: 0 auto; }
+.report-movement-wheel svg { width: 100%; height: auto; }
+.report-movement-wheel figcaption { margin-top: 2px; color: #8a8070; font-size: 11px; font-style: italic; }
+@media print {
+  .report-movement-wheel { break-inside: avoid; }
+}
+@media (max-width: 840px) {
+  .movement-constellation { padding: 0; }
 }

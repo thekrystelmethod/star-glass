@@ -42,6 +42,9 @@ export interface ReadingMovement {
   paragraphs: string[];
   quote: string;
   invitation: string;
+  /** The chart bodies this movement chiefly reads — the wheel spotlights these.
+      Absent on portraits composed before the illustrated-reading update. */
+  bodies?: string[];
 }
 
 export interface GeneratedReading {
