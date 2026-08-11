@@ -2,7 +2,7 @@
 
 **Decision date:** 2026-08-11  
 **Owners:** Krystel (product/release), Codex (implementation/evidence)  
-**State:** implemented in the repository; Netlify variables were set and explicitly production-scoped on 2026-08-11; deployment and production evidence in progress
+**State:** private gate published and verified in production on 2026-08-11; traffic, Blobs inventory, AI usage/spend, and live generation-switch proof remain pending
 
 ## Decision
 
@@ -76,6 +76,21 @@ After deployment:
 6. Restore `PUBLIC_GENERATION_ENABLED=true` only while invited portrait testing is intended.
 7. Export or capture the dashboard facts listed in the inventory table and store them with the SG-000 evidence.
 
+## Production gate evidence — 2026-08-11
+
+- **Production URL:** `https://star-glass.netlify.app`
+- **Verified deployment:** Netlify deploy `6a7b8a7d193b28b6984aad3b`, built from a clean local repository at commit `589f98d` using the linked `star-glass` project.
+- **Attachment marker:** every gated response carries `X-StarGlass-Preview: private-gate-v1`; this distinguishes the active Edge control from an unprotected static response.
+- **Anonymous page request:** `401`, private-preview form rendered, `noindex` present.
+- **Incorrect phrase:** `401` with a generic rejection.
+- **Anonymous `/api/interpret`:** `401` at the Edge boundary.
+- **Approved phrase:** `303` same-origin redirect plus a signed cookie with `HttpOnly`, `Secure`, and `SameSite=Strict`.
+- **Authorized page request:** `200` and the Star Glass application shell.
+- **Logout:** `303`, cookie `Max-Age=0`, followed by `401` on the next request.
+- **Secret handling:** the phrase and signing secret are Netlify environment secrets and do not appear in the repository or production browser bundle.
+
+During deployment verification, an inline-only Edge route was omitted by Netlify's manual publisher even though the function bundled successfully. Production was restored to the prior fail-closed deployment while the route was repaired. The gate is now attached explicitly in `netlify.toml`; the live marker and behavior matrix above are the acceptance evidence. Do not remove the explicit declaration without proving both Git-triggered and manual production deploys retain the gate.
+
 ## Emergency controls
 
 - **Stop paid generation:** set `PUBLIC_GENERATION_ENABLED=false` and apply the Netlify configuration. Existing chart calculation and already-authorized portrait recovery remain available.
@@ -88,11 +103,12 @@ After deployment:
 | SG-000 acceptance evidence | State |
 |---|---|
 | Dated exposure inventory | Complete in this document |
-| No secret embedded client-side | Complete by architecture; verify deployed bundle after release |
-| Private access covers Netlify app and API | Implemented; automated smoke coverage complete; production proof pending |
-| New generation can be disabled independently | Implemented; automated smoke coverage complete; production proof pending |
+| No secret embedded client-side | Complete; repository/bundle inspection and write-only Netlify secret configuration verified |
+| Private access covers Netlify app and API | Complete; automated and production HTTP matrices pass |
+| New generation can be disabled independently | Implemented and configured; live disabled-state proof pending |
 | Render residual exposure explicitly recorded | Complete |
 | Provider settings, traffic, storage, and spend captured | Pending account-owner dashboard review |
-| Enabled/disabled synthetic production requests recorded | Pending deployment |
+| Gate enabled/denied production requests recorded | Complete in this document |
+| Generation enabled/disabled synthetic production requests recorded | Pending controlled toggle test |
 
-SG-000 may be marked complete only after the two pending production-evidence rows are attached. Implementation alone does not prove the remote system's state.
+SG-000 may be marked complete only after the remaining provider inventory and controlled generation-toggle evidence are attached. The private access gate itself is complete and live.

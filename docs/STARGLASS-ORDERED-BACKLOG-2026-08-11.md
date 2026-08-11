@@ -91,7 +91,7 @@ These items are sequentially first even when another feature feels more visible.
 
 #### SG-000 — Confirm production exposure and choose the temporary launch posture
 
-- **Status (2026-08-11):** repository controls implemented; Netlify/Render dashboard inventory and production synthetic proof pending. See `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
+- **Status (2026-08-11):** private Netlify gate published and production HTTP matrix verified; traffic, Blobs, AI usage/spend, Render dashboard facts, and live generation-toggle proof remain pending. See `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
 - **Priority / size / driver:** P0 / S / KR + CX
 - **Depends on:** none
 - **Outcome:** know what is actually live and prevent the open risks from growing during remediation.
