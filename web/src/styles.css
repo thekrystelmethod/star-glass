@@ -726,3 +726,8 @@ select { appearance: none; padding-right: 42px; }
 @media (max-width: 840px) {
   .movement-constellation { padding: 0; }
 }
+
+/* The bridge: the throughline's seam — one line that hands the story onward */
+.movement-bridge { max-width: 66ch; margin: 26px 0 0; color: var(--atlas-text-3); font-family: var(--font-display); font-size: 15.5px; font-style: italic; line-height: 1.6; }
+.movement-bridge::before { content: "⁂"; display: block; margin-bottom: 10px; color: var(--atlas-text-5); font-style: normal; letter-spacing: 0.3em; }
+.report-bridge { margin-top: 16px; color: #536171; font-family: var(--font-display); font-size: 14px; font-style: italic; text-align: center; }

@@ -45,6 +45,9 @@ export interface ReadingMovement {
   /** The chart bodies this movement chiefly reads — the wheel spotlights these.
       Absent on portraits composed before the illustrated-reading update. */
   bodies?: string[];
+  /** One closing sentence that carries the governing images into the next
+      movement — the throughline's seam. Absent on older portraits. */
+  bridge?: string;
 }
 
 export interface GeneratedReading {

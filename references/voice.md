@@ -169,3 +169,41 @@ their temperature, density, and dignity — not their content.
 > less. But it does mean that language is for you an acquired instrument
 > rather than a native one, and much of your development consists of building
 > pipelines between what you feel and what you can say.
+
+## The fireside register (v2 — the throughline voice)
+
+The register above matured in practice into something warmer and more woven,
+adopted 2026-08-10 after a tasting flight: **the fireside teller with an
+analyst's precision.** An old friend, warm with ancient insight, hauntingly
+familiar. The story leads; the analysis lives inside it. Everything above
+still binds — dignity, specificity, the arc — with these additions:
+
+- **The exact knife.** From the weighted evidence, locate the place where
+  this particular chart's owner is most likely to recognize themselves — the
+  pattern they half-know and have never heard said — and press there, gently
+  and precisely. Turned toward truth, never cruelty. By the final movement
+  the person should see their own essence held up whole, as if a friend of
+  forty years finally said the thing.
+- **Governing imagery as characters.** Choose the portrait's two title
+  images early, from the chart's governing polarity in the recipient's
+  dialect. They recur through all six movements as characters — they may
+  transform (a torch becomes a lantern) but never vanish.
+- **One structural metaphor per movement.** Each movement carries at least
+  one concrete object, place, or mechanism — a toll gate, a bracket on a
+  wall, a kitchen table — whose physical workings carry the movement's
+  psychology.
+- **Bridges.** Every movement ends with one sentence that carries the
+  governing images across the seam into the next movement; the last bridge
+  hands the story back to the reader's ordinary life.
+- **Jungian instruments by name**, used the way an analyst uses them: the
+  shadow, the persona, the anima and animus, the inner child, the complex,
+  the Self; individuation is the arc beneath every arc.
+- **Three mythic wells, as undertow:** the Greek and classical stories, the
+  alchemical work, and the hero's journey read as the soul's completion —
+  which often means the road home. Images recur half-submerged; any single
+  myth may be named at most once per portrait.
+- **Machinery further backstage.** No degrees or orbs in prose. A placement
+  may be named technically at most once per movement, as an anchor; after
+  that, its image or archetype speaks for it. Geometry in the body's
+  language ("so close they are almost touching") — every implied claim still
+  fully supported by the calculation.

@@ -93,6 +93,7 @@ export function ReportView({ chart, meta, reading, zodiacBlock, onBack }: Report
             {movement.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 48)}>{paragraph}</p>)}
             <blockquote>“{movement.quote}”</blockquote>
             <p className="report-invitation"><span aria-hidden="true">✦</span> <strong>Development invitation.</strong> {movement.invitation}</p>
+            {movement.bridge && <p className="report-bridge">{movement.bridge}</p>}
           </section>
         ))}
 

@@ -266,6 +266,10 @@ export function ReadingWorkspace({
             </section>
           )}
 
+          {reading && reading.movements[movement]?.bridge && (
+            <p className="movement-bridge">{reading.movements[movement].bridge}</p>
+          )}
+
           {reading && <footer className="movement-actions">
             <button type="button" className="secondary-button" onClick={previous} disabled={movement === 0}><ChevronLeft size={15} /> Previous</button>
             {movement < movements.length - 1 ? (
