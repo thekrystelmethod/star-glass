@@ -1,0 +1,133 @@
+// Smoke harness for netlify/functions/interpret.ts — EXECUTES the whole
+// function with mocked gateway + blob store. This exists because a syntax
+// check once passed a ReferenceError into production: bundling is not
+// running. CI runs this on every push.
+//
+//   node test-interpret-smoke.mjs
+//
+// Scenarios:
+//   1. clean pass    — composer output verified first time → publishes
+//   2. repair pass   — auditors return overlapping/duplicate corrections,
+//                      second audit clean → publishes with repairs
+//   3. hard fail     — auditor unverified with no corrections → error status
+import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, dirname } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+
+const here = dirname(fileURLToPath(import.meta.url));
+const esbuild = await import(
+  pathToFileURL(join(here, "node_modules/.pnpm/esbuild@0.25.12/node_modules/esbuild/lib/main.js")).href
+);
+
+// ── bundle the function with a stubbed blob store ────────────────────────
+const work = mkdtempSync(join(tmpdir(), "interpret-smoke-"));
+writeFileSync(join(work, "blobs-stub.mjs"), `
+export function getStore() {
+  return { setJSON: async (key, value) => { globalThis.__lastStored = value; } };
+}
+`);
+await esbuild.build({
+  entryPoints: [join(here, "netlify/functions/interpret.ts")],
+  bundle: true,
+  format: "esm",
+  platform: "node",
+  outfile: join(work, "fn.mjs"),
+  alias: { "@netlify/blobs": join(work, "blobs-stub.mjs") },
+  logLevel: "silent",
+});
+const { default: handler } = await import(pathToFileURL(join(work, "fn.mjs")).href);
+
+// ── fixtures ─────────────────────────────────────────────────────────────
+const chart = { tropical: { placements: {}, angles: { Ascendant: { display: "x", longitude: 1 }, Midheaven: { display: "x", longitude: 2 } }, house_cusps: [], aspects: [], weighting: {} }, input: {} };
+const movement = (nav) => ({
+  nav, title: `${nav} title here`, subtitle: `${nav} subtitle long enough`,
+  paragraphs: [
+    `The torch is carried into the ${nav} and what it shows repeats in every chamber of the reading, faithfully and at length, so this paragraph clears the minimum. (a)`,
+    `The well answers the torch in the ${nav} as it does in every movement, which is exactly why duplicate corrections occur across auditors in production systems. (b)`,
+    `A third paragraph for schema validity in the ${nav}, long enough to satisfy the minimum length constraint imposed by the reading tool schema definition. (c)`,
+  ],
+  quote: `A quote for ${nav} that is long enough.`,
+  invitation: `An invitation for ${nav} that is long enough to pass.`,
+  bridge: `A bridge sentence for ${nav} carrying images onward.`,
+  bodies: ["Sun", "Moon"],
+});
+const NAVS = ["Overture", "The Ground Floor", "The Inner Cast", "The Mirror", "The Summit", "Integration"];
+const readingFixture = () => ({
+  title: "The Torch and the Well",
+  framing: "Read this as a field guide rather than a verdict, tested against your days.",
+  movements: NAVS.map(movement),
+});
+
+const composerResponse = () => ({
+  ok: true, status: 200,
+  json: async () => ({ content: [{ type: "tool_use", name: "submit_reading", input: readingFixture() }] }),
+  text: async () => "",
+});
+const auditResponse = (verified, corrections) => ({
+  ok: true, status: 200,
+  json: async () => ({ content: [{ type: "tool_use", name: "submit_corrections", input: { verified, corrections } }] }),
+  text: async () => "",
+});
+
+globalThis.Netlify = { env: { get: (k) => ({ ANTHROPIC_API_KEY: "test", ANTHROPIC_BASE_URL: "https://gateway.test" }[k]) } };
+
+async function scenario(name, auditScript, expectStatus, expectExtra = () => {}) {
+  let call = 0;
+  globalThis.fetch = async (url) => {
+    if (String(url).includes("gateway.test")) {
+      call += 1;
+      if (call === 1) return composerResponse();
+      return auditScript(call - 1); // audit calls numbered from 1
+    }
+    throw new Error(`unexpected fetch ${url}`);
+  };
+  globalThis.__lastStored = null;
+  const request = new Request("https://x/api/interpret", {
+    method: "POST",
+    body: JSON.stringify({ jobId: "123e4567-e89b-42d3-a456-426614174000", chart, zodiac: "tropical", essence: null }),
+  });
+  await handler(request);
+  const stored = globalThis.__lastStored;
+  if (!stored || stored.status !== expectStatus) {
+    console.error(`✗ ${name}: expected status=${expectStatus}, got`, JSON.stringify(stored)?.slice(0, 300));
+    process.exit(1);
+  }
+  expectExtra(stored);
+  console.log(`✓ ${name} (${call} gateway calls) → ${stored.status}`);
+}
+
+// 1. clean: all six audits verified, no corrections
+await scenario("clean pass publishes",
+  () => auditResponse(true, []),
+  "ready",
+  (s) => { if (s.audit?.passes !== 1) { console.error("expected 1 pass"); process.exit(1); } });
+
+// 2. repair: first round returns overlapping + duplicate corrections (same
+// find from two auditors; one correction superseding another), second round clean
+await scenario("repair round tolerates overlaps then publishes",
+  (auditCall) => {
+    if (auditCall <= 6) {
+      if (auditCall === 1) return auditResponse(false, [
+        { find: "The torch is carried into the Overture", replace: "The lantern is carried into the Overture", reason: "test" },
+        { find: "The Torch and the Well", replace: "The Lamp and the Well", reason: "title fix" },
+      ]);
+      if (auditCall === 2) return auditResponse(true, [
+        { find: "The Torch and the Well", replace: "The Lamp and the Well", reason: "duplicate title fix from second auditor" },
+      ]);
+      return auditResponse(true, []);
+    }
+    return auditResponse(true, []); // second full round: clean
+  },
+  "ready",
+  (s) => {
+    if (s.audit?.passes !== 2) { console.error("expected 2 passes, got", s.audit); process.exit(1); }
+    if (JSON.stringify(s.reading).includes("The Torch and the Well")) { console.error("title correction not applied"); process.exit(1); }
+  });
+
+// 3. hard fail: an auditor says unverified with no fixes
+await scenario("unverified with no corrections fails closed",
+  (auditCall) => auditCall === 3 ? auditResponse(false, []) : auditResponse(true, []),
+  "error");
+
+console.log("ALL SMOKE SCENARIOS PASS");

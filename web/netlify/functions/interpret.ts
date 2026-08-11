@@ -303,6 +303,8 @@ export default async (request: Request) => {
       return;
     }
 
+    const reading = toolUse.input as { title: string; framing: string; movements: unknown[] };
+
     // ── The audit is a GATE, not a formality: every movement must come back
     // verified. Corrections are applied, the schema is revalidated, and the
     // corrected portrait is audited AGAIN — nothing publishes unverified.

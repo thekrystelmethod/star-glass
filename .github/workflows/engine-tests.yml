@@ -33,3 +33,6 @@ jobs:
         run: |
           pnpm install
           pnpm run build
+      - name: Smoke-test the interpret function
+        working-directory: web
+        run: node test-interpret-smoke.mjs
