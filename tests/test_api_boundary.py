@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 TEST_TOKEN = "test-only-engine-token-with-32-chars"
 os.environ["STARGLASS_ENGINE_TOKEN_SHA256"] = hashlib.sha256(TEST_TOKEN.encode()).hexdigest()
+os.environ["STARGLASS_ENGINE_ENFORCEMENT"] = "on"
 
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
@@ -23,6 +24,11 @@ class EngineBoundaryTests(unittest.TestCase):
         response = self.client.get("/health")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"ok": True})
+
+    def test_rollout_interlock_can_leave_existing_clients_untouched(self):
+        with patch.dict(os.environ, {"STARGLASS_ENGINE_ENFORCEMENT": "off"}):
+            response = self.client.post("/chart", json={})
+        self.assertEqual(response.status_code, 422)
 
     def test_schema_and_documentation_routes_are_not_public(self):
         self.assertEqual(self.client.get("/docs").status_code, 404)
