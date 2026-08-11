@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { castChart, checkEngine, renderWheel, type BirthPayload } from "./api";
+import { HOUSE_LABELS } from "./components/ChartForm";
 import { ThemeControls } from "./components/ThemeControls";
 import { Atmosphere, DEFAULT_MOMENT, migrateAtmosphereId } from "./motion/catalog";
 import { ChartForm } from "./components/ChartForm";
@@ -168,9 +169,21 @@ export default function App() {
       await ensureEngine();
       setEngineNote("Calculating the chart…");
       const chart = await castChart(birth);
+      // The displayed method labels derive from the EFFECTIVE settings the
+      // engine says it calculated with — never from what the form asked.
+      const effective = (chart.input ?? {}) as { zodiac?: string; house_system?: string; vedic?: boolean };
+      const effectiveMeta: CastMeta = {
+        ...meta,
+        zodiacLabel: effective.zodiac
+          ? (effective.zodiac === "dual" ? "Dual · Holistic"
+            : effective.zodiac === "sidereal" ? (effective.vedic ? "Sidereal · Lahiri (Jyotish)" : "Sidereal · Lahiri")
+            : "Tropical")
+          : meta.zodiacLabel,
+        houseLabel: effective.house_system ? (HOUSE_LABELS[effective.house_system] ?? effective.house_system) : meta.houseLabel,
+      };
       const firstBlock = chart.tropical ? "tropical" : "sidereal";
       setZodiacBlock(firstBlock);
-      setCastResult({ chart, meta });
+      setCastResult({ chart, meta: effectiveMeta });
       setFocusBodies(null);
       setReading(null);
       setReadingError("");

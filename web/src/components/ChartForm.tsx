@@ -8,7 +8,7 @@ const MONTHS = [
   "July", "August", "September", "October", "November", "December",
 ];
 
-const HOUSE_LABELS: Record<string, string> = {
+export const HOUSE_LABELS: Record<string, string> = {
   P: "Placidus", W: "Whole sign", K: "Koch", E: "Equal",
   C: "Campanus", R: "Regiomontanus", O: "Porphyry",
 };
@@ -112,14 +112,19 @@ export function ChartForm({ value, onChange, onCast, loading, engineNote }: Char
       hour %= 12;
       if (value.period === "PM") hour += 12;
       const pad = (number: number) => String(number).padStart(2, "0");
+      // Jyotish mode is a coherent preset: it always casts sidereal with
+      // whole-sign houses. The payload sends the EFFECTIVE settings so the
+      // engine, the labels, and the geometry can never disagree.
+      const effectiveZodiac = value.vedic ? "sidereal" : value.zodiac;
+      const effectiveHouses = value.vedic ? "W" : value.houses;
       const birth: BirthPayload = {
         date: `${year}-${pad(month)}-${pad(day)}`,
         time: `${pad(hour)}:${pad(minute)}`,
         tz: value.tz,
         lat: value.lat,
         lon: value.lon,
-        zodiac: value.zodiac,
-        house_system: value.houses,
+        zodiac: effectiveZodiac,
+        house_system: effectiveHouses,
         orbs: value.orbs,
         quincunx: value.quincunx,
         minor_aspects: value.minorAspects,
@@ -129,8 +134,8 @@ export function ChartForm({ value, onChange, onCast, loading, engineNote }: Char
         dateLabel: `${MONTHS[month - 1]} ${day}, ${year}`,
         timeLabel: `${value.hour}:${value.minute} ${value.period}`,
         placeLabel: value.placeLabel,
-        zodiacLabel: value.zodiac === "dual" ? "Dual · Holistic" : value.zodiac[0].toUpperCase() + value.zodiac.slice(1),
-        houseLabel: HOUSE_LABELS[value.houses] || value.houses,
+        zodiacLabel: effectiveZodiac === "dual" ? "Dual · Holistic" : effectiveZodiac[0].toUpperCase() + effectiveZodiac.slice(1),
+        houseLabel: HOUSE_LABELS[effectiveHouses] || effectiveHouses,
         birth,
         essence: value.essence,
       };
@@ -228,10 +233,13 @@ export function ChartForm({ value, onChange, onCast, loading, engineNote }: Char
           </fieldset>
 
           <div className="settings-grid">
-            <label><span>Zodiac</span><SelectField value={value.zodiac} onChange={(event) => update("zodiac", event.target.value as BirthFormState["zodiac"])}><option value="tropical">Tropical</option><option value="sidereal">Sidereal · Lahiri</option><option value="dual">Dual · Holistic</option></SelectField></label>
-            <label><span>Houses</span><SelectField value={value.houses} onChange={(event) => update("houses", event.target.value)}>{Object.entries(HOUSE_LABELS).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</SelectField></label>
+            <label><span>Zodiac</span><SelectField value={value.vedic ? "sidereal" : value.zodiac} disabled={value.vedic} onChange={(event) => update("zodiac", event.target.value as BirthFormState["zodiac"])}><option value="tropical">Tropical</option><option value="sidereal">Sidereal · Lahiri</option><option value="dual">Dual · Holistic</option></SelectField></label>
+            <label><span>Houses</span><SelectField value={value.vedic ? "W" : value.houses} disabled={value.vedic} onChange={(event) => update("houses", event.target.value)}>{Object.entries(HOUSE_LABELS).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</SelectField></label>
             <label><span>Orbs</span><SelectField value={value.orbs} onChange={(event) => update("orbs", event.target.value as BirthFormState["orbs"])}><option value="tight">Tight</option><option value="standard">Standard</option><option value="wide">Wide</option></SelectField></label>
           </div>
+          {value.vedic && (
+            <p className="mode-note">Vedic apparatus fixes the method: Sidereal · Lahiri zodiac with Whole sign houses. Untick it to choose freely.</p>
+          )}
 
           <details className="fine-tune">
             <summary>Fine-tune coordinates &amp; timezone</summary>

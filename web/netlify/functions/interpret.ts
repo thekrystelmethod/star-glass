@@ -303,59 +303,88 @@ export default async (request: Request) => {
       return;
     }
 
-    const reading = toolUse.input as { title: string; framing: string; movements: unknown[] };
-    const auditSections = reading.movements.map((movement, index) => ({
-      portraitTitle: reading.title,
-      framing: index === 0 ? reading.framing : undefined,
-      movement,
-    }));
-    const auditResponses = await Promise.all(auditSections.map((section) => fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5",
-        max_tokens: 1_500,
-        temperature: 0,
-        system: `You are StarGlass's strict calculation auditor. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist. If a pair or geometric relationship is absent, the portrait may not name or imply it. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted; do not let one valid pair make the whole cluster valid. Same sign is not conjunction. House 10 is not proximity to the Midheaven. Audit signs, houses, retrogrades, aspect types, orbs, angularity, stelliums, element and mode counts, chart ruler, and nodal relationships. Do not revise interpretation, tone, metaphor, or developmental guidance. For each unsupported or misstated claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. If every concrete claim is supported, return no corrections and verified true.`,
-        tools: [AUDIT_TOOL],
-        tool_choice: { type: "tool", name: "submit_corrections" },
-        messages: [{ role: "user", content: `CALCULATION LEDGER\n${auditLedger}\n\nONE PORTRAIT MOVEMENT TO AUDIT\n${JSON.stringify(section)}` }],
-      }),
-      signal: AbortSignal.timeout(3 * 60_000),
-    })));
+    // ── The audit is a GATE, not a formality: every movement must come back
+    // verified. Corrections are applied, the schema is revalidated, and the
+    // corrected portrait is audited AGAIN — nothing publishes unverified.
+    const runAudits = async (readingValue: { title: string; framing: string; movements: unknown[] }) => {
+      const sections = readingValue.movements.map((movement, index) => ({
+        portraitTitle: readingValue.title,
+        framing: index === 0 ? readingValue.framing : undefined,
+        movement,
+      }));
+      const responses = await Promise.all(sections.map((section) => fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: "claude-haiku-4-5",
+          max_tokens: 1_500,
+          temperature: 0,
+          system: `You are StarGlass's strict calculation auditor. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist. If a pair or geometric relationship is absent, the portrait may not name or imply it. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted; do not let one valid pair make the whole cluster valid. Same sign is not conjunction. House 10 is not proximity to the Midheaven. Audit signs, houses, retrogrades, aspect types, orbs, angularity, stelliums, element and mode counts, chart ruler, and nodal relationships. Do not revise interpretation, tone, metaphor, or developmental guidance. For each unsupported or misstated claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Set verified true ONLY when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.`,
+          tools: [AUDIT_TOOL],
+          tool_choice: { type: "tool", name: "submit_corrections" },
+          messages: [{ role: "user", content: `CALCULATION LEDGER\n${auditLedger}\n\nONE PORTRAIT MOVEMENT TO AUDIT\n${JSON.stringify(section)}` }],
+        }),
+        signal: AbortSignal.timeout(3 * 60_000),
+      })));
 
-    const corrections: Array<{ find: string; replace: string; reason: string }> = [];
-    for (const auditResponse of auditResponses) {
-      if (!auditResponse.ok) {
-        console.error("Calculation audit response", auditResponse.status, (await auditResponse.text()).slice(0, 1_000));
-        await store.setJSON(key, { status: "error", error: "The portrait could not complete its calculation audit. Please compose it once more." });
-        return;
+      const collected: Array<{ find: string; replace: string; reason: string }> = [];
+      let allVerified = true;
+      for (const response of responses) {
+        if (!response.ok) {
+          console.error("Calculation audit response", response.status, (await response.text()).slice(0, 1_000));
+          return null;
+        }
+        const auditResult = await response.json() as { content?: Array<{ type?: string; name?: string; input?: unknown }> };
+        const auditUse = auditResult.content?.find((item) => item.type === "tool_use" && item.name === "submit_corrections");
+        const audit = auditUse?.input as { verified?: unknown; corrections?: unknown } | undefined;
+        if (!audit || typeof audit.verified !== "boolean" || !Array.isArray(audit.corrections)) return null;
+        const valid = audit.corrections.filter((item): item is { find: string; replace: string; reason: string } =>
+          Boolean(item) && typeof (item as { find?: unknown }).find === "string"
+          && typeof (item as { replace?: unknown }).replace === "string"
+          && typeof (item as { reason?: unknown }).reason === "string");
+        // An auditor that says "not verified" but offers no fixes has found a
+        // problem it cannot repair — that movement may not publish.
+        if (audit.verified !== true && valid.length === 0) allVerified = false;
+        collected.push(...valid);
       }
-      const auditResult = await auditResponse.json() as { content?: Array<{ type?: string; name?: string; input?: unknown }> };
-      const auditUse = auditResult.content?.find((item) => item.type === "tool_use" && item.name === "submit_corrections");
-      const audit = auditUse?.input as { verified?: unknown; corrections?: unknown } | undefined;
-      if (!audit || typeof audit.verified !== "boolean" || !Array.isArray(audit.corrections)) {
-        await store.setJSON(key, { status: "error", error: "The portrait could not complete its calculation audit. Please compose it once more." });
-        return;
-      }
-      corrections.push(...audit.corrections.filter((item): item is { find: string; replace: string; reason: string } =>
-        Boolean(item) && typeof item.find === "string" && typeof item.replace === "string" && typeof item.reason === "string"
-      ));
-    }
-    const corrected = applyCorrections(toolUse.input, corrections);
-    if (corrected.applied !== corrections.length) {
-      console.error("Calculation audit correction could not be applied exactly", { expected: corrections.length, applied: corrected.applied });
+      return { corrections: collected, allVerified };
+    };
+
+    const failAudit = async () => {
       await store.setJSON(key, { status: "error", error: "The portrait could not complete its calculation audit. Please compose it once more." });
-      return;
+    };
+
+    const firstPass = await runAudits(reading);
+    if (!firstPass || !firstPass.allVerified) { await failAudit(); return; }
+
+    let publishable: unknown = toolUse.input;
+    if (firstPass.corrections.length > 0) {
+      const corrected = applyCorrections(toolUse.input, firstPass.corrections);
+      if (corrected.applied !== firstPass.corrections.length) {
+        console.error("Calculation audit correction could not be applied exactly", { expected: firstPass.corrections.length, applied: corrected.applied });
+        await failAudit(); return;
+      }
+      if (!validReading(corrected.value)) {
+        console.error("Corrected portrait no longer matches the reading schema");
+        await failAudit(); return;
+      }
+      // Second pass over the corrected portrait: it must now be clean.
+      const secondPass = await runAudits(corrected.value as { title: string; framing: string; movements: unknown[] });
+      if (!secondPass || !secondPass.allVerified || secondPass.corrections.length > 0) {
+        console.error("Corrected portrait failed re-audit", { remaining: secondPass?.corrections.length ?? "audit-error" });
+        await failAudit(); return;
+      }
+      publishable = corrected.value;
     }
 
     await store.setJSON(key, {
       status: "ready",
-      reading: corrected.value,
+      reading: publishable,
+      audit: { verified: true, passes: firstPass.corrections.length > 0 ? 2 : 1, corrections_applied: firstPass.corrections.length },
       updatedAt: new Date().toISOString(),
     });
   } catch (reason) {

@@ -173,10 +173,20 @@ def sign_of(lon):
 
 
 def fmt_pos(lon):
-    d = lon % 30
-    return {"longitude": round(lon, 4), "sign": sign_of(lon),
-            "degree_in_sign": int(d), "minute": int(round((d % 1) * 60)) % 60,
-            "display": f"{int(d)}°{int(round((d % 1) * 60)) % 60:02d}' {sign_of(lon)}"}
+    """Format a longitude as sign / degree / minute with full carry.
+
+    Rounding is done in whole arcminutes of the full longitude so that
+    59.6' carries into the next degree — and 29°59.6' into the next sign —
+    instead of wrapping to 00' inside the same degree (the classic
+    round-to-60 display bug)."""
+    lon = norm(lon)
+    total_minutes = int(round(lon * 60.0)) % (360 * 60)
+    sign = SIGNS[(total_minutes // (30 * 60)) % 12]
+    degree = (total_minutes // 60) % 30
+    minute = total_minutes % 60
+    return {"longitude": round(lon, 4), "sign": sign,
+            "degree_in_sign": degree, "minute": minute,
+            "display": f"{degree}°{minute:02d}' {sign}"}
 
 
 def angular_sep(a, b):
@@ -208,8 +218,10 @@ def compute_bodies(jd, sidereal=False):
         bodies["_chiron_note"] = ("Chiron unavailable — asteroid ephemeris file not found "
                                   "for this date range. Run: python scripts/setup_ephemeris.py")
     pos, _ = swe.calc_ut(jd, swe.TRUE_NODE, flags)
-    bodies["North Node"] = {"lon": pos[0], "speed": pos[3], "retrograde": True}
-    bodies["South Node"] = {"lon": norm(pos[0] + 180), "speed": pos[3], "retrograde": True}
+    # The TRUE node oscillates: usually retrograde, but genuinely direct for
+    # stretches. Derive motion from the computed speed rather than asserting it.
+    bodies["North Node"] = {"lon": pos[0], "speed": pos[3], "retrograde": pos[3] < 0}
+    bodies["South Node"] = {"lon": norm(pos[0] + 180), "speed": pos[3], "retrograde": pos[3] < 0}
     return bodies
 
 
@@ -270,14 +282,17 @@ def find_aspects(bodies, include_quincunx, asc=None, mc=None,
                     near.append({"bodies": [a, b], "aspect": asp_name,
                                  "orb": round(orb, 2), "orb_limit": limit})
                 if orb <= limit:
-                    # applying if the faster body is moving toward exactitude
+                    # Applying = the separation |diff| is moving TOWARD the
+                    # exact aspect angle. d|diff|/dt = sign(diff) * d(diff)/dt,
+                    # so the sign of diff must participate — dropping it
+                    # misclassifies mirrored configurations.
                     rel_speed = bodies[a]["speed"] - bodies[b]["speed"]
                     diff = norm(bodies[a]["lon"] - bodies[b]["lon"])
                     if diff > 180:
                         diff -= 360
-                    closing = (abs(diff) < angle and rel_speed < 0) or \
-                              (abs(diff) > angle and rel_speed > 0) if angle else \
-                              (diff * rel_speed < 0)
+                    sep_rate = (1 if diff > 0 else -1 if diff < 0 else 0) * rel_speed
+                    closing = (sep_rate > 0) if abs(diff) < angle else \
+                              (sep_rate < 0) if abs(diff) > angle else False
                     found.append({
                         "bodies": [a, b], "aspect": asp_name,
                         "orb": round(orb, 2), "orb_limit": limit,
@@ -319,7 +334,20 @@ def weighting(chart, aspects):
     weights["elements"] = elems
     weights["modes"] = modes
     weights["missing_elements"] = [e for e, c in elems.items() if c == 0]
-    weights["dominant_element"] = max(elems, key=elems.get)
+    # Dominant element with honest tie handling: a tie is reported, not
+    # silently resolved by dictionary order. The tie-break for the single
+    # headline value prefers the element carrying the Sun, then Moon, then
+    # the Ascendant — the tripod outranks a coin flip.
+    top_count = max(elems.values())
+    leaders = [e for e, c in elems.items() if c == top_count]
+    if len(leaders) > 1:
+        for anchor in (placements["Sun"]["sign"], placements["Moon"]["sign"],
+                       chart["angles"]["Ascendant"]["sign"]):
+            if ELEMENTS[anchor] in leaders:
+                leaders = [ELEMENTS[anchor]] + [e for e in leaders if e != ELEMENTS[anchor]]
+                break
+        weights["dominant_element_tie"] = leaders
+    weights["dominant_element"] = leaders[0]
 
     # Chart ruler
     rising = chart["angles"]["Ascendant"]["sign"]
@@ -367,9 +395,16 @@ def main():
                     help="Jyotish mode: sidereal + whole-sign houses, nakshatras for every "
                          "placement, lagna lord by traditional rulership, Vimshottari mahadashas")
     args = ap.parse_args()
+    coerced = []
     if args.vedic:
-        args.zodiac = "sidereal"
-        if args.house_system == "P":
+        # Jyotish mode is a coherent preset: sidereal zodiac, whole-sign
+        # houses — always, not only when the defaults happened to be chosen.
+        # Coercions are recorded so the caller can display what actually ran.
+        if args.zodiac != "sidereal":
+            coerced.append({"setting": "zodiac", "requested": args.zodiac, "effective": "sidereal"})
+            args.zodiac = "sidereal"
+        if args.house_system != "W":
+            coerced.append({"setting": "house_system", "requested": args.house_system, "effective": "W"})
             args.house_system = "W"
 
     y, m, d = map(int, args.date.split("-"))
@@ -408,9 +443,13 @@ def main():
                 "weighting": w}
 
     result = {
+        # These are the EFFECTIVE settings the chart was calculated with —
+        # any UI label must derive from this block, never from what was asked.
         "input": {"date": args.date, "time": args.time,
                   "utc_offset_applied": offset, "lat": args.lat, "lon": args.lon,
-                  "house_system": args.house_system, "zodiac": args.zodiac},
+                  "house_system": args.house_system, "zodiac": args.zodiac,
+                  "vedic": args.vedic,
+                  **({"coerced_settings": coerced} if coerced else {})},
     }
     if args.zodiac == "tropical":
         result["tropical"] = one(sidereal=False)

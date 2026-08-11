@@ -72,6 +72,17 @@ class BirthData(BaseModel):
     minor_aspects: bool = False
     vedic: bool = False
 
+    def validate_mode_coherence(self):
+        """Jyotish mode is a coherent preset (sidereal + whole-sign). The API
+        rejects contradictory combinations outright rather than silently
+        recalculating under different settings than the caller asked for."""
+        if self.vedic and self.zodiac != "sidereal":
+            raise HTTPException(422, detail="vedic mode requires zodiac='sidereal' "
+                                "(Jyotish is a sidereal method; send zodiac='sidereal' or disable vedic)")
+        if self.vedic and self.house_system != "W":
+            raise HTTPException(422, detail="vedic mode requires house_system='W' "
+                                "(Jyotish uses whole-sign houses; send house_system='W' or disable vedic)")
+
 
 class ThemeSpec(BaseModel):
     name: str
@@ -114,6 +125,7 @@ _CACHE_MAX = 512
 
 
 def calculate(b: BirthData) -> dict:
+    b.validate_mode_coherence()
     key = hashlib.sha256(b.model_dump_json().encode()).hexdigest()
     if key in _CACHE:
         return _CACHE[key]
