@@ -6,6 +6,10 @@
 [build.environment]
   NODE_VERSION = "20"
 
+[[edge_functions]]
+  function = "preview-gate"
+  path = "/*"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

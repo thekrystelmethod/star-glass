@@ -1,4 +1,4 @@
-import type { Config, Context } from "@netlify/edge-functions";
+import type { Context } from "@netlify/edge-functions";
 
 declare const Netlify: {
   env: { get(name: string): string | undefined };
@@ -217,5 +217,3 @@ export default async (request: Request, context: Context): Promise<Response> => 
     headers,
   });
 };
-
-export const config: Config = { path: "/*" };
