@@ -2,7 +2,7 @@
 
 **Decision date:** 2026-08-11  
 **Owners:** Krystel (product/release), Codex (implementation/evidence)  
-**State:** private gate published and verified on the primary production deploy on 2026-08-11; 27 pre-gate deploy artifacts, traffic, Blobs inventory, AI usage/spend, and live generation-switch proof remain pending
+**State:** private gate published and verified across every retained ready deploy on 2026-08-11; traffic, full Blobs retention review, AI usage/spend, and live generation-switch proof remain pending
 
 ## Decision
 
@@ -32,7 +32,7 @@ The gate also sends `noindex`, `nofollow`, `noarchive`, no-store, frame-denial, 
 | Netlify interpretation API | `/api/interpret` and `/api/interpret/:jobId` | Current production routes are covered by the Edge gate; new generation also has an independent fail-closed switch | AI Gateway usage/spend, function logs, rate-limit events, active environment values, and old-deploy function reachability |
 | Netlify Blobs | `starglass-readings` stores working/error/ready portrait jobs | Gate limits new access but does not remediate existing retention | Object count, oldest object, status mix, real tester data, storage region |
 | Render chart engine | SG-107 moved the browser to same-origin `/api/engine/*`, added a server-only Netlify credential, and requires its verifier before Render reads protected request bodies | `/chart`, `/wheel`, and `/tables` deny direct unauthenticated use; minimal `/health` remains public for provider checks | Traffic/logs, deploy state, and resource graphs before/after SG-107 |
-| Historical Netlify deploy URLs | Inventory on 2026-08-11 found 27 ready deploys with no Edge function recorded; representative pre-gate/manual URLs served the app without the primary-domain gate | **Pending owner-approved retirement; Render calculations are independently protected by SG-107** | Confirm deletion or another site-wide control, then prove the immutable URLs no longer serve |
+| Historical Netlify deploy URLs | Inventory on 2026-08-11 found 27 ready deploys with no Edge function recorded; representative pre-gate/manual URLs served the app without the primary-domain gate | Krystel approved permanent retirement; all 27 were deleted successfully | Complete: Netlify now reports exactly four ready deploys and every one has an Edge function |
 | Browser geocoding | Browser calls Open-Meteo | Only reachable through the gated UI for normal testers | Confirm production endpoint and any provider logging/terms |
 | LLM provider / AI Gateway | Called only from the Netlify background function | No call when `PUBLIC_GENERATION_ENABLED` is not `true` | Retention settings, processor terms, request logs, spend alerts |
 | GitHub repository | Local remote is `https://github.com/thekrystelmethod/star-glass.git`; working branch is `main`; SG-107 enforcement commit is `5aa26e4fac3f759f97f6a18357c5a24ee16b4a3f` | Treat repository visibility as a separate fact from app access | Confirm current visibility, branch protections, and deploy integrations |
@@ -41,7 +41,7 @@ The gate also sends `noindex`, `nofollow`, `noarchive`, no-store, frame-denial, 
 
 SG-107 resolved the direct Render exposure: protected calculation routes now authenticate Star Glass before body parsing, and the browser bundle contains no Render hostname. See `docs/SG-107-ENGINE-BOUNDARY-2026-08-11.md` for the architecture and production matrix.
 
-The deploy-history audit also exposed a different gap: a Netlify Edge function belongs to a deploy, so older immutable deploy URLs do not inherit the current gate. Four ungated manual artifacts were deleted during SG-107 and now return `404`; 27 older ready artifacts remain pending Krystel's explicit approval to delete. They no longer have working unauthenticated access to Render calculations, but they prevent an unqualified claim that every historical Star Glass URL is private.
+The deploy-history audit also exposed a different gap: a Netlify Edge function belongs to a deploy, so older immutable deploy URLs do not inherit the current gate. Four ungated manual artifacts were deleted during SG-107. Krystel then explicitly approved permanent retirement of the remaining 27 ready ungated artifacts; all 27 deletions succeeded. Netlify's post-deletion inventory contains exactly four ready deploys, all with `edge_functions_present=true`.
 
 The gate and SG-107 are not legal exemptions or licensing determinations. SG-001 still needs to establish when the selected Swiss Ephemeris license is required and what obligations apply during testing.
 
@@ -107,12 +107,12 @@ During deployment verification, Netlify's manual publisher repeatedly omitted th
 |---|---|
 | Dated exposure inventory | Complete in this document |
 | No secret embedded client-side | Complete; repository/bundle inspection and write-only Netlify secret configuration verified |
-| Private access covers current Netlify app and API | Complete for the primary and retained gated deploys; historical artifacts remain pending below |
+| Private access covers current Netlify app and API | Complete for the primary and all four retained ready deploys; no ungated ready artifact remains |
 | New generation can be disabled independently | Implemented and configured; live disabled-state proof pending |
 | Render residual exposure explicitly recorded | Complete |
-| Pre-gate immutable Netlify deploys retired or independently protected | Pending owner approval; 27 ready artifacts identified |
+| Pre-gate immutable Netlify deploys retired or independently protected | Complete; 27 approved artifacts deleted, zero failures, four gated rollbacks retained |
 | Provider settings, traffic, storage, and spend captured | Pending account-owner dashboard review |
 | Gate enabled/denied production requests recorded | Complete in this document |
 | Generation enabled/disabled synthetic production requests recorded | Pending controlled toggle test |
 
-SG-000 may be marked complete only after the 27 pre-gate deploy artifacts are retired or independently protected, and the remaining provider inventory and controlled generation-toggle evidence are attached. The gate on the current primary deploy is complete and live.
+SG-000 may be marked complete only after the remaining provider inventory and controlled generation-toggle evidence are attached. The current primary deploy and every retained ready rollback deploy are gated.

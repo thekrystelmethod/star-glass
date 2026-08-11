@@ -6,7 +6,7 @@
 
 **Policy:** Render calculation endpoints are consumable only through Star Glass.
 
-**State:** complete and production-verified on 2026-08-11. A separate inventory of pre-gate Netlify deploy URLs remains under SG-000 because it affects the broader preview perimeter, not Render's now-enforced calculation boundary.
+**State:** complete and production-verified on 2026-08-11. The separate pre-gate Netlify deploy inventory discovered during rollout was also remediated after explicit owner approval.
 
 ## Why this boundary exists
 
@@ -107,6 +107,6 @@ Production acceptance evidence to record:
 - Main then advanced to enforcement commit `5aa26e4fac3f759f97f6a18357c5a24ee16b4a3f`. Netlify canceled that redundant build with “no content change” because the revision changed only the Render API and its tests. Render subsequently changed direct protected requests from `422` validation responses to `401` authentication denials while the same-origin synthetic chart continued to return `200`.
 - The first manual production attempt omitted the Edge attachment and briefly served the primary origin without the gate. It was detected by the immediate anonymous HTTP check and rolled back to the last verified gated deploy. No Render enforcement was enabled during that interval.
 - Three manual SG-107 candidate deploys and one earlier manual deploy were confirmed ungated, deleted, and verified `404`. Manual Netlify publishing is not an approved release path for this repository; use a Git-triggered build and require `edge_functions_present=true` plus the live gate marker before acceptance.
-- A full follow-up inventory found 27 older ready Netlify deploy artifacts whose metadata does not show an Edge function. The SG-107 Render credential prevents their browser builds from using protected calculation routes, but the artifacts may still expose older static or function surfaces. Deletion requires Krystel's explicit approval and is tracked as remaining SG-000 perimeter work; four gated deploys are available as rollback points.
+- A full follow-up inventory found 27 older ready Netlify deploy artifacts whose metadata did not show an Edge function. Krystel explicitly approved permanent deletion; all 27 were removed with zero failures. The post-deletion inventory contains exactly four ready deploys, every one Edge-gated, preserving four rollback points.
 
 Provider dashboard graphs and logs should also be reviewed for request rate, latency, restarts, rate-limit events, and unexpected clients. Those operational facts cannot be inferred from repository code and remain evidence work even after HTTP acceptance passes.

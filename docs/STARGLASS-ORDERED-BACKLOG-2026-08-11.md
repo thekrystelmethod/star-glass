@@ -91,12 +91,12 @@ These items are sequentially first even when another feature feels more visible.
 
 #### SG-000 — Confirm production exposure and choose the temporary launch posture
 
-- **Status (2026-08-11):** current primary Netlify deploy is gated and its HTTP matrix is verified; retirement or independent protection of 27 pre-gate deploy artifacts, traffic, Blobs, AI usage/spend, Render dashboard facts, and live generation-toggle proof remain pending. See `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
+- **Status (2026-08-11):** current primary Netlify deploy is gated and its HTTP matrix is verified; Krystel approved deletion of all 27 ready pre-gate artifacts, deletion completed with zero failures, and exactly four Edge-gated rollback deploys remain. Traffic, full Blobs retention review, AI usage/spend, Render dashboard facts, and live generation-toggle proof remain pending. See `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
 - **Priority / size / driver:** P0 / S / KR + CX
 - **Depends on:** none
 - **Outcome:** know what is actually live and prevent the open risks from growing during remediation.
 - **Verify first:** production URLs; whether Netlify and Render are serving `main`; current traffic; Blobs object count/age; AI Gateway usage and spend; active environment variables; deploy-branch rules; whether any real customer data is present.
-- **Implement:** an environment-controlled `PUBLIC_GENERATION_ENABLED` or invite-access gate; a clear maintenance state; no secret embedded client-side; after Krystel explicitly approves destructive deploy-history cleanup, delete ready Netlify artifacts lacking an Edge function while retaining the four verified gated rollback deploys.
+- **Implement:** an environment-controlled `PUBLIC_GENERATION_ENABLED` or invite-access gate; a clear maintenance state; no secret embedded client-side; delete ready Netlify artifacts lacking an Edge function after explicit approval while retaining the four verified gated rollback deploys. Deploy-history cleanup completed on 2026-08-11.
 - **Acceptance:** the team has a dated exposure inventory and can disable new generation without redeploying code or losing already-authorized recovery access.
 - **Evidence:** screenshot/export of provider settings and a synthetic request proving enabled/disabled behavior.
 
@@ -380,9 +380,12 @@ These items are sequentially first even when another feature feels more visible.
 #### SG-210 — Make audit corrections movement-scoped and transactional
 
 - **Priority / size / driver:** P0 / L / CX
+- **Production incident (2026-08-11):** the latest failed portrait completed composition, three correction rounds, and the final referee call. The referee returned a nonempty `genuine_errors` array, so `refereeCorrections()` returned `false` and `failAudit()` replaced the completed draft with the generic calculation-audit error. The cited reasons included at least one suspect false positive: treating a valid two-body conjunction statement as erroneous because it did not enumerate a third conjunct body. A second disputed “near the IC” claim exposed an equivalence gap between an opposition to the Midheaven and proximity to the opposite angle.
+- **Stored evidence:** 25 of the 55 retained portrait-job records have the exact calculation-audit error payload and seven have the older generic composition-error payload. This is a point-in-time retained-object distribution, not a time-bounded success-rate metric, because jobs have no complete creation/expiry metadata.
+- **Failure mechanism:** the referee schema returns only `find` and `reason`, not a movement-local path and safe replacement. Any nonempty verdict therefore has only one possible terminal outcome: discard the portrait. The smoke suite explicitly asserts “referee-confirmed genuine errors fail closed,” so green tests currently confirm this failure behavior rather than report-generation reliability.
 - **Depends on:** SG-109, SG-206
 - **Outcome:** a correction changes only the audited claim and every published status is earned.
-- **Implement:** correction paths/IDs or movement-local exact spans; reject ambiguous matches; revalidate schema; final full re-audit after the last applied or unlocatable correction; fail closed on unresolved concrete contradictions.
+- **Implement:** preserve the composed draft; require correction paths/IDs or movement-local exact spans plus replacements; reject ambiguous matches; teach the verifier pairwise-claim and opposite-angle equivalence rules; revalidate schema; run one bounded final re-audit after referee repairs; store `held` rather than destructive generic `error` when a genuine contradiction remains; attach timestamps, stage codes, and correlation IDs without raw birth data.
 - **Acceptance:** global `replaceAll` is gone; an unlocatable correction cannot publish as verified; duplicate/repeated imagery does not cause cross-movement edits.
 - **Tests:** duplicate prose across movements/title, smart quotes, already-repaired spans, conflicting auditors, zero applicable corrections, schema breakage, and referee outcomes.
 
