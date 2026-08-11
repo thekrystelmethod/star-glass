@@ -323,7 +323,7 @@ export default async (request: Request) => {
           model: "claude-haiku-4-5",
           max_tokens: 1_500,
           temperature: 0,
-          system: `You are StarGlass's strict calculation auditor. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist. If a pair or geometric relationship is absent, the portrait may not name or imply it. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted; do not let one valid pair make the whole cluster valid. Same sign is not conjunction. House 10 is not proximity to the Midheaven. Audit signs, houses, retrogrades, aspect types, orbs, angularity, stelliums, element and mode counts, chart ruler, and nodal relationships. Do not revise interpretation, tone, metaphor, or developmental guidance. For each unsupported or misstated claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Set verified true ONLY when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.`,
+          system: `You are StarGlass's strict calculation auditor. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist. If a pair or geometric relationship is absent, the portrait may not name or imply it. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted; do not let one valid pair make the whole cluster valid. Same sign is not conjunction. House 10 is not proximity to the Midheaven. Audit signs, houses, retrogrades, aspect types, orbs, angularity, stelliums, element and mode counts, chart ruler, and nodal relationships. Do not revise interpretation, tone, metaphor, or developmental guidance. For each unsupported or misstated claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Quote find strings verbatim from THIS movement's own text; correct the shared portrait title only if the title itself misstates the calculation. Set verified true ONLY when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.`,
           tools: [AUDIT_TOOL],
           tool_choice: { type: "tool", name: "submit_corrections" },
           messages: [{ role: "user", content: `CALCULATION LEDGER\n${auditLedger}\n\nONE PORTRAIT MOVEMENT TO AUDIT\n${JSON.stringify(section)}` }],
@@ -358,33 +358,57 @@ export default async (request: Request) => {
       await store.setJSON(key, { status: "error", error: "The portrait could not complete its calculation audit. Please compose it once more." });
     };
 
-    const firstPass = await runAudits(reading);
-    if (!firstPass || !firstPass.allVerified) { await failAudit(); return; }
-
-    let publishable: unknown = toolUse.input;
-    if (firstPass.corrections.length > 0) {
-      const corrected = applyCorrections(toolUse.input, firstPass.corrections);
-      if (corrected.applied !== firstPass.corrections.length) {
-        console.error("Calculation audit correction could not be applied exactly", { expected: firstPass.corrections.length, applied: corrected.applied });
-        await failAudit(); return;
+    // Apply a correction set robustly. Six parallel auditors see overlapping
+    // text (the shared title; the throughline voice repeats images across
+    // movements), so duplicate and superseded corrections are NORMAL — the
+    // arithmetic must tolerate them. The RE-AUDIT is the enforcement: nothing
+    // publishes until a final full pass returns all-verified with zero
+    // corrections.
+    const applyCorrectionSet = (value: unknown, items: Array<{ find: string; replace: string; reason: string }>) => {
+      const seen = new Set<string>();
+      let current = value;
+      let appliedCount = 0;
+      const superseded: string[] = [];
+      for (const item of items) {
+        if (item.find === item.replace || seen.has(item.find)) continue;
+        seen.add(item.find);
+        const result = applyCorrections(current, [item]);
+        current = result.value;
+        if (result.applied > 0) appliedCount += 1;
+        else superseded.push(item.find.slice(0, 80));
       }
-      if (!validReading(corrected.value)) {
+      if (superseded.length) console.warn("Corrections superseded or already resolved", superseded);
+      return { value: current, applied: appliedCount };
+    };
+
+    let working: unknown = toolUse.input;
+    let pass = await runAudits(reading);
+    if (!pass || !pass.allVerified) { await failAudit(); return; }
+    let totalApplied = 0;
+    let rounds = 1;
+
+    // Up to two repair rounds; each round's result is fully re-audited.
+    for (let round = 0; round < 2 && pass.corrections.length > 0; round += 1) {
+      const repaired = applyCorrectionSet(working, pass.corrections);
+      if (!validReading(repaired.value)) {
         console.error("Corrected portrait no longer matches the reading schema");
         await failAudit(); return;
       }
-      // Second pass over the corrected portrait: it must now be clean.
-      const secondPass = await runAudits(corrected.value as { title: string; framing: string; movements: unknown[] });
-      if (!secondPass || !secondPass.allVerified || secondPass.corrections.length > 0) {
-        console.error("Corrected portrait failed re-audit", { remaining: secondPass?.corrections.length ?? "audit-error" });
-        await failAudit(); return;
-      }
-      publishable = corrected.value;
+      working = repaired.value;
+      totalApplied += repaired.applied;
+      pass = await runAudits(working as { title: string; framing: string; movements: unknown[] });
+      rounds += 1;
+      if (!pass || !pass.allVerified) { await failAudit(); return; }
+    }
+    if (pass.corrections.length > 0) {
+      console.error("Corrections persist after two repair rounds", { remaining: pass.corrections.length });
+      await failAudit(); return;
     }
 
     await store.setJSON(key, {
       status: "ready",
-      reading: publishable,
-      audit: { verified: true, passes: firstPass.corrections.length > 0 ? 2 : 1, corrections_applied: firstPass.corrections.length },
+      reading: working,
+      audit: { verified: true, passes: rounds, corrections_applied: totalApplied },
       updatedAt: new Date().toISOString(),
     });
   } catch (reason) {
