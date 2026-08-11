@@ -254,6 +254,13 @@ export function ReadingWorkspace({
                   <button type="button" className="secondary-button" onClick={onRetryReading} disabled={readingLoading}><RefreshCw size={15} /> Try the reading again</button>
                 </div>
               )}
+              {!reading && !readingLoading && !readingError && (
+                <div className="reading-composer">
+                  <strong>Your chart is cast. The portrait awaits.</strong>
+                  <p>This chart was restored from your last visit. Compose its six-movement portrait whenever you're ready — it takes a minute or three.</p>
+                  <button type="button" className="primary-button" onClick={onRetryReading}><Sparkles size={15} /> Compose the portrait</button>
+                </div>
+              )}
               {narrative.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
           </div>

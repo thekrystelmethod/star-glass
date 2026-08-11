@@ -325,7 +325,9 @@ export default async (request: Request) => {
           model: "claude-haiku-4-5",
           max_tokens: 1_500,
           temperature: 0,
-          system: `You are StarGlass's strict calculation auditor. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist. If a pair or geometric relationship is absent, the portrait may not name or imply it. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted; do not let one valid pair make the whole cluster valid. Same sign is not conjunction. House 10 is not proximity to the Midheaven. Audit signs, houses, retrogrades, aspect types, orbs, angularity, stelliums, element and mode counts, chart ruler, and nodal relationships. Do not revise interpretation, tone, metaphor, or developmental guidance. For each unsupported or misstated claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Quote find strings verbatim from THIS movement's own text; correct the shared portrait title only if the title itself misstates the calculation. Set verified true ONLY when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.`,
+          system: `You are StarGlass's calculation auditor. You audit FACTS, never style. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist for geometric claims. Same sign is not conjunction. House 10 is not proximity to the Midheaven. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted.
+A claim deserves correction ONLY when it is (a) concrete — a specific sign, house, motion, geometric relationship, count, or rulership — AND (b) contradicted by or absent from the ledger. The portrait deliberately speaks in images: figurative language that expresses a whitelisted relationship ("facing each other across the whole sky" for a whitelisted opposition; "so close they are almost touching" for a whitelisted tight aspect) is CORRECT and must be left alone. Psychological interpretation, mythic imagery, metaphors, developmental guidance, and emotional claims are never auditable — leave them untouched even if vivid. When you are uncertain whether a phrase makes a concrete claim, leave it. Return the FEWEST corrections necessary; an audit that rewrites style is a failed audit.
+For each genuinely unsupported claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Quote find strings verbatim from THIS movement's own text; correct the shared portrait title only if the title itself misstates the calculation. Set verified true when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.`,
           tools: [AUDIT_TOOL],
           tool_choice: { type: "tool", name: "submit_corrections" },
           messages: [{ role: "user", content: `CALCULATION LEDGER\n${auditLedger}\n\nONE PORTRAIT MOVEMENT TO AUDIT\n${JSON.stringify(section)}` }],
@@ -383,14 +385,21 @@ export default async (request: Request) => {
       return { value: current, applied: appliedCount };
     };
 
+    const logCorrections = (label: string, items: Array<{ find: string; reason: string }>) => {
+      console.log(label, JSON.stringify(items.slice(0, 20).map((item) => ({
+        find: item.find.slice(0, 90), reason: item.reason.slice(0, 90),
+      }))));
+    };
+
     let working: unknown = toolUse.input;
     let pass = await runAudits(reading);
     if (!pass || !pass.allVerified) { await failAudit(); return; }
     let totalApplied = 0;
     let rounds = 1;
 
-    // Up to two repair rounds; each round's result is fully re-audited.
-    for (let round = 0; round < 2 && pass.corrections.length > 0; round += 1) {
+    // Up to three repair rounds; each round's result is fully re-audited.
+    for (let round = 0; round < 3 && pass.corrections.length > 0; round += 1) {
+      logCorrections(`Audit round ${rounds} corrections`, pass.corrections);
       const repaired = applyCorrectionSet(working, pass.corrections);
       if (!validReading(repaired.value)) {
         console.error("Corrected portrait no longer matches the reading schema");
@@ -403,7 +412,8 @@ export default async (request: Request) => {
       if (!pass || !pass.allVerified) { await failAudit(); return; }
     }
     if (pass.corrections.length > 0) {
-      console.error("Corrections persist after two repair rounds", { remaining: pass.corrections.length });
+      console.error("Corrections persist after three repair rounds", { remaining: pass.corrections.length });
+      logCorrections("Persistent corrections", pass.corrections);
       await failAudit(); return;
     }
 
