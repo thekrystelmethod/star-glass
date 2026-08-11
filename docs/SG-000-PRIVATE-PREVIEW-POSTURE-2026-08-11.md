@@ -79,7 +79,7 @@ After deployment:
 ## Production gate evidence — 2026-08-11
 
 - **Production URL:** `https://star-glass.netlify.app`
-- **Verified deployment:** Netlify deploy `6a7b8a7d193b28b6984aad3b`, built from a clean local repository at commit `589f98d` using the linked `star-glass` project.
+- **Verified deployment:** current Git-triggered Netlify deploy `6a7b8a73e742390008c385be`, serving commit `589f98d` from `main` on the linked `star-glass` project. Netlify reports the deploy ready with one Edge Function, two serverless functions, and no secret-scan matches.
 - **Attachment marker:** every gated response carries `X-StarGlass-Preview: private-gate-v1`; this distinguishes the active Edge control from an unprotected static response.
 - **Anonymous page request:** `401`, private-preview form rendered, `noindex` present.
 - **Incorrect phrase:** `401` with a generic rejection.
