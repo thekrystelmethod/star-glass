@@ -95,13 +95,6 @@ class EngineBoundaryMiddleware:
             await self.app(scope, receive, send)
             return
 
-        # Temporary rollout interlock: the first Git deploy installs the
-        # same-origin Netlify proxy before a follow-up revision removes this
-        # branch and makes service authentication unconditional.
-        if os.environ.get("STARGLASS_ENGINE_ENFORCEMENT", "off").strip().lower() != "on":
-            await self.app(scope, receive, send)
-            return
-
         if scope.get("method") != "POST":
             await _json_error(405, "Method not allowed.", {"allow": "POST"})(scope, receive, send)
             return
