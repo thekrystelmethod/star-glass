@@ -2,7 +2,7 @@
 
 **Decision date:** 2026-08-11  
 **Owners:** Krystel (product/release), Codex (implementation/evidence)  
-**State:** implemented in the repository; Netlify production configuration set on 2026-08-11; deployment and production evidence in progress
+**State:** implemented in the repository; Netlify variables were set and explicitly production-scoped on 2026-08-11; deployment and production evidence in progress
 
 ## Decision
 
