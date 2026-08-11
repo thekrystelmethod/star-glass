@@ -1,6 +1,6 @@
 import type { StarGlassTheme } from "./theme/themes";
 
-export const ENGINE_URL = (import.meta.env.VITE_ENGINE_URL || "https://star-glass-engine.onrender.com").replace(/\/+$/, "");
+const ENGINE_API = "/api/engine";
 
 export interface BirthPayload {
   date: string;
@@ -40,7 +40,7 @@ export interface ChartResponse {
 }
 
 async function request(path: string, body: unknown, responseType: "json" | "text" = "json") {
-  const response = await fetch(`${ENGINE_URL}${path}`, {
+  const response = await fetch(`${ENGINE_API}${path}`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(body),
@@ -54,7 +54,7 @@ async function request(path: string, body: unknown, responseType: "json" | "text
 }
 
 export async function checkEngine() {
-  const response = await fetch(`${ENGINE_URL}/health`);
+  const response = await fetch(`${ENGINE_API}/health`);
   if (!response.ok) throw new Error("The chart engine is not answering yet.");
   return response.json();
 }

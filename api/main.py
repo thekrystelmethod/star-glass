@@ -5,11 +5,11 @@ Ephemeris service — Phase 1 of the interpretation engine as a web application.
 The deterministic core of the astro-interpretation skill, exposed over HTTP.
 No LLM anywhere in this service: everything here is a pure function of birth
 data, which makes every endpoint fast, cacheable, and free to serve. The
-interpretation pipeline (Phase 2) is a *client* of this API, exactly as a web
-frontend will be.
+Star Glass server is the authenticated client of this API; browsers use its
+same-origin proxy and never receive this service's credential.
 
 Endpoints:
-  GET  /health           liveness + ephemeris data check
+  GET  /health           minimal public liveness signal
   POST /chart            birth data → full chart JSON (the API contract)
   POST /wheel            birth data or chart → SVG wheel; themeable, brandable
   POST /tables           birth data or chart → markdown apparatus blocks
@@ -22,7 +22,9 @@ vector graphics; it renders no pages.
 Run:  uvicorn api.main:app --host 0.0.0.0 --port 8000
 """
 
+import asyncio
 import hashlib
+import hmac
 import json
 import os
 import subprocess
@@ -30,7 +32,6 @@ import sys
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, PlainTextResponse, Response
 from pydantic import BaseModel, Field
 
@@ -43,19 +44,142 @@ app = FastAPI(
     version="0.1.0",
     description="Deterministic chart mathematics, wheels, and tables. "
                 "Swiss Ephemeris under the hood; no interpretation here.",
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
 )
 
-# The web frontend (web/index.html) is a browser client of this API. It may be
-# served from any local origin — or opened straight from disk, where the
-# browser sends `Origin: null` — so CORS must admit them all. The API holds no
-# credentials and no state beyond a pure-function cache, which is what makes a
-# wildcard origin safe here; revisit this the day either of those changes.
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["GET", "POST"],
-    allow_headers=["*"],
-)
+# The browser never calls this service directly. Star Glass's same-origin
+# Netlify proxy owns the only bearer credential; Render stores only its
+# SHA-256 verifier. Publishing the verifier is safe because the bearer token
+# has 256 bits of entropy and cannot feasibly be recovered from the digest.
+DEFAULT_ENGINE_TOKEN_SHA256 = "f04e05466c3e32a547915a2c5a90f22efc742d4f4513369e9dcd5cdde2b5f615"
+PROTECTED_PATHS = frozenset({"/chart", "/wheel", "/tables"})
+MAX_REQUEST_BYTES = 512 * 1024
+
+
+class RequestTooLarge(Exception):
+    pass
+
+
+def _bounded_concurrency() -> int:
+    try:
+        requested = int(os.environ.get("STARGLASS_ENGINE_MAX_CONCURRENCY", "4"))
+    except ValueError:
+        requested = 4
+    return min(16, max(1, requested))
+
+
+def _engine_token_digests() -> tuple[str, ...]:
+    """Return one or more verifiers so credentials can rotate without downtime."""
+    configured = os.environ.get("STARGLASS_ENGINE_TOKEN_SHA256", DEFAULT_ENGINE_TOKEN_SHA256)
+    return tuple(part.strip().lower() for part in configured.split(",") if part.strip())
+
+
+def _json_error(status: int, detail: str, extra_headers=None) -> JSONResponse:
+    headers = {"cache-control": "no-store", "x-content-type-options": "nosniff"}
+    if extra_headers:
+        headers.update(extra_headers)
+    return JSONResponse({"detail": detail}, status_code=status, headers=headers)
+
+
+class EngineBoundaryMiddleware:
+    """Authenticate and bound expensive requests before FastAPI parses them."""
+
+    def __init__(self, inner_app):
+        self.app = inner_app
+        self.slots = asyncio.Semaphore(_bounded_concurrency())
+
+    async def __call__(self, scope, receive, send):
+        if scope.get("type") != "http" or scope.get("path") not in PROTECTED_PATHS:
+            await self.app(scope, receive, send)
+            return
+
+        if scope.get("method") != "POST":
+            await _json_error(405, "Method not allowed.", {"allow": "POST"})(scope, receive, send)
+            return
+
+        headers = {name.lower(): value for name, value in scope.get("headers", [])}
+        expected_digests = _engine_token_digests()
+        authorization = headers.get(b"authorization", b"").decode("utf-8", "ignore")
+        scheme, separator, credential = authorization.partition(" ")
+        provided = credential if separator and scheme.lower() == "bearer" else ""
+        provided_digest = hashlib.sha256(provided.encode("utf-8")).hexdigest()
+        valid_configuration = bool(expected_digests) and all(
+            len(expected_digest) == 64
+            and all(character in "0123456789abcdef" for character in expected_digest)
+            for expected_digest in expected_digests
+        )
+        if not valid_configuration:
+            await _json_error(503, "Engine access is not configured.")(scope, receive, send)
+            return
+        authorized = False
+        for expected_digest in expected_digests:
+            authorized |= hmac.compare_digest(provided_digest, expected_digest)
+        if not provided or not authorized:
+            await _json_error(401, "Unauthorized.")(scope, receive, send)
+            return
+
+        content_type = headers.get(b"content-type", b"").decode("ascii", "ignore").split(";", 1)[0].strip().lower()
+        if content_type != "application/json":
+            await _json_error(415, "Content-Type must be application/json.")(scope, receive, send)
+            return
+
+        raw_length = headers.get(b"content-length", b"").decode("ascii", "ignore")
+        if raw_length:
+            try:
+                content_length = int(raw_length)
+            except ValueError:
+                await _json_error(400, "Invalid Content-Length.")(scope, receive, send)
+                return
+            if content_length < 0:
+                await _json_error(400, "Invalid Content-Length.")(scope, receive, send)
+                return
+            if content_length > MAX_REQUEST_BYTES:
+                await _json_error(413, "Request body is too large.")(scope, receive, send)
+                return
+
+        try:
+            await asyncio.wait_for(self.slots.acquire(), timeout=0.05)
+        except asyncio.TimeoutError:
+            await _json_error(503, "The calculation engine is busy.", {"retry-after": "2"})(scope, receive, send)
+            return
+
+        received = 0
+        response_started = False
+
+        async def limited_receive():
+            nonlocal received
+            message = await receive()
+            if message.get("type") == "http.request":
+                received += len(message.get("body", b""))
+                if received > MAX_REQUEST_BYTES:
+                    raise RequestTooLarge()
+            return message
+
+        async def tracked_send(message):
+            nonlocal response_started
+            if message.get("type") == "http.response.start":
+                response_started = True
+                response_headers = list(message.get("headers", []))
+                response_headers.extend([
+                    (b"cache-control", b"no-store"),
+                    (b"x-content-type-options", b"nosniff"),
+                ])
+                message = {**message, "headers": response_headers}
+            await send(message)
+
+        try:
+            await self.app(scope, limited_receive, tracked_send)
+        except RequestTooLarge:
+            if response_started:
+                raise
+            await _json_error(413, "Request body is too large.")(scope, receive, send)
+        finally:
+            self.slots.release()
+
+
+app.add_middleware(EngineBoundaryMiddleware)
 
 # ---------------------------------------------------------------- models
 
@@ -140,10 +264,16 @@ def calculate(b: BirthData) -> dict:
         cmd.append("--minor-aspects")
     if b.vedic:
         cmd.append("--vedic")
-    r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=45)
+    except subprocess.TimeoutExpired as reason:
+        raise HTTPException(504, detail="calculation timed out") from reason
     if r.returncode != 0:
-        raise HTTPException(422, detail=f"calculation failed: {r.stderr[-500:]}")
-    chart = json.loads(r.stdout)
+        raise HTTPException(422, detail="calculation could not be completed")
+    try:
+        chart = json.loads(r.stdout)
+    except json.JSONDecodeError as reason:
+        raise HTTPException(502, detail="calculation returned an invalid result") from reason
     if len(_CACHE) >= _CACHE_MAX:
         _CACHE.pop(next(iter(_CACHE)))
     _CACHE[key] = chart
@@ -171,9 +301,7 @@ def pick_block(data: dict, requested: Optional[str]) -> dict:
 
 @app.get("/health")
 def health():
-    ephe = os.path.join(SCRIPTS, "ephe", "seas_18.se1")
-    return {"ok": True, "chiron_ephemeris": os.path.exists(ephe),
-            "cache_entries": len(_CACHE)}
+    return {"ok": True}
 
 
 @app.post("/chart")

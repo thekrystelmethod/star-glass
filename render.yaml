@@ -7,8 +7,8 @@
 #   dockerContext: .   build from the repo root, so scripts/ is included
 #   plan: free         Render's free tier (sleeps after ~15 min idle;
 #                      first request of the day takes up to a minute)
-#   healthCheckPath    Render pings /health to know the engine is alive —
-#                      the same endpoint the web page's green dot watches
+#   healthCheckPath    Render pings the minimal public /health route; the web
+#                      page reaches that route only through Star Glass
 #   autoDeployTrigger  every push to GitHub redeploys automatically
 
 services:

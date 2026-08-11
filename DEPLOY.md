@@ -6,10 +6,9 @@
 > license decision and the other release gates. See
 > `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
 
-**The idea in one sentence:** right now the math engine lives on your laptop
-and has to be started by hand; after this, it lives at a web address that is
-always on, and the page finds it by itself — nobody ever opens a terminal
-again.
+**The idea in one sentence:** Render runs the math, but only the Star Glass
+server is allowed to ask it for a calculation; browsers never receive the
+Render credential or call its calculation routes directly.
 
 The repo carries its own deployment spec (`render.yaml`), so a hosting site
 called **Render** can do the whole assembly from one button. Total time:
@@ -47,34 +46,38 @@ https://star-glass-engine.onrender.com
 ```
 
 Copy it. To check it's alive, paste it into your browser with `/health` on
-the end — a little line starting with `{"ok":true` means the engine is
-breathing.
+the end. The complete public response is `{"ok":true}`; operational details
+stay private.
 
-## Step 4 — Tell the page
+## Step 4 — Join Render to Star Glass
 
-Open `web/index.html` and near the top of the `<script>` section find the
-block labeled **WHERE THE ENGINE LIVES**. Paste your address between the
-quotes:
+Generate one random service token with at least 32 bytes of entropy. Store the
+token itself only in Netlify as the secret `STARGLASS_ENGINE_TOKEN`, and set
+`STARGLASS_ENGINE_ORIGIN` to the Render origin from Step 3. Store only the
+token's lowercase SHA-256 digest on Render as
+`STARGLASS_ENGINE_TOKEN_SHA256`.
 
-```
-const DEFAULT_ENGINE = "https://star-glass-engine.onrender.com";
-```
+Deploy Netlify first, then Render. Once both are live:
 
-(Or just tell Claude the address and it'll do this for you.) Commit and push
-that change too. Done — anyone who opens the page now connects automatically,
-and the "how to connect" card quietly becomes a green dot nobody needs to
-click.
+1. `/api/engine/health` on the gated Star Glass origin returns `{"ok":true}`.
+2. A synthetic chart succeeds through `/api/engine/chart` on Star Glass.
+3. The same request sent directly to Render without the bearer token returns
+   `401` before the body is parsed.
+4. The production browser bundle contains neither the Render hostname nor the
+   token.
+
+Never paste the token into source, `VITE_*`, a browser console, a support
+message, or a client request. The full operating and rotation procedure is in
+`docs/SG-107-ENGINE-BOUNDARY-2026-08-11.md`.
 
 ---
 
 ## What to expect afterward
 
 **The engine naps.** On the free plan, Render puts the engine to sleep after
-about 15 minutes of quiet. The first visitor of the day wakes it, which takes
-up to a minute — the page's status dot handles this by itself: it retries
-every few seconds and turns green the moment the engine stirs. If a first
-"Cast the chart" fails, waiting for the green dot and clicking again is all
-it takes. (Paid plans, a few dollars a month, stay awake around the clock.)
+about 15 minutes of quiet. The first gated visitor of the day wakes it through
+the Star Glass proxy, which can take up to a minute. The page retries its
+same-origin health route and turns green when Render answers.
 
 **Updates are automatic.** Whenever you push changes to GitHub, Render
 notices and rebuilds the engine on its own. Pushing *is* deploying — that's
@@ -85,6 +88,8 @@ the private testing posture until SG-001 records the chosen Swiss Ephemeris
 license path and its obligations have been reviewed and implemented. A public
 repository by itself is not the project's legal sign-off.
 
-**Nothing is stored.** The engine keeps no accounts and no data — it's pure
-math in, chart out. The day you want "save my chart" or user logins, that's
-when a database (e.g. Supabase) enters the story — not before.
+**The chart engine is stateless in application code.** It keeps no accounts
+and writes no birth records, but requests still cross Netlify and Render and
+may be represented in provider infrastructure logs. The portrait pipeline
+separately uses Netlify Blobs; see the data-flow and retention backlog before
+making broader storage claims.

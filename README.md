@@ -102,12 +102,21 @@ contract at astro.com/swisseph before shipping.
 
 One click hosts the engine in the cloud: the button reads `render.yaml` (the
 deployment spec in this repo), builds from `api/Dockerfile`, and gives the
-engine a public address. Sign in with GitHub, click **Apply**, done — see
-`DEPLOY.md` for the friendly walkthrough. After deploying, paste the address
-into `DEFAULT_ENGINE` at the top of `web/index.html`.
+engine a public address. Sign in with GitHub, click **Apply**, then configure
+the server-to-server credential described in `DEPLOY.md`.
+
+The browser does **not** call that Render address. It calls Star Glass at
+`/api/engine/*`; Netlify attaches a server-only bearer credential and forwards
+the calculation. Render accepts `/chart`, `/wheel`, and `/tables` only with
+that credential. Its public `/health` response is intentionally limited to
+`{"ok":true}`. Do not place the engine credential in a `VITE_*` variable or
+restore a client-side Render fallback.
 
 `api/main.py` exposes the deterministic core over HTTP — no LLM in this
-service; everything is a pure, cached function of birth data:
+service; everything is a pure, cached function of birth data. For local API
+work, generate a high-entropy token, put its SHA-256 digest in
+`STARGLASS_ENGINE_TOKEN_SHA256`, and send the token as `Authorization: Bearer
+<token>`:
 
 ```bash
 pip install -r api/requirements.txt
@@ -123,7 +132,7 @@ accept either raw birth data or a prior `/chart` response, so downstream
 services never recompute.
 
 The interpretation pipeline (Phase 2) is a client of this API, as is any
-frontend. Headless by design.
+frontend through the Star Glass server boundary. Headless by design.
 
 ## Roadmap sketches
 
