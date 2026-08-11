@@ -6,10 +6,18 @@
 //   node test-interpret-smoke.mjs
 //
 // Scenarios:
-//   1. clean pass    — composer output verified first time → publishes
-//   2. repair pass   — auditors return overlapping/duplicate corrections,
-//                      second audit clean → publishes with repairs
-//   3. hard fail     — auditor unverified with no corrections → error status
+//   1. clean pass       — composer output verified first time → publishes
+//   2. repair pass      — auditors return overlapping/duplicate corrections,
+//                         second audit clean → publishes with repairs
+//   3. unrepairable     — auditor unverified with no fixes → HELD, draft kept
+//   4. affirmations     — find===replace entries dropped at intake → publishes
+//   5. fixed point      — unlocatable corrections converge → publishes
+//   6. referee dismiss  — persistent style pedantry ruled non-genuine → publishes
+//   7. referee repair   — genuine error repaired in its own movement, one
+//                         bounded final re-audit clean → publishes (SG-210)
+//   8. referee + dirty  — final re-audit still unverified → HELD, draft kept
+//   9. unlocatable ref  — referee find matches nothing → HELD, draft kept
+//  10. kill switch      — generation disabled → fail closed, 0 gateway calls
 import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
@@ -135,10 +143,15 @@ await scenario("repair round tolerates overlaps then publishes",
     if (JSON.stringify(s.reading).includes("The Torch and the Well")) { console.error("title correction not applied"); process.exit(1); }
   });
 
-// 3. hard fail: an auditor says unverified with no fixes
-await scenario("unverified with no corrections fails closed",
+// 3. unrepairable: an auditor says unverified with no fixes — the portrait is
+// HELD (draft preserved for inspection), never silently discarded
+await scenario("unverified with no corrections holds the draft",
   (auditCall) => auditCall === 3 ? auditResponse(false, []) : auditResponse(true, []),
-  "error");
+  "held",
+  (s) => {
+    if (!s.held?.reading?.movements) { console.error("held record must preserve the draft", JSON.stringify(s).slice(0, 200)); process.exit(1); }
+    if (s.stage !== "held-unrepairable") { console.error("expected stage held-unrepairable, got", s.stage); process.exit(1); }
+  });
 
 // 4. affirmation corrections (find === replace) are dropped at intake —
 // this is the production incident where auditors "corrected" correct text
@@ -175,12 +188,61 @@ await scenario("persistent stylistic corrections publish after referee dismissal
     if (s.audit?.passes !== 4) { console.error("expected 4 passes, got", s.audit); process.exit(1); }
   });
 
-// 7. true deadlock, referee confirms a genuine error: fail closed
-await scenario("referee-confirmed genuine errors fail closed",
-  (auditCall) => auditCall <= 24 ? deadlockScript(auditCall) : refereeResponse([{ find: "x", reason: "the ledger contradicts this claim" }]),
-  "error");
+// 7. true deadlock, referee confirms a genuine error WITH a movement-scoped
+// repair: the repair is applied only inside its movement, one bounded final
+// re-audit comes back clean, and the portrait PUBLISHES (SG-210). The same
+// phrase in every other movement must remain untouched.
+const genuineFinding = {
+  movement: "The Mirror",
+  find: "occur across auditors in production systems",
+  replace: "occur across referees in production systems",
+  reason: "the ledger contradicts this claim",
+};
+await scenario("referee repairs genuine errors in scope and publishes after a clean re-audit",
+  (auditCall) => {
+    if (auditCall <= 24) return deadlockScript(auditCall);
+    if (auditCall === 25) return refereeResponse([genuineFinding]);
+    return auditResponse(true, []); // calls 26-31: the bounded final re-audit
+  },
+  "ready",
+  (s) => {
+    if (s.audit?.refereed !== true || s.audit?.referee_repairs !== 1) { console.error("expected refereed=true with 1 repair, got", s.audit); process.exit(1); }
+    if (s.audit?.resolution !== "referee-corrected") { console.error("expected resolution referee-corrected, got", s.audit); process.exit(1); }
+    if (s.audit?.passes !== 5) { console.error("expected 5 passes, got", s.audit); process.exit(1); }
+    const mirror = s.reading.movements.find((m) => m.nav === "The Mirror");
+    const summit = s.reading.movements.find((m) => m.nav === "The Summit");
+    if (!JSON.stringify(mirror).includes("across referees")) { console.error("referee repair not applied in its movement"); process.exit(1); }
+    if (!JSON.stringify(summit).includes("across auditors")) { console.error("referee repair leaked across movements"); process.exit(1); }
+  });
 
-// 8. owner kill switch: disabled is fail-closed and never reaches the gateway
+// 8. referee repairs, but the final re-audit still finds an unverifiable
+// movement: HELD with the draft preserved — no second referee, no loop
+await scenario("dirty final re-audit after referee repair holds the draft",
+  (auditCall) => {
+    if (auditCall <= 24) return deadlockScript(auditCall);
+    if (auditCall === 25) return refereeResponse([genuineFinding]);
+    return auditCall === 26 ? auditResponse(false, []) : auditResponse(true, []);
+  },
+  "held",
+  (s) => {
+    if (!s.held?.reading?.movements) { console.error("held record must preserve the draft"); process.exit(1); }
+    if (s.stage !== "held-contradiction") { console.error("expected stage held-contradiction, got", s.stage); process.exit(1); }
+  });
+
+// 9. the referee calls errors genuine but its find exists nowhere in the
+// text it judged: nothing can be repaired and nothing may publish — HELD
+await scenario("unlocatable referee findings hold the draft",
+  (auditCall) => {
+    if (auditCall <= 24) return deadlockScript(auditCall);
+    return refereeResponse([{ movement: "Overture", find: "this text exists nowhere in the portrait", replace: "and so it cannot repair anything", reason: "test" }]);
+  },
+  "held",
+  (s) => {
+    if (s.stage !== "referee-unlocatable") { console.error("expected stage referee-unlocatable, got", s.stage); process.exit(1); }
+    if (!s.held?.reading?.movements) { console.error("held record must preserve the draft"); process.exit(1); }
+  });
+
+// 10. owner kill switch: disabled is fail-closed and never reaches the gateway
 envValues.PUBLIC_GENERATION_ENABLED = "false";
 globalThis.fetch = async () => { throw new Error("generation switch allowed a gateway request"); };
 globalThis.__lastStored = null;

@@ -151,26 +151,46 @@ function validReading(value: unknown): value is { title: string; framing: string
     && reading.movements.every((movement) => movement && typeof movement === "object" && Array.isArray((movement as { paragraphs?: unknown }).paragraphs));
 }
 
-function applyCorrections(value: unknown, corrections: Array<{ find: string; replace: string }>): { value: unknown; applied: number } {
+// A correction is applied only inside its own scope: the movement whose
+// auditor (or referee finding) produced it, plus the shared title, plus the
+// framing for the first movement's auditor. The throughline voice repeats its
+// governing images across movements BY DESIGN, so a portrait-wide replaceAll
+// let one movement's correction silently rewrite five others — cross-movement
+// edits are the flattening we refuse.
+interface CorrectionScope {
+  movementIndex: number | null;
+  includeTitle: boolean;
+  includeFraming: boolean;
+}
+
+function applyWithinScope(
+  reading: { title?: unknown; framing?: unknown; movements?: unknown[] },
+  item: { find: string; replace: string },
+  scope: CorrectionScope,
+): { value: unknown; applied: number } {
   let applied = 0;
-  const visit = (current: unknown): unknown => {
-    if (typeof current === "string") {
-      let next = current;
-      for (const correction of corrections) {
-        if (next.includes(correction.find)) {
-          next = next.replaceAll(correction.find, correction.replace);
-          applied += 1;
-        }
-      }
-      return next;
+  const fix = (current: unknown): unknown => {
+    if (typeof current === "string" && current.includes(item.find)) {
+      applied += 1;
+      return current.replaceAll(item.find, item.replace);
     }
+    return current;
+  };
+  const visit = (current: unknown): unknown => {
+    if (typeof current === "string") return fix(current);
     if (Array.isArray(current)) return current.map(visit);
     if (current && typeof current === "object") {
       return Object.fromEntries(Object.entries(current).map(([key, child]) => [key, visit(child)]));
     }
     return current;
   };
-  return { value: visit(value), applied };
+  const next: Record<string, unknown> = { ...reading };
+  if (scope.includeTitle) next.title = fix(reading.title);
+  if (scope.includeFraming) next.framing = fix(reading.framing);
+  if (scope.movementIndex !== null && Array.isArray(reading.movements)) {
+    next.movements = reading.movements.map((movement, index) => index === scope.movementIndex ? visit(movement) : movement);
+  }
+  return { value: next, applied };
 }
 
 function calculationLedger(chartValue: unknown) {
@@ -199,6 +219,16 @@ function calculationLedger(chartValue: unknown) {
     for (const [name, angle] of Object.entries(block.angles as Record<string, any>)) {
       sections.push(`- ${name}: ${angle.display}; longitude ${angle.longitude}`);
     }
+    // The engine supplies Ascendant/Midheaven; the opposite angles are the
+    // same axis seen from the other end. Deriving them here closes the
+    // equivalence gap that produced false referee findings ("near the IC"
+    // rejected although an opposition to the Midheaven was whitelisted).
+    if (typeof block.angles?.Midheaven?.longitude === "number" && !block.angles?.IC) {
+      sections.push(`- IC (derived): longitude ${(block.angles.Midheaven.longitude + 180) % 360}; the point exactly opposite the Midheaven`);
+    }
+    if (typeof block.angles?.Ascendant?.longitude === "number" && !block.angles?.Descendant) {
+      sections.push(`- Descendant (derived): longitude ${(block.angles.Ascendant.longitude + 180) % 360}; the point exactly opposite the Ascendant`);
+    }
     const balanceMembers: Array<{ name: string; sign: string }> = weightedBodies
       .map((name) => ({ name, sign: block.placements[name]?.sign }))
       .filter((item) => item.sign);
@@ -222,11 +252,18 @@ function calculationLedger(chartValue: unknown) {
     sections.push(`WEIGHTING: ${JSON.stringify(block.weighting ?? {})}`);
   }
   sections.push("No aspect, conjunction, angular proximity, or 'within N degrees' claim is permitted unless the exact bodies and relationship appear in the whitelist above. A 10th-house placement alone is not conjunct the Midheaven.");
+  sections.push(`EQUIVALENCE RULES (these are part of the whitelist, not exceptions to it):
+- Pairwise reading: a sentence relating two bodies is judged on that pair alone. If the pair's relationship is whitelisted, the sentence is correct even when other bodies also aspect either of them; prose is never required to enumerate every member of a cluster or stellium.
+- Opposite angles: the IC is the point exactly opposite the Midheaven, and the Descendant exactly opposite the Ascendant. A whitelisted opposition to the Midheaven is therefore also closeness to the IC and may be described either way; likewise for the Ascendant/Descendant axis.`);
   return sections.join("\n");
 }
 
 export default async (request: Request) => {
   let errorKey = "";
+  // Correlation for logs and stored records: jobId ties a record to its
+  // portrait request; runId distinguishes runs if a job is ever re-fired.
+  const runId = crypto.randomUUID().slice(0, 8);
+  const startedAt = new Date().toISOString();
   try {
     const input = await request.json() as { jobId?: unknown; chart?: unknown; zodiac?: unknown; essence?: unknown };
     if (typeof input.jobId !== "string" || !/^[0-9a-f-]{36}$/i.test(input.jobId)) {
@@ -240,16 +277,18 @@ export default async (request: Request) => {
     if (Netlify.env.get("PUBLIC_GENERATION_ENABLED")?.trim().toLowerCase() !== "true") {
       await store.setJSON(key, {
         status: "error",
+        stage: "paused",
         error: "Portrait generation is paused for this preview.",
+        jobId: input.jobId, runId, startedAt,
         updatedAt: new Date().toISOString(),
       });
       return;
     }
     if (!input.chart || typeof input.chart !== "object") {
-      await store.setJSON(key, { status: "error", error: "A calculated chart is required." });
+      await store.setJSON(key, { status: "error", stage: "invalid-chart", error: "A calculated chart is required.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
-    await store.setJSON(key, { status: "working", phase: "composing", updatedAt: new Date().toISOString() });
+    await store.setJSON(key, { status: "working", phase: "composing", stage: "composing", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
 
     const chartEvidence = JSON.stringify({
       zodiac_mode: input.zodiac,
@@ -257,7 +296,7 @@ export default async (request: Request) => {
       calculated_chart: input.chart,
     });
     if (chartEvidence.length > 180_000) {
-      await store.setJSON(key, { status: "error", error: "The calculated chart is too large to interpret." });
+      await store.setJSON(key, { status: "error", stage: "oversized-chart", error: "The calculated chart is too large to interpret.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
     const auditLedger = calculationLedger(input.chart);
@@ -265,7 +304,7 @@ export default async (request: Request) => {
     const apiKey = Netlify.env.get("ANTHROPIC_API_KEY");
     const baseUrl = Netlify.env.get("ANTHROPIC_BASE_URL");
     if (!apiKey || !baseUrl) {
-      await store.setJSON(key, { status: "error", error: "The interpretation service is not enabled for this preview." });
+      await store.setJSON(key, { status: "error", stage: "unconfigured", error: "The interpretation service is not enabled for this preview.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
 
@@ -296,9 +335,12 @@ export default async (request: Request) => {
       console.error("AI Gateway response", response.status, detail.slice(0, 1_000));
       await store.setJSON(key, {
         status: "error",
+        stage: "compose-gateway",
         error: response.status === 429
           ? "The interpretation studio is busy. Please try again in a moment."
           : "The interpretation studio could not complete this portrait.",
+        jobId: input.jobId, runId, startedAt,
+        updatedAt: new Date().toISOString(),
       });
       return;
     }
@@ -307,7 +349,7 @@ export default async (request: Request) => {
     const toolUse = result.content?.find((item) => item.type === "tool_use" && item.name === "submit_reading");
     if (!validReading(toolUse?.input)) {
       console.error("AI Gateway returned an invalid portrait structure");
-      await store.setJSON(key, { status: "error", error: "The portrait arrived incomplete. Please compose it once more." });
+      await store.setJSON(key, { status: "error", stage: "compose-structure", error: "The portrait arrived incomplete. Please compose it once more.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
 
@@ -333,7 +375,7 @@ export default async (request: Request) => {
           model: "claude-haiku-4-5",
           max_tokens: 1_500,
           temperature: 0,
-          system: `You are StarGlass's calculation auditor. You audit FACTS, never style. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist for geometric claims. Same sign is not conjunction. House 10 is not proximity to the Midheaven. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted.
+          system: `You are StarGlass's calculation auditor. You audit FACTS, never style. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist for geometric claims. Same sign is not conjunction. House 10 is not proximity to the Midheaven. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted. Judge pairwise: a sentence relating two bodies is CORRECT when that pair is whitelisted, even if it does not mention other bodies that also aspect them — text never needs to enumerate a whole cluster. The ledger's EQUIVALENCE RULES are part of the whitelist: an opposition to the Midheaven is the same fact as closeness to the IC, and an opposition to the Ascendant the same fact as closeness to the Descendant.
 A claim deserves correction ONLY when it is (a) concrete — a specific sign, house, motion, geometric relationship, count, or rulership — AND (b) contradicted by or absent from the ledger. The portrait deliberately speaks in images: figurative language that expresses a whitelisted relationship ("facing each other across the whole sky" for a whitelisted opposition; "so close they are almost touching" for a whitelisted tight aspect) is CORRECT and must be left alone. Psychological interpretation, mythic imagery, metaphors, developmental guidance, and emotional claims are never auditable — leave them untouched even if vivid. When you are uncertain whether a phrase makes a concrete claim, leave it. Return the FEWEST corrections necessary; an audit that rewrites style is a failed audit.
 For each genuinely unsupported claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Quote find strings verbatim from THIS movement's own text; correct the shared portrait title only if the title itself misstates the calculation. Set verified true when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.
 The corrections array is ONLY for text that must change. Never submit an entry about a claim that is correct, whitelisted, or supported — do not use corrections to affirm, annotate, or restate accurate text. An empty corrections array with verified true is the normal outcome for a well-composed movement.`,
@@ -344,9 +386,10 @@ The corrections array is ONLY for text that must change. Never submit an entry a
         signal: AbortSignal.timeout(3 * 60_000),
       })));
 
-      const collected: Array<{ find: string; replace: string; reason: string }> = [];
+      const collected: Array<{ find: string; replace: string; reason: string; scope: number }> = [];
       let allVerified = true;
-      for (const response of responses) {
+      for (let sectionIndex = 0; sectionIndex < responses.length; sectionIndex += 1) {
+        const response = responses[sectionIndex];
         if (!response.ok) {
           console.error("Calculation audit response", response.status, (await response.text()).slice(0, 1_000));
           return null;
@@ -366,14 +409,38 @@ The corrections array is ONLY for text that must change. Never submit an entry a
         // An auditor that says "not verified" but offers no fixes has found a
         // problem it cannot repair — that movement may not publish.
         if (audit.verified !== true && valid.length === 0) allVerified = false;
-        collected.push(...valid);
+        collected.push(...valid.map((item) => ({ ...item, scope: sectionIndex })));
       }
       return { corrections: collected, allVerified };
     };
 
-    const failAudit = async () => {
-      await store.setJSON(key, { status: "error", error: "The portrait could not complete its calculation audit. Please compose it once more." });
+    // A draft that fails its audit is HELD, never discarded: the composed
+    // portrait, the holdout corrections, and the stage that stopped it are all
+    // preserved in the blob so the failure can be inspected and repaired.
+    // Only crashes with no draft in hand fall back to the generic error.
+    const holdDraft = async (
+      stage: string,
+      message: string,
+      draft: unknown,
+      remaining: Array<{ find: string; replace?: string; reason: string }> = [],
+    ) => {
+      console.error("Portrait held", stage, JSON.stringify({ jobId: input.jobId, runId, remaining: remaining.length }));
+      await store.setJSON(key, {
+        status: "held",
+        stage,
+        error: message,
+        jobId: input.jobId,
+        runId,
+        startedAt,
+        updatedAt: new Date().toISOString(),
+        held: {
+          reading: draft,
+          corrections: remaining.slice(0, 20),
+        },
+      });
     };
+    const AUDIT_UNAVAILABLE = "The portrait's fact-check could not finish this time. The draft is safe — please compose once more.";
+    const HELD_CONTRADICTION = "StarGlass held this portrait back: one claim could not be reconciled with the calculated chart. The draft is preserved — please compose once more.";
 
     // Apply a correction set robustly. Six parallel auditors see overlapping
     // text (the shared title; the throughline voice repeats images across
@@ -385,17 +452,22 @@ The corrections array is ONLY for text that must change. Never submit an entry a
     // later auditors re-litigating the same find are re-arguing settled text,
     // not finding new problems — skip them so rounds converge.
     const appliedFinds = new Set<string>();
-    const applyCorrectionSet = (value: unknown, items: Array<{ find: string; replace: string; reason: string }>) => {
+    const scopeKey = (scope: number, find: string) => `${scope}:${find}`;
+    const applyCorrectionSet = (value: unknown, items: Array<{ find: string; replace: string; reason: string; scope: number }>) => {
       const seen = new Set<string>();
       let current = value;
       let appliedCount = 0;
       const superseded: string[] = [];
       for (const item of items) {
-        if (item.find === item.replace || seen.has(item.find) || appliedFinds.has(item.find)) continue;
-        seen.add(item.find);
-        const result = applyCorrections(current, [item]);
-        current = result.value;
-        if (result.applied > 0) { appliedCount += 1; appliedFinds.add(item.find); }
+        const itemKey = scopeKey(item.scope, item.find);
+        if (item.find === item.replace || seen.has(itemKey) || appliedFinds.has(itemKey)) continue;
+        seen.add(itemKey);
+        const result = applyWithinScope(
+          current as { title?: unknown; framing?: unknown; movements?: unknown[] },
+          item,
+          { movementIndex: item.scope, includeTitle: true, includeFraming: item.scope === 0 },
+        );
+        if (result.applied > 0) { current = result.value; appliedCount += 1; appliedFinds.add(itemKey); }
         else superseded.push(item.find.slice(0, 80));
       }
       if (superseded.length) console.warn("Corrections superseded or already resolved", superseded);
@@ -403,15 +475,22 @@ The corrections array is ONLY for text that must change. Never submit an entry a
     };
 
     // When repair rounds cannot converge, one referee call decides whether
-    // the holdout corrections describe GENUINE ledger contradictions (fail
-    // closed) or auditor pedantry — style, affirmations, re-litigations —
-    // in which case the portrait publishes. This replaces the old behavior
-    // of failing on any leftover corrections, which discarded factually
-    // clean portraits whenever an auditor refused to return an empty list.
+    // the holdout corrections describe GENUINE ledger contradictions or
+    // auditor pedantry — style, affirmations, re-litigations — in which case
+    // the portrait publishes. A genuine finding is no longer terminal: the
+    // referee must return a movement path and a safe replacement, the repair
+    // is applied in scope, and ONE bounded final re-audit decides. Only a
+    // contradiction that survives that repair holds the portrait — and a held
+    // portrait keeps its draft. (Previously any nonempty verdict discarded
+    // the completed portrait behind a generic audit error.)
+    type RefereeVerdict =
+      | { kind: "unavailable" }
+      | { kind: "dismissed" }
+      | { kind: "genuine"; findings: Array<{ movement: string; find: string; replace: string; reason: string }> };
     const refereeCorrections = async (
       readingValue: unknown,
       items: Array<{ find: string; replace: string; reason: string }>,
-    ): Promise<boolean | null> => {
+    ): Promise<RefereeVerdict> => {
       const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
         method: "POST",
         headers: {
@@ -423,10 +502,11 @@ The corrections array is ONLY for text that must change. Never submit an entry a
           model: MODEL,
           max_tokens: 1_500,
           temperature: 0,
-          system: `You are the final referee of a calculation audit. Automated auditors could not agree on the remaining proposed corrections. Judge each one against the calculation ledger, which is literal and exhaustive. A correction is GENUINE only when the portrait text it quotes makes a concrete claim — a specific sign, house, motion, geometric relationship, count, or rulership — that the ledger contradicts or does not whitelist. A correction is NOT genuine when it polices style, affirms text that is already correct, calls accurate phrasing "imprecise", or re-argues a passage that already matches the ledger. Figurative language expressing a whitelisted relationship is correct.`,
+          system: `You are the final referee of a calculation audit. Automated auditors could not agree on the remaining proposed corrections. Judge each one against the calculation ledger, which is literal and exhaustive and whose EQUIVALENCE RULES are part of the whitelist. A correction is GENUINE only when the portrait text it quotes makes a concrete claim — a specific sign, house, motion, geometric relationship, count, or rulership — that the ledger contradicts or does not whitelist. Judge pairwise: a sentence relating two bodies is correct when that pair is whitelisted, even if it does not enumerate other bodies in the cluster. An opposition to the Midheaven is the same fact as closeness to the IC, and Ascendant/Descendant likewise. A correction is NOT genuine when it polices style, affirms text that is already correct, calls accurate phrasing "imprecise", or re-argues a passage that already matches the ledger. Figurative language expressing a whitelisted relationship is correct.
+For every genuine error, deliver a repair, not just a verdict: name the movement it lives in (its nav name, or "title"/"framing"), quote the exact contiguous find text verbatim from that movement, and give a minimal replace that fixes ONLY the false factual claim. The replacement must keep the sentence's voice, imagery, and psychological content intact — including deliberate tensions and "part of you… while another part…" contradictions, which are the portrait's method, never errors. Repair the fact; never flatten the person.`,
           tools: [{
             name: "submit_verdict",
-            description: "Deliver the referee verdict on the remaining corrections.",
+            description: "Deliver the referee verdict on the remaining corrections, with a movement-scoped repair for every genuine error.",
             input_schema: {
               type: "object",
               additionalProperties: false,
@@ -438,10 +518,12 @@ The corrections array is ONLY for text that must change. Never submit an entry a
                   items: {
                     type: "object",
                     additionalProperties: false,
-                    required: ["find", "reason"],
+                    required: ["movement", "find", "replace", "reason"],
                     properties: {
-                      find: { type: "string" },
-                      reason: { type: "string" },
+                      movement: { type: "string", enum: ["title", "framing", "Overture", "The Ground Floor", "The Inner Cast", "The Mirror", "The Summit", "Integration"] },
+                      find: { type: "string", minLength: 12 },
+                      replace: { type: "string", minLength: 4 },
+                      reason: { type: "string", minLength: 8 },
                     },
                   },
                 },
@@ -451,30 +533,36 @@ The corrections array is ONLY for text that must change. Never submit an entry a
           tool_choice: { type: "tool", name: "submit_verdict" },
           messages: [{
             role: "user",
-            content: `CALCULATION LEDGER\n${auditLedger}\n\nPORTRAIT TEXT\n${JSON.stringify(readingValue)}\n\nREMAINING PROPOSED CORRECTIONS\n${JSON.stringify(items.slice(0, 20))}\n\nReturn only the corrections that identify genuine ledger contradictions in the portrait text.`,
+            content: `CALCULATION LEDGER\n${auditLedger}\n\nPORTRAIT TEXT\n${JSON.stringify(readingValue)}\n\nREMAINING PROPOSED CORRECTIONS\n${JSON.stringify(items.slice(0, 20).map(({ find, replace, reason }) => ({ find, replace, reason })))}\n\nReturn only the corrections that identify genuine ledger contradictions in the portrait text, each with its movement and a minimal safe replacement.`,
           }],
         }),
         signal: AbortSignal.timeout(3 * 60_000),
       });
       if (!response.ok) {
         console.error("Referee response", response.status, (await response.text()).slice(0, 1_000));
-        return null;
+        return { kind: "unavailable" };
       }
       const result = await response.json() as { content?: Array<{ type?: string; name?: string; input?: unknown }> };
       const use = result.content?.find((item) => item.type === "tool_use" && item.name === "submit_verdict");
       const verdict = use?.input as { genuine_errors?: unknown } | undefined;
-      if (!verdict || !Array.isArray(verdict.genuine_errors)) return null;
-      if (verdict.genuine_errors.length > 0) {
-        console.error("Referee confirmed genuine errors", JSON.stringify(verdict.genuine_errors).slice(0, 1_000));
-        return false;
+      if (!verdict || !Array.isArray(verdict.genuine_errors)) return { kind: "unavailable" };
+      const findings = verdict.genuine_errors.filter((item): item is { movement: string; find: string; replace: string; reason: string } =>
+        Boolean(item) && typeof (item as { movement?: unknown }).movement === "string"
+        && typeof (item as { find?: unknown }).find === "string"
+        && typeof (item as { replace?: unknown }).replace === "string"
+        && typeof (item as { reason?: unknown }).reason === "string"
+        && (item as { find: string }).find.trim() !== (item as { replace: string }).replace.trim());
+      if (findings.length > 0) {
+        console.error("Referee confirmed genuine errors; repairing", JSON.stringify(findings).slice(0, 1_000));
+        return { kind: "genuine", findings };
       }
       console.log("Referee dismissed remaining corrections as non-genuine; publishing");
-      return true;
+      return { kind: "dismissed" };
     };
 
     const reportPhase = async (phase: string, round?: number) => {
       try {
-        await store.setJSON(key, { status: "working", phase, round, updatedAt: new Date().toISOString() });
+        await store.setJSON(key, { status: "working", phase, round, stage: phase, jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       } catch (_) {}
     };
 
@@ -487,8 +575,10 @@ The corrections array is ONLY for text that must change. Never submit an entry a
     let working: unknown = toolUse.input;
     await reportPhase("auditing", 1);
     let pass = await runAudits(reading);
-    if (!pass || !pass.allVerified) { await failAudit(); return; }
+    if (!pass) { await holdDraft("audit-unavailable", AUDIT_UNAVAILABLE, working); return; }
+    if (!pass.allVerified) { await holdDraft("held-unrepairable", HELD_CONTRADICTION, working, pass.corrections); return; }
     let totalApplied = 0;
+    let refereeRepairs = 0;
     let rounds = 1;
     let converged = pass.corrections.length === 0;
 
@@ -508,28 +598,97 @@ The corrections array is ONLY for text that must change. Never submit an entry a
       }
       if (!validReading(repaired.value)) {
         console.error("Corrected portrait no longer matches the reading schema");
-        await failAudit(); return;
+        await holdDraft("repair-schema", AUDIT_UNAVAILABLE, working, pass.corrections); return;
       }
       working = repaired.value;
       totalApplied += repaired.applied;
       rounds += 1;
       await reportPhase("auditing", rounds);
       pass = await runAudits(working as { title: string; framing: string; movements: unknown[] });
-      if (!pass || !pass.allVerified) { await failAudit(); return; }
+      if (!pass) { await holdDraft("audit-unavailable", AUDIT_UNAVAILABLE, working); return; }
+      if (!pass.allVerified) { await holdDraft("held-unrepairable", HELD_CONTRADICTION, working, pass.corrections); return; }
       converged = pass.corrections.length === 0;
     }
     if (!converged) {
       console.warn("Corrections persist after three repair rounds; convening the referee", { remaining: pass.corrections.length });
       logCorrections("Persistent corrections", pass.corrections);
       await reportPhase("refereeing");
-      const publishable = await refereeCorrections(working, pass.corrections);
-      if (publishable !== true) { await failAudit(); return; }
+      const verdict = await refereeCorrections(working, pass.corrections);
+      if (verdict.kind === "unavailable") { await holdDraft("referee-unavailable", AUDIT_UNAVAILABLE, working, pass.corrections); return; }
+      if (verdict.kind === "genuine") {
+        // The referee found real ledger contradictions AND supplied repairs.
+        // Apply each repair inside its own movement, then run exactly one
+        // final full re-audit. This is bounded: there is no second referee
+        // and no further repair loop — either the repaired portrait comes
+        // back clean and publishes, or it is held with its draft intact.
+        const readingShape = working as { movements: Array<{ nav?: string }> };
+        const resolveScope = (movement: string): { scope: CorrectionScope; key: string } | null => {
+          if (movement === "title") return { scope: { movementIndex: null, includeTitle: true, includeFraming: false }, key: "title" };
+          if (movement === "framing") return { scope: { movementIndex: null, includeTitle: false, includeFraming: true }, key: "framing" };
+          const index = readingShape.movements.findIndex((item) => item?.nav === movement);
+          return index >= 0 ? { scope: { movementIndex: index, includeTitle: false, includeFraming: false }, key: String(index) } : null;
+        };
+        let repairedValue = working;
+        for (const finding of verdict.findings) {
+          const resolved = resolveScope(finding.movement);
+          if (!resolved) { console.warn("Referee finding names an unknown movement", finding.movement); continue; }
+          const result = applyWithinScope(
+            repairedValue as { title?: unknown; framing?: unknown; movements?: unknown[] },
+            finding,
+            resolved.scope,
+          );
+          if (result.applied > 0) {
+            repairedValue = result.value;
+            refereeRepairs += 1;
+            appliedFinds.add(`${resolved.key}:${finding.find}`);
+          } else {
+            console.warn("Referee repair could not be located in its movement", finding.find.slice(0, 80));
+          }
+        }
+        if (refereeRepairs === 0) {
+          // The referee called errors genuine but none of its finds exist in
+          // the text it judged — an unlocatable correction cannot publish as
+          // verified, and it cannot repair anything either.
+          await holdDraft("referee-unlocatable", HELD_CONTRADICTION, working, verdict.findings); return;
+        }
+        if (!validReading(repairedValue)) {
+          console.error("Referee-repaired portrait no longer matches the reading schema");
+          await holdDraft("referee-schema", AUDIT_UNAVAILABLE, working, verdict.findings); return;
+        }
+        working = repairedValue;
+        rounds += 1;
+        await reportPhase("auditing", rounds);
+        const finalPass = await runAudits(working as { title: string; framing: string; movements: unknown[] });
+        if (!finalPass) { await holdDraft("final-audit-unavailable", AUDIT_UNAVAILABLE, working, verdict.findings); return; }
+        if (!finalPass.allVerified) { await holdDraft("held-contradiction", HELD_CONTRADICTION, working, finalPass.corrections); return; }
+        if (finalPass.corrections.length > 0) {
+          // Same fixed-point rule as the main loop: leftover corrections that
+          // change nothing are re-litigations of settled text. Any that WOULD
+          // still change the text mean the repair did not converge — hold.
+          const probe = applyCorrectionSet(working, finalPass.corrections);
+          if (probe.applied > 0) { await holdDraft("held-contradiction", HELD_CONTRADICTION, working, finalPass.corrections); return; }
+          console.log("Final re-audit reached a fixed point after referee repairs");
+        }
+      }
     }
 
     await store.setJSON(key, {
       status: "ready",
+      stage: "published",
       reading: working,
-      audit: { verified: true, passes: rounds, corrections_applied: totalApplied, refereed: !converged },
+      audit: {
+        verified: true,
+        passes: rounds,
+        corrections_applied: totalApplied,
+        refereed: !converged,
+        referee_repairs: refereeRepairs,
+        resolution: converged
+          ? (totalApplied > 0 ? "corrected" : "verified")
+          : (refereeRepairs > 0 ? "referee-corrected" : "refereed"),
+      },
+      jobId: input.jobId,
+      runId,
+      startedAt,
       updatedAt: new Date().toISOString(),
     });
   } catch (reason) {
@@ -537,7 +696,7 @@ The corrections array is ONLY for text that must change. Never submit an entry a
     try {
       if (errorKey) {
         const store = getStore({ name: "starglass-readings", consistency: "strong" });
-        await store.setJSON(errorKey, { status: "error", error: "StarGlass could not compose the portrait." });
+        await store.setJSON(errorKey, { status: "error", stage: "crashed", error: "StarGlass could not compose the portrait.", runId, startedAt, updatedAt: new Date().toISOString() });
       }
     } catch (_) {}
   }

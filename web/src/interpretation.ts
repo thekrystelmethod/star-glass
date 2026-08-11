@@ -57,7 +57,7 @@ export async function awaitReading(
     const statusResponse = await fetch(`/api/interpret/${jobId}`, { cache: "no-store" });
     if (!statusResponse.ok) continue;
     const status = await statusResponse.json() as {
-      status?: "queued" | "working" | "ready" | "error";
+      status?: "queued" | "working" | "ready" | "held" | "error";
       phase?: string;
       round?: number;
       reading?: GeneratedReading;
@@ -67,6 +67,9 @@ export async function awaitReading(
       onPhase({ phase: status.phase, round: status.round });
     }
     if (status.status === "ready" && status.reading) { forgetJob(); return status.reading; }
+    // "held" is a terminal state: the audit could not reconcile the draft, but
+    // the draft itself is preserved server-side rather than discarded.
+    if (status.status === "held") { forgetJob(); throw new Error(status.error || "StarGlass held this portrait for review. Please compose it once more."); }
     if (status.status === "error") { forgetJob(); throw new Error(status.error || "StarGlass could not compose the reading."); }
   }
   forgetJob();
