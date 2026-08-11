@@ -6,7 +6,7 @@
 
 **Policy:** Render calculation endpoints are consumable only through Star Glass.
 
-**State:** implemented and locally verified; production rollout evidence is recorded below after deployment.
+**State:** complete and production-verified on 2026-08-11. A separate inventory of pre-gate Netlify deploy URLs remains under SG-000 because it affects the broader preview perimeter, not Render's now-enforced calculation boundary.
 
 ## Why this boundary exists
 
@@ -90,13 +90,23 @@ Production acceptance evidence to record:
 
 | Check | Expected | Evidence |
 |---|---|---|
-| Anonymous Star Glass page and `/api/engine/*` | Preview gate denial | Pending rollout |
-| Authorized `/api/engine/health` | `200 {"ok":true}` | Pending rollout |
-| Authorized synthetic `/api/engine/chart` | `200` chart JSON | Pending rollout |
-| Direct Render `/chart` with no or wrong token | `401` before validation/calculation | Pending rollout |
-| Direct Render protected route with wrong method | `405` | Pending rollout |
-| Direct Render CORS preflight | No wildcard origin grant | Pending rollout |
-| Render `/health` | `200 {"ok":true}` only | Pending rollout |
-| Production browser bundle | No Render origin or credential | Pending rollout |
+| Anonymous Star Glass page and `/api/engine/*` | Preview gate denial | `401`; `X-StarGlass-Preview: private-gate-v2` |
+| Authorized `/api/engine/health` | `200 {"ok":true}` | Passed; response was exactly 11 bytes |
+| Authorized synthetic `/api/engine/chart` | `200` chart JSON | Passed; fictional 2000-01-01 UTC fixture, 9,096-byte response |
+| Authorized synthetic `/api/engine/wheel` | `200` SVG | Passed through the proxy; 51,102-byte SVG |
+| Direct Render protected route with no or wrong token | `401` before validation/calculation | Passed for `/chart` and `/wheel`, including malformed unauthenticated input |
+| Direct Render protected route with wrong method | `405` | Passed; `Allow: POST` |
+| Direct Render CORS preflight | No wildcard origin grant | Passed; no `Access-Control-*` response header |
+| Render `/health` | `200 {"ok":true}` only | Passed; response was exactly 11 bytes |
+| Render `/docs` | Not publicly discoverable | `404` |
+| Production browser bundle | No Render origin or credential verifier | Passed against the 319,042-byte deployed JavaScript artifact |
+
+## Production rollout evidence
+
+- The content-bearing Netlify production deploy is `6a7b990b7226880008bfb7a4`, built from commit `83911fbe28f1fc2507011bc7adfab3e7d347b4fd`. Netlify records four serverless functions and one Edge function; the live v2 gate and both engine proxy operations were verified against it.
+- Main then advanced to enforcement commit `5aa26e4fac3f759f97f6a18357c5a24ee16b4a3f`. Netlify canceled that redundant build with “no content change” because the revision changed only the Render API and its tests. Render subsequently changed direct protected requests from `422` validation responses to `401` authentication denials while the same-origin synthetic chart continued to return `200`.
+- The first manual production attempt omitted the Edge attachment and briefly served the primary origin without the gate. It was detected by the immediate anonymous HTTP check and rolled back to the last verified gated deploy. No Render enforcement was enabled during that interval.
+- Three manual SG-107 candidate deploys and one earlier manual deploy were confirmed ungated, deleted, and verified `404`. Manual Netlify publishing is not an approved release path for this repository; use a Git-triggered build and require `edge_functions_present=true` plus the live gate marker before acceptance.
+- A full follow-up inventory found 27 older ready Netlify deploy artifacts whose metadata does not show an Edge function. The SG-107 Render credential prevents their browser builds from using protected calculation routes, but the artifacts may still expose older static or function surfaces. Deletion requires Krystel's explicit approval and is tracked as remaining SG-000 perimeter work; four gated deploys are available as rollback points.
 
 Provider dashboard graphs and logs should also be reviewed for request rate, latency, restarts, rate-limit events, and unexpected clients. Those operational facts cannot be inferred from repository code and remain evidence work even after HTTP acceptance passes.

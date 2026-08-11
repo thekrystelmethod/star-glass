@@ -2,7 +2,7 @@
 
 **Decision date:** 2026-08-11  
 **Owners:** Krystel (product/release), Codex (implementation/evidence)  
-**State:** private gate published and verified in production on 2026-08-11; traffic, Blobs inventory, AI usage/spend, and live generation-switch proof remain pending
+**State:** private gate published and verified on the primary production deploy on 2026-08-11; 27 pre-gate deploy artifacts, traffic, Blobs inventory, AI usage/spend, and live generation-switch proof remain pending
 
 ## Decision
 
@@ -28,19 +28,22 @@ The gate also sends `noindex`, `nofollow`, `noarchive`, no-store, frame-denial, 
 
 | Surface | Repository evidence | Temporary posture | Remote fact still to capture |
 |---|---|---|---|
-| Netlify web app | Vite site; SPA fallback in `netlify.toml` | Entire site gated after this revision is deployed | Production URL, active branch, last deploy SHA, traffic, current protection settings |
-| Netlify interpretation API | `/api/interpret` and `/api/interpret/:jobId` | Covered by the edge gate; new generation also has an independent fail-closed switch | AI Gateway usage/spend, function logs, rate-limit events, active environment values |
+| Netlify web app | Vite site; SPA fallback in `netlify.toml` | Primary production and retained gated rollback deploys are protected; pre-gate artifacts remain below | Traffic and current protection settings |
+| Netlify interpretation API | `/api/interpret` and `/api/interpret/:jobId` | Current production routes are covered by the Edge gate; new generation also has an independent fail-closed switch | AI Gateway usage/spend, function logs, rate-limit events, active environment values, and old-deploy function reachability |
 | Netlify Blobs | `starglass-readings` stores working/error/ready portrait jobs | Gate limits new access but does not remediate existing retention | Object count, oldest object, status mix, real tester data, storage region |
-| Render chart engine | Browser calls `star-glass-engine.onrender.com` directly unless `VITE_ENGINE_URL` overrides it; `api/main.py` currently permits wildcard browser origins | **Still directly reachable; not protected by the Netlify passphrase** | Live URL, active branch/SHA, traffic/logs, deploy state, environment values |
+| Render chart engine | SG-107 moved the browser to same-origin `/api/engine/*`, added a server-only Netlify credential, and requires its verifier before Render reads protected request bodies | `/chart`, `/wheel`, and `/tables` deny direct unauthenticated use; minimal `/health` remains public for provider checks | Traffic/logs, deploy state, and resource graphs before/after SG-107 |
+| Historical Netlify deploy URLs | Inventory on 2026-08-11 found 27 ready deploys with no Edge function recorded; representative pre-gate/manual URLs served the app without the primary-domain gate | **Pending owner-approved retirement; Render calculations are independently protected by SG-107** | Confirm deletion or another site-wide control, then prove the immutable URLs no longer serve |
 | Browser geocoding | Browser calls Open-Meteo | Only reachable through the gated UI for normal testers | Confirm production endpoint and any provider logging/terms |
 | LLM provider / AI Gateway | Called only from the Netlify background function | No call when `PUBLIC_GENERATION_ENABLED` is not `true` | Retention settings, processor terms, request logs, spend alerts |
-| GitHub repository | Local remote is `https://github.com/thekrystelmethod/star-glass.git`; working branch is `main`; inspected commit is `31511934637a4a1cf2d3dd4a275304eb4d78eade` | Treat repository visibility as a separate fact from app access | Confirm current visibility, branch protections, deploy integrations, and whether providers serve the inspected commit |
+| GitHub repository | Local remote is `https://github.com/thekrystelmethod/star-glass.git`; working branch is `main`; SG-107 enforcement commit is `5aa26e4fac3f759f97f6a18357c5a24ee16b4a3f` | Treat repository visibility as a separate fact from app access | Confirm current visibility, branch protections, and deploy integrations |
 
 ### Known residual exposure
 
-The passphrase protects the Netlify application, not the Render hostname. Anyone who knows or discovers the Render URL can still call the deterministic chart endpoints directly. The engine is stateless in repository code, but it receives birth date, time, and location to calculate a chart. Restricting that service requires a service-to-service architecture or a Render-side control; it is not silently claimed as solved by SG-000. The detailed risk, recommended containment, tests, and acceptance evidence are now scheduled for next sprint under SG-107 in `docs/STARGLASS-ORDERED-BACKLOG-2026-08-11.md`.
+SG-107 resolved the direct Render exposure: protected calculation routes now authenticate Star Glass before body parsing, and the browser bundle contains no Render hostname. See `docs/SG-107-ENGINE-BOUNDARY-2026-08-11.md` for the architecture and production matrix.
 
-The gate is also not a legal exemption or a licensing determination. In particular, the presently direct Render surface means the system cannot be described as wholly private merely because the Netlify UI is gated. SG-001 still needs to establish when the selected license is required and what obligations apply during testing.
+The deploy-history audit also exposed a different gap: a Netlify Edge function belongs to a deploy, so older immutable deploy URLs do not inherit the current gate. Four ungated manual artifacts were deleted during SG-107 and now return `404`; 27 older ready artifacts remain pending Krystel's explicit approval to delete. They no longer have working unauthenticated access to Render calculations, but they prevent an unqualified claim that every historical Star Glass URL is private.
+
+The gate and SG-107 are not legal exemptions or licensing determinations. SG-001 still needs to establish when the selected Swiss Ephemeris license is required and what obligations apply during testing.
 
 Shared phrases can also be forwarded. For this small ad hoc tester group, rotate the phrase and cookie secret whenever access should be revoked. Rotating only the phrase does not invalidate cookies already issued.
 
@@ -64,7 +67,7 @@ Generate a suitable cookie secret locally with:
 openssl rand -hex 32
 ```
 
-Use a long, non-dictionary phrase—ideally at least five randomly selected words—because the shared access endpoint does not provide individual accounts or per-person lockout. Do not put real values in Git, client-side `VITE_*` variables, screenshots, tester messages sent to broad groups, or this document. Environment changes that affect Edge Functions must be followed by a Netlify deploy; this is a configuration-only deploy, not a code change.
+Use a long, non-dictionary phrase—ideally at least five randomly selected words—because the shared access endpoint does not provide individual accounts or per-person lockout. Do not put real values in Git, client-side `VITE_*` variables, screenshots, tester messages sent to broad groups, or this document. Environment changes that affect Edge Functions must be followed by a Git-triggered Netlify build and the live gate matrix; the CLI publisher omitted the Edge attachment during repeated verification and is not an approved release path.
 
 After deployment:
 
@@ -79,7 +82,7 @@ After deployment:
 ## Production gate evidence — 2026-08-11
 
 - **Production URL:** `https://star-glass.netlify.app`
-- **Verified deployment:** current Git-triggered Netlify deploy `6a7b8a73e742390008c385be`, serving commit `589f98d` from `main` on the linked `star-glass` project. Netlify reports the deploy ready with one Edge Function, two serverless functions, and no secret-scan matches.
+- **Verified deployment:** current content-bearing Git-triggered Netlify deploy `6a7b990b7226880008bfb7a4`, serving commit `83911fb` from `main` on the linked `star-glass` project. Netlify reports the deploy ready with one Edge Function and four serverless functions. The follow-up main commit `5aa26e4` changed only Render/test files, so Netlify canceled it as “no content change.”
 - **Attachment marker:** every gated response carries a versioned `X-StarGlass-Preview` marker (`private-gate-v2` after SG-107); this distinguishes the active Edge control from an unprotected static response.
 - **Anonymous page request:** `401`, private-preview form rendered, `noindex` present.
 - **Incorrect phrase:** `401` with a generic rejection.
@@ -89,7 +92,7 @@ After deployment:
 - **Logout:** `303`, cookie `Max-Age=0`, followed by `401` on the next request.
 - **Secret handling:** the phrase and signing secret are Netlify environment secrets and do not appear in the repository or production browser bundle.
 
-During deployment verification, an inline-only Edge route was omitted by Netlify's manual publisher even though the function bundled successfully. Production was restored to the prior fail-closed deployment while the route was repaired. The gate is now attached explicitly in `netlify.toml`; the live marker and behavior matrix above are the acceptance evidence. Do not remove the explicit declaration without proving both Git-triggered and manual production deploys retain the gate.
+During deployment verification, Netlify's manual publisher repeatedly omitted the Edge attachment even though the function bundled successfully and the route is explicit in `netlify.toml`. Each candidate was rejected by an anonymous HTTP check; the one production attempt was immediately rolled back. Use only Git-triggered production builds, require deploy metadata to report an Edge function, and run the live marker/behavior matrix before acceptance. The four known ungated manual artifacts were deleted and now return `404`.
 
 ## Emergency controls
 
@@ -104,11 +107,12 @@ During deployment verification, an inline-only Edge route was omitted by Netlify
 |---|---|
 | Dated exposure inventory | Complete in this document |
 | No secret embedded client-side | Complete; repository/bundle inspection and write-only Netlify secret configuration verified |
-| Private access covers Netlify app and API | Complete; automated and production HTTP matrices pass |
+| Private access covers current Netlify app and API | Complete for the primary and retained gated deploys; historical artifacts remain pending below |
 | New generation can be disabled independently | Implemented and configured; live disabled-state proof pending |
 | Render residual exposure explicitly recorded | Complete |
+| Pre-gate immutable Netlify deploys retired or independently protected | Pending owner approval; 27 ready artifacts identified |
 | Provider settings, traffic, storage, and spend captured | Pending account-owner dashboard review |
 | Gate enabled/denied production requests recorded | Complete in this document |
 | Generation enabled/disabled synthetic production requests recorded | Pending controlled toggle test |
 
-SG-000 may be marked complete only after the remaining provider inventory and controlled generation-toggle evidence are attached. The private access gate itself is complete and live.
+SG-000 may be marked complete only after the 27 pre-gate deploy artifacts are retired or independently protected, and the remaining provider inventory and controlled generation-toggle evidence are attached. The gate on the current primary deploy is complete and live.

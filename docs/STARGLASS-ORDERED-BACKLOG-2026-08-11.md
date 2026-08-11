@@ -91,12 +91,12 @@ These items are sequentially first even when another feature feels more visible.
 
 #### SG-000 — Confirm production exposure and choose the temporary launch posture
 
-- **Status (2026-08-11):** private Netlify gate published and production HTTP matrix verified; traffic, Blobs, AI usage/spend, Render dashboard facts, and live generation-toggle proof remain pending. See `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
+- **Status (2026-08-11):** current primary Netlify deploy is gated and its HTTP matrix is verified; retirement or independent protection of 27 pre-gate deploy artifacts, traffic, Blobs, AI usage/spend, Render dashboard facts, and live generation-toggle proof remain pending. See `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
 - **Priority / size / driver:** P0 / S / KR + CX
 - **Depends on:** none
 - **Outcome:** know what is actually live and prevent the open risks from growing during remediation.
 - **Verify first:** production URLs; whether Netlify and Render are serving `main`; current traffic; Blobs object count/age; AI Gateway usage and spend; active environment variables; deploy-branch rules; whether any real customer data is present.
-- **Implement:** an environment-controlled `PUBLIC_GENERATION_ENABLED` or invite-access gate; a clear maintenance state; no secret embedded client-side.
+- **Implement:** an environment-controlled `PUBLIC_GENERATION_ENABLED` or invite-access gate; a clear maintenance state; no secret embedded client-side; after Krystel explicitly approves destructive deploy-history cleanup, delete ready Netlify artifacts lacking an Edge function while retaining the four verified gated rollback deploys.
 - **Acceptance:** the team has a dated exposure inventory and can disable new generation without redeploying code or losing already-authorized recovery access.
 - **Evidence:** screenshot/export of provider settings and a synthetic request proving enabled/disabled behavior.
 
@@ -244,9 +244,10 @@ These items are sequentially first even when another feature feels more visible.
 #### SG-107 — Harden the public engine boundary
 
 - **Policy decision (2026-08-11):** approved by Krystel—production Render calculation endpoints should be consumable only through Star Glass, not as an unauthenticated public API.
+- **Status (2026-08-11):** complete and production-verified. Browser traffic is same-origin, Netlify holds the service credential, Render denies unauthenticated calculations before body parsing, wildcard CORS is absent, and synthetic chart/wheel requests passed through the gated proxy. See `docs/SG-107-ENGINE-BOUNDARY-2026-08-11.md`.
 - **Sprint / priority / size / driver:** next sprint / P0 / M / CX; KR approves the intended access policy
 - **Depends on:** SG-000 for immediate containment; SG-105 for durable boundary completion
-- **Observed exposure (2026-08-11):** the browser defaults to `https://star-glass-engine.onrender.com`; Render is therefore contacted directly rather than through the gated Netlify origin. `api/main.py` permits `allow_origins=["*"]`, `GET`/`POST`, and arbitrary request headers. The repository contains no caller authentication requirement for `/chart`, `/wheel`, or `/tables`. The Netlify preview phrase does not cover this hostname.
+- **Original exposure (before remediation):** the browser defaulted to `https://star-glass-engine.onrender.com`; Render was contacted directly, allowed wildcard browser origins, and had no caller authentication for `/chart`, `/wheel`, or `/tables`. The Netlify preview phrase did not cover that hostname.
 - **Data crossing the boundary:** birth date, local birth time, time zone, latitude, longitude, zodiac/house settings, and—on renderer calls—calculated chart content plus caller-controlled titles, subtitles, body highlights, and palette values.
 - **Why we care:**
   - a visitor can bypass the private-preview UI, its notices, and its access gate and send birth data directly to Render;
@@ -256,7 +257,8 @@ These items are sequentially first even when another feature feels more visible.
   - wildcard CORS lets any website call the engine from a visitor's browser, but changing CORS alone is **not** access control—scripts, servers, and command-line clients do not obey browser CORS policy;
   - birth details may appear in provider request logs or diagnostics even though repository application code does not persist them.
 - **Recommended containment architecture:** make the browser call same-origin Netlify routes such as `/api/engine/chart`, `/api/engine/wheel`, and `/api/engine/tables`; have the Netlify server attach a separate high-entropy service credential; require and verify that credential on Render before parsing request bodies or starting calculation; remove the Render hostname from the production browser bundle. Keep the credential out of all `VITE_*` variables and client responses. Decide separately whether `/health` remains public and information-minimal.
-- **Durable hardening:** after SG-105 schemas exist, add route-specific method/content-type/body-size limits; explicit timeouts and concurrency ceilings; gateway rate limiting; sanitized correlation-only logs; and a cache strategy that cannot be bypassed into subprocess exhaustion. Profile whether calculation should ultimately move in-process or onto a private service boundary.
+- **Hardening delivered with containment:** route-specific method/content-type/body-size limits; explicit timeouts and concurrency ceilings; gateway rate limiting; sanitized correlation-only logs; disabled API documentation; and minimal health.
+- **Remaining durable work:** SG-105 must finish strict nested chart/render schemas and stable public error codes; add the cache strategy and operational telemetry needed to prove high-cardinality traffic cannot turn into subprocess exhaustion; profile whether calculation should ultimately move in-process or onto a private network service.
 - **Acceptance:**
   - production browser code contains no Render hostname or service credential;
   - a gated tester can cast a chart and render a wheel through the same-origin proxy;
@@ -741,7 +743,7 @@ An item is not complete when code exists. It is complete when:
 The first slice should be deliberately small and provable:
 
 1. SG-000 production exposure inventory and temporary generation gate.
-2. **SG-107 next-sprint containment:** remove direct browser access to Render, add server-to-server authentication, and prove unauthenticated denial.
+2. **SG-107 complete:** direct browser access to Render removed, server-to-server authentication enforced, and unauthenticated denial proven in production.
 3. SG-001 license election/compliance action; do not infer that the preview gate itself defers license obligations.
 4. SG-005 wheel carry fix plus renderer regression tests.
 5. SG-004 SVG escaping/validation plus malicious-payload tests.
