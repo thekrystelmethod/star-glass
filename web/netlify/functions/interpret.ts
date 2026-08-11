@@ -237,6 +237,14 @@ export default async (request: Request) => {
     const store = getStore({ name: "starglass-readings", consistency: "strong" });
     const key = `portrait:${input.jobId}`;
     errorKey = key;
+    if (Netlify.env.get("PUBLIC_GENERATION_ENABLED")?.trim().toLowerCase() !== "true") {
+      await store.setJSON(key, {
+        status: "error",
+        error: "Portrait generation is paused for this preview.",
+        updatedAt: new Date().toISOString(),
+      });
+      return;
+    }
     if (!input.chart || typeof input.chart !== "object") {
       await store.setJSON(key, { status: "error", error: "A calculated chart is required." });
       return;

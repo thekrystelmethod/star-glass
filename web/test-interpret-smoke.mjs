@@ -75,7 +75,12 @@ const refereeResponse = (genuineErrors) => ({
   text: async () => "",
 });
 
-globalThis.Netlify = { env: { get: (k) => ({ ANTHROPIC_API_KEY: "test", ANTHROPIC_BASE_URL: "https://gateway.test" }[k]) } };
+const envValues = {
+  ANTHROPIC_API_KEY: "test",
+  ANTHROPIC_BASE_URL: "https://gateway.test",
+  PUBLIC_GENERATION_ENABLED: "true",
+};
+globalThis.Netlify = { env: { get: (k) => envValues[k] } };
 
 async function scenario(name, auditScript, expectStatus, expectExtra = () => {}) {
   let call = 0;
@@ -174,5 +179,19 @@ await scenario("persistent stylistic corrections publish after referee dismissal
 await scenario("referee-confirmed genuine errors fail closed",
   (auditCall) => auditCall <= 24 ? deadlockScript(auditCall) : refereeResponse([{ find: "x", reason: "the ledger contradicts this claim" }]),
   "error");
+
+// 8. owner kill switch: disabled is fail-closed and never reaches the gateway
+envValues.PUBLIC_GENERATION_ENABLED = "false";
+globalThis.fetch = async () => { throw new Error("generation switch allowed a gateway request"); };
+globalThis.__lastStored = null;
+await handler(new Request("https://x/api/interpret", {
+  method: "POST",
+  body: JSON.stringify({ jobId: "123e4567-e89b-42d3-a456-426614174001", chart, zodiac: "tropical", essence: null }),
+}));
+if (globalThis.__lastStored?.status !== "error" || !globalThis.__lastStored?.error?.includes("paused")) {
+  console.error("✗ disabled generation did not fail closed", globalThis.__lastStored);
+  process.exit(1);
+}
+console.log("✓ disabled generation fails closed (0 gateway calls) → error");
 
 console.log("ALL SMOKE SCENARIOS PASS");

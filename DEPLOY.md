@@ -1,5 +1,11 @@
 # Putting the engine in the cloud — the one-click version
 
+> **Private-preview policy (2026-08-11):** deploying the Render engine does not
+> make Star Glass ready for public launch. The Netlify app must remain behind
+> the preview gate, and public release remains blocked on the Swiss Ephemeris
+> license decision and the other release gates. See
+> `docs/SG-000-PRIVATE-PREVIEW-POSTURE-2026-08-11.md`.
+
 **The idea in one sentence:** right now the math engine lives on your laptop
 and has to be started by hand; after this, it lives at a web address that is
 always on, and the page finds it by itself — nobody ever opens a terminal
@@ -74,11 +80,10 @@ it takes. (Paid plans, a few dollars a month, stay awake around the clock.)
 notices and rebuilds the engine on its own. Pushing *is* deploying — that's
 the `autoDeployTrigger: commit` line in `render.yaml`.
 
-**Licensing is already satisfied.** Swiss Ephemeris's free license (AGPL)
-asks that a hosted service's source code be public — and this repo is, so
-hosting the engine is fine as-is. (If the project ever goes closed-source or
-commercial, that's when the one-time professional license in the README's
-licensing section comes due.)
+**Licensing is a release gate, not an assumption.** Keep this deployment in
+the private testing posture until SG-001 records the chosen Swiss Ephemeris
+license path and its obligations have been reviewed and implemented. A public
+repository by itself is not the project's legal sign-off.
 
 **Nothing is stored.** The engine keeps no accounts and no data — it's pure
 math in, chart out. The day you want "save my chart" or user logins, that's
