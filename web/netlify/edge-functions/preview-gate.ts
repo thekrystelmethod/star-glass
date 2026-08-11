@@ -16,6 +16,7 @@ function securityHeaders(): Record<string, string> {
     "x-content-type-options": "nosniff",
     "x-frame-options": "DENY",
     "x-robots-tag": "noindex, nofollow, noarchive",
+    "x-starglass-preview": "private-gate-v1",
   };
 }
 
@@ -209,6 +210,7 @@ export default async (request: Request, context: Context): Promise<Response> => 
   const headers = new Headers(response.headers);
   headers.set("x-robots-tag", "noindex, nofollow, noarchive");
   headers.set("referrer-policy", "no-referrer");
+  headers.set("x-starglass-preview", "private-gate-v1");
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,

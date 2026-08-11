@@ -72,6 +72,7 @@ const page = await response.text();
 expect(response.status === 401 && page.includes("Private preview"), "anonymous page request should show the access form");
 expect(page.includes("/reading?mode=dual"), "access form should retain a safe return path");
 expect(!page.includes(envValues.STARGLASS_PREVIEW_PASSPHRASE), "access page must not expose the configured passphrase");
+expect(response.headers.get("x-starglass-preview") === "private-gate-v1", "gate response should carry its deployment marker");
 expect(originCalls === 1, "anonymous request must not reach origin");
 console.log("✓ anonymous app routes are gated and non-indexable");
 
@@ -102,6 +103,7 @@ console.log("✓ external return URL is rejected");
 response = await gate(new Request("https://star-glass.netlify.app/reading", { headers: { cookie } }), context);
 expect(response.status === 200 && (await response.text()) === "origin response", "valid session should reach origin");
 expect(response.headers.get("x-robots-tag")?.includes("noindex"), "private preview response should remain non-indexable");
+expect(response.headers.get("x-starglass-preview") === "private-gate-v1", "authorized response should carry the gate marker");
 expect(originCalls === 2, "valid session should make exactly one new origin call");
 console.log("✓ valid preview session reaches the app with no-index headers");
 
