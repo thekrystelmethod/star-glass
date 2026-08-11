@@ -69,6 +69,11 @@ const auditResponse = (verified, corrections) => ({
   json: async () => ({ content: [{ type: "tool_use", name: "submit_corrections", input: { verified, corrections } }] }),
   text: async () => "",
 });
+const refereeResponse = (genuineErrors) => ({
+  ok: true, status: 200,
+  json: async () => ({ content: [{ type: "tool_use", name: "submit_verdict", input: { genuine_errors: genuineErrors } }] }),
+  text: async () => "",
+});
 
 globalThis.Netlify = { env: { get: (k) => ({ ANTHROPIC_API_KEY: "test", ANTHROPIC_BASE_URL: "https://gateway.test" }[k]) } };
 
@@ -128,6 +133,46 @@ await scenario("repair round tolerates overlaps then publishes",
 // 3. hard fail: an auditor says unverified with no fixes
 await scenario("unverified with no corrections fails closed",
   (auditCall) => auditCall === 3 ? auditResponse(false, []) : auditResponse(true, []),
+  "error");
+
+// 4. affirmation corrections (find === replace) are dropped at intake —
+// this is the production incident where auditors "corrected" correct text
+await scenario("affirmation corrections are filtered and the portrait publishes",
+  (auditCall) => auditCall === 2
+    ? auditResponse(true, [{ find: "The well answers the torch", replace: "  The well answers the torch  ", reason: "this text is correct, no change needed" }])
+    : auditResponse(true, []),
+  "ready",
+  (s) => { if (s.audit?.passes !== 1) { console.error("expected 1 pass, got", s.audit); process.exit(1); } });
+
+// 5. fixed point: a correction quoting text that no longer exists (or never
+// did) applies to nothing — the verified reading stands instead of failing
+await scenario("unlocatable corrections reach a fixed point and publish",
+  (auditCall) => auditCall <= 6
+    ? auditResponse(true, [{ find: "this passage exists nowhere in the portrait text", replace: "and so it cannot be applied to anything", reason: "re-litigating settled text" }])
+    : auditResponse(true, []),
+  "ready",
+  (s) => { if (s.audit?.refereed !== false) { console.error("expected refereed=false, got", s.audit); process.exit(1); } });
+
+// 6. true deadlock, referee dismisses: every round produces corrections that
+// DO apply, audits never come back empty — the referee rules them non-genuine
+const deadlockScript = (auditCall) => {
+  if (auditCall <= 6) return auditResponse(true, [{ find: "faithfully and at length", replace: "faithfully and at some length", reason: "pass 1" }]);
+  if (auditCall <= 12) return auditResponse(true, [{ find: "duplicate corrections occur", replace: "duplicated corrections occur", reason: "pass 2" }]);
+  if (auditCall <= 18) return auditResponse(true, [{ find: "schema validity", replace: "schema correctness", reason: "pass 3" }]);
+  if (auditCall <= 24) return auditResponse(true, [{ find: "minimum length constraint", replace: "minimum-length constraint", reason: "pass 4 — style pedantry" }]);
+  return refereeResponse([]); // call 25: the referee
+};
+await scenario("persistent stylistic corrections publish after referee dismissal",
+  deadlockScript,
+  "ready",
+  (s) => {
+    if (s.audit?.refereed !== true) { console.error("expected refereed=true, got", s.audit); process.exit(1); }
+    if (s.audit?.passes !== 4) { console.error("expected 4 passes, got", s.audit); process.exit(1); }
+  });
+
+// 7. true deadlock, referee confirms a genuine error: fail closed
+await scenario("referee-confirmed genuine errors fail closed",
+  (auditCall) => auditCall <= 24 ? deadlockScript(auditCall) : refereeResponse([{ find: "x", reason: "the ledger contradicts this claim" }]),
   "error");
 
 console.log("ALL SMOKE SCENARIOS PASS");

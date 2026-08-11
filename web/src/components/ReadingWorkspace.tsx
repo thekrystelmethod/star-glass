@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, FileDown, ImageDown, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, Sparkles } from "lucide-react";
+import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, FileDown, ImageDown, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, ShieldCheck, Sparkles } from "lucide-react";
 import { activeChartBlock, type ChartResponse, type Placement } from "../api";
 import { hasCodexEntry } from "../codex";
 import { CeremonyMoment } from "../motion/catalog";
@@ -37,6 +37,7 @@ interface ReadingWorkspaceProps {
   wheelLoading: boolean;
   reading: GeneratedReading | null;
   readingLoading: boolean;
+  readingPhase: { phase: string; round?: number } | null;
   readingError: string;
   zodiacBlock: "tropical" | "sidereal";
   onZodiacBlock: (block: "tropical" | "sidereal") => void;
@@ -59,6 +60,7 @@ export function ReadingWorkspace({
   wheelLoading,
   reading,
   readingLoading,
+  readingPhase,
   readingError,
   zodiacBlock,
   onZodiacBlock,
@@ -238,11 +240,20 @@ export function ReadingWorkspace({
                     <span>Portrait in progress</span>
                   </div>
                   <strong>Composing your portrait</strong>
-                  <p>StarGlass is weighing the chart, listening for repeated themes, and writing each movement fresh.</p>
+                  <p>
+                    {readingPhase?.phase === "auditing"
+                      ? `The portrait is written — six auditors are now checking every claim against the calculation ledger${readingPhase.round && readingPhase.round > 1 ? ` (pass ${readingPhase.round})` : ""}.`
+                      : readingPhase?.phase === "repairing"
+                        ? `The auditors requested small corrections — weaving them in and reading the whole again (round ${readingPhase.round ?? 1}).`
+                        : readingPhase?.phase === "refereeing"
+                          ? "A final referee is settling the last points of debate before the portrait publishes."
+                          : "StarGlass is weighing the chart, listening for repeated themes, and writing each movement fresh."}
+                  </p>
                   <ol className="composer-stages" aria-label="Portrait composition stages">
                     <li><ScanSearch size={15} aria-hidden="true" /><span>Reading the chart’s architecture</span></li>
                     <li><Sparkles size={15} aria-hidden="true" /><span>Finding the patterns that repeat</span></li>
                     <li><BookOpenText size={15} aria-hidden="true" /><span>Composing the six movements</span></li>
+                    <li><ShieldCheck size={15} aria-hidden="true" /><span>Verifying every claim against the ledger</span></li>
                   </ol>
                   <p className="composer-wait"><Clock3 size={15} aria-hidden="true" /><span>A full portrait usually takes 1–3 minutes. Keep this tab open—you can switch away and return shortly.</span></p>
                 </div>

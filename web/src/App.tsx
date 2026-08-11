@@ -7,7 +7,7 @@ import { ChartForm } from "./components/ChartForm";
 import { ReadingWorkspace } from "./components/ReadingWorkspace";
 import { ReportView } from "./components/ReportView";
 import { ShareCard } from "./components/ShareCard";
-import { composeReading } from "./interpretation";
+import { awaitReading, composeReading, pendingReadingJob, type ReadingPhase } from "./interpretation";
 import { useTheme } from "./theme/ThemeProvider";
 import type { BirthFormState, CastMeta, CastResult, GeneratedReading } from "./types";
 
@@ -79,6 +79,7 @@ export default function App() {
   const [reading, setReading] = useState<GeneratedReading | null>(restored?.reading ?? null);
   const [readingLoading, setReadingLoading] = useState(false);
   const [readingError, setReadingError] = useState("");
+  const [readingPhase, setReadingPhase] = useState<ReadingPhase | null>(null);
   const [zodiacBlock, setZodiacBlock] = useState<"tropical" | "sidereal">(
     restored?.castResult?.chart.tropical ? "tropical" : restored?.castResult ? "sidereal" : "tropical",
   );
@@ -95,6 +96,20 @@ export default function App() {
   // The ceremony fires only when a portrait finishes composing in THIS visit —
   // never on a restored session, so reloads stay calm.
   const [ceremonyTrigger, setCeremonyTrigger] = useState<string | null>(null);
+
+  // A refresh mid-compose used to strand the portrait: the job kept running
+  // server-side while the page forgot it existed. Resume polling instead.
+  useEffect(() => {
+    const pending = pendingReadingJob();
+    if (!pending || !restored?.castResult || restored.reading) return;
+    setReadingLoading(true);
+    setReadingError("");
+    awaitReading(pending.jobId, pending.startedAt + 12 * 60_000, setReadingPhase)
+      .then((composed) => setReading(composed))
+      .catch((reason) => setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading."))
+      .finally(() => { setReadingLoading(false); setReadingPhase(null); });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     try { localStorage.setItem("starglass-atmosphere", backgroundId); } catch (_) {}
@@ -189,10 +204,10 @@ export default function App() {
       setReadingError("");
       setReadingLoading(true);
       window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
-      composeReading({ chart, zodiac: birth.zodiac, essence: meta.essence })
+      composeReading({ chart, zodiac: birth.zodiac, essence: meta.essence }, setReadingPhase)
         .then((composed) => { setReading(composed); setCeremonyTrigger(`portrait-${Date.now()}`); })
         .catch((reason) => setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading."))
-        .finally(() => setReadingLoading(false));
+        .finally(() => { setReadingLoading(false); setReadingPhase(null); });
     } finally {
       setLoading(false);
       setEngineNote("Cast the chart");
@@ -220,13 +235,14 @@ export default function App() {
         chart: castResult.chart,
         zodiac: castResult.meta.birth.zodiac,
         essence: castResult.meta.essence,
-      });
+      }, setReadingPhase);
       setReading(nextReading);
       setCeremonyTrigger(`portrait-${Date.now()}`);
     } catch (reason) {
       setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading.");
     } finally {
       setReadingLoading(false);
+      setReadingPhase(null);
     }
   };
 
@@ -272,6 +288,7 @@ export default function App() {
           wheelLoading={wheelLoading}
           reading={reading}
           readingLoading={readingLoading}
+          readingPhase={readingPhase}
           readingError={readingError}
           zodiacBlock={zodiacBlock}
           onZodiacBlock={setZodiacBlock}

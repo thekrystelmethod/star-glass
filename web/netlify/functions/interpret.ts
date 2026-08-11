@@ -241,7 +241,7 @@ export default async (request: Request) => {
       await store.setJSON(key, { status: "error", error: "A calculated chart is required." });
       return;
     }
-    await store.setJSON(key, { status: "working", updatedAt: new Date().toISOString() });
+    await store.setJSON(key, { status: "working", phase: "composing", updatedAt: new Date().toISOString() });
 
     const chartEvidence = JSON.stringify({
       zodiac_mode: input.zodiac,
@@ -327,7 +327,8 @@ export default async (request: Request) => {
           temperature: 0,
           system: `You are StarGlass's calculation auditor. You audit FACTS, never style. Read the supplied ledger literally. Its aspect list is an exhaustive whitelist for geometric claims. Same sign is not conjunction. House 10 is not proximity to the Midheaven. In a sentence that groups three bodies as conjunct or within an orb, every implied relationship must be whitelisted.
 A claim deserves correction ONLY when it is (a) concrete — a specific sign, house, motion, geometric relationship, count, or rulership — AND (b) contradicted by or absent from the ledger. The portrait deliberately speaks in images: figurative language that expresses a whitelisted relationship ("facing each other across the whole sky" for a whitelisted opposition; "so close they are almost touching" for a whitelisted tight aspect) is CORRECT and must be left alone. Psychological interpretation, mythic imagery, metaphors, developmental guidance, and emotional claims are never auditable — leave them untouched even if vivid. When you are uncertain whether a phrase makes a concrete claim, leave it. Return the FEWEST corrections necessary; an audit that rewrites style is a failed audit.
-For each genuinely unsupported claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Quote find strings verbatim from THIS movement's own text; correct the shared portrait title only if the title itself misstates the calculation. Set verified true when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.`,
+For each genuinely unsupported claim, return its exact contiguous text as find and a minimally changed, stylistically coherent replacement. Quote find strings verbatim from THIS movement's own text; correct the shared portrait title only if the title itself misstates the calculation. Set verified true when, after your listed corrections are applied, every concrete claim in the movement is supported. If every concrete claim is already supported, return no corrections and verified true.
+The corrections array is ONLY for text that must change. Never submit an entry about a claim that is correct, whitelisted, or supported — do not use corrections to affirm, annotate, or restate accurate text. An empty corrections array with verified true is the normal outcome for a well-composed movement.`,
           tools: [AUDIT_TOOL],
           tool_choice: { type: "tool", name: "submit_corrections" },
           messages: [{ role: "user", content: `CALCULATION LEDGER\n${auditLedger}\n\nONE PORTRAIT MOVEMENT TO AUDIT\n${JSON.stringify(section)}` }],
@@ -349,7 +350,11 @@ For each genuinely unsupported claim, return its exact contiguous text as find a
         const valid = audit.corrections.filter((item): item is { find: string; replace: string; reason: string } =>
           Boolean(item) && typeof (item as { find?: unknown }).find === "string"
           && typeof (item as { replace?: unknown }).replace === "string"
-          && typeof (item as { reason?: unknown }).reason === "string");
+          && typeof (item as { reason?: unknown }).reason === "string")
+          // Auditors occasionally submit "affirmation corrections" — entries
+          // whose replacement changes nothing, filed to note that text is
+          // correct. They are not corrections; drop them at intake.
+          .filter((item) => item.find.trim() !== item.replace.trim());
         // An auditor that says "not verified" but offers no fixes has found a
         // problem it cannot repair — that movement may not publish.
         if (audit.verified !== true && valid.length === 0) allVerified = false;
@@ -368,21 +373,101 @@ For each genuinely unsupported claim, return its exact contiguous text as find a
     // arithmetic must tolerate them. The RE-AUDIT is the enforcement: nothing
     // publishes until a final full pass returns all-verified with zero
     // corrections.
+    // appliedFinds persists ACROSS rounds: once a passage has been corrected,
+    // later auditors re-litigating the same find are re-arguing settled text,
+    // not finding new problems — skip them so rounds converge.
+    const appliedFinds = new Set<string>();
     const applyCorrectionSet = (value: unknown, items: Array<{ find: string; replace: string; reason: string }>) => {
       const seen = new Set<string>();
       let current = value;
       let appliedCount = 0;
       const superseded: string[] = [];
       for (const item of items) {
-        if (item.find === item.replace || seen.has(item.find)) continue;
+        if (item.find === item.replace || seen.has(item.find) || appliedFinds.has(item.find)) continue;
         seen.add(item.find);
         const result = applyCorrections(current, [item]);
         current = result.value;
-        if (result.applied > 0) appliedCount += 1;
+        if (result.applied > 0) { appliedCount += 1; appliedFinds.add(item.find); }
         else superseded.push(item.find.slice(0, 80));
       }
       if (superseded.length) console.warn("Corrections superseded or already resolved", superseded);
       return { value: current, applied: appliedCount };
+    };
+
+    // When repair rounds cannot converge, one referee call decides whether
+    // the holdout corrections describe GENUINE ledger contradictions (fail
+    // closed) or auditor pedantry — style, affirmations, re-litigations —
+    // in which case the portrait publishes. This replaces the old behavior
+    // of failing on any leftover corrections, which discarded factually
+    // clean portraits whenever an auditor refused to return an empty list.
+    const refereeCorrections = async (
+      readingValue: unknown,
+      items: Array<{ find: string; replace: string; reason: string }>,
+    ): Promise<boolean | null> => {
+      const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: MODEL,
+          max_tokens: 1_500,
+          temperature: 0,
+          system: `You are the final referee of a calculation audit. Automated auditors could not agree on the remaining proposed corrections. Judge each one against the calculation ledger, which is literal and exhaustive. A correction is GENUINE only when the portrait text it quotes makes a concrete claim — a specific sign, house, motion, geometric relationship, count, or rulership — that the ledger contradicts or does not whitelist. A correction is NOT genuine when it polices style, affirms text that is already correct, calls accurate phrasing "imprecise", or re-argues a passage that already matches the ledger. Figurative language expressing a whitelisted relationship is correct.`,
+          tools: [{
+            name: "submit_verdict",
+            description: "Deliver the referee verdict on the remaining corrections.",
+            input_schema: {
+              type: "object",
+              additionalProperties: false,
+              required: ["genuine_errors"],
+              properties: {
+                genuine_errors: {
+                  type: "array",
+                  maxItems: 20,
+                  items: {
+                    type: "object",
+                    additionalProperties: false,
+                    required: ["find", "reason"],
+                    properties: {
+                      find: { type: "string" },
+                      reason: { type: "string" },
+                    },
+                  },
+                },
+              },
+            },
+          }],
+          tool_choice: { type: "tool", name: "submit_verdict" },
+          messages: [{
+            role: "user",
+            content: `CALCULATION LEDGER\n${auditLedger}\n\nPORTRAIT TEXT\n${JSON.stringify(readingValue)}\n\nREMAINING PROPOSED CORRECTIONS\n${JSON.stringify(items.slice(0, 20))}\n\nReturn only the corrections that identify genuine ledger contradictions in the portrait text.`,
+          }],
+        }),
+        signal: AbortSignal.timeout(3 * 60_000),
+      });
+      if (!response.ok) {
+        console.error("Referee response", response.status, (await response.text()).slice(0, 1_000));
+        return null;
+      }
+      const result = await response.json() as { content?: Array<{ type?: string; name?: string; input?: unknown }> };
+      const use = result.content?.find((item) => item.type === "tool_use" && item.name === "submit_verdict");
+      const verdict = use?.input as { genuine_errors?: unknown } | undefined;
+      if (!verdict || !Array.isArray(verdict.genuine_errors)) return null;
+      if (verdict.genuine_errors.length > 0) {
+        console.error("Referee confirmed genuine errors", JSON.stringify(verdict.genuine_errors).slice(0, 1_000));
+        return false;
+      }
+      console.log("Referee dismissed remaining corrections as non-genuine; publishing");
+      return true;
+    };
+
+    const reportPhase = async (phase: string, round?: number) => {
+      try {
+        await store.setJSON(key, { status: "working", phase, round, updatedAt: new Date().toISOString() });
+      } catch (_) {}
     };
 
     const logCorrections = (label: string, items: Array<{ find: string; reason: string }>) => {
@@ -392,35 +477,51 @@ For each genuinely unsupported claim, return its exact contiguous text as find a
     };
 
     let working: unknown = toolUse.input;
+    await reportPhase("auditing", 1);
     let pass = await runAudits(reading);
     if (!pass || !pass.allVerified) { await failAudit(); return; }
     let totalApplied = 0;
     let rounds = 1;
+    let converged = pass.corrections.length === 0;
 
     // Up to three repair rounds; each round's result is fully re-audited.
-    for (let round = 0; round < 3 && pass.corrections.length > 0; round += 1) {
+    // Convergence is a FIXED POINT, not an empty correction list: a round in
+    // which no correction actually changes the text means the auditors are
+    // re-litigating settled or unlocatable passages, and the verified text
+    // stands as-is.
+    for (let round = 0; round < 3 && !converged; round += 1) {
       logCorrections(`Audit round ${rounds} corrections`, pass.corrections);
+      await reportPhase("repairing", rounds);
       const repaired = applyCorrectionSet(working, pass.corrections);
+      if (repaired.applied === 0) {
+        console.log("Audit reached a fixed point: no remaining correction changes the text");
+        converged = true;
+        break;
+      }
       if (!validReading(repaired.value)) {
         console.error("Corrected portrait no longer matches the reading schema");
         await failAudit(); return;
       }
       working = repaired.value;
       totalApplied += repaired.applied;
-      pass = await runAudits(working as { title: string; framing: string; movements: unknown[] });
       rounds += 1;
+      await reportPhase("auditing", rounds);
+      pass = await runAudits(working as { title: string; framing: string; movements: unknown[] });
       if (!pass || !pass.allVerified) { await failAudit(); return; }
+      converged = pass.corrections.length === 0;
     }
-    if (pass.corrections.length > 0) {
-      console.error("Corrections persist after three repair rounds", { remaining: pass.corrections.length });
+    if (!converged) {
+      console.warn("Corrections persist after three repair rounds; convening the referee", { remaining: pass.corrections.length });
       logCorrections("Persistent corrections", pass.corrections);
-      await failAudit(); return;
+      await reportPhase("refereeing");
+      const publishable = await refereeCorrections(working, pass.corrections);
+      if (publishable !== true) { await failAudit(); return; }
     }
 
     await store.setJSON(key, {
       status: "ready",
       reading: working,
-      audit: { verified: true, passes: rounds, corrections_applied: totalApplied },
+      audit: { verified: true, passes: rounds, corrections_applied: totalApplied, refereed: !converged },
       updatedAt: new Date().toISOString(),
     });
   } catch (reason) {
