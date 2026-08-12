@@ -2,34 +2,31 @@ import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { ATMOSPHERES, MOMENTS } from "../motion/catalog";
 import RegisterDock, { type DockTheme } from "../portable/RegisterDock";
-import ThemeStudio, { type StudioPairing } from "../portable/ThemeStudio";
+import ThemeStudio from "../portable/ThemeStudio";
 import { useTheme } from "../theme/ThemeProvider";
+import {
+  BOUND_REGISTERS,
+  BOUND_REGISTER_LIST,
+  PAIRINGS,
+  REGISTER_ROLES,
+  pairingForRegister,
+} from "../theme/themes";
 
-const PAIRINGS: StudioPairing[] = [
-  {
-    id: "paper",
-    label: "Paper Lab",
-    note: "Literary display type with a clear editorial reading face.",
-    display: '"Iowan Old Style", Palatino, Georgia, serif',
-    body: '"Source Sans 3", "Avenir Next", system-ui, sans-serif',
-    mono: '"IBM Plex Mono", ui-monospace, monospace',
-  },
-  {
-    id: "drafting",
-    label: "Drafting Table",
-    note: "Technical headings and measured, highly legible body copy.",
-    display: '"Avenir Next", "Space Grotesk", system-ui, sans-serif',
-    body: '"Avenir Next", "IBM Plex Sans", system-ui, sans-serif',
-    mono: '"IBM Plex Mono", ui-monospace, monospace',
-  },
-];
+/**
+ * The type pairing is a SEPARATE axis from the register. "Follow register"
+ * (the default) resolves through REGISTER_PAIRING; an explicit pick overrides
+ * the register's own type tokens with inline custom properties on <html>.
+ *
+ * The override sets --font-display-sm and --font-display-min too. Without
+ * them a pairing chosen over Blue Hour would inherit Blue Hour's 40px script
+ * floor and shove every small heading up to 40px in a face that doesn't need
+ * it — the floor belongs to the script, not to the register.
+ */
+const OVERRIDES = [
+  "--font-display", "--font-display-sm", "--font-display-min", "--font-body", "--font-mono",
+] as const;
 
-const REGISTER_PAIRING: Record<string, string> = {
-  paperlab: "paper",
-  blueprint: "drafting",
-  refined: "paper",
-  phosphor: "drafting",
-};
+const FOLLOW = "register";
 
 interface ThemeControlsProps {
   backgroundId: string;
@@ -39,28 +36,31 @@ interface ThemeControlsProps {
 }
 
 export function ThemeControls({ backgroundId, onBackground, momentId, onMoment }: ThemeControlsProps) {
-  const { theme, themeId, setThemeId, themes } = useTheme();
+  const { theme, themeId, setThemeId, themes, lensId } = useTheme();
   const [studioOpen, setStudioOpen] = useState(false);
   const [pairChoice, setPairChoice] = useState(() => {
-    try { return localStorage.getItem("starglass-font-pair") || "register"; }
-    catch (_) { return "register"; }
+    try { return localStorage.getItem("starglass-font-pair") || FOLLOW; }
+    catch (_) { return FOLLOW; }
   });
 
   const effectivePairing = useMemo(() => {
-    const id = pairChoice === "register" ? REGISTER_PAIRING[themeId] : pairChoice;
-    return PAIRINGS.find((pairing) => pairing.id === id) ?? PAIRINGS[0];
-  }, [pairChoice, themeId]);
+    if (pairChoice === FOLLOW) return pairingForRegister(theme.id);
+    return PAIRINGS.find((pairing) => pairing.id === pairChoice) ?? pairingForRegister(theme.id);
+  }, [pairChoice, theme.id]);
 
   useEffect(() => {
     const root = document.documentElement.style;
-    if (pairChoice === "register") {
-      root.removeProperty("--font-display");
-      root.removeProperty("--font-body");
-      root.removeProperty("--font-mono");
+    if (pairChoice === FOLLOW) {
+      for (const property of OVERRIDES) root.removeProperty(property);
     } else {
       root.setProperty("--font-display", effectivePairing.display);
       root.setProperty("--font-body", effectivePairing.body);
       root.setProperty("--font-mono", effectivePairing.mono);
+      // Blue Hour's pairing is the only one carrying a script; every other
+      // pairing's display face holds at any size.
+      const script = effectivePairing.id === "bluehour";
+      root.setProperty("--font-display-sm", script ? effectivePairing.body : effectivePairing.display);
+      root.setProperty("--font-display-min", script ? "40px" : "0px");
     }
     try { localStorage.setItem("starglass-font-pair", pairChoice); } catch (_) {}
   }, [effectivePairing, pairChoice]);
@@ -68,13 +68,17 @@ export function ThemeControls({ backgroundId, onBackground, momentId, onMoment }
   const dockThemes: DockTheme[] = themes.map((candidate) => ({
     id: candidate.id,
     label: candidate.label,
-    note: candidate.note,
+    note: REGISTER_ROLES[candidate.id] ?? candidate.note,
     swatch: {
       bg: candidate.tokens["--atlas-panel"],
       accent: candidate.tokens["--atlas-accent"],
       extra: candidate.tokens["--atlas-positive"],
     },
   }));
+
+  const lensNote = lensId
+    ? `${theme.label} is applying — it travels with a ${BOUND_REGISTERS[lensId] === "zodiac" ? "sidereal" : "bound"} reading, not with your pick.`
+    : undefined;
 
   return (
     <>
@@ -90,6 +94,7 @@ export function ThemeControls({ backgroundId, onBackground, momentId, onMoment }
           momentId={momentId}
           onMoment={onMoment}
           label="Register"
+          hint={lensNote}
           onStudio={() => setStudioOpen(true)}
         />
       </div>
@@ -100,6 +105,9 @@ export function ThemeControls({ backgroundId, onBackground, momentId, onMoment }
           themes={themes}
           themeId={themeId}
           onTheme={setThemeId}
+          roles={REGISTER_ROLES}
+          boundThemes={BOUND_REGISTER_LIST}
+          bindings={BOUND_REGISTERS}
           backgrounds={ATMOSPHERES}
           backgroundId={backgroundId}
           onBackground={onBackground}
@@ -109,18 +117,21 @@ export function ThemeControls({ backgroundId, onBackground, momentId, onMoment }
           pairings={PAIRINGS}
           pairChoice={pairChoice}
           onPairing={setPairChoice}
-          followValue="register"
+          followValue={FOLLOW}
           effectivePairing={effectivePairing}
           registerLabel={theme.label}
           eyebrow="STARGLASS · THEME STUDIO"
           heading="Change how StarGlass catches the light."
-          intro="Choose a register, type pairing, atmosphere, and reveal moment. Your chart and wheel retune together; your reading stays exactly the same."
-          statusText={`StarGlass is wearing ${theme.label}. Theme changes only the look.`}
-          completionLabel={`Keep ${theme.label}`}
+          intro="Eight registers, each with one job. Pick the room, then the voice it speaks in — type pairing, atmosphere, and the moment a portrait lands. Three more registers aren't yours to pick: they belong to the printed page, the shared card, and the sidereal sky."
+          statusText={
+            lensId
+              ? `${theme.label} is applying to this reading. Your pick, ${themes.find((t) => t.id === themeId)?.label}, returns with a tropical chart.`
+              : `StarGlass is wearing ${theme.label}. Theme changes only the look.`
+          }
+          completionLabel={`Keep ${themes.find((t) => t.id === themeId)?.label ?? theme.label}`}
         />,
         document.body,
       )}
     </>
   );
 }
-

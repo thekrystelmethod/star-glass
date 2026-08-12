@@ -53,6 +53,15 @@ export interface ThemeStudioProps {
   themes: StudioTheme[];
   themeId: string;
   onTheme: (id: string) => void;
+  /** id → the one job that register exists to do. Shown on its card. */
+  roles?: Record<string, string>;
+  /**
+   * Registers that attach to an artifact or a reading mode rather than to
+   * taste. Rendered as a locked shelf — visible and explained, not clickable.
+   */
+  boundThemes?: StudioTheme[];
+  /** id → what a bound register is bound TO ("print", "share", "zodiac"). */
+  bindings?: Record<string, string>;
   backgrounds: StudioBackground[];
   backgroundId: string;
   onBackground: (id: string) => void;
@@ -80,9 +89,15 @@ export interface ThemeStudioProps {
 
 const HUES = ["--atlas-accent", "--atlas-info", "--atlas-positive", "--atlas-warning"] as const;
 
+const BINDING_COPY: Record<string, string> = {
+  print: "Worn by the printed report",
+  share: "Worn by the exported share card",
+  zodiac: "Applies with a sidereal or Vedic reading",
+};
+
 export default function ThemeStudio({
   open, compact = false, onClose,
-  themes, themeId, onTheme,
+  themes, themeId, onTheme, roles, boundThemes, bindings,
   backgrounds, backgroundId, onBackground,
   moments, momentId, onMoment,
   pairings, pairChoice, onPairing,
@@ -154,7 +169,7 @@ export default function ThemeStudio({
           </div>
 
           {/* ── registers ── */}
-          <p className="tst-section">Register</p>
+          <p className="tst-section tst-sec-register">Register</p>
           <div className="tst-registers">
             {themes.map((t) => {
               const on = t.id === themeId;
@@ -187,6 +202,9 @@ export default function ThemeStudio({
                     <span className="tst-register-name" style={{ color: t.tokens["--atlas-text-1"] }}>{t.label}</span>
                     {on && <span className="tst-check" aria-hidden="true">✓</span>}
                   </span>
+                  {roles?.[t.id] && (
+                    <span className="tst-register-role" style={{ color: t.tokens["--atlas-text-3"] }}>{roles[t.id]}</span>
+                  )}
                   {t.note && (
                     <span className="tst-register-note" style={{ color: t.tokens["--atlas-text-4"] }}>{t.note}</span>
                   )}
@@ -200,10 +218,42 @@ export default function ThemeStudio({
             })}
           </div>
 
+          {/* ── bound registers: shown so the field is legible, not pickable ── */}
+          {boundThemes && boundThemes.length > 0 && (
+            <>
+              <p className="tst-section tst-sec-bound">
+                {compact ? "Bound" : "Bound — these attach to an artifact, not to taste"}
+              </p>
+              <div className="tst-bound">
+                {boundThemes.map((t) => (
+                  <div
+                    key={t.id}
+                    className="tst-boundcard"
+                    style={{ background: t.tokens["--atlas-panel"], borderColor: t.tokens["--atlas-border"] }}
+                    title={t.note}
+                  >
+                    <span className="tst-bound-hues" aria-hidden="true">
+                      {HUES.map((h) => (
+                        <span key={h} style={{ background: t.tokens[h] }} />
+                      ))}
+                    </span>
+                    <span className="tst-bound-copy">
+                      <span className="tst-bound-name" style={{ color: t.tokens["--atlas-text-1"] }}>{t.label}</span>
+                      <span className="tst-bound-where" style={{ color: t.tokens["--atlas-text-4"] }}>
+                        {BINDING_COPY[bindings?.[t.id] ?? ""] ?? "Applied automatically"}
+                      </span>
+                    </span>
+                    <span className="tst-bound-lock" aria-hidden="true">◆</span>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
           {/* ── type pairings ── */}
           {pairings && onPairing && (
             <>
-              <p className="tst-section">{compact ? "Typography" : "Type pairing — the register's voice in letterform"}</p>
+              <p className="tst-section tst-sec-type">{compact ? "Typography" : "Type pairing — the register's voice in letterform"}</p>
               <div className="tst-pairs">
                 {effectivePairing && (
                   <button
@@ -245,8 +295,8 @@ export default function ThemeStudio({
           )}
 
           {/* ── environments ── */}
-          <p className="tst-section">{compact ? "Atmosphere" : "Environment — runs behind everything"}</p>
-          <div className="tst-tiles">
+          <p className="tst-section tst-sec-env">{compact ? "Atmosphere" : "Environment — runs behind everything"}</p>
+          <div className="tst-tiles tst-tiles-env">
             {backgrounds.map((b) => {
               const on = b.id === backgroundId;
               const Bg = b.Component;
@@ -281,8 +331,8 @@ export default function ThemeStudio({
           {/* ── reveal moments ── */}
           {moments.length > 0 && (
             <>
-              <p className="tst-section">Reveal moment — plays when an artifact lands</p>
-              <div className="tst-tiles">
+              <p className="tst-section tst-sec-moment">Reveal moment — plays when an artifact lands</p>
+              <div className="tst-tiles tst-tiles-moment">
             {moments.map((m) => {
               const on = m.id === momentId;
               const Gen = m.Component;
@@ -471,9 +521,31 @@ const TST_STYLE = `
   color: var(--atlas-bg, #0e1116);
   font-size: 11px; font-weight: 800;
 }
+/* The role is the card's headline claim — what this register is FOR. The note
+   is the picture it paints. Role reads first, so it gets the stronger ink. */
+.tst-register-role { margin-top: 6px; font-size: 12px; line-height: 1.4; min-height: 34px; }
 .tst-register-note { margin-top: 4px; font-size: 11.5px; line-height: 1.4; min-height: 32px; }
 .tst-register-hues { display: flex; gap: 5px; margin-top: 9px; }
 .tst-register-hues span { width: 11px; height: 11px; border-radius: 50%; }
+
+/* bound registers — a shelf, not a picker. Same palette preview, no affordance. */
+.tst-bound { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 10px; }
+.tst-boundcard {
+  display: flex; align-items: center; gap: 11px;
+  padding: 11px 13px;
+  border: 1px dashed; border-radius: var(--radius-lg, 1rem);
+  cursor: default;
+}
+.tst-bound-hues { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.tst-bound-hues span { width: 9px; height: 9px; border-radius: 50%; }
+.tst-bound-copy { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.tst-bound-name {
+  font-family: var(--font-action, var(--font-display, ui-serif, Georgia, serif));
+  font-size: 12.5px; font-style: var(--action-style, normal); font-weight: var(--action-weight, 500);
+  letter-spacing: var(--action-tracking, 0.01em);
+}
+.tst-bound-where { font-size: 11px; line-height: 1.35; }
+.tst-bound-lock { margin-left: auto; font-size: 10px; opacity: 0.5; color: var(--atlas-text-4, #7c8392); }
 
 /* effect tiles — live stage + copy + Use */
 .tst-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
@@ -585,16 +657,31 @@ const TST_STYLE = `
   .tst-compact .tst-title { margin-top: 8px; font-size: 22px; line-height: 1.08; }
   .tst-compact .tst-intro { margin-top: 10px; font-size: 12.5px; line-height: 1.48; }
   .tst-compact .tst-close { grid-column: 4; grid-row: 1; justify-self: end; align-self: start; z-index: 2; transform: translateY(-5px); }
+  /* Sections carry stable classes rather than nth-of-type: the field grew a
+     "Bound" shelf, and a positional chain silently reassigns every column
+     the next time a section is added. */
   .tst-compact .tst-page > .tst-section { margin: 0; align-self: end; }
-  .tst-compact .tst-page > .tst-section:nth-of-type(1) { grid-column: 2; grid-row: 1; }
-  .tst-compact .tst-page > .tst-section:nth-of-type(2) { grid-column: 3; grid-row: 1; }
-  .tst-compact .tst-page > .tst-section:nth-of-type(3) { grid-column: 4; grid-row: 1; }
-  .tst-compact .tst-registers { grid-column: 2; grid-row: 2; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; min-width: 0; }
-  .tst-compact .tst-register { min-width: 0; padding: 9px; }
-  .tst-compact .tst-register-sky { height: 58px; }
-  .tst-compact .tst-register-row { margin-top: 8px; }
+  .tst-compact .tst-sec-register { grid-column: 2; grid-row: 1; }
+  .tst-compact .tst-sec-type { grid-column: 3; grid-row: 1; }
+  .tst-compact .tst-sec-env { grid-column: 4; grid-row: 1; }
+  .tst-compact .tst-sec-bound,
+  .tst-compact .tst-bound,
+  .tst-compact .tst-sec-moment,
+  .tst-compact .tst-tiles-moment,
+  .tst-compact .tst-bigstage { display: none; }
+  /* Eight registers, two rows of four — the workbench stays one screen tall. */
+  .tst-compact .tst-registers {
+    grid-column: 2; grid-row: 2;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
+    gap: 6px; min-width: 0; overflow-y: auto;
+  }
+  .tst-compact .tst-register { min-width: 0; padding: 7px; }
+  .tst-compact .tst-register-sky { height: 34px; }
+  .tst-compact .tst-register-row { margin-top: 6px; }
   .tst-compact .tst-register-name { min-height: 25px; overflow: hidden; font-size: 10.75px; line-height: 1.15; }
-  .tst-compact .tst-register-note { min-height: 48px; max-height: 48px; overflow: hidden; font-size: 9.5px; line-height: 1.35; }
+  .tst-compact .tst-register-role { min-height: 0; max-height: 26px; overflow: hidden; font-size: 9.5px; line-height: 1.35; }
+  .tst-compact .tst-register-note { display: none; }
   .tst-compact .tst-register-hues { margin-top: 6px; }
   .tst-compact .tst-register-hues span { width: 8px; height: 8px; }
   .tst-compact .tst-pairs { grid-column: 3; grid-row: 2; display: block; min-width: 0; }
@@ -603,7 +690,7 @@ const TST_STYLE = `
   .tst-compact .tst-pair-ag { font-size: 30px; }
   .tst-compact .tst-pair-name { margin-top: 7px; font-size: 13px; }
   .tst-compact .tst-pair-note { font-size: 10.5px; }
-  .tst-compact .tst-tiles { grid-column: 4; grid-row: 2; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; min-width: 0; }
+  .tst-compact .tst-tiles-env { grid-column: 4; grid-row: 2; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; min-width: 0; }
   .tst-compact .tst-tile { padding: 7px; border-radius: 12px; }
   .tst-compact .tst-stage { height: 68px; border-radius: 50%; }
   .tst-compact .tst-tile-row { display: block; margin-top: 7px; text-align: center; }

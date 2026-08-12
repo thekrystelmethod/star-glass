@@ -1,16 +1,68 @@
 <!doctype html>
-<html lang="en" data-theme="paperlab">
+<html lang="en" data-theme="observatory">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f4f1ea" />
+    <meta name="theme-color" content="#fbfaf7" />
     <meta name="description" content="StarGlass — deterministic natal-chart mathematics and depth-psychological interpretation." />
     <title>StarGlass — the interpretation engine</title>
+
+    <!--
+      Every face the eleven registers name. One stylesheet, display=swap: the
+      register paints immediately in its fallback stack and re-flows when the
+      real face lands. Only faces the active register actually renders get
+      downloaded, so the cost of the other ten is the CSS alone.
+
+      test-registers.mjs asserts this URL still names every family in
+      FONT_TOKENS — adding a register with a new face fails the gate rather
+      than shipping a silent fallback.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Eczar:wght@400;600&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Gwendolyn:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Jost:ital,wght@0,400;0,500;1,400&family=Literata:ital,wght@0,400;0,600;1,400&family=Marcellus&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Spectral:ital,wght@0,400;0,600;1,400&family=Young+Serif&display=swap"
+    />
+
     <script>
+      /*
+        Pre-hydration register restore. Two jobs, both before React exists:
+
+        1. Carry a retired id forward. Paper Lab, Blueprint and Refined left the
+           field; a browser holding one of those must land on its successor, not
+           on a register that no longer has a stylesheet.
+        2. Paint the ground immediately. The compiled register sheet arrives
+           with the JS bundle, so without this a saved dark register would flash
+           Observatory's paper first. GROUND carries bg + ink only; the rest of
+           the token set follows a few hundred milliseconds later.
+
+        test-registers.mjs asserts GROUND matches themes.ts hex for hex.
+      */
       (() => {
+        const SUPERSEDED = { paperlab: 'observatory', blueprint: 'atelier', refined: 'glassgraphite' };
+        const GROUND = {
+          observatory: ['#fbfaf7', '#1b2434'],
+          manuscript: ['#f6efe3', '#2a1e17'],
+          atelier: ['#f4f5f3', '#14171a'],
+          bluehour: ['#3f4a5c', '#f4eee5'],
+          nocturne: ['#0b1020', '#e8e6f0'],
+          glassgraphite: ['#101617', '#edeae4'],
+          plate: ['#ffffff', '#101014'],
+          phosphor: ['#05080a', '#d7ffe6'],
+          sidereal: ['#10251f', '#f1ece0'],
+          impression: ['#ffffff', '#23201b'],
+          emissary: ['#171226', '#f2ece2'],
+        };
         try {
           const saved = localStorage.getItem('starglass-theme');
-          if (saved) document.documentElement.dataset.theme = saved;
+          const id = SUPERSEDED[saved] || (GROUND[saved] ? saved : 'observatory');
+          const root = document.documentElement;
+          root.dataset.theme = id;
+          const ground = GROUND[id];
+          root.style.background = ground[0];
+          root.style.color = ground[1];
+          const meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', ground[0]);
         } catch (_) {}
       })();
     </script>

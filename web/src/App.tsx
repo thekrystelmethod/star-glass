@@ -9,6 +9,7 @@ import { ReportView } from "./components/ReportView";
 import { ShareCard } from "./components/ShareCard";
 import { awaitReading, composeReading, pendingReadingJob, type ReadingPhase } from "./interpretation";
 import { useTheme } from "./theme/ThemeProvider";
+import { BOUND_REGISTERS } from "./theme/themes";
 import type { BirthFormState, CastMeta, CastResult, GeneratedReading } from "./types";
 
 const INITIAL_FORM: BirthFormState = {
@@ -67,8 +68,11 @@ function wait(milliseconds: number) {
   return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
 
+/** The register bound to a sidereal reading (Sidereal), read from the field. */
+const ZODIAC_LENS = Object.keys(BOUND_REGISTERS).find((id) => BOUND_REGISTERS[id] === "zodiac") ?? null;
+
 export default function App() {
-  const { theme } = useTheme();
+  const { theme, setLensId } = useTheme();
   const restored = useMemo(loadSession, []);
   const [form, setForm] = useState<BirthFormState>(restored?.form ?? INITIAL_FORM);
   const [castResult, setCastResult] = useState<CastResult | null>(restored?.castResult ?? null);
@@ -110,6 +114,18 @@ export default function App() {
       .finally(() => { setReadingLoading(false); setReadingPhase(null); });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /**
+   * The sidereal lens. Sidereal is a BOUND register — it belongs to the sky
+   * being read, not to taste — so reading the sidereal block puts the whole
+   * app in it and the tropical block hands the room back to the user's pick.
+   * The lens is never persisted, so a reload opens in the register they chose.
+   */
+  const siderealReading = Boolean(castResult) && zodiacBlock === "sidereal";
+  useEffect(() => {
+    setLensId(siderealReading ? ZODIAC_LENS : null);
+    return () => setLensId(null);
+  }, [siderealReading, setLensId]);
 
   useEffect(() => {
     try { localStorage.setItem("starglass-atmosphere", backgroundId); } catch (_) {}
@@ -250,7 +266,7 @@ export default function App() {
 
   if (castResult && reading && reportOpen) {
     return (
-      <div className="app-shell report-shell">
+      <div className="app-shell report-shell" data-theme="impression">
         <ReportView
           chart={castResult.chart}
           meta={castResult.meta}
@@ -313,6 +329,8 @@ export default function App() {
       {castResult && reading && shareOpen && (
         <ShareCard
           wheelSvg={wheelSvg}
+          chart={castResult.chart}
+          zodiacBlock={zodiacBlock}
           reading={reading}
           meta={castResult.meta}
           onClose={() => setShareOpen(false)}

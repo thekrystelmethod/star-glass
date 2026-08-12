@@ -1,10 +1,33 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Download, X } from "lucide-react";
+import { renderWheel, type ChartResponse } from "../api";
+import { getRegister } from "../theme/themes";
 import type { CastMeta, GeneratedReading } from "../types";
 
+/**
+ * The card is a travelling artifact: it lands in someone else's timeline, on
+ * someone else's ground, so it wears a bound register — Emissary, deeper and
+ * cooler than Nocturne so the card reads as an object rather than a screenshot
+ * of an app. Reading the live --atlas-* tokens off <html> (what this did
+ * before) meant the card inherited whatever register the sender happened to be
+ * in, and a Plate card exported as white-on-white.
+ */
+const CARD = getRegister("emissary");
+/**
+ * Canvas measures text against a real font stack, not a custom property, so
+ * the card names Emissary's display face directly. The face has to be LOADED
+ * before the first measureText, or the lines are broken against Georgia's
+ * metrics and the exported PNG wraps in the wrong places — hence the
+ * document.fonts wait before drawing.
+ */
+const CARD_FONT = '"Bodoni Moda", Didot, Georgia, serif';
+
 interface ShareCardProps {
+  /** The on-screen wheel, in the sender's register — the fallback only. */
   wheelSvg: string;
+  chart: ChartResponse;
+  zodiacBlock: "tropical" | "sidereal";
   reading: GeneratedReading;
   meta: CastMeta;
   onClose: () => void;
@@ -15,11 +38,6 @@ const FORMATS: Record<CardFormat, { width: number; height: number; label: string
   landscape: { width: 1200, height: 630, label: "Landscape · link preview" },
   portrait: { width: 1080, height: 1350, label: "Portrait · story" },
 };
-
-function themeToken(name: string, fallback: string) {
-  const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  return value || fallback;
-}
 
 function wrapText(context: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
   const words = text.split(/\s+/);
@@ -38,7 +56,7 @@ function wrapText(context: CanvasRenderingContext2D, text: string, maxWidth: num
   return lines;
 }
 
-export function ShareCard({ wheelSvg, reading, meta, onClose }: ShareCardProps) {
+export function ShareCard({ wheelSvg, chart, zodiacBlock, reading, meta, onClose }: ShareCardProps) {
   const sentences = useMemo(() => {
     const collected: string[] = [];
     if (reading.framing) collected.push(reading.framing);
@@ -51,6 +69,21 @@ export function ShareCard({ wheelSvg, reading, meta, onClose }: ShareCardProps) 
   const [sentence, setSentence] = useState(sentences[1] ?? sentences[0] ?? "");
   const [format, setFormat] = useState<CardFormat>("landscape");
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // The wheel behind the quote is drawn in Emissary too. Reusing the on-screen
+  // SVG would put the sender's register on the card — a Plate wheel is nearly
+  // black, and at 34% alpha on Emissary's violet ground it disappears. If the
+  // engine is asleep the on-screen wheel is still better than nothing.
+  const [cardWheel, setCardWheel] = useState(wheelSvg);
+  useEffect(() => {
+    let cancelled = false;
+    renderWheel(chart, zodiacBlock, CARD, `${meta.dateLabel} · ${meta.placeLabel}`, {
+      transparent: true, size: 1100, palette: CARD.wheel,
+    })
+      .then((svg) => { if (!cancelled) setCardWheel(svg); })
+      .catch(() => { if (!cancelled) setCardWheel(wheelSvg); });
+    return () => { cancelled = true; };
+  }, [chart, zodiacBlock, wheelSvg, meta.dateLabel, meta.placeLabel]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
@@ -67,12 +100,13 @@ export function ShareCard({ wheelSvg, reading, meta, onClose }: ShareCardProps) 
     const context = canvas.getContext("2d");
     if (!context) return;
 
-    const bg = themeToken("--atlas-bg", "#0e1116");
-    const panel = themeToken("--atlas-panel", "#161a21");
-    const text1 = themeToken("--atlas-text-1", "#e8eaf0");
-    const text4 = themeToken("--atlas-text-4", "#7c8392");
-    const accent = themeToken("--atlas-accent", "#8fa1c2");
-    const displayFont = themeToken("--font-display", "Georgia, serif");
+    const bg = CARD.tokens["--atlas-bg"];
+    const panel = CARD.tokens["--atlas-panel"];
+    const text1 = CARD.tokens["--atlas-text-1"];
+    const text4 = CARD.tokens["--atlas-text-4"];
+    const accent = CARD.tokens["--atlas-accent"];
+    // Canvas takes a font stack, not a CSS custom property.
+    const displayFont = CARD_FONT;
 
     const draw = (wheelImage?: HTMLImageElement) => {
       const gradient = context.createLinearGradient(0, 0, width, height);
@@ -126,17 +160,32 @@ export function ShareCard({ wheelSvg, reading, meta, onClose }: ShareCardProps) 
       context.fillText("star-glass.netlify.app", margin, height - margin * 0.9 + width * 0.024);
     };
 
-    if (wheelSvg) {
-      const blob = new Blob([wheelSvg], { type: "image/svg+xml" });
-      const url = URL.createObjectURL(blob);
-      const image = new Image();
-      image.onload = () => { draw(image); URL.revokeObjectURL(url); };
-      image.onerror = () => { draw(); URL.revokeObjectURL(url); };
-      image.src = url;
-    } else {
-      draw();
-    }
-  }, [sentence, format, wheelSvg, reading.title, meta]);
+    // Wait for the card's own face before measuring a single line. Both
+    // weights the card uses, at a nominal size — the promise resolves
+    // immediately once they are in the document's font set.
+    const ready = document.fonts?.load
+      ? Promise.all([
+        document.fonts.load(`italic 40px ${CARD_FONT}`),
+        document.fonts.load(`600 20px ${CARD_FONT}`),
+      ]).catch(() => undefined)
+      : Promise.resolve(undefined);
+
+    let cancelled = false;
+    ready.then(() => {
+      if (cancelled) return;
+      if (cardWheel) {
+        const blob = new Blob([cardWheel], { type: "image/svg+xml" });
+        const url = URL.createObjectURL(blob);
+        const image = new Image();
+        image.onload = () => { if (!cancelled) draw(image); URL.revokeObjectURL(url); };
+        image.onerror = () => { if (!cancelled) draw(); URL.revokeObjectURL(url); };
+        image.src = url;
+      } else {
+        draw();
+      }
+    });
+    return () => { cancelled = true; };
+  }, [sentence, format, cardWheel, reading.title, meta]);
 
   const download = () => {
     const canvas = canvasRef.current;

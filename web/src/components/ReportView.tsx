@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, Printer } from "lucide-react";
 import { activeChartBlock, renderWheel, type ChartResponse, type Placement } from "../api";
-import { THEMES } from "../theme/themes";
-import { useTheme } from "../theme/ThemeProvider";
+import { getRegister } from "../theme/themes";
 import type { CastMeta, GeneratedReading } from "../types";
+
+/**
+ * The report is a printed artifact, so it wears a bound register: Impression,
+ * Observatory's print sibling — true white stock, rules instead of panels.
+ * That is a fact about paper, not a matter of taste, so the register on screen
+ * has no say here. App puts data-theme="impression" on the report shell, which
+ * is what makes every --atlas-* token inside this component resolve to
+ * Impression's ink; the wheel is handed the same register's palette below.
+ */
+const PRINT = getRegister("impression");
 
 const BODY_ORDER = ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "Chiron", "North Node", "South Node"];
 const BODY_GLYPH: Record<string, string> = {
@@ -26,27 +35,24 @@ interface ReportViewProps {
 }
 
 export function ReportView({ chart, meta, reading, zodiacBlock, onBack }: ReportViewProps) {
-  const { theme } = useTheme();
   const [wheelSvg, setWheelSvg] = useState("");
   const [movementWheels, setMovementWheels] = useState<Record<number, string>>({});
   const block = activeChartBlock(chart, zodiacBlock);
   const birthLine = `${meta.dateLabel} · ${meta.timeLabel} · ${meta.placeLabel}`;
   const castStamp = new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
 
-  // The report is a paper object: it always draws the wheel on warm paper in
-  // the Paper Lab palette, whatever register the screen is wearing. Each
-  // movement that names its bodies also gets a thematic wheel — the geometry
-  // that movement reads, everything else receded.
+  // The wheel is drawn on Impression's stock too, whatever the screen wears.
+  // Each movement that names its bodies also gets a thematic wheel — the
+  // geometry that movement reads, everything else receded.
   useEffect(() => {
     let cancelled = false;
-    const paperlab = THEMES.find((candidate) => candidate.id === "paperlab") ?? THEMES[0];
-    renderWheel(chart, zodiacBlock, theme, birthLine, { transparent: false, size: 1300, palette: paperlab.wheel })
+    renderWheel(chart, zodiacBlock, PRINT, birthLine, { transparent: false, size: 1300, palette: PRINT.wheel })
       .then((svg) => { if (!cancelled) setWheelSvg(svg); })
       .catch(() => { if (!cancelled) setWheelSvg(""); });
     reading.movements.forEach((movement, index) => {
       if (!movement.bodies || movement.bodies.length === 0) return;
-      renderWheel(chart, zodiacBlock, theme, movement.nav, {
-        transparent: false, size: 820, palette: paperlab.wheel, highlight: movement.bodies,
+      renderWheel(chart, zodiacBlock, PRINT, movement.nav, {
+        transparent: false, size: 820, palette: PRINT.wheel, highlight: movement.bodies,
       })
         .then((svg) => { if (!cancelled) setMovementWheels((prior) => ({ ...prior, [index]: svg })); })
         .catch(() => {});
