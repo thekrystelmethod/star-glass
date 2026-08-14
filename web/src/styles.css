@@ -360,6 +360,29 @@ select { appearance: none; padding-right: 42px; }
   .composer-stages li { opacity: 1; transform: none; }
 }
 .reading-composer-error { background: color-mix(in srgb, var(--atlas-warning) 9%, transparent); }
+
+/* A HELD portrait — finished prose carrying one unreconciled claim. It sits
+   above the reading it belongs to rather than replacing it: the band marks the
+   portrait, it does not withhold it. Steadier than the error box on purpose;
+   nothing here is broken and nothing needs the reader to act. */
+.reading-composer-held {
+  background: color-mix(in srgb, var(--atlas-warning) 7%, transparent);
+  border-left: 3px solid var(--atlas-warning);
+  animation: none;
+}
+.reading-composer-held .composer-mark { color: var(--atlas-warning); }
+.reading-composer-held .composer-mark > svg { animation: none; }
+.held-claims { margin: 0 0 16px; padding: 0; list-style: none; display: grid; gap: 10px; }
+.held-claims li {
+  display: grid;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid var(--atlas-border);
+  border-radius: var(--radius-sm);
+  background: var(--atlas-surface, transparent);
+}
+.held-claims q { color: var(--atlas-text-2); font-family: var(--font-display-sm, var(--font-display)); font-size: 14px; font-style: italic; }
+.held-claims span { color: var(--atlas-text-4); font-size: 12px; line-height: 1.5; }
 .reading-quote { margin: 16px 0 0; padding: 10px 18px; border-left: 3px solid var(--atlas-accent); color: var(--atlas-text-2); font-family: var(--font-display-sm, var(--font-display)); font-size: 17px; font-style: italic; }
 .development-invitation { display: grid; grid-template-columns: 36px 1fr; gap: 14px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--atlas-border); }
 .development-invitation > span { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--atlas-warning); border-radius: 50%; color: var(--atlas-warning); }
@@ -576,6 +599,18 @@ select { appearance: none; padding-right: 42px; }
 .report-cover h1 { margin: 10px 0 12px; font-family: var(--font-display); font-size: clamp(max(30px, var(--font-display-min, 0px)), 4.5vw, 44px); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; }
 .report-birth-line { margin: 0; font-size: 15px; }
 .report-settings-line { margin: 4px 0 0; color: var(--atlas-text-4); font-size: 12.5px; }
+/* Prints as well as it screens: an exported held draft must say what it is on
+   the page itself, because the PDF outlives the tab that explained it. */
+.report-unverified {
+  margin: 12px auto 0;
+  max-width: 400px;
+  padding: 8px 12px;
+  border: 1px solid var(--atlas-warning);
+  border-radius: var(--radius-sm);
+  color: var(--atlas-warning);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
 .report-wheel { max-width: 620px; margin: 26px auto 8px; }
 .report-wheel svg { width: 100%; height: auto; }
 .report-wheel-placeholder { color: var(--atlas-text-4); font-style: italic; }

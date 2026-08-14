@@ -36,3 +36,9 @@ jobs:
       - name: Smoke-test the interpret function
         working-directory: web
         run: node test-interpret-smoke.mjs
+      - name: Check how failed composes are classified
+        working-directory: web
+        run: node test-reading-failure.mjs
+      - name: Check how failed composes are classified
+        working-directory: web
+        run: node test-reading-failure.mjs

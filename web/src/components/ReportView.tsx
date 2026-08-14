@@ -30,11 +30,15 @@ interface ReportViewProps {
   chart: ChartResponse;
   meta: CastMeta;
   reading: GeneratedReading;
+  /** True when this portrait was HELD by the audit rather than published.
+      The prose is complete; one factual claim in it did not reconcile with
+      the calculated chart. It prints, but it prints saying so. */
+  unverified?: boolean;
   zodiacBlock: "tropical" | "sidereal";
   onBack: () => void;
 }
 
-export function ReportView({ chart, meta, reading, zodiacBlock, onBack }: ReportViewProps) {
+export function ReportView({ chart, meta, reading, unverified = false, zodiacBlock, onBack }: ReportViewProps) {
   const [wheelSvg, setWheelSvg] = useState("");
   const [movementWheels, setMovementWheels] = useState<Record<number, string>>({});
   const block = activeChartBlock(chart, zodiacBlock);
@@ -79,6 +83,9 @@ export function ReportView({ chart, meta, reading, zodiacBlock, onBack }: Report
           <h1>{reading.title}</h1>
           <p className="report-birth-line">{birthLine}</p>
           <p className="report-settings-line">{meta.zodiacLabel} zodiac · {meta.houseLabel} houses</p>
+          {unverified && (
+            <p className="report-unverified">Unverified draft — one claim in this portrait could not be reconciled with the calculated chart.</p>
+          )}
           {wheelSvg
             ? <div className="report-wheel" dangerouslySetInnerHTML={{ __html: wheelSvg }} />
             : <p className="report-wheel-placeholder no-print">Drawing the wheel for print…</p>}
@@ -138,6 +145,9 @@ export function ReportView({ chart, meta, reading, zodiacBlock, onBack }: Report
 
         <footer className="report-colophon">
           <p>Cast by StarGlass on {castStamp}. Positions computed with the Swiss Ephemeris — calculated, never hand-typed.</p>
+          {unverified && (
+            <p>This copy did not pass the calculation audit. Every position above is computed; one interpretive claim in the prose makes a geometric statement the ledger does not support. Read it as a draft.</p>
+          )}
           <p>The portrait is a field guide, not a verdict: test it against the actual texture of your days.</p>
         </footer>
       </article>

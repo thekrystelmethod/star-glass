@@ -7,7 +7,7 @@ import { ChartForm } from "./components/ChartForm";
 import { ReadingWorkspace } from "./components/ReadingWorkspace";
 import { ReportView } from "./components/ReportView";
 import { ShareCard } from "./components/ShareCard";
-import { awaitReading, composeReading, pendingReadingJob, type ReadingPhase } from "./interpretation";
+import { asReadingFailure, awaitReading, composeReading, pendingReadingJob, type ReadingFailure, type ReadingPhase } from "./interpretation";
 import { useTheme } from "./theme/ThemeProvider";
 import { BOUND_REGISTERS } from "./theme/themes";
 import type { BirthFormState, CastMeta, CastResult, GeneratedReading } from "./types";
@@ -82,7 +82,10 @@ export default function App() {
   const [wheelLoading, setWheelLoading] = useState(false);
   const [reading, setReading] = useState<GeneratedReading | null>(restored?.reading ?? null);
   const [readingLoading, setReadingLoading] = useState(false);
-  const [readingError, setReadingError] = useState("");
+  // How the last compose attempt stopped. Carries the stage, whether composing
+  // again can honestly help, and the preserved draft when one exists — so the
+  // UI can stop treating eleven different endings as one.
+  const [readingFailure, setReadingFailure] = useState<ReadingFailure | null>(null);
   const [readingPhase, setReadingPhase] = useState<ReadingPhase | null>(null);
   const [zodiacBlock, setZodiacBlock] = useState<"tropical" | "sidereal">(
     restored?.castResult?.chart.tropical ? "tropical" : restored?.castResult ? "sidereal" : "tropical",
@@ -107,10 +110,10 @@ export default function App() {
     const pending = pendingReadingJob();
     if (!pending || !restored?.castResult || restored.reading) return;
     setReadingLoading(true);
-    setReadingError("");
+    setReadingFailure(null);
     awaitReading(pending.jobId, pending.startedAt + 12 * 60_000, setReadingPhase)
       .then((composed) => setReading(composed))
-      .catch((reason) => setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading."))
+      .catch((reason) => setReadingFailure(asReadingFailure(reason)))
       .finally(() => { setReadingLoading(false); setReadingPhase(null); });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -217,12 +220,12 @@ export default function App() {
       setCastResult({ chart, meta: effectiveMeta });
       setFocusBodies(null);
       setReading(null);
-      setReadingError("");
+      setReadingFailure(null);
       setReadingLoading(true);
       window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
       composeReading({ chart, zodiac: birth.zodiac, essence: meta.essence }, setReadingPhase)
         .then((composed) => { setReading(composed); setCeremonyTrigger(`portrait-${Date.now()}`); })
-        .catch((reason) => setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading."))
+        .catch((reason) => setReadingFailure(asReadingFailure(reason)))
         .finally(() => { setReadingLoading(false); setReadingPhase(null); });
     } finally {
       setLoading(false);
@@ -235,7 +238,7 @@ export default function App() {
     setFocusBodies(null);
     setWheelSvg("");
     setReading(null);
-    setReadingError("");
+    setReadingFailure(null);
     setReadingLoading(false);
     setReportOpen(false);
     setShareOpen(false);
@@ -244,7 +247,7 @@ export default function App() {
 
   const retryReading = async () => {
     if (!castResult || readingLoading) return;
-    setReadingError("");
+    setReadingFailure(null);
     setReadingLoading(true);
     try {
       const nextReading = await composeReading({
@@ -255,7 +258,7 @@ export default function App() {
       setReading(nextReading);
       setCeremonyTrigger(`portrait-${Date.now()}`);
     } catch (reason) {
-      setReadingError(reason instanceof Error ? reason.message : "StarGlass could not compose the reading.");
+      setReadingFailure(asReadingFailure(reason));
     } finally {
       setReadingLoading(false);
       setReadingPhase(null);
@@ -264,13 +267,22 @@ export default function App() {
 
   const chartKey = chartKeyOf(castResult?.meta);
 
-  if (castResult && reading && reportOpen) {
+  // A held portrait is finished prose that failed one factual check. It is
+  // SHOWN — marked as unverified, never passed off as verified — because
+  // hiding a written portrait behind a button that cannot help is precisely
+  // what the retry bug was. It may be read and kept; it may not be broadcast.
+  const heldDraft = readingFailure?.kind === "held" ? readingFailure.draft : null;
+  const shownReading = reading ?? heldDraft;
+  const readingUnverified = !reading && Boolean(heldDraft);
+
+  if (castResult && shownReading && reportOpen) {
     return (
       <div className="app-shell report-shell" data-theme="impression">
         <ReportView
           chart={castResult.chart}
           meta={castResult.meta}
-          reading={reading}
+          reading={shownReading}
+          unverified={readingUnverified}
           zodiacBlock={zodiacBlock}
           onBack={() => setReportOpen(false)}
         />
@@ -302,10 +314,11 @@ export default function App() {
           chartKey={chartKey}
           wheelSvg={wheelSvg}
           wheelLoading={wheelLoading}
-          reading={reading}
+          reading={shownReading}
+          readingUnverified={readingUnverified}
           readingLoading={readingLoading}
           readingPhase={readingPhase}
-          readingError={readingError}
+          readingFailure={readingFailure}
           zodiacBlock={zodiacBlock}
           onZodiacBlock={setZodiacBlock}
           onEdit={editChart}

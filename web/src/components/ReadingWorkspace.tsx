@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, FileDown, ImageDown, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, ShieldCheck, Sparkles } from "lucide-react";
+import { BookOpen, BookOpenText, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock3, FileDown, ImageDown, LoaderCircle, PanelLeftClose, PanelLeftOpen, Pencil, RefreshCw, RotateCcw, ScanSearch, ShieldAlert, ShieldCheck, Sparkles } from "lucide-react";
 import { activeChartBlock, type ChartResponse, type Placement } from "../api";
 import { hasCodexEntry } from "../codex";
 import { CeremonyMoment } from "../motion/catalog";
 import { useArchetypes } from "../useArchetypes";
 import { CodexPanel, type CodexTarget } from "./CodexPanel";
+import type { ReadingFailure } from "../interpretation";
 import type { CastMeta, GeneratedReading } from "../types";
 
 const MOVEMENT_PLACEHOLDERS = [
@@ -36,9 +37,11 @@ interface ReadingWorkspaceProps {
   wheelSvg: string;
   wheelLoading: boolean;
   reading: GeneratedReading | null;
+  /** True when `reading` is a HELD draft rather than a published portrait. */
+  readingUnverified: boolean;
   readingLoading: boolean;
   readingPhase: { phase: string; round?: number } | null;
-  readingError: string;
+  readingFailure: ReadingFailure | null;
   zodiacBlock: "tropical" | "sidereal";
   onZodiacBlock: (block: "tropical" | "sidereal") => void;
   onEdit: () => void;
@@ -59,9 +62,10 @@ export function ReadingWorkspace({
   wheelSvg,
   wheelLoading,
   reading,
+  readingUnverified,
   readingLoading,
   readingPhase,
-  readingError,
+  readingFailure,
   zodiacBlock,
   onZodiacBlock,
   onEdit,
@@ -258,14 +262,59 @@ export function ReadingWorkspace({
                   <p className="composer-wait"><Clock3 size={15} aria-hidden="true" /><span>A full portrait usually takes 1–3 minutes. Keep this tab open—you can switch away and return shortly.</span></p>
                 </div>
               )}
-              {readingError && !reading && (
+              {/* The verification apparatus faltered, but the chart is fine and
+                  a fresh attempt is a genuinely different roll. Offer the retry. */}
+              {readingFailure?.kind === "transient" && !reading && !readingLoading && (
                 <div className="reading-composer reading-composer-error" role="alert">
-                  <strong>The chart is safe. The prose needs another pass.</strong>
-                  <p>{readingError}</p>
-                  <button type="button" className="secondary-button" onClick={onRetryReading} disabled={readingLoading}><RefreshCw size={15} /> Try the reading again</button>
+                  <strong>The chart is safe. The check on the prose didn’t finish.</strong>
+                  <p>{readingFailure.message}</p>
+                  <button type="button" className="secondary-button" onClick={onRetryReading} disabled={readingLoading}><RefreshCw size={15} /> Compose the portrait again</button>
                 </div>
               )}
-              {!reading && !readingLoading && !readingError && (
+
+              {/* Nothing to show and nothing a retry would change. Say so, and
+                  do not offer a button that cannot work. */}
+              {readingFailure?.kind === "blocked" && !reading && !readingLoading && (
+                <div className="reading-composer reading-composer-error" role="alert">
+                  <strong>This chart can’t be composed as it stands.</strong>
+                  <p>{readingFailure.message}</p>
+                  <p className="composer-wait"><span>Composing again would meet the same answer. Edit the birth details and cast once more.</span></p>
+                </div>
+              )}
+
+              {/* A HELD portrait: the prose is complete and preserved, and one
+                  concrete claim in it contradicts the ledger. The composer
+                  varies its wording run to run; the ledger does not vary at
+                  all. So this is shown, marked — never hidden behind a retry
+                  that structurally cannot succeed. */}
+              {readingUnverified && readingFailure && (
+                <div className="reading-composer reading-composer-held" role="status">
+                  <div className="composer-mark">
+                    <ShieldAlert size={22} aria-hidden="true" />
+                    <span>Held for review</span>
+                  </div>
+                  <strong>Your portrait is finished. One line in it is unverified.</strong>
+                  <p>
+                    StarGlass wrote all six movements, then checked every concrete claim against your
+                    calculated chart. One claim didn’t reconcile — so the portrait is shown to you marked,
+                    rather than published as though it had passed. Composing again won’t resolve it: the
+                    wording changes each run, but the chart it is checked against doesn’t.
+                  </p>
+                  {readingFailure.unreconciled.length > 0 && (
+                    <ul className="held-claims">
+                      {readingFailure.unreconciled.slice(0, 3).map((claim) => (
+                        <li key={claim.find}>
+                          <q>{claim.find}</q>
+                          <span>{claim.reason}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <p className="composer-wait"><span>Everything else below was verified against the ledger. The positions, tables and wheel are calculated and unaffected.</span></p>
+                </div>
+              )}
+
+              {!reading && !readingLoading && !readingFailure && (
                 <div className="reading-composer">
                   <strong>Your chart is cast. The portrait awaits.</strong>
                   <p>This chart was restored from your last visit. Compose its six-movement portrait whenever you're ready — it takes a minute or three.</p>
