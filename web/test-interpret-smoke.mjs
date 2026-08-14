@@ -90,16 +90,29 @@ const envValues = {
 };
 globalThis.Netlify = { env: { get: (k) => envValues[k] } };
 
-async function scenario(name, auditScript, expectStatus, expectExtra = () => {}) {
+// The shape-namer runs before composition and is identified by CONTENT, not by
+// call order — dispatching on order made every scenario break the moment a new
+// stage was added ahead of the composer. `namerScript` lets a scenario decide
+// how the namer behaves; by default it names a real shape so a myth is chosen.
+function namerResponse(shapeId) {
+  return { ok: true, status: 200, json: async () => ({ content: [{ type: "text", text: shapeId }] }) };
+}
+const isNamerRequest = (options) =>
+  String(options?.body ?? "").includes("You name the hardest theme");
+
+async function scenario(name, auditScript, expectStatus, expectExtra = () => {}, namerScript = () => namerResponse("mark-at-sovereignty")) {
   let call = 0;
-  globalThis.fetch = async (url) => {
+  let composerPrompt = "";
+  globalThis.fetch = async (url, options) => {
     if (String(url).includes("gateway.test")) {
+      if (isNamerRequest(options)) return namerScript();
       call += 1;
-      if (call === 1) return composerResponse();
+      if (call === 1) { composerPrompt = String(options?.body ?? ""); return composerResponse(); }
       return auditScript(call - 1); // audit calls numbered from 1
     }
     throw new Error(`unexpected fetch ${url}`);
   };
+  globalThis.__composerPrompt = () => composerPrompt;
   globalThis.__lastStored = null;
   const request = new Request("https://x/api/interpret", {
     method: "POST",
@@ -241,6 +254,43 @@ await scenario("unlocatable referee findings hold the draft",
     if (s.stage !== "referee-unlocatable") { console.error("expected stage referee-unlocatable, got", s.stage); process.exit(1); }
     if (!s.held?.reading?.movements) { console.error("held record must preserve the draft"); process.exit(1); }
   });
+
+// 10. the named shape reaches the composer as a told story, not a mood
+await scenario("a named shape sends its myth to the composer",
+  () => auditResponse(true, []),
+  "ready",
+  () => {
+    const prompt = globalThis.__composerPrompt();
+    if (!prompt.includes("THE MYTH FOR THIS CHART'S HARDEST THEME")) {
+      console.error("✗ composer was not given the myth block"); process.exit(1);
+    }
+    if (!prompt.includes("THE IMAGE THE STORY TURNS ON")) {
+      console.error("✗ myth block omitted the governing image"); process.exit(1);
+    }
+  });
+
+// 11. FAIL OPEN. Myth selection must never become a twelfth way to lose a
+// portrait: a dead namer costs imagery, never the reading.
+await scenario("a dead shape-namer still publishes",
+  () => auditResponse(true, []),
+  "ready",
+  () => {
+    if (globalThis.__composerPrompt().includes("THE MYTH FOR THIS")) {
+      console.error("✗ a failed namer still injected a myth"); process.exit(1);
+    }
+  },
+  () => { throw new Error("namer unavailable"); });
+
+// 12. An invented shape is not a licence to guess a story.
+await scenario("an unknown shape selects no myth",
+  () => auditResponse(true, []),
+  "ready",
+  () => {
+    if (globalThis.__composerPrompt().includes("THE MYTH FOR THIS")) {
+      console.error("✗ an unknown shape still produced a myth"); process.exit(1);
+    }
+  },
+  () => namerResponse("the-shape-of-water"));
 
 // 10. owner kill switch: disabled is fail-closed and never reaches the gateway
 envValues.PUBLIC_GENERATION_ENABLED = "false";

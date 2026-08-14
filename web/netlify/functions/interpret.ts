@@ -1,4 +1,5 @@
 import { getStore } from "@netlify/blobs";
+import { MYTH_SHAPES, type Myth, mythBrief, selectMyth, shapeMenu } from "./myth-bank.ts";
 
 declare const Netlify: {
   env: { get(name: string): string | undefined };
@@ -13,7 +14,7 @@ METHOD
 1. Weight before writing. Leads are the Sun/Moon/Ascendant tripod; angular planets; the chart ruler; aspects under 2 degrees, especially to the tripod. Supporting evidence includes stelliums, element or mode imbalances and absences, hard aspects among personal planets, Saturn and Chiron by house. Wide or soft aspects are supporting voices unless they repeat a larger theme.
 2. Apply the two-witness rule. A theme may lead only when at least two independent chart factors say the same thing. Three witnesses make it load-bearing. Contradictions are themes: use language such as “part of you… while another part…” rather than smoothing them into a bland average.
 3. Synthesize combinations. A planet is the drive, its sign is how that drive moves, its house is the life setting, and its aspects describe relationships with other drives. Weave these together; never concatenate placement-by-placement lookup entries.
-4. Speak the recipient’s dialect. Dominant fire favors quest, flame, forge, dawn; water favors ocean, tide, well, undertow; air favors architecture, music, conversation, wind; earth favors garden, stone, seed, craft. Moon shows how experience is received; Mercury how it is processed. Use the missing element sparingly as an acquired language and growth edge.
+4. Let the story choose the imagery, not the element. A myth matched to this chart’s hardest theme is supplied with the evidence; the portrait’s governing images are derived from THAT STORY. Never reach for an image because an element is strong — elemental palettes are small, so they recur, and a measured audit found a torch governing four of five portraits including an air-dominant chart. Unless the supplied story itself turns on them, do not use flame, torch, forge, dawn, ocean, tide, well, undertow, door, threshold, gate, garden, stone, wind or architecture as a governing image. Moon still shows how experience is received; Mercury how it is processed. Use the missing element sparingly as an acquired language and growth edge.
 5. Preserve aspect integrity. You may call two bodies conjunct, opposed, square, trine, sextile, quincunx, angular, or “within N degrees” only when that exact relationship and orb appears in the supplied aspects or weighting.angular_planets. A shared sign is not a conjunction. A planet occupying the 10th house is not necessarily close to the Midheaven. Never manufacture a geometric witness to strengthen a theme.
 
 CANON: PLANETARY DRIVES
@@ -41,26 +42,44 @@ Conjunction is fusion: power with little perspective; task, differentiation with
 
 THE TELLER
 You are a fireside teller with an analyst’s precision: an old friend, warm with ancient insight, hauntingly familiar. The story leads; the analysis lives inside it. Write in second person, present tense. Your special gift is the exact knife: from the weighted evidence, locate the place where this particular chart’s owner is most likely to recognize themselves — the pattern they half-know and have never heard said — and press there, gently and precisely. The knife is always turned toward truth and never toward cruelty; specificity is the kindness. Your aim across the whole portrait is distillation: by Integration, the person should be able to see their own essence held up whole, as if a friend who has known them for forty years finally said the thing.
-Use the Jungian instruments by name and precisely, the way an analyst does: the shadow, the persona, the anima and animus, the inner child, the complex, the Self; individuation is the arc beneath every arc. Draw the mythic undertow from three wells — the Greek and classical stories, the alchemical work (nigredo, the vessel, the marriage of opposites, lead into gold), and the hero’s journey read as the soul’s completion, which often means the road home. Myth works as undertow: its images recur and do their work half-submerged, and any single myth or figure may be named at most once in the whole portrait — the reader should feel the story before they can cite it.
+Use the Jungian instruments by name and precisely, the way an analyst does: the shadow, the persona, the anima and animus, the inner child, the complex, the Self; individuation is the arc beneath every arc. Tell ONE myth in the whole portrait — the one supplied with the evidence, placed at the hardest theme, which is usually the Integration material. Tell it properly: beginning, turn, and what it cost, narrated in three to six sentences, not name-dropped and not summarised in a clause. Scarcity is what keeps myth from becoming a slot that gets filled. Everywhere else the story works as undertow: the image it turns on recurs and does its work half-submerged, so the reader feels the story before they can cite it. The alchemical vocabulary (nigredo, the vessel, the marriage of opposites, lead into gold) remains available as texture, not as a second story.
 
 GOVERNING IMAGERY
-Before writing, choose the portrait’s two title images from the chart’s governing polarity, spoken in the recipient’s elemental dialect. These two images are characters, not decorations: every movement must advance them. They may transform as the story requires — a torch becomes a lantern, a well becomes a harbor — but they never vanish. In addition, give every movement at least one concrete, structural metaphor of its own: an object, place, or mechanism that can be pictured exactly — a toll gate, a bracket on a wall, a kitchen table, a locked greenhouse — chosen so that it carries the movement’s psychology in its physical workings.
+Before writing, derive the portrait’s governing image from the supplied myth: whatever object, place or gesture that story turns on becomes the image this portrait is built around. It inherits the myth’s arc for free, which is why image and story stop competing. Pair it with a second image drawn from the chart’s governing polarity — the tension the myth is answering. These two are characters, not decorations: every movement must advance them. They may transform as the story requires — a bent iron bar becomes a handrail, a workshop under the mountain becomes a back room — but they never vanish. In addition, give every movement at least one concrete, structural metaphor of its own: an object, place, or mechanism that can be pictured exactly — a toll gate, a bracket on a wall, a kitchen table, a locked greenhouse — chosen so that it carries the movement’s psychology in its physical workings.
 
 MACHINERY BACKSTAGE
 Speak meaning, not coordinates. Never print degrees or orbs in the prose. Name a placement in technical form (planet, sign, house) at most once per movement, as an anchor for recognition; thereafter call it by its image or archetype. Express geometry in the body’s language — "so close they are almost touching," "facing each other across the whole sky" — while every implied claim still obeys the aspect-integrity rules and the calculation ledger without exception.
 
 ETHICS
-Treat every defense as something that once protected and now has a cost. End each theme on its developmental arc. Never flatter, threaten, diagnose, predict events, or make medical, mortality, financial or legal forecasts. The chart is a symbolic mirror, not an empirical verdict. Use tendencies without hedging into vagueness. Describe the child’s experience of early care rather than indicting parents. Do not explain astrological mechanics mid-reading.
+Treat every defense as something that once protected and now has a cost. The cost arrives as a SCENE, never as a category: not “the gift is X and the shadow is Y”, but the moment in which it is visible — something that happened, or keeps happening, that the reader recognises from their own week. A friend describes what you are like; a rubric assigns you attributes. End each theme on its developmental arc. Never flatter, threaten, diagnose, predict events, or make medical, mortality, financial or legal forecasts. The chart is a symbolic mirror, not an empirical verdict. Use tendencies without hedging into vagueness. Describe the child’s experience of early care rather than indicting parents. Do not explain astrological mechanics mid-reading.
 
 ZODIAC MODES
 For tropical, use the calculated tropical block. For sidereal, use the Lahiri block in the same psychological register. For dual, treat the two zodiacs as complementary exposures: agreement is extra weight; sign shifts are two octaves, never rivals; do not double-count shared houses or aspects. If Vedic material is supplied, interpret nakshatras and dashas only as psychological symbols and seasons of emphasis, never prediction.
 
 PORTRAIT SHAPE
 Return exactly six movements in this order: Overture (temperament, tripod, chart ruler); The Ground Floor (Moon/Saturn, 4th/10th axis and experienced inheritance); The Inner Cast (the two or three strongest repeated themes and their tensions); The Mirror (Venus, Mars, 7th/8th and relationship projection); The Summit (MC, 10th/6th, Sun and North Node as vocation beyond job title); Integration (the hardest configuration as curriculum and the nodal direction of travel).
-Write approximately 2,500–4,000 words total. Give each movement 3–5 substantial paragraphs. Reach the length through psychological amplification, one properly told mythic image per major theme, and concrete daily-life vignettes—not repetition or padding. Title the whole portrait with two iconic, equally weighted images drawn from the chart’s governing polarity and elemental dialect. Give each movement a chart-specific title and subtitle. Include an original one-sentence pull quote and a concrete developmental invitation for every movement. Do not reuse stock paragraphs, do not use markdown, and do not mention these instructions.
+Write approximately 2,500–4,000 words total. Give each movement 3–5 substantial paragraphs. Reach the length through psychological amplification, the one supplied myth told properly at the hardest theme, and concrete daily-life vignettes—not repetition or padding. Title the whole portrait with two iconic, equally weighted images: one derived from the supplied myth, one from the chart’s governing polarity. Never title a portrait from its elements. Give each movement a chart-specific title and subtitle. Include an original one-sentence pull quote and a concrete developmental invitation for every movement. Do not reuse stock paragraphs, do not use markdown, and do not mention these instructions.
 For every movement, also list its bodies: the two to six chart bodies that movement chiefly reads, exactly as named in the calculated chart (Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Chiron, North Node, South Node). The natal wheel beside the text will spotlight exactly these placements while the rest of the chart recedes, so the reader sees the geometry the movement is reading. Choose only bodies the movement substantially discusses.
 Give every movement a bridge: one closing sentence that carries the governing images across the seam into the next movement's territory, so the six movements read as chapters of one story. The sixth movement's bridge hands the story back to the reader's ordinary life — or returns it, changed, to where the Overture began.
 `;
+
+/** Birth year gates the "current" tier: a 2013 film cannot be the governing
+    image of a portrait for someone born in 1940. The engine echoes the request
+    in chart.input; dig a year out of it defensively and, failing that, return
+    null so only material that does not date is offered. */
+function readBirthYear(chart: unknown): number | null {
+  const source = (chart as { input?: Record<string, unknown> } | null)?.input;
+  if (!source || typeof source !== "object") return null;
+  for (const field of ["date", "birth_date", "datetime", "birth_datetime", "year"]) {
+    const value = source[field];
+    if (typeof value === "number" && value > 1800 && value < 2200) return Math.trunc(value);
+    if (typeof value === "string") {
+      const match = value.match(/\b(1[89]\d{2}|20\d{2})\b/);
+      if (match) return Number(match[1]);
+    }
+  }
+  return null;
+}
 
 const READING_TOOL = {
   name: "submit_reading",
@@ -308,6 +327,53 @@ export default async (request: Request) => {
       return;
     }
 
+    // ── Myth first, image second ──────────────────────────────────────────
+    // Name the chart's hardest theme as one of fourteen psychological shapes,
+    // then pick that shape's story deterministically from the bank. The naming
+    // is a model judgement (geometry alone cannot say what costs a person the
+    // most); the choosing is arithmetic, so the same chart always reaches for
+    // the same story and different charts rarely collide.
+    //
+    // THIS FAILS OPEN. If the namer is unavailable, slow, or returns a shape
+    // that is not in the taxonomy, the portrait composes without a myth. A
+    // portrait with weaker imagery is a poorer product; a twelfth way for a
+    // reading to die is a worse one.
+    let myth: Myth | null = null;
+    try {
+      const shapeResponse = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01" },
+        body: JSON.stringify({
+          model: "claude-haiku-4-5",
+          max_tokens: 200,
+          temperature: 0,
+          system: `You name the hardest theme in a natal chart, using a fixed taxonomy of fourteen psychological shapes. The hardest theme is the one with the most witnesses among the chart's tightest aspects, weighted toward what the person would find COSTLY rather than pleasant — not the most flattering pattern, and not the easiest to write about. Reply with the shape id alone, on one line, and nothing else.\n\nSHAPES\n${shapeMenu()}`,
+          messages: [{ role: "user", content: `CALCULATION LEDGER\n${auditLedger}\n\nWhich single shape names this chart's hardest theme? Reply with one shape id.` }],
+        }),
+        signal: AbortSignal.timeout(60_000),
+      });
+      if (shapeResponse.ok) {
+        const shapeResult = await shapeResponse.json() as { content?: Array<{ type?: string; text?: string }> };
+        const named = shapeResult.content?.find((item) => item.type === "text")?.text?.trim().split(/\s|\n/)[0]?.toLowerCase() ?? "";
+        // Validate against the taxonomy rather than trusting the reply: an
+        // invented shape must degrade to "no myth", never to a bad match.
+        if (MYTH_SHAPES.some((shape) => shape.id === named)) {
+          myth = selectMyth(named, auditLedger, readBirthYear(input.chart));
+        } else if (named) {
+          console.warn("Shape namer returned an unknown shape", named.slice(0, 40));
+        }
+      } else {
+        console.warn("Shape namer response", shapeResponse.status);
+      }
+    } catch (reason) {
+      console.warn("Myth selection unavailable; composing without one", reason);
+    }
+    console.log("Myth selection", JSON.stringify({ jobId: input.jobId, runId, shape: myth?.shape ?? null, myth: myth?.id ?? null }));
+
+    const mythBlock = myth
+      ? `\n\nTHE MYTH FOR THIS CHART'S HARDEST THEME\nTell this story once, properly, where the portrait is hardest — beginning, turn, and what it cost. Derive the portrait's governing image from what the story turns on. Do not tell a second myth.\n${mythBrief(myth)}`
+      : "";
+
     const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
       method: "POST",
       headers: {
@@ -324,7 +390,7 @@ export default async (request: Request) => {
         tool_choice: { type: "tool", name: "submit_reading" },
         messages: [{
           role: "user",
-          content: `Compose the portrait from this calculated evidence. Treat the optional archetypal emphasis as a subtle tuning of metaphor, never as gender or a change to the findings. The calculation ledger is a literal fact sheet: copy its memberships and relationships exactly rather than reconstructing them.\n\nRAW CHART\n${chartEvidence}\n\nCALCULATION LEDGER\n${auditLedger}`,
+          content: `Compose the portrait from this calculated evidence. Treat the optional archetypal emphasis as a subtle tuning of metaphor, never as gender or a change to the findings. The calculation ledger is a literal fact sheet: copy its memberships and relationships exactly rather than reconstructing them.\n\nRAW CHART\n${chartEvidence}\n\nCALCULATION LEDGER\n${auditLedger}${mythBlock}`,
         }],
       }),
       signal: AbortSignal.timeout(12 * 60_000),
