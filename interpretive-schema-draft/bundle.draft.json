@@ -1,0 +1,145 @@
+{
+  "$schema": "./schema/interpretive-bundle.schema.json",
+  "metadata": {
+    "id": "starglass.interpretive-bundle.phase2-experiment",
+    "schema_version": "0.1.0-draft",
+    "content_version": "unassigned",
+    "status": "draft_noncanonical",
+    "observed_commit": "b01801cd5f5790eafa8f05b7404890b170ab62f0",
+    "created_on": "2026-08-15",
+    "purpose": "Test whether current interpretive surfaces can be described without runtime cutover or implicit conflict resolution."
+  },
+  "guardrails": {
+    "runtime_cutover": false,
+    "canonical_declaration": false,
+    "source_deletion": false,
+    "migration_started": false,
+    "validator_writes_files": false
+  },
+  "source_groups": [
+    {
+      "id": "calculated_facts",
+      "role": "factual_geometry",
+      "paths": ["scripts/calculate_chart.py", "api/main.py"],
+      "current_authority": "operational_per_consumer"
+    },
+    {
+      "id": "handwritten_semantics",
+      "role": "skill_semantics_and_delivery",
+      "paths": ["SKILL.md", "references/"],
+      "current_authority": "operational_per_consumer"
+    },
+    {
+      "id": "web_portrait",
+      "role": "web_portrait_prompt_and_contract",
+      "paths": ["web/netlify/functions/interpret.ts"],
+      "current_authority": "operational_per_consumer"
+    },
+    {
+      "id": "myth_corpus",
+      "role": "runtime_myth_selection",
+      "paths": ["web/netlify/functions/myth-bank.ts"],
+      "current_authority": "operational_per_consumer"
+    },
+    {
+      "id": "codex_authored_snapshot",
+      "role": "legacy_authored_corpus",
+      "paths": ["starglass-codex-v1/codex/", "starglass-codex-v1/docs/"],
+      "current_authority": "unresolved"
+    },
+    {
+      "id": "codex_deployed_assets",
+      "role": "browser_retrieval_assets",
+      "paths": ["web/public/codex/", "web/src/codex.ts"],
+      "current_authority": "operational_per_consumer"
+    },
+    {
+      "id": "report_contracts",
+      "role": "intended_and_operational_report_shapes",
+      "paths": [
+        "references/report-template.md",
+        "web/src/types.ts",
+        "web/src/components/ReportView.tsx",
+        "web/netlify/functions/interpret.ts"
+      ],
+      "current_authority": "unresolved"
+    }
+  ],
+  "ownership_rules": [
+    {
+      "id": "ownership.calculation_precedes_interpretation",
+      "status": "proposed",
+      "statement": "Calculated geometry owns factual chart relationships; interpretive content cannot override it."
+    },
+    {
+      "id": "ownership.semantic_rules_own_meaning",
+      "status": "proposed",
+      "statement": "Approved semantic entities and inference rules own meaning; voice and output contracts may not redefine them."
+    },
+    {
+      "id": "ownership.mode_overrides_are_explicit",
+      "status": "proposed",
+      "statement": "A mode overlay may override only fields it names explicitly, including mode-specific rulership."
+    },
+    {
+      "id": "ownership.corpora_are_authored_evidence",
+      "status": "proposed",
+      "statement": "Codex and myth prose are authored corpora that reference semantic rules but do not silently redefine them."
+    },
+    {
+      "id": "ownership.generated_targets_are_read_only",
+      "status": "proposed",
+      "statement": "A generated artifact carries source hashes and is never edited as an independent semantic source."
+    },
+    {
+      "id": "ownership.disputes_fail_visible",
+      "status": "proposed",
+      "statement": "A disputed rule remains represented as disputed; validation must not choose a winner implicitly."
+    },
+    {
+      "id": "ownership.validation_is_not_approval",
+      "status": "proposed",
+      "statement": "Successful validation demonstrates structure only and never confers canonical or runtime status."
+    }
+  ],
+  "artifact_targets": [
+    {
+      "id": "artifact.skill_bundle",
+      "path": "SKILL.md + references/",
+      "current_role": "handwritten_operational_source",
+      "write_enabled": false
+    },
+    {
+      "id": "artifact.composer_prompt",
+      "path": "web/netlify/functions/interpret.ts",
+      "current_role": "handwritten_operational_source",
+      "write_enabled": false
+    },
+    {
+      "id": "artifact.codex_static_json",
+      "path": "web/public/codex/",
+      "current_role": "deployed_static_assets",
+      "write_enabled": false
+    },
+    {
+      "id": "artifact.report_contract",
+      "path": "web/src/components/ReportView.tsx",
+      "current_role": "handwritten_operational_source",
+      "write_enabled": false
+    }
+  ],
+  "fixtures_file": "fixtures/representative-fixtures.json",
+  "coverage_fixtures_file": "fixtures/coverage-fixtures.json",
+  "contradictions_file": "contradictions.draft.json",
+  "validation": {
+    "command": "python3 interpretive-schema-draft/scripts/validate_draft.py",
+    "compile_preview_command": "python3 interpretive-schema-draft/scripts/compile_preview.py --check",
+    "expected_representative_fixtures": 4,
+    "expected_coverage_fixtures": 10,
+    "expected_codex_entries": 312,
+    "expected_see_also_edges": 612,
+    "expected_coordinate_edges": 600,
+    "expected_myth_shapes": 42,
+    "expected_myths": 184
+  }
+}

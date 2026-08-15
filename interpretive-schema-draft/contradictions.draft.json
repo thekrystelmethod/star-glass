@@ -1,0 +1,105 @@
+{
+  "$schema": "./schema/interpretive-bundle.schema.json#/$defs/contradictionDocument",
+  "status": "draft_noncanonical",
+  "rule": "This ledger records contradictions and proposed handling. It does not choose semantic winners.",
+  "items": [
+    {
+      "id": "C1",
+      "classification": "CONFIRMED",
+      "summary": "No repository-wide canonical owner exists; authority is operational per consumer.",
+      "evidence": ["SKILL.md:25-33", "web/netlify/functions/interpret.ts:10-95", "web/src/codex.ts:73-76"],
+      "phase2_disposition": "preserve_explicit_boundaries"
+    },
+    {
+      "id": "C2",
+      "classification": "CONFIRMED",
+      "summary": "README denies prewritten interpretation paragraphs while the Codex contains 312 authored entries.",
+      "evidence": ["README.md:72-74", "starglass-codex-v1/codex/index.json:1-18"],
+      "phase2_disposition": "change_documentation_later"
+    },
+    {
+      "id": "C3",
+      "classification": "CONFIRMED",
+      "summary": "The lexicon and deepest-principles assign the grammatical noun role differently.",
+      "evidence": ["references/lexicon.md:6-8", "references/deepest-principles.md:40-45"],
+      "phase2_disposition": "unresolved_owner_confirmation_required"
+    },
+    {
+      "id": "C4",
+      "classification": "CONFIRMED",
+      "summary": "The map forbids stock shadow while canon.json and Codex prose contain reusable shadow assertions.",
+      "evidence": ["references/deepest-principles.md:15-36", "starglass-codex-v1/codex/canon.json:3-98", "web/src/codex.ts:158-173"],
+      "phase2_disposition": "preserve_and_mark_legacy_unreviewed"
+    },
+    {
+      "id": "C5",
+      "classification": "CONFIRMED",
+      "summary": "Codex provenance predates and omits deepest-principles.md.",
+      "evidence": ["starglass-codex-v1/codex/index.json:3-6", "references/deepest-principles.md:1-11"],
+      "phase2_disposition": "semantic_conformity_not_demonstrated"
+    },
+    {
+      "id": "C6",
+      "classification": "CONFIRMED",
+      "summary": "Skill voice prefers two-noun titles while the web portrait rejects them and requires questions.",
+      "evidence": ["references/voice.md:85-110", "web/netlify/functions/interpret.ts:89-91"],
+      "phase2_disposition": "represent_as_separate_delivery_profiles"
+    },
+    {
+      "id": "C7",
+      "classification": "CONFIRMED",
+      "summary": "Skill and report references prescribe multiple myths while the web portrait permits one total.",
+      "evidence": ["SKILL.md:134-141", "references/report-template.md:72-75", "web/netlify/functions/interpret.ts:58-62"],
+      "phase2_disposition": "represent_as_separate_delivery_profiles"
+    },
+    {
+      "id": "C8",
+      "classification": "CONFIRMED",
+      "summary": "Synthesis requires tendency language while the web portrait bans the same hedges.",
+      "evidence": ["references/synthesis.md:143-168", "web/netlify/functions/interpret.ts:51-57"],
+      "phase2_disposition": "unresolved_care_clause_required"
+    },
+    {
+      "id": "C9",
+      "classification": "CONFIRMED",
+      "summary": "Voice permits limited technical anchors while the web portrait bans all machinery in prose.",
+      "evidence": ["references/voice.md:205-209", "web/netlify/functions/interpret.ts:64-68"],
+      "phase2_disposition": "represent_as_separate_delivery_profiles"
+    },
+    {
+      "id": "C10",
+      "classification": "CONFIRMED",
+      "summary": "Codex word-count contracts disagree: 180-280 versus 170-240.",
+      "evidence": ["starglass-codex-v1/docs/codex-spec.md:35-44", "starglass-codex-v1/docs/authoring-brief.md:47-58"],
+      "phase2_disposition": "unresolved_versioned_constraint_required"
+    },
+    {
+      "id": "C11",
+      "classification": "CONFIRMED",
+      "summary": "zodiac-modes says Vedic is outside the canon while SKILL.md and vedic-mode implement it.",
+      "evidence": ["references/zodiac-modes.md:13-20", "SKILL.md:119-122", "references/vedic-mode.md:1-18"],
+      "phase2_disposition": "change_documentation_later"
+    },
+    {
+      "id": "C12",
+      "classification": "CONFIRMED",
+      "summary": "The myth-bank header claims 62 myths and 14 shapes from a missing source; runtime contains 184 myths and 42 shapes.",
+      "evidence": ["web/netlify/functions/myth-bank.ts:1-25"],
+      "phase2_disposition": "preserve_and_repair_provenance_later"
+    },
+    {
+      "id": "C13",
+      "classification": "CONFIRMED",
+      "summary": "Codex models only North Node while portrait output addresses North and South Node independently.",
+      "evidence": ["web/src/codex.ts:44-54", "web/netlify/functions/interpret.ts:147-154"],
+      "phase2_disposition": "propose_axis_with_addressable_endpoints"
+    },
+    {
+      "id": "C14",
+      "classification": "NOT_DEMONSTRATED",
+      "summary": "Compiled currently denotes an authored snapshot; reproducible derivation is not demonstrated.",
+      "evidence": ["starglass-codex-v1/docs/codex-spec.md:1-5", "starglass-codex-v1/codex/index.json:3-6"],
+      "phase2_disposition": "avoid_generated_or_canonical_claims"
+    }
+  ]
+}

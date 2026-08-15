@@ -1,0 +1,216 @@
+{
+  "$schema": "../schema/interpretive-bundle.schema.json#/$defs/coverageFixtureDocument",
+  "status": "draft_noncanonical",
+  "fixtures": [
+    {
+      "id": "point.mars",
+      "kind": "point",
+      "status": "proposed",
+      "name": "Mars",
+      "core_drive": "The will in the body: desire, anger, courage, refusal, and pursuit.",
+      "developmental_arc": "From reactive fire to directed force.",
+      "legacy_assertions": [
+        {
+          "field": "stock_shadow",
+          "value": "Aggression turned sideways or inward.",
+          "conflict": "C4"
+        }
+      ],
+      "provenance": [
+        {
+          "path": "references/lexicon.md",
+          "section": "Planets — the nouns (who acts): Mars",
+          "lines": [36, 38]
+        }
+      ]
+    },
+    {
+      "id": "sign.aries",
+      "kind": "sign",
+      "status": "proposed",
+      "name": "Aries",
+      "element": "fire",
+      "modality": "cardinal",
+      "movement": "Firstly, urgently, by igniting.",
+      "light": "The courage to begin and the innocence of the warrior.",
+      "growth_itch": "Patience after the charge.",
+      "altitude_model": "present_but_unresolved",
+      "provenance": [
+        {
+          "path": "references/lexicon.md",
+          "section": "Signs — the adverbs (how the drive moves): Aries",
+          "lines": [86, 102]
+        }
+      ]
+    },
+    {
+      "id": "house.1",
+      "kind": "house",
+      "status": "proposed",
+      "number": 1,
+      "phase": "angular",
+      "horizon": "lower",
+      "axis_role": "root",
+      "setting": "The threshold, embodiment, style of arrival, and the body's first answer to the world.",
+      "provenance": [
+        {
+          "path": "references/lexicon.md",
+          "section": "Houses — the settings: 1st",
+          "lines": [150, 166]
+        }
+      ]
+    },
+    {
+      "id": "aspect.opposition",
+      "kind": "aspect",
+      "status": "proposed",
+      "name": "Opposition",
+      "angle": 180,
+      "relationship": "Two drives face one another across an axis, with either end liable to projection.",
+      "developmental_task": "Withdraw projection and hold both ends as one spine rather than enemies.",
+      "provenance": [
+        {
+          "path": "references/lexicon.md",
+          "section": "Aspects — the verbs: Opposition",
+          "lines": [208, 223]
+        }
+      ]
+    },
+    {
+      "id": "sign_axis.aries_libra",
+      "kind": "sign_axis",
+      "status": "proposed",
+      "ends": ["sign.aries", "sign.libra"],
+      "shared_core": {
+        "id": "axis_core.warrior",
+        "label": "Warrior",
+        "description": "Power in physical, creative, mental, attractive, and diplomatic forms, with independence and partnership held together.",
+        "delivery_visibility": "backstage_only"
+      },
+      "relationship": "bidirectional_mirror_loop",
+      "provenance": [
+        {
+          "path": "references/deepest-principles.md",
+          "section": "4. The six axes share one core",
+          "lines": [73, 93]
+        }
+      ]
+    },
+    {
+      "id": "node_axis.north_south",
+      "kind": "node_axis",
+      "status": "proposed",
+      "south": {
+        "id": "south_node",
+        "role": "overbuilt_competence",
+        "description": "A competence overbuilt in the exact shape of an early lack."
+      },
+      "north": {
+        "id": "north_node",
+        "role": "unbuilt_work",
+        "description": "The capacity that must be built, treated as work rather than reward."
+      },
+      "relationship": "bidirectional_loop",
+      "shadow_location": "refusal_to_cross",
+      "evidence_modifiers": ["soft_aspects", "benefics", "hard_aspects", "malefic_addresses"],
+      "provenance": [
+        {
+          "path": "references/lexicon.md",
+          "section": "North Node / South Node",
+          "lines": [71, 82]
+        }
+      ]
+    },
+    {
+      "id": "mode.vedic_psychological",
+      "kind": "mode_overlay",
+      "status": "proposed",
+      "base_mode": "sidereal_lahiri",
+      "calculation": {
+        "zodiac": "sidereal_lahiri",
+        "houses": "whole_sign",
+        "include_nakshatras": true,
+        "include_vimshottari": true
+      },
+      "ruler_overrides": {
+        "scorpio": "mars",
+        "aquarius": "saturn",
+        "pisces": "jupiter"
+      },
+      "constraints": [
+        "outer_planets_may_be_psychological_voices",
+        "outer_planets_rule_nothing",
+        "dashas_are_seasons_not_predictions"
+      ],
+      "provenance": [
+        {
+          "path": "references/vedic-mode.md",
+          "section": "Conventions",
+          "lines": [11, 18]
+        }
+      ]
+    },
+    {
+      "id": "myth_shape.ordeal_undergone",
+      "kind": "myth_shape",
+      "status": "operational_behavior_not_canonical",
+      "name": "An ordeal that must be undergone, not avoided",
+      "gloss": "There is no route around; the only way out is through, and something is left behind in payment.",
+      "provenance": [
+        {
+          "path": "web/netlify/functions/myth-bank.ts",
+          "section": "MYTH_SHAPES: ordeal-undergone",
+          "lines": [58, 58]
+        }
+      ]
+    },
+    {
+      "id": "myth.orpheus_adj",
+      "kind": "myth_entry",
+      "status": "operational_behavior_not_canonical",
+      "title": "Orpheus",
+      "source": "Greek",
+      "tier": "perennial",
+      "shape_ref": "myth_shape.ordeal_undergone",
+      "story": "Orpheus sings his way into the underworld and receives an otherwise impossible release on one condition.",
+      "turn": "He looks back within sight of the exit; the versions agree he nearly made it and disagree about why he turned.",
+      "image": "the last few steps",
+      "siblings": [],
+      "provenance": [
+        {
+          "path": "web/netlify/functions/myth-bank.ts",
+          "section": "MYTHS: orpheus-adj",
+          "lines": [256, 256]
+        }
+      ]
+    },
+    {
+      "id": "output_contract.web_portrait_v1",
+      "kind": "output_contract",
+      "status": "operational_behavior_not_canonical",
+      "consumer": "web_portrait",
+      "top_level_required": ["title", "framing", "movements"],
+      "movement_order": [
+        "Overture",
+        "The Ground Floor",
+        "The Inner Cast",
+        "The Mirror",
+        "The Summit",
+        "Integration"
+      ],
+      "movement_required": ["nav", "title", "subtitle", "paragraphs", "quote", "invitation", "bridge", "bodies"],
+      "cardinality": {
+        "movements": 6,
+        "paragraphs_per_movement": { "minimum": 3, "maximum": 5 },
+        "bodies_per_movement": { "minimum": 2, "maximum": 6 }
+      },
+      "provenance": [
+        {
+          "path": "web/netlify/functions/interpret.ts",
+          "section": "READING_TOOL",
+          "lines": [116, 161]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,525 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://starglass.local/schema/interpretive-bundle.draft.json",
+  "title": "StarGlass interpretive bundle draft interfaces",
+  "description": "PROPOSED and NONCANONICAL interfaces for the isolated Phase 2 experiment.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "metadata",
+    "guardrails",
+    "source_groups",
+    "ownership_rules",
+    "artifact_targets",
+    "fixtures_file",
+    "coverage_fixtures_file",
+    "contradictions_file",
+    "validation"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "metadata": { "$ref": "#/$defs/bundleMetadata" },
+    "guardrails": { "$ref": "#/$defs/guardrails" },
+    "source_groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceGroup" }
+    },
+    "ownership_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/ownershipRule" }
+    },
+    "artifact_targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/artifactTarget" }
+    },
+    "fixtures_file": { "type": "string" },
+    "coverage_fixtures_file": { "type": "string" },
+    "contradictions_file": { "type": "string" },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "compile_preview_command",
+        "expected_representative_fixtures",
+        "expected_coverage_fixtures",
+        "expected_codex_entries",
+        "expected_see_also_edges",
+        "expected_coordinate_edges",
+        "expected_myth_shapes",
+        "expected_myths"
+      ],
+      "properties": {
+        "command": { "type": "string" },
+        "compile_preview_command": { "type": "string" },
+        "expected_representative_fixtures": { "const": 4 },
+        "expected_coverage_fixtures": { "const": 10 },
+        "expected_codex_entries": { "const": 312 },
+        "expected_see_also_edges": { "const": 612 },
+        "expected_coordinate_edges": { "const": 600 },
+        "expected_myth_shapes": { "const": 42 },
+        "expected_myths": { "const": 184 }
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "draft_noncanonical",
+        "proposed",
+        "approved",
+        "deprecated",
+        "disputed",
+        "operational_behavior_not_canonical",
+        "legacy_unreviewed"
+      ]
+    },
+    "bundleMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "schema_version", "content_version", "status", "observed_commit", "created_on", "purpose"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "content_version": { "type": "string", "minLength": 1 },
+        "status": { "const": "draft_noncanonical" },
+        "observed_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "created_on": { "type": "string", "format": "date" },
+        "purpose": { "type": "string", "minLength": 20 }
+      }
+    },
+    "guardrails": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime_cutover", "canonical_declaration", "source_deletion", "migration_started", "validator_writes_files"],
+      "properties": {
+        "runtime_cutover": { "const": false },
+        "canonical_declaration": { "const": false },
+        "source_deletion": { "const": false },
+        "migration_started": { "const": false },
+        "validator_writes_files": { "const": false }
+      }
+    },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "section": { "type": "string" },
+        "lines": {
+          "type": "array",
+          "prefixItems": [{ "type": "integer", "minimum": 1 }, { "type": "integer", "minimum": 1 }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "sourceGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "paths", "current_authority"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "paths": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "current_authority": { "enum": ["operational_per_consumer", "unresolved"] }
+      }
+    },
+    "ownershipRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "statement"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^ownership\\." },
+        "status": { "const": "proposed" },
+        "statement": { "type": "string", "minLength": 20 }
+      }
+    },
+    "artifactTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "current_role", "write_enabled"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^artifact\\." },
+        "path": { "type": "string", "minLength": 1 },
+        "current_role": { "type": "string", "minLength": 1 },
+        "write_enabled": { "const": false }
+      }
+    },
+    "semanticRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "statement", "applies_to", "requires_evidence", "forbids", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^rule\\." },
+        "kind": { "const": "semantic_rule" },
+        "status": { "$ref": "#/$defs/status" },
+        "statement": { "type": "string", "minLength": 20 },
+        "applies_to": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "requires_evidence": { "type": "object" },
+        "forbids": { "type": "array", "items": { "type": "string" } },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "houseAxis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "lower", "upper", "relationship", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^house_axis\\." },
+        "kind": { "const": "house_axis" },
+        "status": { "$ref": "#/$defs/status" },
+        "lower": { "$ref": "#/$defs/axisEnd" },
+        "upper": { "$ref": "#/$defs/axisEnd" },
+        "relationship": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["direction", "anchor", "gating_model"],
+          "properties": {
+            "direction": { "const": "bidirectional" },
+            "anchor": { "const": "opposite_weight" },
+            "gating_model": { "const": "impedance_not_gate" }
+          }
+        },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "axisEnd": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["house", "function", "role"],
+      "properties": {
+        "house": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "function": { "type": "string", "minLength": 1 },
+        "role": { "enum": ["root", "branch"] }
+      }
+    },
+    "legacyCorpusEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "coordinates", "semantic_refs", "content_ref", "review", "deployment"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "const": "codex_entry" },
+        "status": { "$ref": "#/$defs/status" },
+        "coordinates": { "type": "object", "minProperties": 2 },
+        "semantic_refs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "content_ref": { "$ref": "#/$defs/sourceReference" },
+        "review": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "preserve_text"],
+          "properties": {
+            "status": { "const": "legacy_unreviewed_against_2026_08_15_map" },
+            "preserve_text": { "const": true }
+          }
+        },
+        "deployment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["current_target", "generated"],
+          "properties": {
+            "current_target": { "type": "string" },
+            "generated": { "const": false }
+          }
+        }
+      }
+    },
+    "deliveryProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "title_strategy", "myth_policy", "machinery_policy", "pattern_certainty", "conflicts_with", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^delivery\\." },
+        "kind": { "const": "delivery_profile" },
+        "status": { "$ref": "#/$defs/status" },
+        "title_strategy": { "type": "string" },
+        "myth_policy": { "type": "object" },
+        "machinery_policy": { "type": "string" },
+        "pattern_certainty": { "type": "string" },
+        "conflicts_with": { "type": "array", "items": { "type": "string" } },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "legacyAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "value", "conflict"],
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 },
+        "conflict": { "type": "string", "pattern": "^C([1-9]|1[0-4])$" }
+      }
+    },
+    "pointEntity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "name", "core_drive", "developmental_arc", "legacy_assertions", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^point\\." },
+        "kind": { "const": "point" },
+        "status": { "$ref": "#/$defs/status" },
+        "name": { "type": "string", "minLength": 1 },
+        "core_drive": { "type": "string", "minLength": 10 },
+        "developmental_arc": { "type": "string", "minLength": 10 },
+        "legacy_assertions": { "type": "array", "items": { "$ref": "#/$defs/legacyAssertion" } },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "signEntity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "name", "element", "modality", "movement", "light", "growth_itch", "altitude_model", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^sign\\." },
+        "kind": { "const": "sign" },
+        "status": { "$ref": "#/$defs/status" },
+        "name": { "type": "string" },
+        "element": { "enum": ["fire", "earth", "air", "water"] },
+        "modality": { "enum": ["cardinal", "fixed", "mutable"] },
+        "movement": { "type": "string", "minLength": 5 },
+        "light": { "type": "string", "minLength": 5 },
+        "growth_itch": { "type": "string", "minLength": 5 },
+        "altitude_model": { "enum": ["present_but_unresolved", "specified"] },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "houseEntity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "number", "phase", "horizon", "axis_role", "setting", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^house\\.([1-9]|1[0-2])$" },
+        "kind": { "const": "house" },
+        "status": { "$ref": "#/$defs/status" },
+        "number": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "phase": { "enum": ["angular", "succedent", "cadent"] },
+        "horizon": { "enum": ["lower", "upper"] },
+        "axis_role": { "enum": ["root", "branch"] },
+        "setting": { "type": "string", "minLength": 10 },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "aspectEntity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "name", "angle", "relationship", "developmental_task", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^aspect\\." },
+        "kind": { "const": "aspect" },
+        "status": { "$ref": "#/$defs/status" },
+        "name": { "type": "string" },
+        "angle": { "type": "number", "minimum": 0, "maximum": 180 },
+        "relationship": { "type": "string", "minLength": 10 },
+        "developmental_task": { "type": "string", "minLength": 10 },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "signAxis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "ends", "shared_core", "relationship", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^sign_axis\\." },
+        "kind": { "const": "sign_axis" },
+        "status": { "$ref": "#/$defs/status" },
+        "ends": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "string", "pattern": "^sign\\." }
+        },
+        "shared_core": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "label", "description", "delivery_visibility"],
+          "properties": {
+            "id": { "type": "string" },
+            "label": { "type": "string" },
+            "description": { "type": "string", "minLength": 10 },
+            "delivery_visibility": { "const": "backstage_only" }
+          }
+        },
+        "relationship": { "const": "bidirectional_mirror_loop" },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "nodeAxis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "south", "north", "relationship", "shadow_location", "evidence_modifiers", "provenance"],
+      "properties": {
+        "id": { "const": "node_axis.north_south" },
+        "kind": { "const": "node_axis" },
+        "status": { "$ref": "#/$defs/status" },
+        "south": { "$ref": "#/$defs/nodeEnd" },
+        "north": { "$ref": "#/$defs/nodeEnd" },
+        "relationship": { "const": "bidirectional_loop" },
+        "shadow_location": { "const": "refusal_to_cross" },
+        "evidence_modifiers": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "nodeEnd": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "description"],
+      "properties": {
+        "id": { "enum": ["south_node", "north_node"] },
+        "role": { "enum": ["overbuilt_competence", "unbuilt_work"] },
+        "description": { "type": "string", "minLength": 10 }
+      }
+    },
+    "modeOverlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "base_mode", "calculation", "ruler_overrides", "constraints", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^mode\\." },
+        "kind": { "const": "mode_overlay" },
+        "status": { "$ref": "#/$defs/status" },
+        "base_mode": { "type": "string" },
+        "calculation": { "type": "object", "minProperties": 1 },
+        "ruler_overrides": { "type": "object", "minProperties": 1, "additionalProperties": { "type": "string" } },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "mythShape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "name", "gloss", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^myth_shape\\." },
+        "kind": { "const": "myth_shape" },
+        "status": { "$ref": "#/$defs/status" },
+        "name": { "type": "string" },
+        "gloss": { "type": "string", "minLength": 10 },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "mythEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "title", "source", "tier", "shape_ref", "story", "turn", "image", "siblings", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^myth\\." },
+        "kind": { "const": "myth_entry" },
+        "status": { "$ref": "#/$defs/status" },
+        "title": { "type": "string" },
+        "source": { "type": "string" },
+        "tier": { "enum": ["perennial", "canonical", "current"] },
+        "shape_ref": { "type": "string", "pattern": "^myth_shape\\." },
+        "story": { "type": "string", "minLength": 20 },
+        "turn": { "type": "string", "minLength": 20 },
+        "image": { "type": "string", "minLength": 5 },
+        "siblings": { "type": "array", "items": { "type": "string" } },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "outputContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "consumer", "top_level_required", "movement_order", "movement_required", "cardinality", "provenance"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^output_contract\\." },
+        "kind": { "const": "output_contract" },
+        "status": { "$ref": "#/$defs/status" },
+        "consumer": { "type": "string" },
+        "top_level_required": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "movement_order": { "type": "array", "minItems": 6, "maxItems": 6, "items": { "type": "string" } },
+        "movement_required": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "cardinality": { "type": "object", "minProperties": 1 },
+        "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceReference" } }
+      }
+    },
+    "coverageFixture": {
+      "oneOf": [
+        { "$ref": "#/$defs/pointEntity" },
+        { "$ref": "#/$defs/signEntity" },
+        { "$ref": "#/$defs/houseEntity" },
+        { "$ref": "#/$defs/aspectEntity" },
+        { "$ref": "#/$defs/signAxis" },
+        { "$ref": "#/$defs/nodeAxis" },
+        { "$ref": "#/$defs/modeOverlay" },
+        { "$ref": "#/$defs/mythShape" },
+        { "$ref": "#/$defs/mythEntry" },
+        { "$ref": "#/$defs/outputContract" }
+      ]
+    },
+    "coverageFixtureDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["$schema", "status", "fixtures"],
+      "properties": {
+        "$schema": { "type": "string" },
+        "status": { "const": "draft_noncanonical" },
+        "fixtures": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": { "$ref": "#/$defs/coverageFixture" }
+        }
+      }
+    },
+    "fixture": {
+      "oneOf": [
+        { "$ref": "#/$defs/semanticRule" },
+        { "$ref": "#/$defs/houseAxis" },
+        { "$ref": "#/$defs/legacyCorpusEntry" },
+        { "$ref": "#/$defs/deliveryProfile" }
+      ]
+    },
+    "fixtureDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["$schema", "status", "fixtures"],
+      "properties": {
+        "$schema": { "type": "string" },
+        "status": { "const": "draft_noncanonical" },
+        "fixtures": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/fixture" }
+        }
+      }
+    },
+    "contradiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "classification", "summary", "evidence", "phase2_disposition"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^C([1-9]|1[0-4])$" },
+        "classification": {
+          "enum": ["CONFIRMED", "INFERRED", "PROPOSED", "NOT_DEMONSTRATED", "UNRESOLVED"]
+        },
+        "summary": { "type": "string", "minLength": 20 },
+        "evidence": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "phase2_disposition": { "type": "string", "minLength": 1, "not": { "const": "resolved" } }
+      }
+    },
+    "contradictionDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["$schema", "status", "rule", "items"],
+      "properties": {
+        "$schema": { "type": "string" },
+        "status": { "const": "draft_noncanonical" },
+        "rule": { "type": "string", "minLength": 20 },
+        "items": {
+          "type": "array",
+          "minItems": 14,
+          "maxItems": 14,
+          "items": { "$ref": "#/$defs/contradiction" }
+        }
+      }
+    }
+  }
+}

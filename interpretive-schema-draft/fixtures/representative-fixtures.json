@@ -1,0 +1,108 @@
+{
+  "$schema": "../schema/interpretive-bundle.schema.json#/$defs/fixtureDocument",
+  "status": "draft_noncanonical",
+  "fixtures": [
+    {
+      "id": "rule.shadow.derive_from_blocked_light",
+      "kind": "semantic_rule",
+      "status": "proposed",
+      "statement": "Shadow is derived from blocked access to a placement's specific light rather than assigned from a reusable stock darkness.",
+      "applies_to": ["skill_portrait", "web_portrait"],
+      "requires_evidence": {
+        "any_of": ["weighted_hard_aspect", "nodal_axis_contact", "saturn_contact"]
+      },
+      "forbids": [
+        "stock_shadow_from_sign_alone",
+        "parent_blame_without_evidence",
+        "identical_shadow_for_unrelated_charts"
+      ],
+      "provenance": [
+        {
+          "path": "references/deepest-principles.md",
+          "section": "1. Light is primary. Shadow is blocked access.",
+          "lines": [15, 36]
+        }
+      ]
+    },
+    {
+      "id": "house_axis.1_7",
+      "kind": "house_axis",
+      "status": "proposed",
+      "lower": {
+        "house": 1,
+        "function": "self",
+        "role": "root"
+      },
+      "upper": {
+        "house": 7,
+        "function": "partnership",
+        "role": "branch"
+      },
+      "relationship": {
+        "direction": "bidirectional",
+        "anchor": "opposite_weight",
+        "gating_model": "impedance_not_gate"
+      },
+      "provenance": [
+        {
+          "path": "references/deepest-principles.md",
+          "section": "3. The horizon, and the six spines",
+          "lines": [51, 69]
+        },
+        {
+          "path": "references/deepest-principles.md",
+          "section": "6. The law: the anchor is across the mirror",
+          "lines": [108, 128]
+        }
+      ]
+    },
+    {
+      "id": "mars_in_aries",
+      "kind": "codex_entry",
+      "status": "legacy_unreviewed",
+      "coordinates": {
+        "point": "mars",
+        "sign": "aries"
+      },
+      "semantic_refs": ["point.mars", "sign.aries", "rule.shadow.derive_from_blocked_light"],
+      "content_ref": {
+        "path": "starglass-codex-v1/codex/mars.json",
+        "section": "in_sign.aries",
+        "lines": [6, 20],
+        "sha256": "7b4b0c0229b519e8d6f3c2c0a3ef145f51e3412915fd9b73a83322e97c888940"
+      },
+      "review": {
+        "status": "legacy_unreviewed_against_2026_08_15_map",
+        "preserve_text": true
+      },
+      "deployment": {
+        "current_target": "web/public/codex/mars.json",
+        "generated": false
+      }
+    },
+    {
+      "id": "delivery.web_portrait",
+      "kind": "delivery_profile",
+      "status": "operational_behavior_not_canonical",
+      "title_strategy": "second_person_question",
+      "myth_policy": {
+        "count": 1,
+        "placement": "hardest_theme"
+      },
+      "machinery_policy": "none_in_prose",
+      "pattern_certainty": "direct_observation",
+      "conflicts_with": [
+        "delivery.skill_portrait.title_strategy",
+        "delivery.skill_portrait.myth_policy",
+        "care_clause.allowed_certainty"
+      ],
+      "provenance": [
+        {
+          "path": "web/netlify/functions/interpret.ts",
+          "section": "PIPELINE",
+          "lines": [10, 95]
+        }
+      ]
+    }
+  ]
+}

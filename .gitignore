@@ -16,3 +16,9 @@ qa-*.png
 _to_delete/
 _archive-*/
 Push*.command
+*.command
+
+# Generated readings carry real birth data — they NEVER enter git.
+# Finished reports live outside source control (StarBank later).
+natal-report-*/
+natal-report-*.zip
