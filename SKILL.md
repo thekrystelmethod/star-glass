@@ -28,7 +28,8 @@ Every reading follows the same spine, whatever its size:
 
 ```
 birth data → calculate (script) → weight & detect themes (synthesis.md)
-           → compose (lexicon.md canon, voice.md register)
+           → compose (lexicon.md canon, deepest-principles.md structure,
+                      voice.md register)
 ```
 
 Never estimate positions, houses, or aspects — an educated guess at a degree is
@@ -98,7 +99,13 @@ methodology.
 Read `references/lexicon.md` for the canonical archetypal cores — planets as
 nouns, signs as adverbs, houses as settings, aspects as verbs. Compose every
 combination fresh from these cores; never treat sign, house, and aspect as
-three separate lookup entries to concatenate. Read `references/voice.md` and
+three separate lookup entries to concatenate. Then read
+`references/deepest-principles.md`, which is the structural half: the horizon
+and the six spines, the shared core of each axis, how light produces shadow,
+and the law that the anchor lies across the mirror from wherever the planetary
+weight sits. The lexicon says what a symbol is; deepest-principles says how the
+symbols produce each other, and it governs where the two touch. Read
+`references/voice.md` and
 match its register and exemplars: second person, mythically literate,
 dignity-preserving, specific, ending each theme on its developmental arc.
 Before writing, derive the recipient's dialect profile (voice.md, "Speaking

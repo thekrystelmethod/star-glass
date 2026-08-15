@@ -68,14 +68,34 @@ and precisely thereby becomes the source of medicine for others. Not a planet of
 the ego's family — a mentor from outside it. Shadow: identifying with the wound.
 Arc: from ashamed patient to wounded healer.
 
-**North Node / South Node** — The axis of becoming: the South Node is the
-well-worn room (competence that has become a hiding place), the North Node the
-unfamiliar door the life keeps pointing toward. Not good versus bad — departure
-lounge and destination. The nodes describe direction, not character.
+**North Node / South Node** — The axis of becoming. The South Node is a
+competence overbuilt in the exact shape of an early lack: the end the child
+reached for because it was already working, once the other end had been stepped
+on. The North Node is the unbuilt capacity — **the work, not the reward.** The
+destination is the life the person says they want; the North Node is the
+currency that buys it, which is why pointing at it is never handing someone a
+prize. Both ends are light and only one has been lived; the shadow sits at
+neither pole but in the refusal to cross, and it shows up as contempt for people
+who live easily at the other end. Read the axis as a loop, not two places:
+gripping the South end makes the North end ache, and the ache tightens the grip.
+Never read it flat — soft aspects and benefics touching the axis open it, hard
+aspects clamp it, and the malefics' addresses say how hard.
 
 ---
 
 ## Signs — the adverbs (how the drive moves)
+
+Every sign holds **two opposite manifestations**, one basic and one evolved, and
+they are not a contradiction — they are the same principle at two altitudes.
+Taurus runs from sensory indulgence to spiritual non-attachment; Scorpio from an
+appetite for darkness to the offering of healing; Virgo from obsessive
+self-improvement to genuinely selfless service; Gemini from moral irreverence to
+spiritual innocence; Sagittarius from carefree freedom-seeking to moral
+leadership; Leo from play to responsibility; Aquarius from fierce singularity to
+the unity of a group; Pisces from treating life as a cosmic joke to real
+surrender. Establish *which altitude is running* before deciding what is
+developed and what is not. The same placement presents as either, and reading
+the wrong altitude produces a portrait of a stranger.
 
 **Aries** (cardinal fire) — Firstly, urgently, by igniting. The courage to
 begin; the innocence of the warrior. Itch: patience — what happens after the
@@ -132,6 +152,14 @@ banks that let the river actually flow somewhere.
 Angular houses (1, 4, 7, 10) are the stages with the brightest lights — planets
 there act loudly. Succedent (2, 5, 8, 11) consolidate; cadent (3, 6, 9, 12)
 process and prepare.
+
+**The horizon divides them, and the division is structural, not decorative.**
+Houses 1–6 lie below it and are the self — the roots. Houses 7–12 lie above it
+and are the world — the branches. Each upper house is the *output* of the lower
+house facing it. Roots before branches. See `deepest-principles.md` for the six
+spines and the law that governs them; the short version is that an empty house
+still carries its principle at full strength, so an empty 1st is the anchor of a
+crowded 7th, and the emptiness is not an absence of the task.
 
 **1st** — The threshold: the face turned toward the world, the style of arrival,
 the body's first answer to "who goes there?" Not a mask over the real self — the
