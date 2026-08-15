@@ -1,5 +1,5 @@
-import { getStore } from "@netlify/blobs";
 import { MYTH_SHAPES, type Myth, mythBrief, selectMyth, shapeMenu } from "./myth-bank.ts";
+import { createPortraitJobWriter, type PortraitRecord, validPortraitJobId, validPortraitJobToken } from "./_shared/portrait-store.ts";
 
 declare const Netlify: {
   env: { get(name: string): string | undefined };
@@ -376,23 +376,21 @@ function calculationLedger(chartValue: unknown) {
 }
 
 export default async (request: Request) => {
-  let errorKey = "";
+  let saveJob: ((value: PortraitRecord) => Promise<void>) | null = null;
   // Correlation for logs and stored records: jobId ties a record to its
   // portrait request; runId distinguishes runs if a job is ever re-fired.
   const runId = crypto.randomUUID().slice(0, 8);
   const startedAt = new Date().toISOString();
   try {
-    const input = await request.json() as { jobId?: unknown; chart?: unknown; zodiac?: unknown; essence?: unknown };
-    if (typeof input.jobId !== "string" || !/^[0-9a-f-]{36}$/i.test(input.jobId)) {
-      console.error("Interpretation job is missing a valid id");
+    const input = await request.json() as { jobId?: unknown; accessToken?: unknown; chart?: unknown; zodiac?: unknown; essence?: unknown };
+    if (!validPortraitJobId(input.jobId) || !validPortraitJobToken(input.accessToken)) {
+      console.error("Interpretation job is missing a valid capability");
       return;
     }
 
-    const store = getStore({ name: "starglass-readings", consistency: "strong" });
-    const key = `portrait:${input.jobId}`;
-    errorKey = key;
+    saveJob = await createPortraitJobWriter(input.jobId, input.accessToken, startedAt);
     if (Netlify.env.get("PUBLIC_GENERATION_ENABLED")?.trim().toLowerCase() !== "true") {
-      await store.setJSON(key, {
+      await saveJob({
         status: "error",
         stage: "paused",
         error: "Portrait generation is paused for this preview.",
@@ -402,10 +400,10 @@ export default async (request: Request) => {
       return;
     }
     if (!input.chart || typeof input.chart !== "object") {
-      await store.setJSON(key, { status: "error", stage: "invalid-chart", error: "A calculated chart is required.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
+      await saveJob({ status: "error", stage: "invalid-chart", error: "A calculated chart is required.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
-    await store.setJSON(key, { status: "working", phase: "composing", stage: "composing", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
+    await saveJob({ status: "working", phase: "composing", stage: "composing", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
 
     const chartEvidence = JSON.stringify({
       zodiac_mode: input.zodiac,
@@ -413,7 +411,7 @@ export default async (request: Request) => {
       calculated_chart: input.chart,
     });
     if (chartEvidence.length > 180_000) {
-      await store.setJSON(key, { status: "error", stage: "oversized-chart", error: "The calculated chart is too large to interpret.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
+      await saveJob({ status: "error", stage: "oversized-chart", error: "The calculated chart is too large to interpret.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
     const auditLedger = calculationLedger(input.chart);
@@ -422,7 +420,7 @@ export default async (request: Request) => {
     const apiKey = Netlify.env.get("ANTHROPIC_API_KEY");
     const baseUrl = Netlify.env.get("ANTHROPIC_BASE_URL");
     if (!apiKey || !baseUrl) {
-      await store.setJSON(key, { status: "error", stage: "unconfigured", error: "The interpretation service is not enabled for this preview.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
+      await saveJob({ status: "error", stage: "unconfigured", error: "The interpretation service is not enabled for this preview.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
 
@@ -500,7 +498,7 @@ export default async (request: Request) => {
     if (!response.ok) {
       const detail = await response.text();
       console.error("AI Gateway response", response.status, detail.slice(0, 1_000));
-      await store.setJSON(key, {
+      await saveJob({
         status: "error",
         stage: "compose-gateway",
         error: response.status === 429
@@ -516,7 +514,7 @@ export default async (request: Request) => {
     const toolUse = result.content?.find((item) => item.type === "tool_use" && item.name === "submit_reading");
     if (!validReading(toolUse?.input)) {
       console.error("AI Gateway returned an invalid portrait structure");
-      await store.setJSON(key, { status: "error", stage: "compose-structure", error: "The portrait arrived incomplete. Please compose it once more.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
+      await saveJob({ status: "error", stage: "compose-structure", error: "The portrait arrived incomplete. Please compose it once more.", jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       return;
     }
 
@@ -583,7 +581,7 @@ The corrections array is ONLY for text that must change. Never submit an entry a
 
     // A draft that fails its audit is HELD, never discarded: the composed
     // portrait, the holdout corrections, and the stage that stopped it are all
-    // preserved in the blob so the failure can be inspected and repaired.
+    // preserved in the ephemeral job record so the failure can be inspected.
     // Only crashes with no draft in hand fall back to the generic error.
     const holdDraft = async (
       stage: string,
@@ -592,7 +590,7 @@ The corrections array is ONLY for text that must change. Never submit an entry a
       remaining: Array<{ find: string; replace?: string; reason: string }> = [],
     ) => {
       console.error("Portrait held", stage, JSON.stringify({ jobId: input.jobId, runId, remaining: remaining.length }));
-      await store.setJSON(key, {
+      await saveJob({
         status: "held",
         stage,
         error: message,
@@ -729,7 +727,7 @@ For every genuine error, deliver a repair, not just a verdict: name the movement
 
     const reportPhase = async (phase: string, round?: number) => {
       try {
-        await store.setJSON(key, { status: "working", phase, round, stage: phase, jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
+        await saveJob!({ status: "working", phase, round, stage: phase, jobId: input.jobId, runId, startedAt, updatedAt: new Date().toISOString() });
       } catch (_) {}
     };
 
@@ -896,7 +894,7 @@ For every genuine error, deliver a repair, not just a verdict: name the movement
       }
     }
 
-    await store.setJSON(key, {
+    await saveJob({
       status: "ready",
       stage: "published",
       reading: working,
@@ -918,9 +916,8 @@ For every genuine error, deliver a repair, not just a verdict: name the movement
   } catch (reason) {
     console.error("Interpretation function failed", reason);
     try {
-      if (errorKey) {
-        const store = getStore({ name: "starglass-readings", consistency: "strong" });
-        await store.setJSON(errorKey, { status: "error", stage: "crashed", error: "StarGlass could not compose the portrait.", runId, startedAt, updatedAt: new Date().toISOString() });
+      if (saveJob) {
+        await saveJob({ status: "error", stage: "crashed", error: "StarGlass could not compose the portrait.", runId, startedAt, updatedAt: new Date().toISOString() });
       }
     } catch (_) {}
   }

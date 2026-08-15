@@ -21,17 +21,18 @@ longitude increasing counter-clockwise.
 """
 
 import argparse
+import html
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 import tempfile
 
 # ---------------------------------------------------------------- palette
-# Every colour and font in the wheel routes through these tokens, and
-# apply_palette() overrides them from a JSON dict. This is the white-label
-# seam: a partner brand is a palette file, not a fork of the renderer.
+# Every colour in the wheel routes through these tokens. A palette is resolved
+# per build so simultaneous requests can never leak one brand into another.
 DEFAULT_PALETTE = {
     "ink": "#2A2620",        # primary linework and glyphs
     "paper": "#FBF7EE",      # background
@@ -50,28 +51,47 @@ DEFAULT_PALETTE = {
                       "#3F7186", "#9A6B33"],
 }
 
-INK = DEFAULT_PALETTE["ink"]
-PAPER = DEFAULT_PALETTE["paper"]
-FAINT = DEFAULT_PALETTE["faint"]
-MID = DEFAULT_PALETTE["mid"]
-ELEMENT = dict(DEFAULT_PALETTE["element"])
-ASPECT_COLOR = dict(DEFAULT_PALETTE["aspect"])
+SAFE_COLOR = re.compile(r"^#[0-9a-fA-F]{6}$")
+PALETTE_KEYS = {"ink", "paper", "faint", "mid", "element", "aspect", "theme_palette"}
 
 
-def apply_palette(overrides):
-    """Merge a partial palette dict over the defaults (module-level, so call
-    before build). Unknown keys are ignored; nested dicts merge shallowly."""
-    global INK, PAPER, FAINT, MID, ELEMENT, ASPECT_COLOR
-    global GLYPH_FONT, TEXT_FONT, THEME_PALETTE
-    p = {**DEFAULT_PALETTE, **(overrides or {})}
-    if overrides:
-        for k in ("element", "aspect"):
-            if k in overrides:
-                p[k] = {**DEFAULT_PALETTE[k], **overrides[k]}
-    INK, PAPER, FAINT, MID = p["ink"], p["paper"], p["faint"], p["mid"]
-    ELEMENT, ASPECT_COLOR = dict(p["element"]), dict(p["aspect"])
-    GLYPH_FONT, TEXT_FONT = p["glyph_font"], p["text_font"]
-    THEME_PALETTE = list(p["theme_palette"])
+def normalize_color(value):
+    if not isinstance(value, str) or not SAFE_COLOR.fullmatch(value):
+        raise ValueError("wheel colors must be six-digit hex values")
+    return value
+
+
+def resolve_palette(overrides=None):
+    """Validate and merge a request-local color palette over the defaults."""
+    overrides = overrides or {}
+    if not isinstance(overrides, dict) or set(overrides) - PALETTE_KEYS:
+        raise ValueError("unknown wheel palette token")
+    p = {**DEFAULT_PALETTE}
+    for key in ("ink", "paper", "faint", "mid"):
+        if key in overrides:
+            p[key] = normalize_color(overrides[key])
+    for key in ("element", "aspect"):
+        nested = overrides.get(key, {})
+        if not isinstance(nested, dict) or set(nested) - set(DEFAULT_PALETTE[key]):
+            raise ValueError(f"unknown {key} palette token")
+        p[key] = {**DEFAULT_PALETTE[key], **{name: normalize_color(color) for name, color in nested.items()}}
+    if "theme_palette" in overrides:
+        colors = overrides["theme_palette"]
+        if not isinstance(colors, list) or not 1 <= len(colors) <= 12:
+            raise ValueError("theme_palette must contain between 1 and 12 colors")
+        p["theme_palette"] = [normalize_color(color) for color in colors]
+    return p
+
+
+def xml_text(value, max_length):
+    """Return XML-safe caption text with XML 1.0 control characters removed."""
+    value = "" if value is None else str(value)
+    if len(value) > max_length:
+        raise ValueError(f"wheel caption exceeds {max_length} characters")
+    cleaned = "".join(ch for ch in value
+                      if ch in "\t\n\r" or 0x20 <= ord(ch) <= 0xD7FF
+                      or 0xE000 <= ord(ch) <= 0xFFFD)
+    return html.escape(cleaned, quote=False)
 HARD = {"opposition", "square"}
 MINOR = {"semisextile", "semisquare", "sesquiquadrate", "quincunx"}
 
@@ -89,20 +109,17 @@ PLANET_GLYPH = {
     "North Node": "☊", "South Node": "☋",
 }
 # Chiron (U+26B7) has almost no font coverage, so it is drawn as a path.
-GLYPH_FONT = DEFAULT_PALETTE["glyph_font"]
-TEXT_FONT = DEFAULT_PALETTE["text_font"]
 
 DRAW_ORDER = ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn",
               "Uranus", "Neptune", "Pluto", "Chiron", "North Node", "South Node"]
 
 # Default colours for theme mode, in assignment order. Chosen to stay legible
 # against warm paper and to remain distinguishable in greyscale print.
-THEME_PALETTE = list(DEFAULT_PALETTE["theme_palette"])
 DIM = 0.13          # opacity for everything outside the highlighted set
 DIM_ASPECT = 0.07
 
 
-def chiron_path(cx, cy, s, color=INK):
+def chiron_path(cx, cy, s, color):
     """Chiron: a key — small circle with a K-stem rising from it."""
     r = s * 0.26
     top = cy - s * 0.62
@@ -127,7 +144,7 @@ def arc_path(cx, cy, r, a0, a1):
 
 
 def build(chart, size=1100, title=None, subtitle=None,
-          highlight=None, themes=None, background=True):
+          highlight=None, themes=None, background=True, palette=None):
     """Draw the wheel.
 
     highlight: a set of body/angle names to keep at full ink while everything
@@ -145,11 +162,18 @@ def build(chart, size=1100, title=None, subtitle=None,
         where aspect lines cross, on any backdrop. Print/export should keep
         background=True: on paper, paper is correct.
     """
+    p = resolve_palette(palette)
+    INK, PAPER, FAINT, MID = p["ink"], p["paper"], p["faint"], p["mid"]
+    ELEMENT, ASPECT_COLOR = p["element"], p["aspect"]
+    GLYPH_FONT, TEXT_FONT = p["glyph_font"], p["text_font"]
+    THEME_PALETTE = p["theme_palette"]
+    title = xml_text(title, 120) if title else None
+    subtitle = xml_text(subtitle, 240) if subtitle else None
     hl = set(highlight) if highlight else None
     theme_of = {}
     if themes:
         for i, t in enumerate(themes):
-            col = t.get("color") or THEME_PALETTE[i % len(THEME_PALETTE)]
+            col = normalize_color(t.get("color")) if t.get("color") else THEME_PALETTE[i % len(THEME_PALETTE)]
             for b in t["bodies"]:
                 theme_of.setdefault(b, []).append((t["name"], col))
 
@@ -276,8 +300,9 @@ def build(chart, size=1100, title=None, subtitle=None,
                      f'{PLANET_GLYPH[name]}&#xFE0E;</text>')
         # Degree labels alternate between two radii so neighbours in a tight
         # cluster (a stellium, or a planet sitting on an angle) never collide.
-        deg = int(lon % 30)
-        mins = int(round((lon % 1) * 60)) % 60
+        total_minutes = int(round((lon % 30) * 60))
+        deg, mins = divmod(total_minutes, 60)
+        deg %= 30
         stagger = size * (0.036 if idx % 2 == 0 else 0.062)
         lx, ly = pol(cx, cy, r_planet - stagger, th)
         rx = "℞" if p.get("retrograde") and name not in ("North Node", "South Node") else ""
@@ -404,9 +429,10 @@ def main():
                          "white-label seam")
     args = ap.parse_args()
 
+    palette = None
     if args.palette:
         with open(args.palette) as f:
-            apply_palette(json.load(f))
+            palette = json.load(f)
 
     raw = sys.stdin.read() if args.chart_json == "-" else open(args.chart_json).read()
     data = json.loads(raw)
@@ -424,7 +450,7 @@ def main():
 
     svg = build(data[key], size=args.size, title=args.title, subtitle=args.subtitle,
                 highlight=highlight, themes=themes,
-                background=not args.transparent)
+                background=not args.transparent, palette=palette)
     with open(args.out, "w") as f:
         f.write(svg)
     print(f"wrote {args.out}")

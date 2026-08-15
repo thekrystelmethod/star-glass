@@ -1,5 +1,5 @@
 // Smoke harness for netlify/functions/interpret.ts — EXECUTES the whole
-// function with mocked gateway + blob store. This exists because a syntax
+// function with mocked gateway + Supabase store. This exists because a syntax
 // check once passed a ReferenceError into production: bundling is not
 // running. CI runs this on every push.
 //
@@ -18,7 +18,7 @@
 //   8. referee + dirty  — final re-audit still unverified → HELD, draft kept
 //   9. unlocatable ref  — referee find matches nothing → HELD, draft kept
 //  10. kill switch      — generation disabled → fail closed, 0 gateway calls
-import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
+import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -28,20 +28,14 @@ const esbuild = await import(
   pathToFileURL(join(here, "node_modules/.pnpm/esbuild@0.25.12/node_modules/esbuild/lib/main.js")).href
 );
 
-// ── bundle the function with a stubbed blob store ────────────────────────
+// ── bundle the function ──────────────────────────────────────────────────
 const work = mkdtempSync(join(tmpdir(), "interpret-smoke-"));
-writeFileSync(join(work, "blobs-stub.mjs"), `
-export function getStore() {
-  return { setJSON: async (key, value) => { globalThis.__lastStored = value; } };
-}
-`);
 await esbuild.build({
   entryPoints: [join(here, "netlify/functions/interpret.ts")],
   bundle: true,
   format: "esm",
   platform: "node",
   outfile: join(work, "fn.mjs"),
-  alias: { "@netlify/blobs": join(work, "blobs-stub.mjs") },
   logLevel: "silent",
 });
 const { default: handler } = await import(pathToFileURL(join(work, "fn.mjs")).href);
@@ -87,6 +81,8 @@ const envValues = {
   ANTHROPIC_API_KEY: "test",
   ANTHROPIC_BASE_URL: "https://gateway.test",
   PUBLIC_GENERATION_ENABLED: "true",
+  SUPABASE_URL: "https://test.supabase.co",
+  SUPABASE_SECRET_KEY: "sb_secret_test_only",
 };
 globalThis.Netlify = { env: { get: (k) => envValues[k] } };
 
@@ -110,6 +106,17 @@ async function scenario(name, auditScript, expectStatus, expectExtra = () => {},
   let polishCalls = 0;
   let composerPrompt = "";
   globalThis.fetch = async (url, options) => {
+    if (String(url).includes("test.supabase.co")) {
+      const body = JSON.parse(String(options?.body ?? "{}"));
+      if (options?.method === "POST") globalThis.__lastStored = body.record;
+      if (options?.method === "PATCH") globalThis.__lastStored = body.record;
+      return {
+        ok: true,
+        status: options?.method === "POST" ? 201 : 200,
+        json: async () => options?.method === "PATCH" ? [body] : [],
+        text: async () => "",
+      };
+    }
     if (String(url).includes("gateway.test")) {
       if (isNamerRequest(options)) return namerScript();
       if (isPolishRequest(options)) { polishCalls += 1; return polishScript(); }
@@ -124,7 +131,7 @@ async function scenario(name, auditScript, expectStatus, expectExtra = () => {},
   globalThis.__lastStored = null;
   const request = new Request("https://x/api/interpret", {
     method: "POST",
-    body: JSON.stringify({ jobId: "123e4567-e89b-42d3-a456-426614174000", chart, zodiac: "tropical", essence: null }),
+    body: JSON.stringify({ jobId: "123e4567-e89b-42d3-a456-426614174000", accessToken: "A".repeat(43), chart, zodiac: "tropical", essence: null }),
   });
   await handler(request);
   const stored = globalThis.__lastStored;
@@ -312,11 +319,18 @@ await scenario("clean prose skips the machinery polish",
 
 // 10. owner kill switch: disabled is fail-closed and never reaches the gateway
 envValues.PUBLIC_GENERATION_ENABLED = "false";
-globalThis.fetch = async () => { throw new Error("generation switch allowed a gateway request"); };
+globalThis.fetch = async (url, options) => {
+  if (String(url).includes("test.supabase.co")) {
+    const body = JSON.parse(String(options?.body ?? "{}"));
+    globalThis.__lastStored = body.record;
+    return { ok: true, status: 201, json: async () => [], text: async () => "" };
+  }
+  throw new Error("generation switch allowed a gateway request");
+};
 globalThis.__lastStored = null;
 await handler(new Request("https://x/api/interpret", {
   method: "POST",
-  body: JSON.stringify({ jobId: "123e4567-e89b-42d3-a456-426614174001", chart, zodiac: "tropical", essence: null }),
+  body: JSON.stringify({ jobId: "123e4567-e89b-42d3-a456-426614174001", accessToken: "B".repeat(43), chart, zodiac: "tropical", essence: null }),
 }));
 if (globalThis.__lastStored?.status !== "error" || !globalThis.__lastStored?.error?.includes("paused")) {
   console.error("✗ disabled generation did not fail closed", globalThis.__lastStored);

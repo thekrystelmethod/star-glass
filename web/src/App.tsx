@@ -111,7 +111,7 @@ export default function App() {
     if (!pending || !restored?.castResult || restored.reading) return;
     setReadingLoading(true);
     setReadingFailure(null);
-    awaitReading(pending.jobId, pending.startedAt + 12 * 60_000, setReadingPhase)
+    awaitReading(pending.jobId, pending.accessToken, pending.startedAt + 12 * 60_000, setReadingPhase)
       .then((composed) => setReading(composed))
       .catch((reason) => setReadingFailure(asReadingFailure(reason)))
       .finally(() => { setReadingLoading(false); setReadingPhase(null); });

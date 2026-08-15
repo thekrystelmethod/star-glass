@@ -142,12 +142,21 @@ const JOB_LIFETIME = 15 * 60_000;
 
 interface PendingJob {
   jobId: string;
+  accessToken: string;
   startedAt: number;
 }
 
-function rememberJob(jobId: string) {
+function createAccessToken() {
+  const bytes = crypto.getRandomValues(new Uint8Array(32));
+  return btoa(String.fromCharCode(...bytes))
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+}
+
+function rememberJob(jobId: string, accessToken: string) {
   try {
-    window.sessionStorage.setItem(PENDING_KEY, JSON.stringify({ jobId, startedAt: Date.now() }));
+    window.sessionStorage.setItem(PENDING_KEY, JSON.stringify({ jobId, accessToken, startedAt: Date.now() }));
   } catch (_) {}
 }
 
@@ -162,7 +171,10 @@ export function pendingReadingJob(): PendingJob | null {
     const raw = window.sessionStorage.getItem(PENDING_KEY);
     if (!raw) return null;
     const job = JSON.parse(raw) as PendingJob;
-    if (!job || typeof job.jobId !== "string" || typeof job.startedAt !== "number") return null;
+    if (!job || typeof job.jobId !== "string" || typeof job.accessToken !== "string" || typeof job.startedAt !== "number") {
+      forgetJob();
+      return null;
+    }
     if (Date.now() - job.startedAt > JOB_LIFETIME) { forgetJob(); return null; }
     return job;
   } catch (_) {
@@ -174,12 +186,16 @@ export function pendingReadingJob(): PendingJob | null {
     phase while working; onPhase lets the UI narrate real progress. */
 export async function awaitReading(
   jobId: string,
+  accessToken: string,
   deadlineAt: number,
   onPhase?: (phase: ReadingPhase) => void,
 ): Promise<GeneratedReading> {
   while (Date.now() < deadlineAt) {
     await new Promise((resolve) => window.setTimeout(resolve, 3_000));
-    const statusResponse = await fetch(`/api/interpret/${jobId}`, { cache: "no-store" });
+    const statusResponse = await fetch(`/api/interpret/${jobId}`, {
+      cache: "no-store",
+      headers: { authorization: `Bearer ${accessToken}` },
+    });
     if (!statusResponse.ok) continue;
     const status = await statusResponse.json() as {
       status?: "queued" | "working" | "ready" | "held" | "error";
@@ -193,7 +209,11 @@ export async function awaitReading(
     if (status.status === "working" && status.phase && onPhase) {
       onPhase({ phase: status.phase, round: status.round });
     }
-    if (status.status === "ready" && status.reading) { forgetJob(); return status.reading; }
+    if (status.status === "ready" && status.reading) {
+      forgetJob();
+      void deleteReadingJob(jobId, accessToken);
+      return status.reading;
+    }
 
     // "held" and "error" are both terminal for THIS job. What differs is
     // whether a fresh job would fare any better, and whether a finished
@@ -202,6 +222,7 @@ export async function awaitReading(
     if (status.status === "held" || status.status === "error") {
       forgetJob();
       const draft = asDraft(status.held?.reading);
+      void deleteReadingJob(jobId, accessToken);
       throw new ReadingFailure({
         message: status.error || "StarGlass could not compose the reading.",
         kind: classifyStage(status.stage, Boolean(draft)),
@@ -224,10 +245,11 @@ export async function composeReading(
   onPhase?: (phase: ReadingPhase) => void,
 ): Promise<GeneratedReading> {
   const jobId = crypto.randomUUID();
+  const accessToken = createAccessToken();
   const response = await fetch("/api/interpret", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ ...input, jobId }),
+    body: JSON.stringify({ ...input, jobId, accessToken }),
   });
 
   if (!response.ok && response.status !== 202) {
@@ -246,6 +268,18 @@ export async function composeReading(
     });
   }
 
-  rememberJob(jobId);
-  return awaitReading(jobId, Date.now() + 12 * 60_000, onPhase);
+  rememberJob(jobId, accessToken);
+  return awaitReading(jobId, accessToken, Date.now() + 12 * 60_000, onPhase);
+}
+
+async function deleteReadingJob(jobId: string, accessToken: string) {
+  try {
+    await fetch(`/api/interpret/${jobId}`, {
+      method: "DELETE",
+      cache: "no-store",
+      headers: { authorization: `Bearer ${accessToken}` },
+    });
+  } catch (_) {
+    // The server-side expiry is the backstop when best-effort cleanup cannot run.
+  }
 }

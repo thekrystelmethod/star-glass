@@ -33,7 +33,7 @@ from typing import Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse, PlainTextResponse, Response
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPTS = os.path.join(ROOT, "scripts")
@@ -209,22 +209,56 @@ class BirthData(BaseModel):
 
 
 class ThemeSpec(BaseModel):
-    name: str
-    bodies: list[str]
-    color: Optional[str] = None
+    model_config = ConfigDict(extra="forbid")
+    name: str = Field(..., min_length=1, max_length=80)
+    bodies: list[str] = Field(..., min_length=1, max_length=20)
+    color: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+
+
+class ElementPalette(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    fire: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    earth: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    air: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    water: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+
+
+class AspectPalette(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    conjunction: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    opposition: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    square: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    trine: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    sextile: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    quincunx: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    semisextile: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    semisquare: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    sesquiquadrate: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+
+
+class WheelPalette(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    ink: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    paper: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    faint: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    mid: Optional[str] = Field(None, pattern="^#[0-9a-fA-F]{6}$")
+    element: Optional[ElementPalette] = None
+    aspect: Optional[AspectPalette] = None
+    theme_palette: Optional[list[str]] = Field(None, min_length=1, max_length=12)
 
 
 class WheelRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     birth: Optional[BirthData] = None
     chart: Optional[dict] = Field(None, description="a prior /chart response, "
                                   "to skip recomputation")
     zodiac_block: Optional[str] = Field(None, pattern="^(tropical|sidereal)$")
     size: int = Field(1100, ge=300, le=4000)
-    title: Optional[str] = None
-    subtitle: Optional[str] = None
-    highlight: Optional[list[str]] = None
-    themes: Optional[list[ThemeSpec]] = None
-    palette: Optional[dict] = Field(None, description="white-label design tokens")
+    title: Optional[str] = Field(None, max_length=120)
+    subtitle: Optional[str] = Field(None, max_length=240)
+    highlight: Optional[list[str]] = Field(None, max_length=20)
+    themes: Optional[list[ThemeSpec]] = Field(None, max_length=12)
+    palette: Optional[WheelPalette] = Field(None, description="white-label color tokens")
     transparent: bool = Field(False, description="omit the full-bleed paper "
                               "background so the wheel floats over an app "
                               "background; glyph halos and the caption plate "
@@ -314,15 +348,23 @@ def wheel(req: WheelRequest):
     import draw_chart as dc
     data = resolve_chart(req.birth, req.chart)
     block = pick_block(data, req.zodiac_block)
-    dc.apply_palette(req.palette)          # None → defaults; dict → brand tokens
     try:
         svg = dc.build(block, size=req.size, title=req.title,
                        subtitle=req.subtitle, highlight=req.highlight,
                        themes=[t.model_dump() for t in req.themes] if req.themes else None,
-                       background=not req.transparent)
-    finally:
-        dc.apply_palette(None)             # never leak a brand into the next call
-    return Response(content=svg, media_type="image/svg+xml")
+                       background=not req.transparent,
+                       palette=req.palette.model_dump(exclude_none=True) if req.palette else None)
+    except ValueError as reason:
+        raise HTTPException(422, detail=str(reason)) from reason
+    return Response(
+        content=svg,
+        media_type="image/svg+xml",
+        headers={
+            "content-security-policy": "default-src 'none'",
+            "x-content-type-options": "nosniff",
+            "cache-control": "no-store",
+        },
+    )
 
 
 @app.post("/tables", response_class=PlainTextResponse)

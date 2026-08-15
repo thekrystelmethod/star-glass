@@ -3,7 +3,7 @@
 // bug of 13 Aug 2026: eleven distinct endings were flattened into one message
 // that told the reader to retry, including for the three endings where
 // retrying is structurally guaranteed to fail. The portrait was finished and
-// preserved in the blob the whole time.
+// preserved in secure ephemeral storage the whole time.
 //
 //   node test-reading-failure.mjs
 //
@@ -52,6 +52,7 @@ globalThis.window = {
 globalThis.crypto ??= { randomUUID: () => "123e4567-e89b-42d3-a456-426614174000" };
 
 const { awaitReading, composeReading, ReadingFailure } = await import(pathToFileURL(bundle).href);
+const ACCESS_TOKEN = "A".repeat(43);
 
 const PORTRAIT = {
   title: "The Spear and the Sea",
@@ -74,7 +75,7 @@ function check(label, condition, detail = "") {
 async function failureFrom(payload) {
   serveStatus(payload);
   try {
-    await awaitReading("123e4567-e89b-42d3-a456-426614174000", Date.now() + 5_000);
+    await awaitReading("123e4567-e89b-42d3-a456-426614174000", ACCESS_TOKEN, Date.now() + 5_000);
     return null;
   } catch (reason) {
     return reason;
@@ -120,7 +121,7 @@ check("unconfigured offers no retry", blocked?.retryable === false);
 
 // ── 7. the happy path still publishes ───────────────────────────────────────
 serveStatus({ status: "ready", reading: PORTRAIT });
-const published = await awaitReading("123e4567-e89b-42d3-a456-426614174000", Date.now() + 5_000);
+const published = await awaitReading("123e4567-e89b-42d3-a456-426614174000", ACCESS_TOKEN, Date.now() + 5_000);
 check("a ready job returns its portrait", published.title === PORTRAIT.title);
 
 // ── 8. a malformed draft must degrade, never throw ──────────────────────────

@@ -70,6 +70,29 @@ Never paste the token into source, `VITE_*`, a browser console, a support
 message, or a client request. The full operating and rotation procedure is in
 `docs/SG-107-ENGINE-BOUNDARY-2026-08-11.md`.
 
+## Step 5 — Connect private portrait storage
+
+StarGlass portrait jobs use the dedicated Supabase project `StarGlass`
+(`ozfkwvlwgmvfayoaklla`) in `us-west-1`. Apply the checked-in migration at
+`supabase/migrations/20260814233420_secure_portrait_jobs.sql` before enabling
+generation in a new environment.
+
+Set these values for Netlify Functions only:
+
+```text
+SUPABASE_URL=https://ozfkwvlwgmvfayoaklla.supabase.co
+SUPABASE_SECRET_KEY=<a dedicated sb_secret_ key created for the Netlify backend>
+```
+
+The secret key is server-only. Never put it in a `VITE_*` variable, browser
+code, URL, log, or repository file. The browser receives a distinct random
+capability for each portrait job; Supabase stores only its SHA-256 hash.
+Terminal records are hard-deleted after delivery, abandoned records expire in
+24 hours, and an hourly scheduled function removes expired rows.
+
+Keep `STARGLASS_PREVIEW_GATE=on`. The Supabase connection replaces portrait
+job storage; it does not replace or weaken the private-preview access gate.
+
 ---
 
 ## What to expect afterward

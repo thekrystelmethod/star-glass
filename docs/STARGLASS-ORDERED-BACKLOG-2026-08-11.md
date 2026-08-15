@@ -123,6 +123,7 @@ These items are sequentially first even when another feature feels more visible.
 
 #### SG-003 — Stop indefinite, ownerless portrait storage
 
+- **Status (2026-08-14):** dedicated Supabase project and locked-down `portrait_jobs` table created; RLS/security advisor clean; server integration now uses per-job 256-bit capabilities (hash only in storage), 24-hour expiry, terminal hard-deletion, and hourly cleanup. Completion still requires adding `SUPABASE_URL` and the server-only `SUPABASE_SECRET_KEY` in Netlify, deploying through the approved Git path, verifying a live create/read/delete cycle, and explicitly retiring any legacy Netlify Blob records. The environment-variable connector reported success but did not persist the new URL after three attempts, so dashboard configuration is the deliberate handoff.
 - **Priority / size / driver:** P0 / M / CX
 - **Depends on:** SG-002
 - **Outcome:** anonymous jobs expire and can be erased before account identity exists.
@@ -133,6 +134,7 @@ These items are sequentially first even when another feature feels more visible.
 
 #### SG-004 — Eliminate SVG injection and unsafe renderer inputs
 
+- **Status (2026-08-14):** implemented and regression-tested locally. Captions are XML-escaped and length-bounded; colors use a strict six-digit-hex grammar; caller fonts and unknown palette tokens are rejected; SVG responses carry a restrictive CSP; palette state is request-local and concurrency-tested. Production verification remains pending.
 - **Priority / size / driver:** P0 / M / CX
 - **Depends on:** none
 - **Outcome:** `/wheel` returns inert, valid SVG for all accepted inputs.
@@ -143,6 +145,7 @@ These items are sequentially first even when another feature feels more visible.
 
 #### SG-005 — Correct degree/minute carry in the wheel
 
+- **Status (2026-08-14):** implemented and regression-tested locally at ordinary degree carry and sign-boundary carry. Production verification remains pending.
 - **Priority / size / driver:** P0 / XS / CX
 - **Depends on:** none
 - **Outcome:** wheel, tables, API JSON, screen, and report show the same position.
