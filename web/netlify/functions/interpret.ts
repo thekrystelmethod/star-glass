@@ -321,7 +321,11 @@ function evidenceTarget(chartValue: unknown): { tight: number; words: number } {
     }
     break; // the primary block only; a dual chart is one life, not two
   }
-  const words = Math.min(6_000, Math.max(2_200, 2_000 + tight * 200));
+  // Dial re-tuned 2026-08-15 (her call: "half again longer"): the proportions
+  // are unchanged — sparse charts still say less — but every configuration now
+  // buys ~300 words instead of ~200, which is what funds the scene, the
+  // vignette, and the properly told story per theme rather than padding.
+  const words = Math.min(9_000, Math.max(3_300, 3_000 + tight * 300));
   return { tight, words };
 }
 
@@ -495,9 +499,10 @@ export default async (request: Request) => {
       },
       body: JSON.stringify({
         model: MODEL,
-        // Raised from 8,000 when length became evidence-driven: a dense chart
-        // now targets ~6,000 words, which will not fit in the old ceiling.
-        max_tokens: 16_000,
+        // Raised from 8,000 when length became evidence-driven, and from
+        // 16,000 with the 2026-08-15 half-again dial: a dense chart can now
+        // target ~9,000 words, which needs this much headroom.
+        max_tokens: 20_000,
         temperature: 0.7,
         system: PIPELINE,
         tools: [READING_TOOL],

@@ -134,7 +134,10 @@ push back, and you can go deeper.
 **Portrait (on request).** When the user asks for a full reading, portrait, or
 report, follow the six-movement narrative arc in `references/synthesis.md`
 (overture → ground floor → inner cast → mirror → summit → integration) and
-deliver it as a markdown document (roughly 2,500–4,500 words; prose, no bullet
+deliver it as a markdown document (roughly 4,000–7,000 words, scaled to the
+chart's evidence — a chart dense with tight configurations earns the top of
+the range, a sparse one the bottom; length comes from scenes, the properly
+told myth, and amplification, never repetition; prose, no bullet
 points, movements and title drawn from the person's own chart (voice.md, "Titling a portrait"),
 amplified per voice.md with one properly told mythic story and one concrete
 daily-life vignette per major theme), sent as a file. Open with one light sentence establishing the symbolic-mirror
