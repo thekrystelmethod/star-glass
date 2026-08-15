@@ -2,6 +2,7 @@
 
 **Paused:** 2026-08-14
 **Operating posture:** private preview; keep `STARGLASS_PREVIEW_GATE=on`
+**Production activation:** Supabase connected and portrait generation enabled on 2026-08-14.
 
 ## Finish the current trust-gate deployment first
 
