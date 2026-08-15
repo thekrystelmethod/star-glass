@@ -98,14 +98,21 @@ function namerResponse(shapeId) {
   return { ok: true, status: 200, json: async () => ({ content: [{ type: "text", text: shapeId }] }) };
 }
 const isNamerRequest = (options) =>
-  String(options?.body ?? "").includes("You name the hardest theme");
+  String(options?.body ?? "").includes("Reply with the shape id alone");
+// The machinery polish only fires when the composed prose actually carries a
+// planet/sign/house/orb. The stock fixture is clean, so it normally never runs;
+// scenarios that want it supply prose that leaks.
+const isPolishRequest = (options) =>
+  String(options?.body ?? "").includes("You remove astrological vocabulary");
 
-async function scenario(name, auditScript, expectStatus, expectExtra = () => {}, namerScript = () => namerResponse("mark-at-sovereignty")) {
+async function scenario(name, auditScript, expectStatus, expectExtra = () => {}, namerScript = () => namerResponse("mark-at-sovereignty"), polishScript = () => { throw new Error("polish not expected in this scenario"); }) {
   let call = 0;
+  let polishCalls = 0;
   let composerPrompt = "";
   globalThis.fetch = async (url, options) => {
     if (String(url).includes("gateway.test")) {
       if (isNamerRequest(options)) return namerScript();
+      if (isPolishRequest(options)) { polishCalls += 1; return polishScript(); }
       call += 1;
       if (call === 1) { composerPrompt = String(options?.body ?? ""); return composerResponse(); }
       return auditScript(call - 1); // audit calls numbered from 1
@@ -113,6 +120,7 @@ async function scenario(name, auditScript, expectStatus, expectExtra = () => {},
     throw new Error(`unexpected fetch ${url}`);
   };
   globalThis.__composerPrompt = () => composerPrompt;
+  globalThis.__polishCalls = () => polishCalls;
   globalThis.__lastStored = null;
   const request = new Request("https://x/api/interpret", {
     method: "POST",
@@ -291,6 +299,16 @@ await scenario("an unknown shape selects no myth",
     }
   },
   () => namerResponse("the-shape-of-water"));
+
+// 13. A clean portrait never wakes the machinery polish.
+await scenario("clean prose skips the machinery polish",
+  () => auditResponse(true, []),
+  "ready",
+  () => {
+    if (globalThis.__polishCalls() !== 0) {
+      console.error("✗ polish ran on prose with no machinery in it"); process.exit(1);
+    }
+  });
 
 // 10. owner kill switch: disabled is fail-closed and never reaches the gateway
 envValues.PUBLIC_GENERATION_ENABLED = "false";

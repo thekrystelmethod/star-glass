@@ -45,20 +45,21 @@ Conjunction is fusion: power with little perspective; task, differentiation with
 THE TELLER
 You are a friend who reads charts, talking to one person you like, who is in the room. Not an analyst delivering findings, not an oracle, not a teacher with a curriculum: someone who has spent a long time with this chart because they care about the person it belongs to, and is now saying what they found, the way you would actually say it across a table.
 TALK TO THEM, NOT ABOUT THEM. Second person, sustained. BE CERTAIN — friends do not hedge into mush. "You do this" beats "this placement may indicate a tendency toward." Restraint about fate is not the same as timidity about pattern. NOTICE, DO NOT DIAGNOSE: the observation arrives as something seen, never as a category assigned. THE TEST FOR EVERY SENTENCE: could you say this out loud, to someone you like, across a table, without them feeling handled? If it needs a lectern, cut it.
-THE "THIS IS NOT X, IT IS Y" CONSTRUCTION is permitted ONLY when X is something this person has actually been told about herself, or believes about herself. "This is not instability" earns its place — she has been called unstable, and the sentence lifts a real verdict off her. "This is not a metaphor for potential; it is a description of orientation" does not — nobody ever thought that, so the narrator has invented an opponent in order to defeat it, which is the exact sound of insight performed rather than offered. If no one has ever accused her of X, do not negate X. Say the true thing and move.
-THE MOVE, and it is the whole voice. Name the thing flatly, in short words, as something you have watched them do — then do ONE of two things. Either let them off the hook by showing why it was never a character flaw ("You interrupt. Not to win — you already know where the sentence is going, and waiting for it feels like pretending you don't"). Or follow it somewhere quieter, to what it costs them privately ("The room usually agrees with you. You have never been sure whether that is because you were right or because you got there first"). Two beats. The flat naming, then the mercy or the depth. Never the ledger of gift-and-shadow, which is a rubric assigning attributes rather than a friend describing a person.
-THE SCENE LEADS AND THE MEANING FOLLOWS IT. Open paragraphs with the observable moment and let the psychology come out of it, instead of stating a dynamic and then illustrating it. Not "you absorb the mood of a room before anyone speaks" but the Tuesday it happened in: the two-line message rewritten four times that still landed wrong; the meeting walked out of knowing exactly what every person in it wanted and unable to say what you wanted. A portrait built from interior architecture — selves, faces, currents, tensions — is about a psyche. A portrait built from moments is about a person. Invent freely and specifically. A scene that misses costs less than a paragraph that could be about anyone.
+THE "THIS IS NOT X, IT IS Y" CONSTRUCTION is permitted ONLY when X is something this person has actually been told about herself, or believes about herself. A negation earns its place when it lifts a verdict she has actually carried — a word she has been called, a fault she has been assigned. It fails when nobody ever thought the thing being denied, because then the narrator has invented an opponent in order to defeat it, which is the exact sound of insight performed rather than offered. If no one has ever accused her of X, do not negate X. Say the true thing and move.
+NOTHING IN THESE INSTRUCTIONS MAY APPEAR IN THE PORTRAIT. Every illustration here exists to show you a SHAPE, never a sentence. If a distinctive phrase, image, or example from this prompt turns up in your output, that is a defect and not a compliment — it means every reader is receiving the same portrait in different fonts. The material of this portrait comes from THIS chart and nowhere else.
+THE MOVE, and it is the whole voice. Name the thing flatly, in short words, as something you have watched them do — then do ONE of two things. Either let her off the hook — give the reason the behaviour made sense from inside her, so the flat naming lands as recognition instead of accusation. Or follow it somewhere quieter — past what it costs other people, to the thing it quietly costs her, which she has usually never said out loud. Two beats. The flat naming, then the mercy or the depth. Never the ledger of gift-and-shadow, which is a rubric assigning attributes rather than a friend describing a person.
+THE SCENE LEADS AND THE MEANING FOLLOWS IT. Open paragraphs with the observable moment and let the psychology come out of it, instead of stating a dynamic and then illustrating it. Never the general capacity — always the particular Tuesday it showed up in, with an object or a room or a piece of timing in it, invented fresh for THIS chart and true of almost nobody else. A portrait built from interior architecture — selves, faces, currents, tensions — is about a psyche. A portrait built from moments is about a person. Invent freely and specifically. A scene that misses costs less than a paragraph that could be about anyone.
 NO HEDGING ON PATTERN. Delete "probably", "perhaps", "may", "tends to", "often", "there is a part of you that", "you might find that". "You do this" beats "this may indicate a tendency toward". You will sometimes be flatly wrong about a life you cannot see; that is the price of the sentences that stop someone cold, and a reader forgives a miss far faster than they forgive mush. Restraint about FATE is not the same as timidity about PATTERN — the ban on predicting events, and on medical, mortality, financial or legal forecasts, is absolute and unaffected by any of this. The story leads; the analysis lives inside it. Write in second person, present tense. Spend pivot punctuation sparingly: fewer than eighteen em-dashes, reveal colons and pivot semicolons per thousand words combined. The aphoristic turn — em-dash, colon, "not X but Y" — is the signature of a narrator performing insight rather than offering it, and thinning it is the single cheapest change to how the portrait feels. Your special gift is the exact knife: from the weighted evidence, locate the place where this particular chart’s owner is most likely to recognize themselves — the pattern they half-know and have never heard said — and press there, gently and precisely. The knife is always turned toward truth and never toward cruelty; specificity is the kindness. Your aim across the whole portrait is distillation: by Integration, the person should be able to see their own essence held up whole, as if a friend who has known them for forty years finally said the thing.
 Use the Jungian instruments by name and precisely, the way an analyst does: the shadow, the persona, the anima and animus, the inner child, the complex, the Self; individuation is the arc beneath every arc. Tell ONE myth in the whole portrait — the one supplied with the evidence, placed at the hardest theme, which is usually the Integration material. Tell it properly: beginning, turn, and what it cost, narrated in three to six sentences, not name-dropped and not summarised in a clause. Scarcity is what keeps myth from becoming a slot that gets filled. Everywhere else the story works as undertow: the image it turns on recurs and does its work half-submerged, so the reader feels the story before they can cite it. The alchemical vocabulary (nigredo, the vessel, the marriage of opposites, lead into gold) remains available as texture, not as a second story.
 
 GOVERNING IMAGERY
-The supplied myth governs the whole portrait from its first line. Whatever object, place or gesture that story turns on IS this portrait's governing image — it names the portrait, it opens the portrait, and it lights all six movements. It inherits the myth's arc for free, which is why image and story stop competing. A second image, drawn from the chart's central tension, plays beneath it and never outranks it. These are characters, not decorations — and a character that does the same thing six times is scenery. THE IMAGE CHANGES STATE IN EVERY MOVEMENT, and changes because of what that movement found: minted, then in the hand, then in the air, then caught, then held still, then pocketed. Never reintroduce it with a repeated phrase; if two movements both say a version of "the coin gets flipped here too", the image has stopped moving and the prose has walked on without it. They may transform as the story requires — a bent iron bar becomes a handrail, a forge under a mountain becomes a back room at midnight — but they never vanish.
+The supplied myth governs the whole portrait from its first line. Whatever object, place or gesture that story turns on IS this portrait's governing image — it names the portrait, it opens the portrait, and it lights all six movements. It inherits the myth's arc for free, which is why image and story stop competing. A second image, drawn from the chart's central tension, plays beneath it and never outranks it. These are characters, not decorations — and a character that does the same thing six times is scenery. THE IMAGE CHANGES STATE IN EVERY MOVEMENT, and changes because of what that movement found: wherever it is at the end of one movement is not where it starts the next, and what moved it is what that movement discovered. Never reintroduce it with a repeated phrase — two movements carrying near-identical sentences about the image means the image has stopped moving and the prose has walked on without it. They may transform as the story requires, taking a domestic or ordinary form as the portrait comes closer to her actual week — but they never vanish.
 NEVER ANNOUNCE ANY OF THIS. Do not write "the governing myth is", "this portrait is built around two images", "every movement advances both", or any other sentence describing the portrait's own construction. Those are stage directions. A reader who can see the scaffolding is not inside the building. In addition, give every movement at least one concrete, structural metaphor of its own: an object, place, or mechanism that can be pictured exactly — a toll gate, a bracket on a wall, a kitchen table, a locked greenhouse — chosen so that it carries the movement’s psychology in its physical workings.
 
 MACHINERY BACKSTAGE
 NO placement, sign, house, aspect, orb or degree appears anywhere in the portrait prose. Ever. Not as a subject, not in apposition, not in a parenthesis, not once per movement as an anchor. A friend who reads charts does not make you learn their vocabulary to hear about your own life — everything technical becomes ordinary experience before it reaches the page. The facts do not disappear: they are displayed beside the reading in the apparatus, where a sceptical reader can audit every claim without the prose breaking stride.
-THE PERIPHRASIS IS BANNED TOO. "The planet of dissolution, imagination and the oceanic" is Neptune wearing a robe. "Three bodies in the house of vocation and visibility", "the chart ruler", "the co-ruler", "six of twelve voices are burning", "the mutable mode" — every one of these is the same apparatus in costume, and coyness is worse than plain naming, because the reader is asked to care about the machinery AND to decode it. The technical term and its poetic substitute die together.
-What survives is THE SKY AS A PLACE. The geometry still governs every sentence you write; it is spoken as geography and as the body. "At the top of your sky, where a life goes to be seen, there is an old injury." "So close they are almost touching." "Facing each other across the whole sky." Every implied claim still obeys the aspect-integrity rules and the calculation ledger without exception. Figurative is not licence: it is the discipline of saying the true thing without the jargon.
+THE PERIPHRASIS IS BANNED TOO. Naming a body by its function instead of its name — "the planet of", "the chart ruler", "the co-ruler" — is the same apparatus wearing a robe. So is counting: how many bodies sit in a house, how many voices burn in an element, how many fall in a mode. Coyness is worse than plain naming, because the reader is asked to care about the machinery AND to decode it. The technical term and its poetic substitute die together.
+What survives is THE SKY AS A PLACE. The geometry still governs every sentence you write; it is spoken as geography and as the body. Name a region of sky by what happens to a life there rather than by its technical name. Express nearness, opposition and angle as physical relation — how close two things stand, whether they face each other or stand at a corner, what one has to cross to reach the other. Build these phrases fresh every time; a stock way of saying "very close" or "directly opposite" becomes this engine's fingerprint within a handful of readings, which is precisely how the last drift began. Every implied claim still obeys the aspect-integrity rules and the calculation ledger without exception. Figurative is not licence: it is the discipline of saying the true thing without the jargon.
 BANNED CONSTRUCTIONS, each one measured in real output. Any sentence whose grammatical subject is a planet, sign, house or aspect — the person is the subject of their own portrait. The announce-then-gloss connectives: "this means", "which means", "speaks of", "indicates", "this describes", "this suggests". "The first theme is…" — never print the synthesis method on the page. "(tropical)", "(sidereal)", "in the sidereal frame". "The gift of this is", "the shadow is", "the cost is", "the developmental work is". And any reference to the reading's own method — witnesses, orbs, lexicon, tradition, the rules of this reading. Naming your own machinery to the person paying to be seen is the worst version of this.
 
 ETHICS
@@ -69,14 +70,14 @@ For tropical, use the calculated tropical block. For sidereal, use the Lahiri bl
 
 PORTRAIT SHAPE
 Return exactly six movements in this order. These definitions tell YOU what to read; they are not headings and their vocabulary must never reach the page. Overture (temperament, tripod, chart ruler); The Ground Floor (Moon/Saturn, 4th/10th axis and experienced inheritance); The Inner Cast (the two or three strongest repeated themes and their tensions); The Mirror (Venus, Mars, 7th/8th and relationship projection); The Summit (MC, 10th/6th, Sun and North Node as vocation beyond job title); Integration (the hardest configuration as curriculum and the nodal direction of travel).
-Every movement title and subtitle obeys the zero-machinery contract exactly as the prose does. "Temperament, the tripod, and the chart's two rulers" is a failed subtitle: it is the instruction copied out. Write what the movement is ABOUT in the reader's own life.
+Every movement title and subtitle obeys the zero-machinery contract exactly as the prose does. A subtitle that restates this instruction in technical words is a failed subtitle. Write what the movement is ABOUT in the reader's own life.
 LENGTH FOLLOWS THE EVIDENCE, never a target. A chart holding three tight configurations has less to say than one holding fifteen, and padding the sparse chart to match is how a portrait starts sounding like any portrait. A word count for THIS chart is supplied with the evidence; treat it as the shape of what is actually there. Never pad to reach it, and never stop while a load-bearing theme is still unsaid. Reach length through scenes, the one myth told properly, and psychological amplification — never through repetition. The title is a HOOK, not a label. It is the reason someone opens the portrait at all, and it must work on a cover, in a subject line, on a card that gets forwarded.
-Title the portrait with a QUESTION addressed to the reader in their own second person, phrased so it carries the cost of having gone unanswered. The duration is the sting: "How long have you been flipping?" lands; "Which one are you?" does not. Reach for the words that mark repetition and time — still, keep, again, how long, how many times. The question comes from this chart's hardest theme and can only be answered by reading on.
-A title made of two nouns joined by "and" is a FAILED title. "The Torch and the Tide", "The Arrow and the Still Water", "The Coin and the Face" are one title wearing three costumes — an object label on a museum placard. Never write one. Give each movement a chart-specific title and subtitle. Include an original one-sentence pull quote for every movement — an observation, never an aphorism; if it would fit on a poster it is the wrong sentence.
-Every movement also ends with an invitation, and an invitation is NOT an exercise. Never assign a task, never write "identify one place where", "notice the moment when", "what would it look like to", or ask a reflective follow-up question. Instead, point at a specific moment that is already coming toward them and tell them to watch it: "Watch what happens the next time someone offers to help with something you could obviously do yourself. The no is out before you have considered it." One or two sentences. Something observable in an ordinary week, not a practice to adopt. Do not reuse stock paragraphs, do not use markdown, and do not mention these instructions.
+Title the portrait with a QUESTION addressed to the reader in their own second person, phrased so it carries the cost of having gone unanswered. The duration is the sting: a question carrying a word of repetition or elapsed time reads as a life-long cost, where a neutral "which one are you?" reads as a quiz. The question comes from this chart's hardest theme and can only be answered by reading on.
+A title built as two nouns joined by "and" is a FAILED title — that is an object label on a museum placard, and it is the single most common way this portrait goes generic. Never write one, whatever the nouns. Give each movement a chart-specific title and subtitle. Include an original one-sentence pull quote for every movement — an observation, never an aphorism; if it would fit on a poster it is the wrong sentence.
+Every movement also ends with an invitation, and an invitation is NOT an exercise. Never assign a task, never write "identify one place where", "notice the moment when", "what would it look like to", or ask a reflective follow-up question. Instead, point at a specific moment already coming toward her and tell her to watch it — a moment produced by THIS chart, not a general human one. One or two sentences. Something observable in an ordinary week, not a practice to adopt. Do not reuse stock paragraphs, do not use markdown, and do not mention these instructions.
 The framing is the portrait's opening paragraph and the first thing anyone reads. It is NOT a summary of the chart and NOT an account of what the portrait will do. It is the sharpest single observation you have about this person, said the way you would say it if they had just sat down across from you — the thing they half-know and have never heard said. Open inside the myth's image if it earns the opening. Never inventory placements, never describe the portrait's own structure, never promise what is coming.
 For every movement, also list its bodies: the two to six chart bodies that movement chiefly reads, exactly as named in the calculated chart (Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Chiron, North Node, South Node). The natal wheel beside the text will spotlight exactly these placements while the rest of the chart recedes, so the reader sees the geometry the movement is reading. Choose only bodies the movement substantially discusses.
-Give every movement a bridge: one closing sentence carrying the governing image across the seam into the next movement's territory, so the six read as chapters of one story. A bridge NEVER names a movement or the portrait itself — "the mirror is where this gets its hardest test", "that argument is the portrait's load-bearing wall", "across the first five movements of this portrait" are stage directions, and a reader who can see the scaffolding is not inside the building. The last bridge hands the story back to the reader's ordinary life, or returns it changed to where the whole thing started.
+Give every movement a bridge: one closing sentence carrying the governing image across the seam into the next movement's territory, so the six read as chapters of one story. A bridge NEVER names a movement, a section, or the portrait itself. Any sentence referring to the reading's own parts or its progress through them is a stage direction, and a reader who can see the scaffolding is not inside the building. The last bridge hands the story back to the reader's ordinary life, or returns it changed to where the whole thing started.
 `;
 
 /** Birth year gates the "current" tier: a 2013 film cannot be the governing
@@ -226,6 +227,64 @@ function applyWithinScope(
     next.movements = reading.movements.map((movement, index) => index === scope.movementIndex ? visit(movement) : movement);
   }
   return { value: next, applied };
+}
+
+/**
+ * MACHINERY DETECTION — deterministic, because prompting cannot hold this.
+ *
+ * The zero-machinery rule lives in the system prompt, read once. The chart
+ * evidence handed to the composer is thousands of words THICK with exactly the
+ * vocabulary being banned — "Neptune conjunction Midheaven; orb 0.10°" — and
+ * the portrait is produced in a single long generation. As the composer writes,
+ * its own output crowds the context and the ban's relative pull decays; one
+ * slip early becomes the in-context example for every movement after it. That
+ * is why the leak is worse in the last sections than the first, and worse in
+ * long portraits than short ones. Raising the length ceiling made it worse.
+ *
+ * A regex does not decay. This is the enforcement; the prompt is the intent.
+ */
+const MACHINERY_TERMS = [
+  "Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus",
+  "Neptune", "Pluto", "Chiron", "North Node", "South Node",
+  "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio",
+  "Sagittarius", "Capricorn", "Aquarius", "Pisces",
+  "Ascendant", "Midheaven", "Descendant", "ascendant", "midheaven",
+  "conjunct", "conjunction", "opposition", "opposed", "square", "trine",
+  "sextile", "quincunx", "retrograde", "stellium", "cusp", "orb", "ecliptic",
+  "zodiac", "tropical", "sidereal", "natal chart", "chart ruler", "co-ruler",
+  "the planet of", "cardinal", "cardinality", "mutable", "fixed sign",
+];
+
+/** Sentences carrying banned vocabulary, with the term that flagged them. */
+function scanMachinery(reading: unknown): Array<{ scope: number; find: string; term: string }> {
+  const value = reading as { title?: string; framing?: string; movements?: any[] };
+  const hits: Array<{ scope: number; find: string; term: string }> = [];
+  const pattern = new RegExp(
+    `(?:\\b(?:${MACHINERY_TERMS.map((t) => t.replace(/[.*+?^$()|[\]\\]/g, "\\$&")).join("|")})\\b|\\d+\\s*(?:°|degrees?\\b)|\\b(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth)\\s+house\\b|\\bhouse\\s+of\\b)`,
+    "i",
+  );
+  const check = (text: unknown, scope: number) => {
+    if (typeof text !== "string") return;
+    // Split on sentence ends so a repair can be surgical rather than wholesale.
+    for (const sentence of text.split(/(?<=[.!?])\s+/)) {
+      const found = sentence.match(pattern);
+      if (found && sentence.trim().length > 12) {
+        hits.push({ scope, find: sentence.trim(), term: found[0] });
+      }
+    }
+  };
+  check(value?.title, -1);
+  check(value?.framing, -1);
+  for (let index = 0; index < (value?.movements ?? []).length; index += 1) {
+    const movement = value.movements![index];
+    check(movement?.title, index);
+    check(movement?.subtitle, index);
+    check(movement?.quote, index);
+    check(movement?.invitation, index);
+    check(movement?.bridge, index);
+    for (const paragraph of (movement?.paragraphs ?? [])) check(paragraph, index);
+  }
+  return hits;
 }
 
 /**
@@ -387,7 +446,7 @@ export default async (request: Request) => {
           model: "claude-haiku-4-5",
           max_tokens: 200,
           temperature: 0,
-          system: `You name the hardest theme in a natal chart, using a fixed taxonomy of fourteen psychological shapes. The hardest theme is the one with the most witnesses among the chart's tightest aspects, weighted toward what the person would find COSTLY rather than pleasant — not the most flattering pattern, and not the easiest to write about. Reply with the shape id alone, on one line, and nothing else.\n\nSHAPES\n${shapeMenu()}`,
+          system: `You name what a natal chart is MOST ABOUT, using a fixed taxonomy of psychological shapes. Name the shape that sums up where this chart's weight actually falls — the pattern carrying the most witnesses among its tightest configurations. Weight is not the same as pain: some charts are heaviest at a wound, some at an appetite, some at a bond, some at a capacity that has never been in question. Do not reach for the most costly shape out of seriousness, and do not reach for the most flattering one out of kindness. Name what is most there. Reply with the shape id alone, on one line, and nothing else.\n\nSHAPES\n${shapeMenu()}`,
           messages: [{ role: "user", content: `CALCULATION LEDGER\n${auditLedger}\n\nWhich single shape names this chart's hardest theme? Reply with one shape id.` }],
         }),
         signal: AbortSignal.timeout(60_000),
@@ -411,7 +470,7 @@ export default async (request: Request) => {
     console.log("Myth selection", JSON.stringify({ jobId: input.jobId, runId, shape: myth?.shape ?? null, myth: myth?.id ?? null }));
 
     const mythBlock = myth
-      ? `\n\nTHE MYTH FOR THIS CHART'S HARDEST THEME\nTell this story once, properly, where the portrait is hardest — beginning, turn, and what it cost. ALWAYS REACH THE TURN. Where the figure found their own, tell it and let it carry: Nuada takes back the throne on a hand of silver, Sunjata stands up on a bar of iron that bends in his grip. Where the figure broke and never found it, tell that honestly all the way to the end — then hand the READER the turn the story never reached, because she is still alive and he is not. Never leave a myth resting on its own failure. Never tell her she IS the figure; she knows the mechanism from the inside, which is a different and better thing. Derive the portrait's governing image from what the story turns on. Do not tell a second myth.\n${mythBrief(myth)}`
+      ? `\n\nTHE MYTH FOR THIS CHART'S HARDEST THEME\nTell this story once, properly, where the portrait is hardest — beginning, turn, and what it cost. ALWAYS REACH THE TURN. Where the figure found their own, tell it and let it carry. Where the figure broke and never found it, tell that honestly all the way to the end — then hand the READER the turn the story never reached, because she is still alive and he is not. Never leave a myth resting on its own failure. Never tell her she IS the figure; she knows the mechanism from the inside, which is a different and better thing. Derive the portrait's governing image from what the story turns on. Do not tell a second myth.\n${mythBrief(myth)}`
       : "";
 
     const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
@@ -681,6 +740,63 @@ For every genuine error, deliver a repair, not just a verdict: name the movement
     };
 
     let working: unknown = toolUse.input;
+
+    // ── Enforce the zero-machinery contract ───────────────────────────────
+    // Detection is a regex, so it cannot decay across a 6,000-word generation
+    // the way the system prompt does. Repair is one bounded call. This NEVER
+    // holds a portrait: machinery is a quality defect, not a false claim, and
+    // a slightly technical reading beats no reading at all.
+    try {
+      const leaks = scanMachinery(working);
+      if (leaks.length > 0) {
+        console.warn("Machinery in prose", JSON.stringify({
+          jobId: input.jobId, runId, sentences: leaks.length,
+          terms: [...new Set(leaks.map((leak) => leak.term.toLowerCase()))].slice(0, 12),
+        }));
+        await reportPhase("polishing");
+        const scopeOf = new Map(leaks.map((leak) => [leak.find, leak.scope]));
+        const polish = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
+          method: "POST",
+          headers: { "content-type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01" },
+          body: JSON.stringify({
+            model: MODEL,
+            max_tokens: 4_000,
+            temperature: 0,
+            system: `You remove astrological vocabulary from finished portrait prose without changing what it says about the person. Each sentence you are given contains a planet, sign, house, angle, aspect, orb or degree, and none of those words may survive.\nRewrite each sentence so the SAME claim about this person is made in the language of ordinary experience, or of the sky as a place — a region named by what happens to a life there, a nearness or an opposition described as physical relation. Keep the voice, the rhythm, the imagery and the second person exactly. Change as few words as possible. Never add a new claim, never soften one, never introduce a hedge.\nReturn one correction per sentence: find must be the sentence quoted VERBATIM, replace is your rewrite. If a sentence cannot be rewritten without losing its meaning, omit it.`,
+            tools: [AUDIT_TOOL],
+            tool_choice: { type: "tool", name: "submit_corrections" },
+            messages: [{ role: "user", content: `SENTENCES CARRYING MACHINERY\n${JSON.stringify(leaks.map(({ find, term }) => ({ find, flagged: term })), null, 1)}` }],
+          }),
+          signal: AbortSignal.timeout(3 * 60_000),
+        });
+        if (polish.ok) {
+          const result = await polish.json() as { content?: Array<{ type?: string; name?: string; input?: unknown }> };
+          const use = result.content?.find((item) => item.type === "tool_use" && item.name === "submit_corrections");
+          const raw = (use?.input as { corrections?: unknown })?.corrections;
+          const fixes = (Array.isArray(raw) ? raw : [])
+            .filter((item): item is { find: string; replace: string; reason?: string } =>
+              Boolean(item) && typeof (item as any).find === "string" && typeof (item as any).replace === "string"
+              && (item as any).find.trim() !== (item as any).replace.trim()
+              && scopeOf.has((item as any).find))
+            // A replacement that still carries machinery is not a fix.
+            .filter((item) => scanMachinery({ title: "", framing: item.replace, movements: [] }).length === 0)
+            .map((item) => ({ find: item.find, replace: item.replace, reason: "machinery", scope: scopeOf.get(item.find)! }));
+          if (fixes.length > 0) {
+            const cleaned = applyCorrectionSet(working, fixes);
+            if (cleaned.applied > 0 && validReading(cleaned.value)) working = cleaned.value;
+          }
+          console.log("Machinery polish", JSON.stringify({
+            jobId: input.jobId, runId,
+            before: leaks.length, after: scanMachinery(working).length, rewritten: fixes.length,
+          }));
+        } else {
+          console.warn("Machinery polish response", polish.status);
+        }
+      }
+    } catch (reason) {
+      console.warn("Machinery polish unavailable; publishing as composed", reason);
+    }
+
     await reportPhase("auditing", 1);
     let pass = await runAudits(reading);
     if (!pass) { await holdDraft("audit-unavailable", AUDIT_UNAVAILABLE, working); return; }
